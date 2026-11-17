@@ -105,7 +105,8 @@ def p2_dock():
         t = 1.4
         for trip in range(2):
             js += pose_js("p2a-rc", t, CARRY, dur=0.25)
-            js += f'tl.fromTo("#p2a-rc-box",{{opacity:0}},{{opacity:1,duration:0.15}},{t+0.1:.2f});\n'
+            js += (f'tl.fromTo("#p2a-rc-box",{{opacity:0}},{{opacity:1,duration:0.15}},{t+0.1:.2f});\n' if trip == 0
+                   else f'tl.to("#p2a-rc-box",{{opacity:1,duration:0.15}},{t+0.1:.2f});\n')
             js += f'tl.to("#p2a-rc",{{x:-170,duration:1.0,ease:"none"}},{t+0.3:.2f});\n' + walk_js("p2a-rc", t + 0.3, t + 1.3)
             js += f'tl.to("#p2a-rc-box",{{opacity:0,duration:0.1}},{t+1.35:.2f});\n'
             for k in (2 * trip, 2 * trip + 1):
@@ -631,7 +632,7 @@ def p4_full():
         sx, sb = R.slot(0, 0)
         slot = (f'<g id="p4b-slot">' + "".join(st.carton(sx - 100 + i*68, sb - 56, 64, 56) for i in range(3))
                 + "".join(st.carton(sx - 66 + i*68, sb - 112, 64, 56) for i in range(2)) + "</g>")
-        X0, X1, X2 = 260, 600, 830        # picker x: start, at A-01-01, next location
+        X0, X1, X2 = 260, 600, 700        # picker x: start, at A-01-01, next location
         SC = 1.5
         a, b = SCAN["armR"]
         tip = hand(X1, FY, SC, a, b, extra=56)
@@ -654,7 +655,7 @@ def p4_full():
                  f'<span style="background:{C["orange"]};border:4px solid {INK};border-radius:18px;padding:10px 24px;font-size:40px;font-weight:900">Chỉ 2 bước</span>'
                  f'<span style="background:{C["green"]};color:#fff;border:4px solid {INK};border-radius:18px;padding:10px 24px;font-size:36px;font-weight:900">Tiết kiệm thời gian</span></div></div>')
         body += st.badge("p4b-b1", 1, "Đi đến vị trí trên PDA") + st.badge("p4b-b2", 2, "Scan mã sản phẩm")
-        ring = (f'<div id="p4b-done" class="abs" style="left:760px;top:150px;opacity:0"><div style="display:flex;align-items:center;gap:18px;background:#fff;border:5px solid {C["green"]};'
+        ring = (f'<div id="p4b-done" class="abs" data-hold style="left:760px;top:150px;opacity:0"><div style="display:flex;align-items:center;gap:18px;background:#fff;border:5px solid {C["green"]};'
                 f'border-radius:24px;padding:16px 30px"><svg width="90" height="90" viewBox="0 0 90 90"><circle cx="45" cy="45" r="36" fill="none" stroke="#E3E8EF" stroke-width="12"/>'
                 f'<circle id="p4b-ring" cx="45" cy="45" r="36" fill="none" stroke="{C["green"]}" stroke-width="12" stroke-dasharray="226" stroke-dashoffset="226" transform="rotate(-90 45 45)" stroke-linecap="round"/></svg>'
                 f'<span style="font-size:44px;font-weight:900">Đơn hàng hoàn tất ✔</span></div></div>')
@@ -726,6 +727,7 @@ def p4_piece():
         body += (f'<div id="p4c-name" class="abs" style="left:80px;top:56px;opacity:0"><span style="display:inline-block;background:#2F6FD6;color:#fff;border:4px solid {INK};'
                  f'border-radius:18px;padding:10px 26px;font-size:40px;font-weight:900">Oricon = thùng nhựa xanh, dán mã cửa hàng</span></div>')
         js = f'tl.fromTo("#p4c-name",{{opacity:0,y:-16}},{{opacity:1,y:0,duration:0.3}},{T[0]+0.3:.2f});\ntl.to("#p4c-name",{{opacity:0,duration:0.2}},{T[1]-0.2:.2f});\n'
+        js += f'tl.fromTo("#p4c-mv",{{x:-420}},{{x:0,duration:1.8,ease:"none"}},{T[0]+0.2:.2f});\n' + walk_js("p4c-pk", T[0] + 0.2, T[0] + 2.0)
         js += st.appear_js("#p4c-pda", T[1], 0.35, dy=30)
         js += st.badge_seq_js([f"p4c-b{i+1}" for i in range(4)], T[1:5], D - 0.3)
         js += st.show_panel_js("p4c-pda", None, "s1", T[1])
@@ -769,4 +771,224 @@ def part4():
                 (ic_oricon(), "Hàng lẻ: <b>Oricon</b> – scan, nhập số lượng, bỏ vào thùng", "Hàng lẻ: Oricon, scan, nhập số lượng, bỏ vào thùng"),
                 (ic_order(), "Luôn <b>làm xong trọn từng đơn</b>", "Luôn làm xong trọn từng đơn"),
             ])]
-def part5(): return []
+# ============================================================ PART 5 – Kiểm hàng & Bàn giao
+def p5_intro():
+    lines = ["Trước khi ra kho, hàng được kiểm theo hai loại."]
+
+    def build(T, D):
+        def tile(tid, x, label, art):
+            return (f'<div id="{tid}" class="abs" style="left:{x}px;top:300px;width:560px;height:420px;background:#fff;border:4px solid {INK};border-radius:30px;opacity:0">'
+                    f'<svg class="abs" style="left:0;top:20px" width="560" height="300" viewBox="0 0 560 300">{art}</svg>'
+                    f'<div class="abs" style="left:0;right:0;bottom:30px;text-align:center;font-size:46px;font-weight:900">{label}</div></div>')
+        tro = f'<g transform="translate(150,270) scale(1.25)">{st.trolley("p5a-tr", "CH-0125")}</g>'
+        ori = f'<g transform="translate(280,260) scale(1.5)">{st.oricon("p5a-or", "CH-0125")}</g>'
+        body = (f'<div id="p5a-t" class="abs" style="left:0;top:120px;width:1920px;text-align:center;opacity:0"><span style="display:inline-block;background:#fff;border:4px solid {INK};border-radius:20px;padding:14px 36px;font-size:56px;font-weight:900">Kiểm hàng trước khi ra kho</span></div>'
+                + tile("p5a-l", 320, "Hàng thùng · trolley", tro) + tile("p5a-r", 1040, "Hàng lẻ · Oricon", ori))
+        js = st.appear_js("#p5a-t", 0.2)
+        js += f'tl.fromTo("#p5a-l",{{opacity:0,y:30}},{{opacity:1,y:0,duration:0.4,ease:"back.out(1.6)"}},{T[0]+0.5:.2f});\n'
+        js += f'tl.fromTo("#p5a-r",{{opacity:0,y:30}},{{opacity:1,y:0,duration:0.4,ease:"back.out(1.6)"}},{T[0]+1.0:.2f});\n'
+        for i in range(6):
+            js += f'tl.set("#p5a-tr-k{i}",{{opacity:1}},0);\n'
+        return body, "", js
+    return Scene("p5intro", lines, build, lead=0.4, tail=1.0, min_hold={0: 3.2})
+
+
+def p5_carton():
+    lines = ["Với hàng thùng, nhóm checker đi kiểm từng đơn trên xe trolley.",
+             "Checker chọn đúng cửa hàng theo mã trên trolley,",
+             "scan mã hàng,",
+             "đếm và nhập số lượng để biết đã pick đủ hay chưa."]
+    trolleys = [(330, "CH-0125", 5), (630, "CH-0311", 3), (930, "CH-0420", 4)]
+
+    def build(T, D):
+        X0, X1, SC = -120, 230, 1.5
+        a, b = SCAN["armR"]
+        tip = hand(X1, FY, SC, a, b, extra=56)
+        tr = "".join(f'<g transform="translate({x},{FY})">{st.trolley(f"p5b-t{i}", code)}</g>' for i, (x, code, n) in enumerate(trolleys))
+        ck = f'<g transform="translate({X0},{FY})"><g id="p5b-mv">{stick("p5b-ck", "checker", SC, label=True, hand_r=pda_svg("p5b-ck"))}</g></g>'
+        las = st.laser("p5b-las", tip[0], tip[1], 330 + 98, FY - 112)
+        hl = f'<rect id="p5b-hl" x="{330-64}" y="{FY-182}" width="128" height="50" rx="10" fill="none" stroke="{C["green"]}" stroke-width="6" opacity="0"/>'
+        tags = (f'<g id="p5b-ok" opacity="0" transform="translate(430,{FY-250})"><rect x="-80" y="-30" width="160" height="56" rx="16" fill="{C["green"]}" stroke="{INK}" stroke-width="3"/>'
+                f'<text x="0" y="10" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="32" fill="#fff">Đủ ✔</text></g>'
+                f'<g id="p5b-bad" opacity="0" transform="translate(730,{FY-250})"><rect x="-120" y="-30" width="240" height="56" rx="16" fill="{C["red"]}" stroke="{INK}" stroke-width="3"/>'
+                f'<text x="0" y="10" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="30" fill="#fff">Thiếu ✖ (ví dụ)</text></g>')
+        body = svg_layer(st.floor() + tr + hl + ck + las + tags)
+        rows = "".join(f'<div class="row" style="position:relative">{code}' + (f'<div id="p5b-sel" style="position:absolute;left:-3px;top:-3px;right:-3px;bottom:-3px;border:4px solid {C["green"]};border-radius:12px;background:rgba(34,165,90,.08);opacity:0"></div>' if i == 0 else "") + '</div>'
+                       for i, (_, code, _) in enumerate(trolleys))
+        body += st.pda("p5b-pda", "Kiểm hàng thùng", [
+            ("s1", '<div class="lbl">Chọn cửa hàng</div>' + rows),
+            ("s2", kv("CH-0125 · Scan mã hàng", "SKU 1001 ✔")),
+            ("s3", kv("Nhập số lượng đếm được", "5 thùng") + f'<div id="p5b-res" style="margin-top:20px;opacity:0"><div class="go">Đủ ✔ (cần 5 – có 5)</div></div>'),
+        ])
+        body += "".join(st.badge(f"p5b-b{i+1}", i + 1, t) for i, t in enumerate(["Chọn đúng cửa hàng", "Scan mã hàng", "Đếm & nhập số lượng"]))
+        js = 'tl.fromTo("#p5b-ck-label",{opacity:0,y:10},{opacity:1,y:0,duration:0.3,ease:"back.out(2)"},%.2f);\n' % (T[0] + 0.3)
+        for i, (_, _, n) in enumerate(trolleys):
+            for k in range(n):
+                js += f'tl.set("#p5b-t{i}-k{k}",{{opacity:1}},0);\n'
+        js += f'tl.to("#p5b-mv",{{x:{X1-X0},duration:1.8,ease:"none"}},{T[0]+0.2:.2f});\n' + walk_js("p5b-ck", T[0] + 0.2, T[0] + 2.0)
+        js += st.appear_js("#p5b-pda", T[0] + 0.5, 0.35, dy=30)
+        js += st.badge_seq_js([f"p5b-b{i+1}" for i in range(3)], T[1:4], D - 0.3)
+        js += st.show_panel_js("p5b-pda", None, "s1", T[1])
+        js += f'tl.fromTo("#p5b-sel",{{opacity:0}},{{opacity:1,duration:0.2}},{T[1]+0.9:.2f});\n'
+        js += f'tl.fromTo("#p5b-hl",{{opacity:0}},{{opacity:1,duration:0.2}},{T[1]+0.9:.2f});\n'
+        js += st.show_panel_js("p5b-pda", "s1", "s2", T[2])
+        js += pose_js("p5b-ck", T[2], SCAN, dur=0.25, ease="power2.out") + st.laser_js("p5b-las", T[2] + 0.4)
+        js += st.show_panel_js("p5b-pda", "s2", "s3", T[3])
+        js += pose_js("p5b-ck", T[3], REST, dur=0.25)
+        js += f'tl.fromTo("#p5b-res",{{opacity:0,y:10}},{{opacity:1,y:0,duration:0.3}},{T[3]+1.0:.2f});\n'
+        js += st.pop_js("#p5b-ok", T[3] + 1.1) + st.pop_js("#p5b-bad", T[3] + 1.8)
+        return body, "", js
+    s = Scene("p5carton", lines, build, lead=0.4, tail=1.6, min_hold={0: 3.4, 1: 3.0, 2: 2.2, 3: 3.8})
+    s.sfx = [(("T", 2, 0.4), "ping.mp3", 0.25)]
+    return s
+
+
+def p5_piece():
+    lines = ["Với hàng lẻ, picker mang Oricon ra khu đóng gói.",
+             "Checker kiểm hàng bên trong,",
+             "scan mã hàng, nhập số lượng,",
+             "và niêm phong thùng sau khi kiểm xong."]
+
+    def build(T, D):
+        TX, TY = 700, 620        # table left, top
+        table = (f'<rect x="{TX}" y="{TY}" width="480" height="22" rx="4" fill="#C9965A" stroke="{INK}" stroke-width="3"/>'
+                 f'<rect x="{TX+20}" y="{TY+22}" width="16" height="{FY-TY-22}" fill="#A97A44" stroke="{INK}" stroke-width="2.5"/>'
+                 f'<rect x="{TX+444}" y="{TY+22}" width="16" height="{FY-TY-22}" fill="#A97A44" stroke="{INK}" stroke-width="2.5"/>'
+                 f'<g transform="translate({TX+240},{TY-330})"><rect x="-170" y="-34" width="340" height="68" rx="14" fill="{C["blue"]}" stroke="{INK}" stroke-width="3"/>'
+                 f'<text x="0" y="13" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="36" fill="#fff">Khu đóng gói</text></g>')
+        OX = TX + 230
+        ori = f'<g transform="translate({OX},{TY})"><g id="p5c-ot" opacity="0">{st.oricon("p5c-or", "CH-0125")}</g></g>'
+        lid = (f'<g id="p5c-lid" opacity="0"><rect x="{OX-92}" y="{TY-112}" width="184" height="16" rx="5" fill="#4C86E6" stroke="{INK}" stroke-width="3"/></g>'
+               f'<rect id="p5c-tape" x="{OX-100}" y="{TY-80}" width="200" height="22" fill="#F2B233" stroke="{INK}" stroke-width="2" opacity="0"/>'
+               f'<g id="p5c-seal" opacity="0" transform="translate({OX+40},{TY-60}) rotate(-10)"><rect x="-70" y="-24" width="140" height="48" rx="8" fill="{C["red"]}" stroke="{INK}" stroke-width="3"/>'
+               f'<text x="0" y="11" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="30" fill="#fff">SEALED</text></g>')
+        PX0, PX1, SC = -150, 560, 1.5
+        carry_ori = f'<g id="p5c-oc" transform="translate(0,-52) scale(0.42)">{st.oricon("p5c-or1", "CH-0125")}</g>'
+        pk = (f'<g transform="translate({PX0},{FY})"><g id="p5c-pmv">{stick("p5c-pk", "picker", SC, pose=CARRY)}'
+              f'<g transform="scale({SC})">{carry_ori}</g></g></g>')
+        CKX = 1290
+        a, b = SCAN["armR"]
+        tip = hand(CKX, FY, SC, a, b, flip=True, extra=56)
+        ck = figure("p5c-ck", "checker", CKX, scale=SC, label=True, flip=True, hand_r=pda_svg("p5c-ck"))
+        las = st.laser("p5c-las", tip[0], tip[1], OX + 30, TY - 70)
+        body = svg_layer(st.floor() + table + ori + lid + pk + ck + las)
+        body += st.pda("p5c-pda", "Kiểm hàng lẻ", [
+            ("s1", kv("Oricon", "CH-0125", "Mở thùng, kiểm hàng bên trong")),
+            ("s2", kv("Scan mã hàng", "SKU 2005 ✔") + '<div style="height:16px"></div>' + kv("Số lượng", "3 gói ✔", "Khớp với số đã pick")),
+            ("s3", kv("Niêm phong", "Đã seal ✔", "Sẵn sàng bàn giao")),
+        ])
+        body += "".join(st.badge(f"p5c-b{i+1}", i + 1, t) for i, t in enumerate(["Scan mã hàng", "Nhập số lượng", "Niêm phong thùng"]))
+        js = f'tl.to("#p5c-pmv",{{x:{PX1-PX0},duration:2.0,ease:"none"}},{T[0]+0.1:.2f});\n' + walk_js("p5c-pk", T[0] + 0.1, T[0] + 2.1)
+        js += f'tl.set("#p5c-oc",{{opacity:0}},{T[0]+2.3:.2f});\ntl.fromTo("#p5c-ot",{{opacity:0,y:-30}},{{opacity:1,y:0,duration:0.3,ease:"bounce.out"}},{T[0]+2.3:.2f});\n'
+        js += pose_js("p5c-pk", T[0] + 2.3, REST, dur=0.25)
+        js += f'tl.to("#p5c-pmv",{{x:{-PX0-300},duration:1.6,ease:"none"}},{T[1]+0.2:.2f});\n' + walk_js("p5c-pk", T[1] + 0.2, T[1] + 1.8)
+        js += 'tl.fromTo("#p5c-ck-label",{opacity:0,y:10},{opacity:1,y:0,duration:0.3,ease:"back.out(2)"},%.2f);\n' % (T[1])
+        js += st.appear_js("#p5c-pda", T[1], 0.35, dy=30) + st.show_panel_js("p5c-pda", None, "s1", T[1] + 0.1)
+        js += st.badge_seq_js(["p5c-b1", "p5c-b2", "p5c-b3"], [T[2], T[2] + 1.7, T[3]], D - 0.3)
+        js += st.show_panel_js("p5c-pda", "s1", "s2", T[2])
+        js += pose_js("p5c-ck", T[2], SCAN, dur=0.25, ease="power2.out") + st.laser_js("p5c-las", T[2] + 0.4)
+        js += pose_js("p5c-ck", T[2] + 1.4, REST, dur=0.25)
+        js += st.show_panel_js("p5c-pda", "s2", "s3", T[3] + 1.2)
+        js += f'tl.fromTo("#p5c-lid",{{opacity:0,y:-40}},{{opacity:1,y:0,duration:0.3,ease:"power2.out"}},{T[3]+0.1:.2f});\n'
+        js += f'tl.fromTo("#p5c-tape",{{opacity:1,scaleX:0}},{{opacity:1,scaleX:1,duration:0.5,ease:"power2.inOut",transformOrigin:"0% 50%"}},{T[3]+0.45:.2f});\n'
+        js += f'tl.fromTo("#p5c-seal",{{opacity:0,scale:2}},{{opacity:1,scale:1,duration:0.25,ease:"power3.out",transformOrigin:"50% 50%"}},{T[3]+1.0:.2f});\n'
+        return body, "", js
+    s = Scene("p5piece", lines, build, lead=0.4, tail=1.6, min_hold={0: 3.2, 1: 2.4, 2: 3.4, 3: 3.0})
+    s.sfx = [(("T", 3, 1.0), "chime.mp3", 0.25)]
+    return s
+
+
+def p5_handover():
+    lines = ["Cuối cùng là bàn giao cho vận tải.",
+             "Việc bàn giao diễn ra từ khuya đến rạng sáng,",
+             "chỉ có đội vận tải làm việc,",
+             "nên đội vận tải chỉ xác nhận bàn giao trên hệ thống,",
+             "không kiểm đếm lại số lượng."]
+
+    def build(T, D):
+        stars = "".join(f'<circle cx="{(i*397) % 1880 + 20}" cy="{(i*173) % 420 + 30}" r="{2 + i % 3}" fill="#fff"/>' for i in range(26))
+        sky = (f'<div class="abs" style="left:0;top:0;width:1920px;height:{FY}px;background:linear-gradient(180deg,#0E1A33 0%,#23355C 100%)"></div>'
+               f'<div id="p5d-dawn" class="abs" style="left:0;top:0;width:1920px;height:{FY}px;opacity:0;background:linear-gradient(180deg,#9CC3EE 0%,#F7C58B 70%,#F49E5C 100%)"></div>')
+        celestial = (f'<g id="p5d-stars">{stars}</g>'
+                     f'<g id="p5d-moon"><circle cx="1500" cy="150" r="60" fill="#F4F1DE"/><circle cx="1525" cy="135" r="56" fill="#23355C" id="p5d-moonmask"/></g>'
+                     f'<g id="p5d-sun" opacity="0"><circle cx="300" cy="{FY-40}" r="90" fill="#FFD23F"/></g>')
+        goods = (f'<g transform="translate(330,{FY})">{st.trolley("p5d-t1", "CH-0125")}</g>'
+                 f'<g transform="translate(600,{FY})"><g transform="scale(0.8)">{st.oricon("p5d-o1", "CH-0125", title_color="#2F6FD6")}</g></g>'
+                 f'<g transform="translate(600,{FY-84})"><g transform="scale(0.8)">{st.oricon("p5d-o2", "CH-0311", title_color="#2F6FD6")}</g></g>')
+        trk = f'<g transform="translate(1060,{FY})">{st.truck("p5d-truck")}</g>'
+        TX = 920
+        tp = figure("p5d-tp", "transport", TX, scale=1.5, label=True, pose={"armR": (-30, -80)}, hand_r=pda_svg("p5d-tp"))
+        nocount = (f'<g id="p5d-no" opacity="0" transform="translate(1660,240)"><rect x="-180" y="-110" width="360" height="220" rx="24" fill="#fff" stroke="{INK}" stroke-width="4"/>'
+                   f'<rect x="-60" y="-80" width="120" height="120" rx="10" fill="#F1F3F6" stroke="{INK}" stroke-width="3"/>'
+                   f'<text x="0" y="-12" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="40" fill="{INK}">1 2 3</text>'
+                   f'<line x1="-80" y1="-90" x2="80" y2="50" stroke="{C["red"]}" stroke-width="12" stroke-linecap="round"/>'
+                   f'<text x="0" y="90" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="28" fill="{C["red"]}">Không kiểm đếm lại</text></g>')
+        body = sky + svg_layer(celestial + st.floor() + goods + trk + tp + nocount)
+        body += (f'<div id="p5d-time" class="abs" style="left:80px;top:56px;opacity:0"><span style="display:inline-block;background:#fff;border:4px solid {INK};border-radius:18px;'
+                 f'padding:10px 26px;font-size:40px;font-weight:900">Khuya → Rạng sáng</span></div>')
+        body += pda_popup("p5d-pop", "Bàn giao vận tải", [
+            ("q1", kv("Tuyến 1 · 3 cửa hàng", "Xác nhận bàn giao?", "") + f'<div id="p5d-btn" class="abs" style="left:0;right:0;top:120px;background:{C["green"]};color:#fff;font-weight:900;font-size:32px;text-align:center;border-radius:14px;padding:12px 0">XÁC NHẬN BÀN GIAO</div>'),
+        ], 640, 150, w=600, h=200)
+        body += st.stamp("p5d-done", "Đã ra kho", x=1270, y=420)
+        js = (f'tl.fromTo("#p5d-time",{{opacity:0,y:-16}},{{opacity:1,y:0,duration:0.3}},{T[1]:.2f});\n'
+              f'tl.to("#p5d-dawn",{{opacity:1,duration:{T[3]-T[1]+1.0:.2f},ease:"sine.inOut"}},{T[1]+0.3:.2f});\n'
+              f'tl.to("#p5d-stars",{{opacity:0,duration:2.0}},{T[1]+0.5:.2f});\n'
+              f'tl.to("#p5d-moon",{{opacity:0,y:60,duration:2.0}},{T[1]+0.6:.2f});\n'
+              f'tl.fromTo("#p5d-sun",{{opacity:0,y:80}},{{opacity:1,y:0,duration:2.4,ease:"power1.out"}},{T[2]:.2f});\n')
+        js += 'tl.fromTo("#p5d-tp-label",{opacity:0,y:10},{opacity:1,y:0,duration:0.3,ease:"back.out(2)"},%.2f);\n' % (T[2])
+        for k in range(5):
+            js += f'tl.set("#p5d-t1-k{k}",{{opacity:1}},0);\n'
+        js += st.appear_js("#p5d-pop", T[3], 0.3) + f'tl.set("#p5d-pop-q1",{{opacity:1}},{T[3]:.2f});\n'
+        js += f'tl.to("#p5d-btn",{{scale:0.94,duration:0.1}},{T[3]+1.3:.2f});\ntl.to("#p5d-btn",{{scale:1,duration:0.15}},{T[3]+1.4:.2f});\n'
+        js += st.stamp_js("p5d-done", T[3] + 1.6)
+        js += st.pop_js("#p5d-no", T[4] + 0.2, 0.4)
+        return body, "", js
+    s = Scene("p5hand", lines, build, lead=0.5, tail=1.8, min_hold={1: 3.0, 3: 3.2, 4: 2.6})
+    s.sfx = [(("T", 3, 1.6), "chime.mp3", 0.25)]
+    return s
+
+
+def ic_truck():
+    return ic_svg(f'<rect x="4" y="18" width="36" height="26" rx="3" fill="#fff" stroke="{INK}" stroke-width="3"/><path d="M40 26h10l8 10v8H40z" fill="{C["blue"]}" stroke="{INK}" stroke-width="3" stroke-linejoin="round"/>'
+                  f'<circle cx="14" cy="48" r="6" fill="{INK}"/><circle cx="48" cy="48" r="6" fill="{INK}"/>')
+
+
+def ic_check():
+    return ic_svg(f'<rect x="10" y="6" width="44" height="52" rx="6" fill="#fff" stroke="{INK}" stroke-width="3"/><path d="M20 32l8 8 16-18" fill="none" stroke="{C["green"]}" stroke-width="6" stroke-linecap="round"/>')
+
+
+def p5_recap():
+    lines = ["Vậy là bạn đã nắm toàn bộ quy trình vận hành kho.",
+             "Chúc các bạn làm việc thật tốt!"]
+    from kit import mini_rack
+    steps = [("Nhập hàng", ic_pallet), ("Cất hàng", ic_forklift), ("Gom tuyến & Allocate", ic_route),
+             ("Châm hàng", ic_down), ("Pick", ic_trolley), ("Kiểm hàng", ic_check), ("Bàn giao", ic_truck)]
+
+    def build(T, D):
+        W, G, X0 = 222, 34, 80
+        chips = ""
+        for i, (name, fn) in enumerate(steps):
+            x = X0 + i * (W + G)
+            chips += (f'<div id="p5e-s{i}" class="abs" style="left:{x}px;top:170px;width:{W}px;height:250px;background:#fff;border:4px solid {INK};border-radius:22px;opacity:0;text-align:center">'
+                      f'<div style="margin-top:14px;font-size:26px;font-weight:900;color:#C45A00">{i+1}</div>'
+                      f'<div style="display:flex;justify-content:center;margin-top:4px">{fn()}</div>'
+                      f'<div style="font-size:27px;font-weight:900;line-height:1.15;margin:8px 10px 0">{name}</div></div>')
+            if i < len(steps) - 1:
+                chips += f'<div id="p5e-a{i}" class="abs" style="left:{x+W+2}px;top:270px;width:{G-4}px;text-align:center;font-size:36px;font-weight:900;color:{C["blue"]};opacity:0">›</div>'
+        thumb = f'<circle cx="0" cy="25" r="8" fill="{INK}"/><line x1="0" y1="30" x2="0" y2="44" stroke="{INK}" stroke-width="7" stroke-linecap="round"/>'
+        man = svg_layer(f'<g transform="translate(960,{FY+40})"><g id="p5e-man">{stick("p5e-man", "instructor", 2.0, hand_r=thumb)}</g></g>')
+        body = f'<div class="abs" style="left:0;top:{FY}px;width:1920px;height:{1080-FY}px;background:{C["floor"]}"></div>' + chips + man
+        js = ""
+        for i in range(len(steps)):
+            js += f'tl.fromTo("#p5e-s{i}",{{opacity:0,y:30}},{{opacity:1,y:0,duration:0.3,ease:"back.out(1.8)"}},{0.3 + i*0.3:.2f});\n'
+            if i < len(steps) - 1:
+                js += f'tl.fromTo("#p5e-a{i}",{{opacity:0}},{{opacity:1,duration:0.2}},{0.5 + i*0.3:.2f});\n'
+        js += pose_js("p5e-man", T[1], {"armR": (-100, -80)}, dur=0.35, ease="back.out(2)")
+        return body, "", js
+    s = Scene("p5recap", lines, build, lead=0.6, tail=2.6, min_hold={0: 3.2, 1: 2.4})
+    s.sfx = [(("T", 1, 0.3), "chime.mp3", 0.25)]
+    return s
+
+
+def part5():
+    return [p5_intro(), p5_carton(), p5_piece(), p5_handover(), p5_recap()]

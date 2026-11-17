@@ -169,7 +169,7 @@ def trolley(tid, code, slots=6):
     return "".join(s)
 
 
-def oricon(oid, code, w=170, h=100):
+def oricon(oid, code, w=170, h=100, title_color="#2F6FD6"):
     """Blue plastic tote, origin = bottom-centre. Item slot group {oid}-items."""
     return (f'<g id="{oid}"><g id="{oid}-items"></g>'
             f'<path d="M{-w/2},{-h} L{w/2},{-h} L{w/2-10},0 L{-w/2+10},0 Z" fill="#2F6FD6" stroke="{INK}" stroke-width="3" stroke-linejoin="round"/>'
@@ -177,7 +177,7 @@ def oricon(oid, code, w=170, h=100):
             + "".join(f'<line x1="{-w/2+24 + i*((w-48)/4):.0f}" y1="{-h+16}" x2="{-w/2+24 + i*((w-48)/4):.0f}" y2="-12" stroke="#1D4FA8" stroke-width="3"/>' for i in range(5))
             + f'<rect x="-46" y="{-h/2-16}" width="92" height="30" rx="5" fill="#fff" stroke="{INK}" stroke-width="2"/>'
             f'<text x="0" y="{-h/2+6}" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="18" fill="{INK}">{code}</text>'
-            f'<text x="0" y="{-h-16}" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="20" fill="#2F6FD6">ORICON</text></g>')
+            f'<text x="0" y="{-h-16}" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="20" fill="{title_color}" stroke="#fff" stroke-width="5" paint-order="stroke">ORICON</text></g>')
 
 
 # ------------------------------------------------------------ geometry helpers

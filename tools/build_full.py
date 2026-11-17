@@ -83,7 +83,7 @@ def chapter(num, title):
     tl.to("#{cid}-txt",{{opacity:0,x:40,duration:0.25,ease:"power2.in"}},{D-0.4:.2f});
 """
         return body, "#root{background:transparent}", js
-    s = Scene(cid, [], build, lead=1.7, tail=0)
+    s = Scene(cid, [], build, lead=2.2, tail=0)
     s.sfx = [(0.0, "whoosh.mp3", 0.28)]
     s.is_chapter = True
     return s
@@ -104,7 +104,7 @@ def ghinho(cid, num, bullets, lines=(), tail=1.4):
                      f'<div id="{cid}-ok{i+1}" style="opacity:0">{icon("check", 56)}</div></div>')
         body = f"""
     <div class="abs" style="left:0;top:0;width:1920px;height:1080px;background:linear-gradient(180deg,{C['ground']} 0%,{C['ground']} 76%,{C['floor']} 76%,{C['floor']} 100%)"></div>
-    <div id="{cid}-card" class="abs" style="left:130px;top:80px;width:1180px;background:#fff;border:4px solid {C['ink']};border-radius:30px;box-shadow:0 14px 0 rgba(27,36,48,.10);padding:36px 50px 30px 50px">
+    <div id="{cid}-card" class="abs" data-hold style="left:130px;top:80px;width:1180px;background:#fff;border:4px solid {C['ink']};border-radius:30px;box-shadow:0 14px 0 rgba(27,36,48,.10);padding:36px 50px 30px 50px">
       <div style="display:flex;align-items:baseline;gap:22px"><div style="font-size:70px;font-weight:900">Ghi nhớ</div><div style="font-size:34px;font-weight:700;color:{C['muted']}">Phần {num}</div></div>
       <div id="{cid}-under" style="width:200px;height:10px;border-radius:5px;background:{C['orange']};margin:8px 0 18px 0"></div>
       {rows}
