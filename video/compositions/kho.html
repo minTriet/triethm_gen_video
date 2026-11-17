@@ -11,8 +11,32 @@
 .abs{position:absolute}
 
 
+.pda{position:absolute;left:1390px;top:96px;width:430px;height:740px;background:#2B3646;border:5px solid #1B2430;border-radius:46px;box-shadow:0 18px 0 rgba(27,36,48,.12)}
+.pda .scr{position:absolute;left:22px;top:52px;right:22px;bottom:66px;background:#fff;border-radius:16px;overflow:hidden}
+.pda .cam{position:absolute;left:50%;top:20px;width:60px;height:10px;margin-left:-30px;border-radius:5px;background:#4A5568}
+.pda .btn{position:absolute;left:50%;bottom:16px;width:96px;height:32px;margin-left:-48px;border-radius:16px;background:#4A5568}
+.pda .hdr{background:#1F5FBF;color:#fff;font-weight:900;font-size:30px;padding:18px 22px}
+.pda .pn{position:absolute;left:0;right:0;top:74px;bottom:0;padding:22px 22px;opacity:0}
+.pda .lbl{font-size:26px;font-weight:700;color:#6B7685;margin-bottom:8px}
+.pda .fld{border:4px solid #F28C1E;border-radius:14px;padding:12px 16px;font-size:34px;font-weight:900;min-height:66px;margin-bottom:18px;background:#FFF7EE}
+.pda .fld.off{border-color:#D5DBE4;background:#F1F3F6;color:#A9B2BF}
+.pda .fld.ok{border-color:#22A55A;background:#EDF9F1}
+.pda .row{border:3px solid #E3E8EF;border-radius:12px;padding:12px 16px;font-size:28px;font-weight:700;margin-bottom:12px}
+.pda .row.sel{border-color:#1F5FBF;background:#EAF1FC}
+.pda .big{font-size:44px;font-weight:900}
+.pda .go{margin-top:12px;background:#22A55A;color:#fff;font-weight:900;font-size:32px;text-align:center;border-radius:14px;padding:16px 0}
+.pda .keys{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.pda .keys div{background:#EEF2F6;border-radius:10px;text-align:center;font-size:32px;font-weight:900;padding:12px 0}
+
+
+.badge{position:absolute;left:80px;top:56px;display:flex;align-items:center;gap:16px;opacity:0}
+.badge .n{width:76px;height:76px;border-radius:50%;background:#F28C1E;border:4px solid #1B2430;font-size:30px;font-weight:900;display:flex;align-items:center;justify-content:center;line-height:1;text-align:center}
+.badge .t{background:#fff;border:4px solid #1B2430;border-radius:18px;padding:10px 24px;font-size:40px;font-weight:900}
+.badge .ok{opacity:0}
+
+
   </style>
-  <div id="root" data-composition-id="kho" data-width="1920" data-height="1080" data-duration="21.8">
+  <div id="root" data-composition-id="kho" data-width="1920" data-height="1080" data-duration="33.73">
 
     <div id="k-cam" class="abs" data-layout-allow-overflow style="left:0;top:0;width:2300px;height:1350px">
       <svg width="2300" height="1350" viewBox="-600 0 2300 1350"><rect x="-600" y="0" width="2300" height="1350" fill="#F4F6F9"/>
@@ -740,7 +764,11 @@
 </g>
 <g transform="translate(-275.9,762.0)"><g id="k-pk"><g transform="scale(1.1)"><g id="k-pk-body"><ellipse cx="0" cy="3" rx="30" ry="6" fill="#000" opacity="0.10"/><g transform="translate(-3,-60)"><g id="k-pk-legL" transform="rotate(8)"><line x1="0" y1="0" x2="0" y2="30" stroke="#1B2430" stroke-width="6" stroke-linecap="round"/><g transform="translate(0,30)"><g id="k-pk-shinL" transform="rotate(-2)"><line x1="0" y1="0" x2="0" y2="29" stroke="#1B2430" stroke-width="6" stroke-linecap="round"/><line x1="0" y1="29" x2="-8" y2="30" stroke="#1B2430" stroke-width="6" stroke-linecap="round"/></g></g></g></g><g transform="translate(3,-60)"><g id="k-pk-legR" transform="rotate(-8)"><line x1="0" y1="0" x2="0" y2="30" stroke="#1B2430" stroke-width="6" stroke-linecap="round"/><g transform="translate(0,30)"><g id="k-pk-shinR" transform="rotate(2)"><line x1="0" y1="0" x2="0" y2="29" stroke="#1B2430" stroke-width="6" stroke-linecap="round"/><line x1="0" y1="29" x2="8" y2="30" stroke="#1B2430" stroke-width="6" stroke-linecap="round"/></g></g></g></g><line x1="0" y1="-106" x2="0" y2="-60" stroke="#1B2430" stroke-width="6" stroke-linecap="round"/><line x1="-12" y1="-98" x2="12" y2="-98" stroke="#1B2430" stroke-width="6" stroke-linecap="round"/><path d="M-15,-101 L-3,-104 L-3,-61 L-16,-63 Z" fill="#F4C430" stroke="#1B2430" stroke-width="2.5" stroke-linejoin="round"/><path d="M15,-101 L3,-104 L3,-61 L16,-63 Z" fill="#F4C430" stroke="#1B2430" stroke-width="2.5" stroke-linejoin="round"/><rect x="-15.5" y="-83" width="12.5" height="5" fill="#EEF2F6"/><rect x="3" y="-83" width="12.5" height="5" fill="#EEF2F6"/><rect x="-15.8" y="-72" width="12.8" height="5" fill="#EEF2F6"/><rect x="3" y="-72" width="12.8" height="5" fill="#EEF2F6"/><g transform="translate(-12,-98)"><g id="k-pk-armL" transform="rotate(16)"><line x1="0" y1="0" x2="0" y2="25" stroke="#1B2430" stroke-width="6" stroke-linecap="round"/><g transform="translate(0,25)"><g id="k-pk-foreL" transform="rotate(-8)"><line x1="0" y1="0" x2="0" y2="23" stroke="#1B2430" stroke-width="6" stroke-linecap="round"/><circle cx="0" cy="23" r="4.5" fill="#1B2430"/></g></g></g></g><g transform="translate(12,-98)"><g id="k-pk-armR" transform="rotate(-16)"><line x1="0" y1="0" x2="0" y2="25" stroke="#1B2430" stroke-width="6" stroke-linecap="round"/><g transform="translate(0,25)"><g id="k-pk-foreR" transform="rotate(8)"><line x1="0" y1="0" x2="0" y2="23" stroke="#1B2430" stroke-width="6" stroke-linecap="round"/><circle cx="0" cy="23" r="4.5" fill="#1B2430"/></g></g></g></g><circle cx="0" cy="-127" r="19" fill="#fff" stroke="#1B2430" stroke-width="5.5"/><circle cx="-6.5" cy="-129" r="2.8" fill="#1B2430"/><circle cx="6.5" cy="-129" r="2.8" fill="#1B2430"/><path d="M-6,-119 Q0,-114 6,-119" fill="none" stroke="#1B2430" stroke-width="2.6" stroke-linecap="round"/><path d="M-19,-133 Q-19,-152 0,-153 Q19,-152 19,-133 Z" fill="#F4C430" stroke="#1B2430" stroke-width="3" stroke-linejoin="round"/><path d="M-2,-152 L-2,-134 M2,-152 L2,-134" stroke="#1B2430" stroke-width="1.5" opacity="0.35"/><line x1="-24" y1="-133" x2="24" y2="-133" stroke="#1B2430" stroke-width="5" stroke-linecap="round"/></g><g id="k-pk-label"><rect x="-58" y="-214" width="117" height="44" rx="22" fill="#1B2430"/><text x="0" y="-184" text-anchor="middle" font-family="'Be Vietnam Pro'" font-weight="700" font-size="24" fill="#fff">Picker</text><polygon points="-8,-171 8,-171 0,-161" fill="#1B2430"/></g></g><g transform="scale(1.1)"><g id="k-pk-carton" opacity="0"><rect x="-30" y="-100" width="60" height="42" rx="3" fill="#D9A86C" stroke="#A97A44" stroke-width="2.5"/><rect x="-6" y="-100" width="12" height="42" fill="#F3DDB5"/></g></g></g></g>
 <g id="k-lres" opacity="0"><line x1="727" y1="1089" x2="847" y2="1019" stroke="#1B2430" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/><circle cx="727" cy="1089" r="7" fill="#1B2430"/><g transform="translate(847,1019)"><g id="k-lres-card"><rect x="0" y="-44" width="400" height="92" rx="16" fill="#BFD8F5" stroke="#1B2430" stroke-width="3"/><text x="22" y="-6" font-family="'Be Vietnam Pro'" font-weight="900" font-size="32" fill="#1B2430">RESERVED</text><text x="22" y="32" font-family="'Be Vietnam Pro'" font-weight="700" font-size="26" fill="#1B2430">Lưu kho – tầng trên cao</text></g></g></g>
-<g id="k-lprim" opacity="0"><line x1="727" y1="1230" x2="847" y2="1270" stroke="#1B2430" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/><circle cx="727" cy="1230" r="7" fill="#1B2430"/><g transform="translate(847,1270)"><g id="k-lprim-card"><rect x="0" y="-44" width="400" height="92" rx="16" fill="#F28C1E" stroke="#1B2430" stroke-width="3"/><text x="22" y="-6" font-family="'Be Vietnam Pro'" font-weight="900" font-size="32" fill="#1B2430">PRIMARY</text><text x="22" y="32" font-family="'Be Vietnam Pro'" font-weight="700" font-size="26" fill="#1B2430">Pick face – tầng mặt đất</text></g></g></g></svg>
+<g id="k-lprim" opacity="0"><line x1="727" y1="1230" x2="847" y2="1270" stroke="#1B2430" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/><circle cx="727" cy="1230" r="7" fill="#1B2430"/><g transform="translate(847,1270)"><g id="k-lprim-card"><rect x="0" y="-44" width="400" height="92" rx="16" fill="#F28C1E" stroke="#1B2430" stroke-width="3"/><text x="22" y="-6" font-family="'Be Vietnam Pro'" font-weight="900" font-size="32" fill="#1B2430">PRIMARY</text><text x="22" y="32" font-family="'Be Vietnam Pro'" font-weight="700" font-size="26" fill="#1B2430">Pick face – tầng mặt đất</text></g></g></g>
+<g transform="translate(973,220)"><g id="k-sign1" opacity="0"><line x1="160.5" y1="112" x2="160.5" y2="152" stroke="#1B2430" stroke-width="4"/><line x1="340.5" y1="112" x2="340.5" y2="152" stroke="#1B2430" stroke-width="4"/><rect x="0" y="0" width="501" height="112" rx="18" fill="#1F5FBF" stroke="#1B2430" stroke-width="4"/><rect x="14" y="14" width="84" height="84" rx="14" fill="#fff"/><g transform="translate(24,24)"><svg  width="64" height="64" viewBox="0 0 64 64"><path d="M27 6h10v8l5 8v34a4 4 0 0 1-4 4H26a4 4 0 0 1-4-4V22l5-8z" fill="#4FA3E0" stroke="#1B2430" stroke-width="3" stroke-linejoin="round"/><rect x="22" y="30" width="20" height="12" fill="#fff" stroke="#1B2430" stroke-width="2"/></svg></g><text x="116" y="72" font-family="'Be Vietnam Pro'" font-weight="900" font-size="44" fill="#fff">Dãy Nước uống</text></g></g>
+<g transform="translate(807,370)"><g id="k-sign2" opacity="0"><line x1="66.0" y1="112" x2="66.0" y2="152" stroke="#1B2430" stroke-width="4"/><line x1="246.0" y1="112" x2="246.0" y2="152" stroke="#1B2430" stroke-width="4"/><rect x="0" y="0" width="312" height="112" rx="18" fill="#1F5FBF" stroke="#1B2430" stroke-width="4"/><rect x="14" y="14" width="84" height="84" rx="14" fill="#fff"/><g transform="translate(24,24)"><svg  width="64" height="64" viewBox="0 0 64 64"><path d="M12 22h40l-6 34a4 4 0 0 1-4 3H22a4 4 0 0 1-4-3z" fill="#F2B233" stroke="#1B2430" stroke-width="3" stroke-linejoin="round"/><path d="M10 22h44" stroke="#1B2430" stroke-width="4" stroke-linecap="round"/><path d="M22 18c2-6 6-6 8 0M32 18c2-6 6-6 8 0" fill="none" stroke="#1B2430" stroke-width="3"/><circle cx="32" cy="40" r="7" fill="#E5584F"/></svg></g><text x="116" y="72" font-family="'Be Vietnam Pro'" font-weight="900" font-size="44" fill="#fff">Dãy Mì</text></g></g>
+<g transform="translate(507,520)"><g id="k-sign3" opacity="0"><line x1="106.5" y1="112" x2="106.5" y2="152" stroke="#1B2430" stroke-width="4"/><line x1="286.5" y1="112" x2="286.5" y2="152" stroke="#1B2430" stroke-width="4"/><rect x="0" y="0" width="393" height="112" rx="18" fill="#1F5FBF" stroke="#1B2430" stroke-width="4"/><rect x="14" y="14" width="84" height="84" rx="14" fill="#fff"/><g transform="translate(24,24)"><svg  width="64" height="64" viewBox="0 0 64 64"><path d="M16 8h32l-3 6 3 6v28l-3 6 3 6H16l3-6-3-6V20l3-6z" fill="#E5584F" stroke="#1B2430" stroke-width="3" stroke-linejoin="round"/><circle cx="32" cy="34" r="9" fill="#F2B233" stroke="#1B2430" stroke-width="2"/></svg></g><text x="116" y="72" font-family="'Be Vietnam Pro'" font-weight="900" font-size="44" fill="#fff">Dãy Snack</text></g></g>
+<g transform="translate(274,670)"><g id="k-sign4" opacity="0"><line x1="79.5" y1="112" x2="79.5" y2="152" stroke="#1B2430" stroke-width="4"/><line x1="259.5" y1="112" x2="259.5" y2="152" stroke="#1B2430" stroke-width="4"/><rect x="0" y="0" width="339" height="112" rx="18" fill="#1F5FBF" stroke="#1B2430" stroke-width="4"/><rect x="14" y="14" width="84" height="84" rx="14" fill="#fff"/><g transform="translate(24,24)"><svg  width="64" height="64" viewBox="0 0 64 64"><path d="M20 22l6-12h12l6 12v34a3 3 0 0 1-3 3H23a3 3 0 0 1-3-3z" fill="#fff" stroke="#1B2430" stroke-width="3" stroke-linejoin="round"/><path d="M20 22h24" stroke="#1B2430" stroke-width="3"/><rect x="20" y="32" width="24" height="16" fill="#4FA3E0"/></svg></g><text x="116" y="72" font-family="'Be Vietnam Pro'" font-weight="900" font-size="44" fill="#fff">Dãy Sữa</text></g></g></svg>
     </div>
     <svg class="abs" style="left:0;top:0" width="1920" height="1080" viewBox="0 0 1920 1080" data-layout-ignore>
       <path id="k-dim" d="M0,0H1920V1080H0Z M643,553 L923,715 L1077,626 L1077,412 L797,250 L643,339Z" fill="#F4F6F9" fill-rule="evenodd" opacity="0"/>
@@ -769,20 +797,19 @@
     const tl = gsap.timeline({ paused: true });
 
     tl.fromTo("#k-cam",{x:-214.8,y:80.4,scale:0.66},{...{x:-584.8,y:-766.0,scale:1.28},duration:4.0,ease:"power2.inOut",transformOrigin:"0% 0%"},0);
-    tl.to("#k-cam",{scale:1.31,x:-602.8,y:-796.0,duration:7.40,ease:"none",transformOrigin:"0% 0%"},4.0);
-    tl.fromTo(".r4-res-band",{opacity:0},{opacity:0.95,duration:0.4},3.0);
-    tl.fromTo(".r4-res-hl",{opacity:0},{opacity:0.9,duration:0.4},3.0);
-    tl.fromTo("#k-lres",{opacity:0},{opacity:1,duration:0.25},3.15);
-    tl.fromTo("#k-lres-card",{scale:0.4},{scale:1,duration:0.4,ease:"back.out(2)",transformOrigin:"0% 50%"},3.15);
-    tl.fromTo(".r4-prim-band",{opacity:0},{opacity:0.95,duration:0.4},6.4);
-    tl.fromTo(".r4-prim-hl",{opacity:0},{opacity:1,duration:0.4},6.4);
+    tl.to("#k-cam",{scale:1.31,x:-602.8,y:-796.0,duration:7.12,ease:"none",transformOrigin:"0% 0%"},4.0);
+    tl.fromTo(".r4-res-band",{opacity:0},{opacity:0.95,duration:0.4},3.02);
+    tl.fromTo(".r4-res-hl",{opacity:0},{opacity:0.9,duration:0.4},3.02);
+    tl.fromTo("#k-lres",{opacity:0},{opacity:1,duration:0.25},3.17);
+    tl.fromTo("#k-lres-card",{scale:0.4},{scale:1,duration:0.4,ease:"back.out(2)",transformOrigin:"0% 50%"},3.17);
+    tl.fromTo(".r4-prim-band",{opacity:0},{opacity:0.95,duration:0.4},6.40);
+    tl.fromTo(".r4-prim-hl",{opacity:0},{opacity:1,duration:0.4},6.40);
     tl.fromTo("#k-lprim",{opacity:0},{opacity:1,duration:0.25},6.55);
     tl.fromTo("#k-lprim-card",{scale:0.4},{scale:1,duration:0.4,ease:"back.out(2)",transformOrigin:"0% 50%"},6.55);
-    tl.to(".r4-res-hl",{opacity:0.35,duration:0.4},6.4);
-    // picker: sway-walk in, reach the pick face, take a carton, sway-walk out
-    tl.fromTo("#k-pk",{x:0,y:0,opacity:1},{x:571.6,y:330.0,duration:2.80,ease:"none"},6.6);
+    tl.to(".r4-res-hl",{opacity:0.35,duration:0.4},6.40);
+    tl.fromTo("#k-pk",{x:0,y:0,opacity:1},{x:571.6,y:330.0,duration:2.52,ease:"none"},6.60);
     tl.fromTo("#k-pk-label",{opacity:0,y:10},{opacity:1,y:0,duration:0.3,ease:"back.out(2)"},6.70);
-tl.set("#k-pk-body",{rotation:0,y:0,transformOrigin:"50% 100%"},6.6);
+tl.set("#k-pk-body",{rotation:0,y:0,transformOrigin:"50% 100%"},6.6000000000000005);
 tl.to("#k-pk-body",{rotation:7,duration:0.160,ease:"sine.out"},6.600);
 tl.to("#k-pk-body",{y:-5,duration:0.160,ease:"sine.out"},6.600);
 tl.to("#k-pk-body",{rotation:0,y:0,duration:0.160,ease:"sine.in"},6.760);
@@ -804,54 +831,63 @@ tl.to("#k-pk-body",{rotation:0,y:0,duration:0.160,ease:"sine.in"},8.360);
 tl.to("#k-pk-body",{rotation:7,duration:0.160,ease:"sine.out"},8.520);
 tl.to("#k-pk-body",{y:-5,duration:0.160,ease:"sine.out"},8.520);
 tl.to("#k-pk-body",{rotation:0,y:0,duration:0.160,ease:"sine.in"},8.680);
-tl.to("#k-pk-body",{rotation:-7,duration:0.160,ease:"sine.out"},8.840);
-tl.to("#k-pk-body",{y:-5,duration:0.160,ease:"sine.out"},8.840);
-tl.to("#k-pk-body",{rotation:0,y:0,duration:0.160,ease:"sine.in"},9.000);
-tl.to("#k-pk-armR",{rotation:-140,svgOrigin:"0 0",duration:0.3,ease:"power2.out"},9.5);
-tl.to("#k-pk-foreR",{rotation:-10,svgOrigin:"0 0",duration:0.3,ease:"power2.out"},9.5);
-tl.to("#k-pk-armL",{rotation:34,svgOrigin:"0 0",duration:0.3,ease:"power2.inOut"},10.0);
-tl.to("#k-pk-foreL",{rotation:-104,svgOrigin:"0 0",duration:0.3,ease:"power2.inOut"},10.0);
-tl.to("#k-pk-armR",{rotation:-34,svgOrigin:"0 0",duration:0.3,ease:"power2.inOut"},10.0);
-tl.to("#k-pk-foreR",{rotation:104,svgOrigin:"0 0",duration:0.3,ease:"power2.inOut"},10.0);
+tl.to("#k-pk-armR",{rotation:-140,svgOrigin:"0 0",duration:0.3,ease:"power2.out"},9.22);
+tl.to("#k-pk-foreR",{rotation:-10,svgOrigin:"0 0",duration:0.3,ease:"power2.out"},9.22);
+tl.to("#k-pk-armL",{rotation:34,svgOrigin:"0 0",duration:0.3,ease:"power2.inOut"},9.72);
+tl.to("#k-pk-foreL",{rotation:-104,svgOrigin:"0 0",duration:0.3,ease:"power2.inOut"},9.72);
+tl.to("#k-pk-armR",{rotation:-34,svgOrigin:"0 0",duration:0.3,ease:"power2.inOut"},9.72);
+tl.to("#k-pk-foreR",{rotation:104,svgOrigin:"0 0",duration:0.3,ease:"power2.inOut"},9.72);
 
-    tl.fromTo("#k-pk-carton",{opacity:0},{opacity:1,duration:0.2},10.10);
-    tl.to("#k-pk",{x:1091.2,y:630.0,duration:2.0,ease:"none"},10.4);
-tl.set("#k-pk-body",{rotation:0,y:0,transformOrigin:"50% 100%"},10.4);
-tl.to("#k-pk-body",{rotation:7,duration:0.160,ease:"sine.out"},10.400);
-tl.to("#k-pk-body",{y:-5,duration:0.160,ease:"sine.out"},10.400);
-tl.to("#k-pk-body",{rotation:0,y:0,duration:0.160,ease:"sine.in"},10.560);
-tl.to("#k-pk-body",{rotation:-7,duration:0.160,ease:"sine.out"},10.720);
-tl.to("#k-pk-body",{y:-5,duration:0.160,ease:"sine.out"},10.720);
-tl.to("#k-pk-body",{rotation:0,y:0,duration:0.160,ease:"sine.in"},10.880);
-tl.to("#k-pk-body",{rotation:7,duration:0.160,ease:"sine.out"},11.040);
-tl.to("#k-pk-body",{y:-5,duration:0.160,ease:"sine.out"},11.040);
-tl.to("#k-pk-body",{rotation:0,y:0,duration:0.160,ease:"sine.in"},11.200);
-tl.to("#k-pk-body",{rotation:-7,duration:0.160,ease:"sine.out"},11.360);
-tl.to("#k-pk-body",{y:-5,duration:0.160,ease:"sine.out"},11.360);
-tl.to("#k-pk-body",{rotation:0,y:0,duration:0.160,ease:"sine.in"},11.520);
-tl.to("#k-pk-body",{rotation:7,duration:0.160,ease:"sine.out"},11.680);
-tl.to("#k-pk-body",{y:-5,duration:0.160,ease:"sine.out"},11.680);
-tl.to("#k-pk-body",{rotation:0,y:0,duration:0.160,ease:"sine.in"},11.840);
-tl.to("#k-pk-body",{rotation:-7,duration:0.160,ease:"sine.out"},12.000);
-tl.to("#k-pk-body",{y:-5,duration:0.160,ease:"sine.out"},12.000);
-tl.to("#k-pk-body",{rotation:0,y:0,duration:0.160,ease:"sine.in"},12.160);
+    tl.fromTo("#k-pk-carton",{opacity:0},{opacity:1,duration:0.2},9.82);
+    tl.to("#k-pk",{x:1091.2,y:630.0,duration:2.0,ease:"none"},10.12);
+tl.set("#k-pk-body",{rotation:0,y:0,transformOrigin:"50% 100%"},10.120000000000001);
+tl.to("#k-pk-body",{rotation:7,duration:0.160,ease:"sine.out"},10.120);
+tl.to("#k-pk-body",{y:-5,duration:0.160,ease:"sine.out"},10.120);
+tl.to("#k-pk-body",{rotation:0,y:0,duration:0.160,ease:"sine.in"},10.280);
+tl.to("#k-pk-body",{rotation:-7,duration:0.160,ease:"sine.out"},10.440);
+tl.to("#k-pk-body",{y:-5,duration:0.160,ease:"sine.out"},10.440);
+tl.to("#k-pk-body",{rotation:0,y:0,duration:0.160,ease:"sine.in"},10.600);
+tl.to("#k-pk-body",{rotation:7,duration:0.160,ease:"sine.out"},10.760);
+tl.to("#k-pk-body",{y:-5,duration:0.160,ease:"sine.out"},10.760);
+tl.to("#k-pk-body",{rotation:0,y:0,duration:0.160,ease:"sine.in"},10.920);
+tl.to("#k-pk-body",{rotation:-7,duration:0.160,ease:"sine.out"},11.080);
+tl.to("#k-pk-body",{y:-5,duration:0.160,ease:"sine.out"},11.080);
+tl.to("#k-pk-body",{rotation:0,y:0,duration:0.160,ease:"sine.in"},11.240);
+tl.to("#k-pk-body",{rotation:7,duration:0.160,ease:"sine.out"},11.400);
+tl.to("#k-pk-body",{y:-5,duration:0.160,ease:"sine.out"},11.400);
+tl.to("#k-pk-body",{rotation:0,y:0,duration:0.160,ease:"sine.in"},11.560);
+tl.to("#k-pk-body",{rotation:-7,duration:0.160,ease:"sine.out"},11.720);
+tl.to("#k-pk-body",{y:-5,duration:0.160,ease:"sine.out"},11.720);
+tl.to("#k-pk-body",{rotation:0,y:0,duration:0.160,ease:"sine.in"},11.880);
 
-    tl.to("#k-pk",{opacity:0,duration:0.3},12.10);
-    // dive into one pick face
-    tl.to(["#k-lres","#k-lprim",".r4-res-band",".r4-prim-band"],{opacity:0,duration:0.3},11.20);
-    tl.to("#k-cam",{...{x:-1817.9,y:-2209.5,scale:2.7},duration:1.8,ease:"power2.inOut",transformOrigin:"0% 0%"},11.4);
-    tl.fromTo("#k-dim",{opacity:0},{opacity:0.72,duration:0.5},13.20);
-    tl.fromTo(["#k-mini1","#k-mini2","#k-mini3","#k-mini4"],{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.3,ease:"back.out(2.4)",stagger:0.3},14.9);
-    tl.fromTo("#k-tag",{opacity:0,y:20,scale:0.6},{opacity:1,y:0,scale:1,duration:0.4,ease:"back.out(2)"},15.4);
-    tl.fromTo("#k-head",{opacity:0,y:-20},{opacity:1,y:0,duration:0.4,ease:"power2.out"},15.6);
-    tl.fromTo("#k-slotline",{opacity:0,strokeDashoffset:0},{opacity:1,strokeDashoffset:-104,duration:2.4,ease:"none"},16.20);
-    tl.fromTo("#k-lock",{opacity:0,scale:0.5},{opacity:1,scale:1,duration:0.35,ease:"back.out(2)"},18.2);
-    tl.fromTo("#k-shackle",{y:-9},{y:0,duration:0.16,ease:"power3.in"},18.45);
-    tl.fromTo("#k-ok",{opacity:0,scale:2.2,rotation:-12},{opacity:1,scale:1,rotation:0,duration:0.28,ease:"power3.out"},18.60);
-    tl.fromTo("#k-wrong",{opacity:0,x:900,rotation:8},{opacity:1,x:0,rotation:-4,duration:0.7,ease:"power2.in"},19.2);
-    tl.fromTo("#k-no",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.28,ease:"back.out(3)"},19.95);
-    tl.to("#k-wrong",{x:700,y:-60,rotation:14,duration:0.8,ease:"power2.out"},20.05);
-    tl.to("#k-wrong",{opacity:0,duration:0.25},20.55);
+    tl.to("#k-pk",{opacity:0,duration:0.3},11.82);
+    tl.to(["#k-lres","#k-lprim",".r4-res-band",".r4-prim-band"],{opacity:0,duration:0.3},10.92);
+    tl.to("#k-cam",{...{x:-1817.9,y:-2209.5,scale:2.7},duration:1.8,ease:"power2.inOut",transformOrigin:"0% 0%"},11.12);
+    tl.fromTo("#k-dim",{opacity:0},{opacity:0.72,duration:0.5},12.92);
+    tl.fromTo(["#k-mini1","#k-mini2","#k-mini3","#k-mini4"],{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.3,ease:"back.out(2.4)",stagger:0.3},14.89);
+    tl.fromTo("#k-tag",{opacity:0,y:20,scale:0.6},{opacity:1,y:0,scale:1,duration:0.4,ease:"back.out(2)"},15.39);
+    tl.fromTo("#k-head",{opacity:0,y:-20},{opacity:1,y:0,duration:0.4,ease:"power2.out"},15.59);
+    tl.fromTo("#k-slotline",{opacity:0,strokeDashoffset:0},{opacity:1,strokeDashoffset:-104,duration:2.4,ease:"none"},16.19);
+    tl.fromTo("#k-lock",{opacity:0,scale:0.5},{opacity:1,scale:1,duration:0.35,ease:"back.out(2)"},18.19);
+    tl.fromTo("#k-shackle",{y:-9},{y:0,duration:0.16,ease:"power3.in"},18.44);
+    tl.fromTo("#k-ok",{opacity:0,scale:2.2,rotation:-12},{opacity:1,scale:1,rotation:0,duration:0.28,ease:"power3.out"},18.59);
+    tl.fromTo("#k-wrong",{opacity:0,x:900,rotation:8},{opacity:1,x:0,rotation:-4,duration:0.7,ease:"power2.in"},19.19);
+    tl.fromTo("#k-no",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.28,ease:"back.out(3)"},19.94);
+    tl.to("#k-wrong",{x:700,y:-60,rotation:14,duration:0.8,ease:"power2.out"},20.04);
+    tl.to("#k-wrong",{opacity:0,duration:0.25},20.54);
+    // pull back to the whole warehouse: one category per row
+    tl.to(["#k-head","#k-tag","#k-lock","#k-ok","#k-no","#k-mini1","#k-mini2","#k-mini3","#k-mini4","#k-slotline","#k-dim"],{opacity:0,duration:0.3},20.99);
+    tl.to("#k-cam",{...{x:-134.4,y:-51.6,scale:0.76},duration:1.8,ease:"power2.inOut",transformOrigin:"0% 0%"},20.99);
+    tl.to([".r4-res-hl",".r4-prim-hl"],{opacity:0,duration:0.4},20.99);
+    tl.to("#k-cam",{scale:0.78,x:-152.4,y:-65.6,duration:10.94,ease:"none",transformOrigin:"0% 0%"},22.79);
+    tl.fromTo("#k-sign1",{opacity:0,y:-40},{opacity:1,y:0,duration:0.45,ease:"back.out(1.8)"},26.15);
+    tl.fromTo(".r1-cat-band",{opacity:0},{opacity:0.95,duration:0.4},26.15);
+    tl.fromTo("#k-sign2",{opacity:0,y:-40},{opacity:1,y:0,duration:0.45,ease:"back.out(1.8)"},27.84);
+    tl.fromTo(".r2-cat-band",{opacity:0},{opacity:0.95,duration:0.4},27.84);
+    tl.fromTo("#k-sign3",{opacity:0,y:-40},{opacity:1,y:0,duration:0.45,ease:"back.out(1.8)"},29.49);
+    tl.fromTo(".r3-cat-band",{opacity:0},{opacity:0.95,duration:0.4},29.49);
+    tl.fromTo("#k-sign4",{opacity:0,y:-40},{opacity:1,y:0,duration:0.45,ease:"back.out(1.8)"},31.14);
+    tl.fromTo(".r4-cat-band",{opacity:0},{opacity:0.95,duration:0.4},31.14);
 
     window.__timelines["kho"] = tl;
   </script>
