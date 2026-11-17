@@ -88,3 +88,12 @@ triethm_gen_video/
 1. Giọng đọc: **bỏ**, chỉ giữ phụ đề.
 2. Mã hàng, mã vị trí, mã cửa hàng, số lượng: **minh họa**.
 3. Logo hoặc tên công ty: **không cần**.
+
+---
+
+## 5. Thay đổi theo góp ý Tập 1 (áp dụng cho bản tiếp theo)
+
+1. **Gộp 5 tập thành MỘT video** (khoảng 5–6 phút). Giữa các phần có một thẻ chương ngắn ("Phần 2: Nhập hàng & Cất hàng") thay cho màn kết/mở của từng tập. Thẻ "Ghi nhớ" vẫn giữ ở cuối mỗi phần.
+2. **Nhịp nhanh hơn 1.3×** ở những đoạn đọc chữ: thời gian giữ mỗi câu phụ đề = (0.5s + 0.3s × số chữ) ÷ 1.3. Chuyển động camera và các đoạn chỉ có hình cũng rút ngắn theo.
+3. **Hiệu ứng âm thanh tiết chế:** chỉ dùng ở các khoảnh khắc chính (chuyển phần, xác nhận ✔, báo lỗi ✖, tiếng beep khi scan). Hai tiếng cách nhau ít nhất 4s, âm lượng nhỏ hơn bản trước. Bỏ hết tiếng pop khi nhãn hoặc biển xuất hiện.
+4. **Nhân vật v2** theo `design/model-sheet-v2.png`: có vai, khuỷu tay, đầu gối; áo bảo hộ có sọc phản quang và mũ bảo hộ theo màu vai.

@@ -49,14 +49,14 @@ LATIN_RANGE = ("U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,"
                "U+2193,U+2212,U+2215,U+FEFF,U+FFFD")
 
 
-def font_css():
+def font_css(prefix='assets/fonts/'):
     out = []
     for w in (500, 700, 900):
         for subset, rng in (("vietnamese", VI_RANGE), ("latin", LATIN_RANGE)):
             out.append(
                 "@font-face{font-family:'Be Vietnam Pro';font-style:normal;"
                 f"font-weight:{w};font-display:block;"
-                f"src:url('assets/fonts/be-vietnam-pro-{subset}-{w}-normal.woff2') format('woff2');"
+                f"src:url('{prefix}be-vietnam-pro-{subset}-{w}-normal.woff2') format('woff2');"
                 f"unicode-range:{rng};}}")
     return "\n".join(out)
 
@@ -159,48 +159,116 @@ def rack_row(rid, y0, bays=6, x0=0.0, stock=None):
     return "\n".join(parts)
 
 
-# ---------------------------------------------------------------- stick figure
-def stick(fid, role="picker", scale=1.0, label=False, carry=False, face_left=False):
-    """Stick figure with feet at (0,0). Ids for animation:
-    {fid}-legL/-legR (rotate, origin top), {fid}-armL/-armR (origin top),
-    {fid}-label, {fid}-box (carried carton, hidden unless carry)."""
-    vest = ROLE[role][0]
-    flip = ' transform="scale(-1,1)"' if face_left else ""
-    k = scale
-    sw = 6
+# ---------------------------------------------------------------- stick figure v2
+# Anatomy (scale 1, feet on y=0): head r19 at y-127, neck y-106, hip y-60,
+# shoulders at x±12 y-98, upper arm 25 + forearm 23, thigh 30 + shin 29.
+OUTFIT = {  # role -> (top, hat)
+    "receiver": ("vest", True), "forklift": ("vest", True), "picker": ("vest", True),
+    "checker": ("vest", True), "transport": ("vest", True),
+    "planner": ("shirt", False), "instructor": ("shirt_tie", False),
+}
+REST = {"armL": (16, -8), "armR": (-16, 8), "legL": (8, -2), "legR": (-8, 2)}
+
+
+def _limb(fid, side, kind, ang, ang2, extra=""):
+    """Two-segment limb. kind 'arm' or 'leg'. Rotations are SVG degrees (clockwise)."""
+    ink = C["ink"]
+    if kind == "arm":
+        root = (-12 if side == "L" else 12, -98)
+        a, b, end = 25, 23, f'<circle cx="0" cy="23" r="4.5" fill="{ink}"/>'
+        seg2 = "fore"
+    else:
+        root = (-3 if side == "L" else 3, -60)
+        a, b = 30, 29
+        fx = -8 if side == "L" else 8
+        end = f'<line x1="0" y1="29" x2="{fx}" y2="30" stroke="{ink}" stroke-width="6" stroke-linecap="round"/>'
+        seg2 = "shin"
+    return (f'<g transform="translate({root[0]},{root[1]})"><g id="{fid}-{kind}{side}" transform="rotate({ang})">'
+            f'<line x1="0" y1="0" x2="0" y2="{a}" stroke="{ink}" stroke-width="6" stroke-linecap="round"/>'
+            f'<g transform="translate(0,{a})"><g id="{fid}-{seg2}{side}" transform="rotate({ang2})">'
+            f'<line x1="0" y1="0" x2="0" y2="{b}" stroke="{ink}" stroke-width="6" stroke-linecap="round"/>{end}{extra}'
+            f'</g></g></g></g>')
+
+
+def pda_svg(fid, laser=False, reach=80):
+    """PDA held in the right hand (drawn in forearm space, hand at y=23)."""
+    las = ""
+    if laser:
+        las = (f'<g id="{fid}-laser"><line x1="0" y1="30" x2="0" y2="{reach}" stroke="#E53935" stroke-width="3"/>'
+               f'<circle cx="0" cy="{reach}" r="10" fill="none" stroke="#E53935" stroke-width="3"/>'
+               f'<circle cx="0" cy="{reach}" r="20" fill="none" stroke="#E53935" stroke-width="2" opacity="0.5"/></g>')
+    return (f'<g id="{fid}-pda" transform="translate(0,26)">{las}'
+            f'<rect x="-11" y="-6" width="22" height="34" rx="4" fill="#2B3646" stroke="{C["ink"]}" stroke-width="2"/>'
+            f'<rect x="-7" y="-2" width="14" height="16" rx="1.5" fill="#7FD3FF"/></g>')
+
+
+def stick(fid, role="picker", scale=1.0, label=False, pose=None, hand_r="", hand_l="", flip=False):
+    """Stick figure v2 with feet at (0,0).
+    Animatable ids: {fid}-armL/-armR (shoulder), {fid}-foreL/-foreR (elbow),
+    {fid}-legL/-legR (hip), {fid}-shinL/-shinR (knee), {fid}-label, {fid}-body.
+    pose: dict like REST {limb: (deg, deg2)}; hand_r/hand_l: svg drawn in that forearm."""
+    p = dict(REST); p.update(pose or {})
+    ink, col = C["ink"], ROLE[role][0]
+    top, hat = OUTFIT[role]
+    # torso
+    if top == "vest":
+        body = (f'<line x1="0" y1="-106" x2="0" y2="-60" stroke="{ink}" stroke-width="6" stroke-linecap="round"/>'
+                f'<line x1="-12" y1="-98" x2="12" y2="-98" stroke="{ink}" stroke-width="6" stroke-linecap="round"/>'
+                f'<path d="M-15,-101 L-3,-104 L-3,-61 L-16,-63 Z" fill="{col}" stroke="{ink}" stroke-width="2.5" stroke-linejoin="round"/>'
+                f'<path d="M15,-101 L3,-104 L3,-61 L16,-63 Z" fill="{col}" stroke="{ink}" stroke-width="2.5" stroke-linejoin="round"/>'
+                f'<rect x="-15.5" y="-83" width="12.5" height="5" fill="#EEF2F6"/><rect x="3" y="-83" width="12.5" height="5" fill="#EEF2F6"/>'
+                f'<rect x="-15.8" y="-72" width="12.8" height="5" fill="#EEF2F6"/><rect x="3" y="-72" width="12.8" height="5" fill="#EEF2F6"/>')
+    else:
+        tie = ""
+        if top == "shirt_tie":
+            tie = f'<path d="M0,-102 L-4,-97 L-2,-76 L0,-72 L2,-76 L4,-97 Z" fill="{C["orange"]}" stroke="{ink}" stroke-width="1.5"/>'
+        body = (f'<path d="M-15,-100 Q0,-108 15,-100 L14,-61 Q0,-58 -14,-61 Z" fill="{col}" stroke="{ink}" stroke-width="3" stroke-linejoin="round"/>'
+                f'<path d="M-7,-104 L0,-96 L7,-104" fill="#fff" stroke="{ink}" stroke-width="2" stroke-linejoin="round"/>{tie}')
+    head = (f'<circle cx="0" cy="-127" r="19" fill="#fff" stroke="{ink}" stroke-width="5.5"/>'
+            f'<circle cx="-6.5" cy="-129" r="2.8" fill="{ink}"/><circle cx="6.5" cy="-129" r="2.8" fill="{ink}"/>'
+            f'<path d="M-6,-119 Q0,-114 6,-119" fill="none" stroke="{ink}" stroke-width="2.6" stroke-linecap="round"/>')
+    if hat:
+        head += (f'<path d="M-19,-133 Q-19,-152 0,-153 Q19,-152 19,-133 Z" fill="{col}" stroke="{ink}" stroke-width="3" stroke-linejoin="round"/>'
+                 f'<path d="M-2,-152 L-2,-134 M2,-152 L2,-134" stroke="{ink}" stroke-width="1.5" opacity="0.35"/>'
+                 f'<line x1="-24" y1="-133" x2="24" y2="-133" stroke="{ink}" stroke-width="5" stroke-linecap="round"/>')
     lab = ""
     if label:
         txt = ROLE[role][1]
-        w = 26 + len(txt) * 15
-        lab = (f'<g id="{fid}-label"><rect x="{-w/2:.0f}" y="-205" width="{w:.0f}" height="44" rx="22" '
-               f'fill="{C["ink"]}"/><text x="0" y="-175" text-anchor="middle" font-family="{FONT}" '
-               f'font-weight="700" font-size="24" fill="#fff">{txt}</text>'
-               f'<polygon points="-8,-162 8,-162 0,-152" fill="{C["ink"]}"/></g>')
-    box = (f'<g id="{fid}-box" opacity="{1 if carry else 0}"><rect x="-4" y="-92" width="44" height="34" rx="3" '
-           f'fill="{C["box_r"]}" stroke="#A97A44" stroke-width="2"/><rect x="14" y="-92" width="8" height="34" fill="#F3DDB5"/></g>')
-    return f'''<g transform="scale({k})"><g{flip}>
-  <ellipse cx="0" cy="2" rx="34" ry="7" fill="#000" opacity="0.10"/>
-  <line id="{fid}-legL" x1="0" y1="-55" x2="-2" y2="0" stroke="{C["ink"]}" stroke-width="{sw}" stroke-linecap="round"/>
-  <line id="{fid}-legR" x1="0" y1="-55" x2="2" y2="0" stroke="{C["ink"]}" stroke-width="{sw}" stroke-linecap="round"/>
-  <line x1="0" y1="-55" x2="0" y2="-102" stroke="{C["ink"]}" stroke-width="{sw}" stroke-linecap="round"/>
-  <path d="M-15,-100 Q0,-106 15,-100 L13,-60 Q0,-56 -13,-60 Z" fill="{vest}" stroke="{C["ink"]}" stroke-width="3"/>
-  <line id="{fid}-armL" x1="0" y1="-96" x2="-3" y2="-52" stroke="{C["ink"]}" stroke-width="{sw}" stroke-linecap="round"/>
-  {box}
-  <line id="{fid}-armR" x1="0" y1="-96" x2="3" y2="-52" stroke="{C["ink"]}" stroke-width="{sw}" stroke-linecap="round"/>
-  <circle cx="0" cy="-122" r="18" fill="#fff" stroke="{C["ink"]}" stroke-width="{sw}"/>
-  <circle cx="7" cy="-125" r="2.6" fill="{C["ink"]}"/><circle cx="-5" cy="-125" r="2.6" fill="{C["ink"]}"/>
-  <path d="M-4,-115 Q2,-110 8,-115" fill="none" stroke="{C["ink"]}" stroke-width="2.4" stroke-linecap="round"/>
-  {lab}
-</g></g>'''
+        w = 30 + len(txt) * 14.5
+        lab = (f'<g id="{fid}-label"><rect x="{-w/2:.0f}" y="-214" width="{w:.0f}" height="44" rx="22" fill="{ink}"/>'
+               f'<text x="0" y="-184" text-anchor="middle" font-family="{FONT}" font-weight="700" font-size="24" fill="#fff">{txt}</text>'
+               f'<polygon points="-8,-171 8,-171 0,-161" fill="{ink}"/></g>')
+    legs = _limb(fid, "L", "leg", *p["legL"]) + _limb(fid, "R", "leg", *p["legR"])
+    arms_back = _limb(fid, "L", "arm", *p["armL"], extra=hand_l)
+    arms_front = _limb(fid, "R", "arm", *p["armR"], extra=hand_r)
+    fl = ' transform="scale(-1,1)"' if flip else ""
+    return (f'<g transform="scale({scale})"><g id="{fid}-body"{fl}>'
+            f'<ellipse cx="0" cy="3" rx="30" ry="6" fill="#000" opacity="0.10"/>'
+            f'{legs}{body}{arms_back}{arms_front}{head}</g>{lab}</g>')
 
 
-def walk_js(fid, t0, t1, step=0.32, amp=24):
-    """GSAP lines for a walk cycle between t0 and t1 (finite repeats)."""
-    n = max(1, int(round((t1 - t0) / step)))
-    return (f'tl.fromTo("#{fid}-legL",{{rotation:{amp}}},{{rotation:-{amp},duration:{step},ease:"sine.inOut",repeat:{n-1},yoyo:true,transformOrigin:"50% 0%"}},{t0});\n'
-            f'tl.fromTo("#{fid}-legR",{{rotation:-{amp}}},{{rotation:{amp},duration:{step},ease:"sine.inOut",repeat:{n-1},yoyo:true,transformOrigin:"50% 0%"}},{t0});\n'
-            f'tl.fromTo("#{fid}-armL",{{rotation:-{amp*0.8}}},{{rotation:{amp*0.8},duration:{step},ease:"sine.inOut",repeat:{n-1},yoyo:true,transformOrigin:"50% 0%"}},{t0});\n'
-            f'tl.to(["#{fid}-legL","#{fid}-legR","#{fid}-armL"],{{rotation:0,duration:0.15,transformOrigin:"50% 0%"}},{t0 + n*step:.2f});\n')
+def pose_js(fid, t, pose, dur=0.4, ease="power2.inOut"):
+    """Tween a figure to a pose dict {limb: (deg, deg2)} at time t."""
+    seg2 = {"armL": "foreL", "armR": "foreR", "legL": "shinL", "legR": "shinR"}
+    out = []
+    for limb, (a, b) in pose.items():
+        out.append(f'tl.to("#{fid}-{limb}",{{rotation:{a},duration:{dur},ease:"{ease}"}},{t});')
+        out.append(f'tl.to("#{fid}-{seg2[limb]}",{{rotation:{b},duration:{dur},ease:"{ease}"}},{t});')
+    return "\n".join(out) + "\n"
+
+
+WALK_A = {"legL": (24, 10), "legR": (-22, 4), "armL": (-20, -10), "armR": (22, 10)}
+WALK_B = {"legL": (-22, 4), "legR": (24, 10), "armL": (22, 10), "armR": (-20, -10)}
+
+
+def walk_js(fid, t0, t1, step=0.3):
+    """Walk cycle between t0 and t1, ending back at REST."""
+    out, t, k = [], t0, 0
+    while t + step <= t1 + 1e-6:
+        out.append(pose_js(fid, round(t, 3), WALK_A if k % 2 == 0 else WALK_B, dur=step, ease="sine.inOut"))
+        t += step; k += 1
+    out.append(pose_js(fid, round(t, 3), REST, dur=0.2))
+    return "".join(out)
 
 
 # ---------------------------------------------------------------- icons (64x64 viewBox)
