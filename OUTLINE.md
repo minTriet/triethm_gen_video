@@ -1,4 +1,4 @@
-# Outline v1 – Series “Vận hành kho khô” (5 tập)
+# Outline v2 – Series “Vận hành kho khô” (5 tập)
 
 Nguồn: `Prompt_Video_Training_Kho_Kho.md`. Bạn đã viết sẵn kịch bản và lời thoại, nên mình **giữ nguyên kịch bản, lời thoại và thứ tự cảnh**. Outline này chỉ chốt cách dựng, để bạn duyệt trước khi mình làm cả 5 tập.
 
@@ -9,11 +9,10 @@ Nguồn: `Prompt_Video_Training_Kho_Kho.md`. Bạn đã viết sẵn kịch bả
 | Bước | Việc | Kết quả để duyệt |
 | --- | --- | --- |
 | 0 | **Duyệt outline này** (bạn đang ở đây) | Chốt phong cách, cấu trúc, cách làm giọng đọc |
-| 1 | Đăng nhập HeyGen để có giọng đọc tiếng Việt và nhạc nền (xem §4) | – |
-| 2 | Dựng **bộ nhân vật dùng chung**: 6 người que, kệ isometric, PDA, xe nâng, trolley, Oricon, xe tải, badge “Bước n”, thẻ “Ghi nhớ”, phụ đề | 1 khung hình mẫu mỗi thành phần |
-| 3 | Làm trọn **Tập 1** (giọng đọc, nhạc, phụ đề, chuyển động), xem trước trong preview | Bạn xem Tập 1 và góp ý |
-| 4 | Sửa theo góp ý, render MP4 Tập 1 | `tap-1.mp4` |
-| 5 | Làm Tập 2 → 5 dùng lại bộ nhân vật, mỗi tập duyệt preview rồi mới render | `tap-2.mp4` … `tap-5.mp4` |
+| 1 | Dựng **bộ nhân vật dùng chung**: 6 người que, kệ isometric, PDA, xe nâng, trolley, Oricon, xe tải, badge “Bước n”, thẻ “Ghi nhớ”, phụ đề | 1 khung hình mẫu mỗi thành phần |
+| 2 | Làm trọn **Tập 1** (phụ đề, hiệu ứng âm thanh, chuyển động), xem trước trong preview | Bạn xem Tập 1 và góp ý |
+| 3 | Sửa theo góp ý, render MP4 Tập 1 | `tap-1.mp4` |
+| 4 | Làm Tập 2 → 5 dùng lại bộ nhân vật, mỗi tập duyệt preview rồi mới render | `tap-2.mp4` … `tap-5.mp4` |
 
 Video được dựng **trực tiếp trong repo** bằng HyperFrames: mỗi tập là các file HTML/GSAP, sửa được, có lịch sử commit. Đây không phải project trên app HeyGen.
 
@@ -36,15 +35,15 @@ triethm_gen_video/
 | Hạng mục | Chốt |
 | --- | --- |
 | Khung hình | 1920×1080, 30 fps |
-| Thời lượng | Tập 1 khoảng 70s · Tập 2–4 khoảng 90s · Tập 5 khoảng 80s. **Giọng đọc quyết định nhịp**: mỗi cảnh dài đúng bằng câu thoại của nó, nên mốc giây trong file gốc chỉ là ước lượng (lệch ±5s). |
+| Thời lượng | Tập 1 = 76s · Tập 2–4 khoảng 90s · Tập 5 khoảng 80s. **Không có giọng đọc**: mỗi câu phụ đề được giữ đủ lâu để đọc thong thả (khoảng 0.3s mỗi chữ + 0.5s), nên mốc giây có thể lệch vài giây so với file gốc. |
 | Nền | Xám rất nhạt `#F4F6F9`, sàn kho `#E6EAF0` |
 | Màu chính | Xanh doanh nghiệp `#1F5FBF` · Cam “quan trọng” `#F28C1E` · Xanh lá “xong” `#22A55A` · Đỏ “thiếu/lỗi” `#D93B3B` |
 | Reserved / Primary | Tầng trên xanh nhạt `#BFD8F5` (nhãn “RESERVED – Lưu kho”) · tầng sát đất cam `#F28C1E` (nhãn “PRIMARY – Pick face”) |
 | Font | **Be Vietnam Pro** (thiết kế cho tiếng Việt, đủ dấu), đóng file vào `shared/fonts/` để render ở đâu cũng giống nhau. Tiêu đề 900, nội dung 600, phụ đề 700. |
 | Phụ đề | Tiếng Việt, cỡ 56px, tối đa 2 dòng, nền dải trắng 90%, đáy khung (trong vùng an toàn 80%), hiện theo từng cụm câu khớp giọng đọc |
-| Giọng đọc | Nam, trầm ấm, chậm khoảng 0.8× (chậm hơn bình thường 20%), nghỉ 0.4–0.6s giữa câu |
-| Nhạc nền | Lo-fi/acoustic nhẹ, âm lượng khoảng 0.14 dưới giọng, fade in/out 1.5s |
-| Hiệu ứng âm thanh | “beep” khi scan, “pop” nhẹ khi item xuất hiện, “stamp” khi đóng dấu ✔, tiếng xe nâng/xe tải rất nhỏ |
+| Giọng đọc | **Không dùng** (đã chốt). Lời thoại trong file gốc được dùng nguyên văn làm phụ đề. |
+| Nhạc nền | Chưa có: thư viện nhạc miễn phí cần đăng nhập HeyGen. Có thể thêm sau mà không phải dựng lại hình. |
+| Hiệu ứng âm thanh (đang dùng, bộ có sẵn) | “beep” khi scan, “pop” nhẹ khi item xuất hiện, “stamp” khi đóng dấu ✔, tiếng xe nâng/xe tải rất nhỏ |
 
 ### Nhân vật người que (vẽ SVG, chuyển động bằng GSAP)
 Đầu tròn, thân nét đen 6px, hai chấm mắt và miệng cười. Mỗi vai có áo khoác hoặc mũ màu riêng, và **nhãn vai** hiện trên đầu ở lần xuất hiện đầu tiên.
@@ -84,15 +83,8 @@ triethm_gen_video/
 
 ---
 
-## 4. Cần bạn quyết định
+## 4. Đã chốt
 
-1. **Giọng đọc tiếng Việt (bắt buộc chọn):**
-   - **(a) HeyGen voice, khuyến nghị.** Cần đăng nhập HeyGen (miễn phí). Gói Free có 3 phút Voice Turbo mỗi tháng, mà cả series khoảng **7 phút thoại**: đủ cho Tập 1–2, các tập sau cần gói trả phí hoặc chờ tháng sau. Đăng nhập cũng mở luôn thư viện nhạc nền và hiệu ứng âm thanh miễn phí.
-   - **(b) Bạn tự thu âm** lời thoại (file .m4a/.wav, mỗi cảnh 1 file). Miễn phí, giọng đúng ý nhất. Mình sẽ tự tách thời gian từng chữ để khớp phụ đề.
-   - Giọng đọc offline miễn phí (Kokoro) **không có tiếng Việt**, nên không dùng được.
-2. **Mã ví dụ** (SKU 1001, A-01-01, CH-0125, số thùng…): giữ làm minh họa hay bạn gửi dữ liệu thật?
-3. **Logo hoặc tên công ty** ở cuối tập: có cần không? (Mặc định là không.)
-
-> Nếu chọn (a): gõ vào ô chat: `! cd /home/user/triethm_gen_video && node .claude/skills/hyperframes/scripts/plugin-cli.mjs auth login`, làm xong thì báo mình.
-
-**Bạn duyệt outline Tập 1 + thông số chung**, hoặc ghi chỉnh sửa. Sau đó mình bắt đầu Bước 2.
+1. Giọng đọc: **bỏ**, chỉ giữ phụ đề.
+2. Mã hàng, mã vị trí, mã cửa hàng, số lượng: **minh họa**.
+3. Logo hoặc tên công ty: **không cần**.
