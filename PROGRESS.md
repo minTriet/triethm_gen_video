@@ -11,6 +11,6 @@ Generator: `python3 tools/build_full.py` → thư mục `video/`. Render: `cd vi
 | Phần 1 – Tổng quan kho | xong |
 | Phần 2 – Nhập hàng & Cất hàng | xong (tools/parts.py) |
 | Phần 3 – Đơn hàng, Allocate & Châm hàng | xong |
-| Phần 4 – Pick chẵn & lẻ | chưa |
+| Phần 4 – Pick chẵn & lẻ | xong |
 | Phần 5 – Kiểm hàng & Bàn giao + Tổng kết | chưa |
 | Check + review + render bản đầy đủ | chưa |

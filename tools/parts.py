@@ -594,5 +594,179 @@ def part3():
                 (mini_rack("prim"), "Allocate <b>chỉ lấy hàng ở Primary</b>", "Allocate chỉ lấy hàng ở Primary"),
                 (ic_down(), "Thiếu tồn → <b>châm hàng</b> từ Reserved", "Thiếu tồn, châm hàng từ Reserved"),
             ])]
-def part4(): return []
+# ============================================================ PART 4 – Pick hàng chẵn & lẻ
+def p4_intro():
+    lines = ["Pick hàng gồm hai phần: pick hàng chẵn thùng và pick hàng lẻ."]
+
+    def build(T, D):
+        def panel(pid, x, title, art):
+            return (f'<div id="{pid}" class="abs" style="left:{x}px;top:120px;width:780px;height:640px;background:#fff;border:4px solid {INK};border-radius:30px;opacity:0">'
+                    f'<div style="text-align:center;font-size:58px;font-weight:900;margin-top:40px">{title}</div>'
+                    f'<svg class="abs" style="left:0;top:160px" width="780" height="440" viewBox="0 0 780 440">{art}</svg></div>')
+        tro = f'<g transform="translate(300,400) scale(1.6)">{st.trolley("p4a-tr", "CH-0125")}</g>'
+        ori = f'<g transform="translate(390,380) scale(1.9)">{st.oricon("p4a-or", "CH-0125")}</g>'
+        body = panel("p4a-l", 120, "Hàng chẵn thùng", tro) + panel("p4a-r", 1020, "Hàng lẻ", ori)
+        js = (f'tl.fromTo("#p4a-l",{{opacity:0,x:-40}},{{opacity:1,x:0,duration:0.45,ease:"power3.out"}},{T[0]+0.2:.2f});\n'
+              f'tl.fromTo("#p4a-r",{{opacity:0,x:40}},{{opacity:1,x:0,duration:0.45,ease:"power3.out"}},{T[0]+1.6:.2f});\n')
+        for i in range(6):
+            js += f'tl.set("#p4a-tr-k{i}",{{opacity:1}},0);\n'
+        return body, "", js
+    return Scene("p4intro", lines, build, lead=0.4, tail=1.0, min_hold={0: 3.8})
+
+
+def p4_full():
+    lines = ["Với hàng chẵn thùng, nhân viên làm từng đơn hàng,",
+             "kéo theo xe trolley có dán mã cửa hàng.",
+             "Vì mỗi vị trí chỉ có một mã hàng, picker chỉ cần hai bước:",
+             "đi đến vị trí hiện trên PDA,",
+             "và scan mã sản phẩm.",
+             "Hệ thống tự hiểu đúng vị trí và báo số lượng cần lấy.",
+             "Xác nhận, đặt hàng lên trolley,",
+             "rồi làm tiếp cho đến hết đơn."]
+
+    def build(T, D):
+        R = st.Rack("p4b", 640, cols=3, levels=3, cw=230, lh=190)
+        rack = R.svg(contents={(1, 0): "cartons", (2, 0): "cartons", (0, 1): "pallet", (1, 1): "pallet", (2, 2): "pallet"},
+                     tags={(0, 0): "SKU 1001", (1, 0): "SKU 2010", (2, 0): "SKU 3002"})
+        sx, sb = R.slot(0, 0)
+        slot = (f'<g id="p4b-slot">' + "".join(st.carton(sx - 100 + i*68, sb - 56, 64, 56) for i in range(3))
+                + "".join(st.carton(sx - 66 + i*68, sb - 112, 64, 56) for i in range(2)) + "</g>")
+        X0, X1, X2 = 260, 600, 830        # picker x: start, at A-01-01, next location
+        SC = 1.5
+        a, b = SCAN["armR"]
+        tip = hand(X1, FY, SC, a, b, extra=56)
+        pk = (f'<g transform="translate({X0},{FY})"><g id="p4b-mv">{st.trolley_behind("p4b-tr", "CH-0125")}'
+              f'<g transform="translate(36,0)">{stick("p4b-pk", "picker", SC, label=True, hand_r=pda_svg("p4b-pk"))}</g></g></g>')
+        tip = (tip[0] + 36, tip[1])
+        las = st.laser("p4b-las", tip[0], tip[1], sx - 10, sb - 30)
+        path = f'<path id="p4b-path" d="M{X0+36},{FY+30} L{X1+36},{FY+30}" stroke="{C["orange"]}" stroke-width="6" stroke-dasharray="6 14" stroke-linecap="round" fill="none" opacity="0"/>'
+        counts = "".join(f'<text id="p4b-n{i}" x="{X1-60}" y="{FY-330}" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="96" fill="{C["orange"]}" opacity="0">{i+1}</text>' for i in range(5))
+        body = svg_layer(st.floor() + rack + slot + path + pk + las + counts)
+        p0 = (kv("Đơn hàng", "CH-0125", "Tuyến 1")
+              + f'<div class="row" style="margin-top:14px">A-01-01 · SKU 1001 · <b>5 thùng</b></div><div class="row">A-03-01 · SKU 3002 · <b>2 thùng</b></div>')
+        p1 = kv("Bước 1 – Đến vị trí", "A-01-01", "", "#C45A00")
+        p2 = kv("Bước 2 – Scan mã sản phẩm", "SKU 1001 ✔", "Đúng vị trí A-01-01") + f'<div id="p4b-qty" style="margin-top:22px;opacity:0">{kv("Số lượng cần lấy", "Lấy: 5 thùng", "", "#C45A00")}</div>'
+        p3 = kv("Số lượng cần lấy", "Lấy: 5 thùng", "", "#C45A00") + f'<div id="p4b-go" class="go">XÁC NHẬN</div>'
+        p4 = kv("Đơn CH-0125", "Vị trí tiếp theo", "A-03-01 · SKU 3002 · 2 thùng")
+        dev = st.pda("p4b-pda", "Pick chẵn thùng", [("s0", p0), ("s1", p1), ("s2", p2), ("s3", p3), ("s4", p4)])
+        body += dev
+        body += (f'<div id="p4b-two" class="abs" style="left:80px;top:56px;opacity:0"><div style="display:flex;gap:14px;align-items:center">'
+                 f'<span style="background:{C["orange"]};border:4px solid {INK};border-radius:18px;padding:10px 24px;font-size:40px;font-weight:900">Chỉ 2 bước</span>'
+                 f'<span style="background:{C["green"]};color:#fff;border:4px solid {INK};border-radius:18px;padding:10px 24px;font-size:36px;font-weight:900">Tiết kiệm thời gian</span></div></div>')
+        body += st.badge("p4b-b1", 1, "Đi đến vị trí trên PDA") + st.badge("p4b-b2", 2, "Scan mã sản phẩm")
+        ring = (f'<div id="p4b-done" class="abs" style="left:760px;top:150px;opacity:0"><div style="display:flex;align-items:center;gap:18px;background:#fff;border:5px solid {C["green"]};'
+                f'border-radius:24px;padding:16px 30px"><svg width="90" height="90" viewBox="0 0 90 90"><circle cx="45" cy="45" r="36" fill="none" stroke="#E3E8EF" stroke-width="12"/>'
+                f'<circle id="p4b-ring" cx="45" cy="45" r="36" fill="none" stroke="{C["green"]}" stroke-width="12" stroke-dasharray="226" stroke-dashoffset="226" transform="rotate(-90 45 45)" stroke-linecap="round"/></svg>'
+                f'<span style="font-size:44px;font-weight:900">Đơn hàng hoàn tất ✔</span></div></div>')
+        body += ring
+        js = st.appear_js("#p4b-pda", T[0] + 0.1, 0.35, dy=30) + st.show_panel_js("p4b-pda", None, "s0", T[0] + 0.2)
+        js += 'tl.fromTo("#p4b-pk-label",{opacity:0,y:10},{opacity:1,y:0,duration:0.3,ease:"back.out(2)"},%.2f);\n' % (T[0] + 0.3)
+        js += st.pop_js("#p4b-tr-code", T[1] + 0.2)
+        js += f'tl.fromTo("#p4b-two",{{opacity:0,y:-16}},{{opacity:1,y:0,duration:0.3,ease:"back.out(2)"}},{T[2]+0.3:.2f});\n'
+        js += f'tl.to("#p4b-two",{{opacity:0,duration:0.2}},{T[3]-0.15:.2f});\n'
+        js += st.badge_seq_js(["p4b-b1", "p4b-b2"], [T[3], T[4]], T[6] - 0.1)
+        js += f'tl.to("#p4b-b2",{{opacity:0,duration:0.2}},{T[6]-0.1:.2f});\n'
+        js += st.show_panel_js("p4b-pda", "s0", "s1", T[3])
+        js += f'tl.fromTo("#p4b-path",{{opacity:0}},{{opacity:1,duration:0.2}},{T[3]+0.2:.2f});\n'
+        js += f'tl.to("#p4b-mv",{{x:{X1-X0},duration:1.8,ease:"none"}},{T[3]+0.3:.2f});\n' + walk_js("p4b-pk", T[3] + 0.3, T[3] + 2.1)
+        js += f'tl.to("#p4b-path",{{opacity:0,duration:0.2}},{T[3]+2.1:.2f});\n'
+        js += pose_js("p4b-pk", T[4], SCAN, dur=0.25, ease="power2.out")
+        js += st.show_panel_js("p4b-pda", "s1", "s2", T[4])
+        js += st.laser_js("p4b-las", T[4] + 0.4)
+        js += f'tl.fromTo("#p4b-qty",{{opacity:0,y:10}},{{opacity:1,y:0,duration:0.3}},{T[5]+0.3:.2f});\n'
+        js += pose_js("p4b-pk", T[5], REST, dur=0.3)
+        js += st.show_panel_js("p4b-pda", "s2", "s3", T[6])
+        js += f'tl.to("#p4b-go",{{scale:0.94,duration:0.1}},{T[6]+0.3:.2f});\ntl.to("#p4b-go",{{scale:1,duration:0.15}},{T[6]+0.4:.2f});\n'
+        for i in range(5):
+            t = T[6] + 0.7 + i * 0.42
+            js += st.pop_js(f"#p4b-tr-k{i}", t, 0.25)
+            js += f'tl.fromTo("#p4b-n{i}",{{opacity:0,scale:0.6}},{{opacity:1,scale:1,duration:0.15,transformOrigin:"50% 50%"}},{t:.2f});\ntl.to("#p4b-n{i}",{{opacity:0,duration:0.1}},{t+0.38:.2f});\n'
+        js += f'tl.to("#p4b-slot",{{opacity:0.25,duration:2.0}},{T[6]+0.7:.2f});\n'
+        js += st.show_panel_js("p4b-pda", "s3", "s4", T[7])
+        js += f'tl.to("#p4b-mv",{{x:{X2-X0},duration:1.2,ease:"none"}},{T[7]+0.2:.2f});\n' + walk_js("p4b-pk", T[7] + 0.2, T[7] + 1.4)
+        js += f'tl.fromTo("#p4b-done",{{opacity:0,scale:0.7}},{{opacity:1,scale:1,duration:0.35,ease:"back.out(2)"}},{T[7]+1.5:.2f});\n'
+        js += f'tl.to("#p4b-ring",{{strokeDashoffset:0,duration:0.8,ease:"power2.out"}},{T[7]+1.6:.2f});\n'
+        return body, "", js
+    s = Scene("p4full", lines, build, lead=0.4, tail=1.6,
+              min_hold={2: 3.4, 3: 2.6, 4: 2.2, 6: 3.2, 7: 3.0})
+    s.sfx = [(("T", 4, 0.4), "ping.mp3", 0.25), (("T", 7, 1.6), "chime.mp3", 0.25)]
+    return s
+
+
+def p4_piece():
+    lines = ["Với hàng lẻ, nhân viên mang theo thùng xanh gọi là Oricon, có dán mã cửa hàng.",
+             "Đến vị trí hiển thị,",
+             "scan mã hàng,",
+             "nhập số lượng,",
+             "rồi bỏ hàng vào Oricon."]
+
+    def build(T, D):
+        R = st.Rack("p4c", 760, cols=2, levels=3, cw=280, lh=190, aisle="B")
+        rack = R.svg(contents={(1, 0): "cartons", (0, 1): "pallet", (1, 2): "pallet"})
+        sx, sb = R.slot(0, 0)
+        packs = "".join(f'<g><rect x="{sx-110 + i*46}" y="{sb-48}" width="40" height="48" rx="5" fill="#E5584F" stroke="{INK}" stroke-width="2.5"/>'
+                        f'<rect x="{sx-104 + i*46}" y="{sb-36}" width="28" height="12" fill="#F2B233"/></g>' for i in range(5))
+        X0, X1, SC = 230, 600, 1.5
+        a, b = SCAN["armR"]
+        tip = hand(X1, FY, SC, a, b, extra=56)
+        ori_carry = f'<g id="p4c-oc" transform="translate(0,-52) scale(0.42)">{st.oricon("p4c-or1", "CH-0125")}</g>'
+        pk = (f'<g transform="translate({X0},{FY})"><g id="p4c-mv">{stick("p4c-pk", "picker", SC, pose=CARRY, hand_r=pda_svg("p4c-pk"))}'
+              f'<g transform="scale({SC})">{ori_carry}</g></g></g>')
+        floor_ori = f'<g transform="translate({X1-120},{FY})"><g id="p4c-of" opacity="0">{st.oricon("p4c-or2", "CH-0125")}</g></g>'
+        drops = "".join(f'<g id="p4c-it{i}" opacity="0"><rect x="{X1-150 + i*30}" y="{FY-150}" width="40" height="48" rx="5" fill="#E5584F" stroke="{INK}" stroke-width="2.5"/></g>' for i in range(3))
+        las = st.laser("p4c-las", tip[0], tip[1], sx - 64, sb - 26)
+        body = svg_layer(st.floor() + rack + packs + floor_ori + pk + drops + las)
+        body += st.pda("p4c-pda", "Pick hàng lẻ", [
+            ("s1", kv("Đến vị trí", R.loc(0, 0), "", "#C45A00")),
+            ("s2", kv("Scan mã hàng", "SKU 2005 ✔", "Bánh quy (ví dụ)")),
+            ("s3", kv("Nhập số lượng", "3 gói", "") + '<div class="keys">' + "".join(f"<div>{k}</div>" for k in "123456789") + '<div>⌫</div><div>0</div><div>OK</div></div>'),
+            ("s4", kv("Bỏ vào Oricon", "CH-0125 ✔", "Đã lấy 3 gói")),
+        ])
+        body += "".join(st.badge(f"p4c-b{i+1}", i + 1, t) for i, t in enumerate(["Đến vị trí", "Scan mã hàng", "Nhập số lượng", "Bỏ vào Oricon"]))
+        body += (f'<div id="p4c-name" class="abs" style="left:80px;top:56px;opacity:0"><span style="display:inline-block;background:#2F6FD6;color:#fff;border:4px solid {INK};'
+                 f'border-radius:18px;padding:10px 26px;font-size:40px;font-weight:900">Oricon = thùng nhựa xanh, dán mã cửa hàng</span></div>')
+        js = f'tl.fromTo("#p4c-name",{{opacity:0,y:-16}},{{opacity:1,y:0,duration:0.3}},{T[0]+0.3:.2f});\ntl.to("#p4c-name",{{opacity:0,duration:0.2}},{T[1]-0.2:.2f});\n'
+        js += st.appear_js("#p4c-pda", T[1], 0.35, dy=30)
+        js += st.badge_seq_js([f"p4c-b{i+1}" for i in range(4)], T[1:5], D - 0.3)
+        js += st.show_panel_js("p4c-pda", None, "s1", T[1])
+        js += f'tl.to("#p4c-mv",{{x:{X1-X0},duration:1.6,ease:"none"}},{T[1]+0.1:.2f});\n' + walk_js("p4c-pk", T[1] + 0.1, T[1] + 1.7)
+        js += f'tl.set("#p4c-oc",{{opacity:0}},{T[1]+1.9:.2f});\ntl.fromTo("#p4c-of",{{opacity:0}},{{opacity:1,duration:0.15}},{T[1]+1.9:.2f});\n'
+        js += pose_js("p4c-pk", T[1] + 1.9, REST, dur=0.25)
+        js += pose_js("p4c-pk", T[2], SCAN, dur=0.25, ease="power2.out")
+        js += st.show_panel_js("p4c-pda", "s1", "s2", T[2])
+        js += st.laser_js("p4c-las", T[2] + 0.4)
+        js += st.show_panel_js("p4c-pda", "s2", "s3", T[3])
+        js += pose_js("p4c-pk", T[3] + 0.1, REST, dur=0.25)
+        js += st.show_panel_js("p4c-pda", "s3", "s4", T[4] + 1.4)
+        for i in range(3):
+            js += f'tl.fromTo("#p4c-it{i}",{{opacity:0,y:0}},{{opacity:1,y:70,duration:0.45,ease:"bounce.out"}},{T[4]+0.2+i*0.3:.2f});\n'
+        return body, "", js
+    s = Scene("p4piece", lines, build, lead=0.4, tail=1.6, min_hold={1: 2.6, 2: 2.2, 3: 2.4, 4: 2.8})
+    s.sfx = [(("T", 2, 0.4), "ping.mp3", 0.25)]
+    return s
+
+
+def ic_trolley():
+    return ic_svg(f'<line x1="10" y1="10" x2="10" y2="50" stroke="{INK}" stroke-width="4" stroke-linecap="round"/><rect x="10" y="46" width="46" height="6" fill="#8FA3BF" stroke="{INK}" stroke-width="2"/>'
+                  f'<rect x="16" y="26" width="18" height="20" fill="{C["box_r"]}" stroke="#A97A44" stroke-width="2"/><rect x="36" y="26" width="18" height="20" fill="{C["box_r"]}" stroke="#A97A44" stroke-width="2"/>'
+                  f'<circle cx="16" cy="56" r="4" fill="{INK}"/><circle cx="50" cy="56" r="4" fill="{INK}"/>')
+
+
+def ic_oricon():
+    return ic_svg(f'<path d="M8 20h48l-4 34H12z" fill="#2F6FD6" stroke="{INK}" stroke-width="3" stroke-linejoin="round"/><rect x="18" y="30" width="28" height="10" rx="2" fill="#fff"/>')
+
+
+def ic_order():
+    return ic_svg(f'<rect x="12" y="6" width="40" height="52" rx="6" fill="#fff" stroke="{INK}" stroke-width="3"/>'
+                  f'<path d="M20 20l4 4 8-8M20 34l4 4 8-8M20 48l4 4 8-8" fill="none" stroke="{C["green"]}" stroke-width="4" stroke-linecap="round"/>')
+
+
+def part4():
+    return [p4_intro(), p4_full(), p4_piece(),
+            ghinho("g4", 4, [
+                (ic_trolley(), "Chẵn thùng: trolley theo mã cửa hàng – <b>chỉ 2 bước</b>: đến vị trí, scan mã hàng",
+                 "Chẵn thùng: trolley theo mã cửa hàng, chỉ 2 bước: đến vị trí, scan mã hàng"),
+                (ic_oricon(), "Hàng lẻ: <b>Oricon</b> – scan, nhập số lượng, bỏ vào thùng", "Hàng lẻ: Oricon, scan, nhập số lượng, bỏ vào thùng"),
+                (ic_order(), "Luôn <b>làm xong trọn từng đơn</b>", "Luôn làm xong trọn từng đơn"),
+            ])]
 def part5(): return []

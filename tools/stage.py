@@ -298,3 +298,21 @@ def fade_js(sel, t, to=0, dur=0.3):
 
 def appear_js(sel, t, dur=0.3, dy=16):
     return f'tl.fromTo("{sel}",{{opacity:0,y:{dy}}},{{opacity:1,y:0,duration:{dur},ease:"power2.out"}},{t:.2f});\n'
+
+
+def trolley_behind(tid, code, slots=6):
+    """Trolley pulled behind a walker: handle at local x=0, platform to the LEFT.
+    Carton ids {tid}-k{i} (hidden)."""
+    s = [f'<g id="{tid}">',
+         f'<line x1="0" y1="-120" x2="0" y2="-18" stroke="{INK}" stroke-width="7" stroke-linecap="round"/>',
+         f'<line x1="-10" y1="-120" x2="10" y2="-120" stroke="{INK}" stroke-width="7" stroke-linecap="round"/>',
+         f'<rect x="-196" y="-28" width="200" height="12" rx="3" fill="#8FA3BF" stroke="{INK}" stroke-width="3"/>',
+         f'<circle cx="-18" cy="-8" r="9" fill="{INK}"/><circle cx="-176" cy="-8" r="9" fill="{INK}"/>']
+    pos = [(-188, -84), (-128, -84), (-68, -84), (-188, -140), (-128, -140), (-68, -140)][:slots]
+    for i, (x, y) in enumerate(pos):
+        s.append(f'<g id="{tid}-k{i}" opacity="0">' + carton(x, y, 58, 56) + "</g>")
+    s.append(f'<g id="{tid}-code"><rect x="-158" y="-196" width="116" height="38" rx="7" fill="#fff" stroke="{INK}" stroke-width="2.5"/>'
+             f'<text x="-100" y="-169" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="22" fill="{INK}">{code}</text>'
+             f'<line x1="-100" y1="-158" x2="-100" y2="-142" stroke="{INK}" stroke-width="2.5"/></g>')
+    s.append("</g>")
+    return "".join(s)
