@@ -252,8 +252,8 @@ def pose_js(fid, t, pose, dur=0.4, ease="power2.inOut"):
     seg2 = {"armL": "foreL", "armR": "foreR", "legL": "shinL", "legR": "shinR"}
     out = []
     for limb, (a, b) in pose.items():
-        out.append(f'tl.to("#{fid}-{limb}",{{rotation:{a},duration:{dur},ease:"{ease}"}},{t});')
-        out.append(f'tl.to("#{fid}-{seg2[limb]}",{{rotation:{b},duration:{dur},ease:"{ease}"}},{t});')
+        out.append(f'tl.to("#{fid}-{limb}",{{rotation:{a},svgOrigin:"0 0",duration:{dur},ease:"{ease}"}},{t});')
+        out.append(f'tl.to("#{fid}-{seg2[limb]}",{{rotation:{b},svgOrigin:"0 0",duration:{dur},ease:"{ease}"}},{t});')
     return "\n".join(out) + "\n"
 
 
