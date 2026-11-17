@@ -41,7 +41,7 @@
   font-weight:700;font-size:54px;line-height:1.3;padding:12px 34px;border-radius:16px;box-shadow:0 4px 0 rgba(27,36,48,.10)}
 
   </style>
-  <div id="root" data-composition-id="captions" data-width="1920" data-height="1080" data-duration="131.24">
+  <div id="root" data-composition-id="captions" data-width="1920" data-height="1080" data-duration="185.94">
     <div id="cap1" class="clip cap" data-start="0.3" data-duration="1.5" data-track-index="0"><span id="cap1-t">Xin chào các bạn.</span></div>
     <div id="cap2" class="clip cap" data-start="1.95" data-duration="3.62" data-track-index="0"><span id="cap2-t">Trong loạt video này, chúng ta sẽ cùng tìm hiểu cách kho vận hành,</span></div>
     <div id="cap3" class="clip cap" data-start="5.72" data-duration="1.77" data-track-index="0"><span id="cap3-t">từng bước một, thật đơn giản.</span></div>
@@ -78,6 +78,18 @@
     <div id="cap34" class="clip cap" data-start="110.42" data-duration="2.92" data-track-index="0"><span id="cap34-t">và chỉ đến vị trí primary cố định của mã đó.</span></div>
     <div id="cap35" class="clip cap" data-start="113.49" data-duration="3.6" data-track-index="0"><span id="cap35-t">Xe nâng đặt pallet phía trên hoặc gần vị trí này,</span></div>
     <div id="cap36" class="clip cap" data-start="117.24" data-duration="2.6" data-track-index="0"><span id="cap36-t">rồi scan vị trí để xác nhận.</span></div>
+    <div id="cap37" class="clip cap" data-start="132.74" data-duration="4.08" data-track-index="0"><span id="cap37-t">Mỗi ngày, các cửa hàng tự động đặt hàng và gửi đơn DO lên hệ thống.</span></div>
+    <div id="cap38" class="clip cap" data-start="138.62" data-duration="2.8" data-track-index="0"><span id="cap38-t">Nhân viên kho gom các DO theo tuyến đường.</span></div>
+    <div id="cap39" class="clip cap" data-start="141.57" data-duration="2.46" data-track-index="0"><span id="cap39-t">Mỗi tuyến được đánh số từ một đến n,</span></div>
+    <div id="cap40" class="clip cap" data-start="144.18" data-duration="2.46" data-track-index="0"><span id="cap40-t">đúng theo thứ tự xuất hàng của tuyến đó.</span></div>
+    <div id="cap41" class="clip cap" data-start="148.24" data-duration="3.4" data-track-index="0"><span id="cap41-t">Sau đó, nhân viên bấm Allocate để hệ thống phân bổ tồn kho.</span></div>
+    <div id="cap42" class="clip cap" data-start="151.79" data-duration="2.46" data-track-index="0"><span id="cap42-t">Hệ thống chỉ lấy hàng ở vị trí primary.</span></div>
+    <div id="cap43" class="clip cap" data-start="156.05" data-duration="2.23" data-track-index="0"><span id="cap43-t">Nếu tồn tại vị trí primary không đủ,</span></div>
+    <div id="cap44" class="clip cap" data-start="158.43" data-duration="3.38" data-track-index="0"><span id="cap44-t">hệ thống sẽ tạo lệnh châm hàng, đưa hàng từ khu reserved xuống.</span></div>
+    <div id="cap45" class="clip cap" data-start="163.61" data-duration="2.4" data-track-index="0"><span id="cap45-t">Tài xế xe nâng xem lệnh,</span></div>
+    <div id="cap46" class="clip cap" data-start="166.16" data-duration="3.0" data-track-index="0"><span id="cap46-t">đến đúng vị trí reserved và scan LPN.</span></div>
+    <div id="cap47" class="clip cap" data-start="169.31" data-duration="2.6" data-track-index="0"><span id="cap47-t">Sau đó mang hàng xuống primary,</span></div>
+    <div id="cap48" class="clip cap" data-start="172.06" data-duration="3.2" data-track-index="0"><span id="cap48-t">và scan vị trí pick face để xác nhận đã châm.</span></div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
@@ -153,6 +165,30 @@
     tl.to("#cap35-t",{opacity:0,duration:0.12,ease:"power2.in"},116.97);
     tl.fromTo("#cap36-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},117.24);
     tl.to("#cap36-t",{opacity:0,duration:0.12,ease:"power2.in"},119.72);
+    tl.fromTo("#cap37-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},132.74);
+    tl.to("#cap37-t",{opacity:0,duration:0.12,ease:"power2.in"},136.7);
+    tl.fromTo("#cap38-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},138.62);
+    tl.to("#cap38-t",{opacity:0,duration:0.12,ease:"power2.in"},141.3);
+    tl.fromTo("#cap39-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},141.57);
+    tl.to("#cap39-t",{opacity:0,duration:0.12,ease:"power2.in"},143.91);
+    tl.fromTo("#cap40-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},144.18);
+    tl.to("#cap40-t",{opacity:0,duration:0.12,ease:"power2.in"},146.52);
+    tl.fromTo("#cap41-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},148.24);
+    tl.to("#cap41-t",{opacity:0,duration:0.12,ease:"power2.in"},151.52);
+    tl.fromTo("#cap42-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},151.79);
+    tl.to("#cap42-t",{opacity:0,duration:0.12,ease:"power2.in"},154.13);
+    tl.fromTo("#cap43-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},156.05);
+    tl.to("#cap43-t",{opacity:0,duration:0.12,ease:"power2.in"},158.16);
+    tl.fromTo("#cap44-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},158.43);
+    tl.to("#cap44-t",{opacity:0,duration:0.12,ease:"power2.in"},161.69);
+    tl.fromTo("#cap45-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},163.61);
+    tl.to("#cap45-t",{opacity:0,duration:0.12,ease:"power2.in"},165.89);
+    tl.fromTo("#cap46-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},166.16);
+    tl.to("#cap46-t",{opacity:0,duration:0.12,ease:"power2.in"},169.04);
+    tl.fromTo("#cap47-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},169.31);
+    tl.to("#cap47-t",{opacity:0,duration:0.12,ease:"power2.in"},171.79);
+    tl.fromTo("#cap48-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},172.06);
+    tl.to("#cap48-t",{opacity:0,duration:0.12,ease:"power2.in"},175.14);
     window.__timelines["captions"] = tl;
   </script>
 </template>

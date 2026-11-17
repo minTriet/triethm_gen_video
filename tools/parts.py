@@ -336,6 +336,263 @@ def part2():
             ])]
 
 
-def part3(): return []
+# ============================================================ PART 3 – Đơn hàng, Allocate & Châm hàng
+def store_svg(x, y, code):
+    return (f'<g transform="translate({x},{y})"><rect x="-70" y="-60" width="140" height="96" fill="#fff" stroke="{INK}" stroke-width="3"/>'
+            f'<path d="M-82,-60 L82,-60 L72,-96 L-72,-96 Z" fill="{C["orange"]}" stroke="{INK}" stroke-width="3" stroke-linejoin="round"/>'
+            + "".join(f'<rect x="{-72 + i*36}" y="-96" width="18" height="36" fill="#fff" opacity="0.7"/>' for i in range(4))
+            + f'<rect x="-22" y="-20" width="44" height="56" fill="{C["blue"]}" stroke="{INK}" stroke-width="2.5"/>'
+            f'<rect x="-60" y="-44" width="30" height="26" fill="#BFD8F5" stroke="{INK}" stroke-width="2"/><rect x="30" y="-44" width="30" height="26" fill="#BFD8F5" stroke="{INK}" stroke-width="2"/>'
+            f'<text x="0" y="74" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="26" fill="{INK}">{code}</text></g>')
+
+
+def doc_html(did, x, y, label="DO", w=86, h=104, color=None):
+    color = color or C["blue"]
+    return (f'<div id="{did}" class="abs" style="left:{x-w/2:.0f}px;top:{y-h/2:.0f}px;width:{w}px;height:{h}px;opacity:0">'
+            f'<div style="width:100%;height:100%;background:#fff;border:3px solid {INK};border-radius:8px;overflow:hidden">'
+            f'<div style="background:{color};color:#fff;font-weight:900;font-size:24px;text-align:center;padding:4px 0">{label}</div>'
+            f'<div style="margin:10px 10px 0;height:6px;background:#D5DBE4;border-radius:3px"></div><div style="margin:8px 10px 0;height:6px;width:60%;background:#D5DBE4;border-radius:3px"></div>'
+            f'<div style="margin:8px 10px 0;height:6px;background:#D5DBE4;border-radius:3px"></div></div></div>')
+
+
+def cloud_svg(cx, cy):
+    return (f'<g id="p3a-cloud"><path d="M{cx-170},{cy+60} a70,70 0 0 1 20,-136 a95,95 0 0 1 170,-30 a80,80 0 0 1 130,56 a60,60 0 0 1 -10,110 Z" '
+            f'fill="#EAF1FC" stroke="{C["blue"]}" stroke-width="7" stroke-linejoin="round"/>'
+            f'<text x="{cx}" y="{cy+30}" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="72" fill="{C["blue"]}">WMS</text></g>')
+
+
+def p3_do():
+    lines = ["Mỗi ngày, các cửa hàng tự động đặt hàng và gửi đơn DO lên hệ thống."]
+    stores = [(220, 330, "CH-0125"), (440, 330, "CH-0311"), (660, 330, "CH-0420"),
+              (220, 600, "CH-0533"), (440, 600, "CH-0647"), (660, 600, "CH-0702")]
+    CX, CY = 1430, 430
+
+    def build(T, D):
+        body = svg_layer("".join(store_svg(x, y, c) for x, y, c in stores) + cloud_svg(CX, CY)
+                         + f'<path d="M790,460 L1180,440" stroke="{C["blue"]}" stroke-width="5" stroke-dasharray="4 14" stroke-linecap="round" fill="none" opacity="0.5"/>')
+        body += "".join(doc_html(f"p3a-d{i}", x, y - 30) for i, (x, y, _) in enumerate(stores))
+        body += (f'<div id="p3a-clock" class="abs" style="left:80px;top:56px;opacity:0"><div style="display:flex;align-items:center;gap:16px;background:#fff;border:4px solid {INK};'
+                 f'border-radius:18px;padding:10px 26px;font-size:40px;font-weight:900">'
+                 f'<svg width="54" height="54" viewBox="0 0 64 64"><circle cx="32" cy="32" r="27" fill="#fff" stroke="{INK}" stroke-width="5"/><path d="M32 16v17l11 7" stroke="{C["orange"]}" stroke-width="6" stroke-linecap="round" fill="none"/></svg>'
+                 f'Mỗi ngày – tự động</div></div>'
+                 f'<div id="p3a-count" class="abs" style="left:{CX-120}px;top:{CY+110}px;width:240px;text-align:center;opacity:0">'
+                 f'<span style="display:inline-block;background:{C["blue"]};color:#fff;border-radius:16px;padding:8px 24px;font-size:38px;font-weight:900">6 đơn DO</span></div>')
+        js = st.appear_js("#p3a-clock", 0.2)
+        for i, (x, y, _) in enumerate(stores):
+            t = T[0] + 0.3 + i * 0.28
+            js += (f'tl.fromTo("#p3a-d{i}",{{opacity:0,x:0,y:0,scale:0.6}},{{opacity:1,scale:1,duration:0.2}},{t:.2f});\n'
+                   f'tl.to("#p3a-d{i}",{{x:{CX-x},y:{CY-(y-30)},scale:0.5,duration:0.9,ease:"power2.in"}},{t+0.2:.2f});\n'
+                   f'tl.to("#p3a-d{i}",{{opacity:0,duration:0.1}},{t+1.1:.2f});\n')
+        js += st.pop_js("#p3a-count", T[0] + 0.3 + 6 * 0.28 + 0.9)
+        return body, "", js
+    s = Scene("p3do", lines, build, lead=0.5, tail=1.2, min_hold={0: 4.0})
+    return s
+
+
+def desk_svg(x, y=FY):
+    return (f'<g transform="translate({x},{y})">'
+            f'<rect x="80" y="-178" width="96" height="66" rx="6" fill="#2B3646" stroke="{INK}" stroke-width="3"/><rect x="87" y="-171" width="82" height="52" rx="3" fill="#7FD3FF"/>'
+            f'<rect x="122" y="-112" width="12" height="16" fill="#2B3646"/>'
+            f'<rect x="-110" y="-98" width="320" height="18" rx="4" fill="#C9965A" stroke="{INK}" stroke-width="3"/>'
+            f'<rect x="-90" y="-80" width="280" height="80" fill="#B98A55" stroke="{INK}" stroke-width="3"/></g>')
+
+
+def p3_routes():
+    lines = ["Nhân viên kho gom các DO theo tuyến đường.",
+             "Mỗi tuyến được đánh số từ một đến n,",
+             "đúng theo thứ tự xuất hàng của tuyến đó."]
+    lanes = [(1, 250), (2, 450), (3, 650)]
+    LX = 1120
+
+    def build(T, D):
+        planner = f'<g transform="translate(250,{FY - 40})">{stick("p3b-pl", "planner", 1.5, label=True, pose={"armL": (22, -70), "armR": (-22, 70)})}</g>'
+        lane_svg = ""
+        for n, y in lanes:
+            lab = "Tuyến n" if n == 3 else f"Tuyến {n}"
+            lane_svg += (f'<g><rect x="{LX}" y="{y-70}" width="620" height="140" rx="20" fill="#fff" stroke="{INK}" stroke-width="3.5"/>'
+                         f'<g id="p3b-ln{n}" opacity="0"><rect x="{LX+14}" y="{y-56}" width="150" height="112" rx="14" fill="{C["blue"]}"/>'
+                         f'<text x="{LX+89}" y="{y+14}" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="34" fill="#fff">{lab}</text></g>'
+                         f'<g transform="translate({LX+560},{y+40}) scale(0.28)">{st.truck("p3b-tk" + str(n))}</g></g>')
+        order = (f'<g id="p3b-order" opacity="0"><line x1="1790" y1="200" x2="1790" y2="700" stroke="{C["orange"]}" stroke-width="8" stroke-linecap="round"/>'
+                 f'<path d="M1772,680 L1790,712 L1808,680" fill="none" stroke="{C["orange"]}" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></g>')
+        body = svg_layer(st.floor() + desk_svg(250) + planner + lane_svg + order)
+        body += (f'<div id="p3b-o1" class="abs" style="left:1600px;top:120px;width:300px;text-align:right;opacity:0;font-size:30px;font-weight:900;color:#C45A00">Xuất trước</div>'
+                 f'<div id="p3b-o2" class="abs" style="left:1600px;top:722px;width:300px;text-align:right;opacity:0;font-size:30px;font-weight:900;color:#C45A00">Xuất sau</div>')
+        docs, js = "", ""
+        k = 0
+        for n, y in lanes:
+            for j in range(3):
+                sx, sy = 560 + (k % 3) * 120 + (k // 3) * 30, 300 + (k // 3) * 150
+                docs += doc_html(f"p3b-d{k}", sx, sy, w=80, h=96)
+                tx, ty = LX + 220 + j * 100, y
+                t = T[0] + 0.2 + k * 0.18
+                js += (f'tl.fromTo("#p3b-d{k}",{{opacity:0,scale:0.6}},{{opacity:1,scale:1,duration:0.2}},{0.2 + k*0.05:.2f});\n'
+                       f'tl.to("#p3b-d{k}",{{x:{tx-sx},y:{ty-sy},scale:0.8,duration:0.6,ease:"power2.inOut"}},{t:.2f});\n')
+                k += 1
+        body += docs
+        js += 'tl.fromTo("#p3b-pl-label",{opacity:0,y:10},{opacity:1,y:0,duration:0.3,ease:"back.out(2)"},0.3);\n'
+        for i, (n, y) in enumerate(lanes):
+            js += st.pop_js(f"#p3b-ln{n}", T[1] + 0.2 + i * 0.35)
+        js += f'tl.fromTo("#p3b-order",{{opacity:0}},{{opacity:1,duration:0.3}},{T[2]+0.1:.2f});\n'
+        js += st.appear_js("#p3b-o1", T[2] + 0.2) + st.appear_js("#p3b-o2", T[2] + 0.5)
+        return body, "", js
+    return Scene("p3routes", lines, build, lead=0.6, tail=1.2, min_hold={0: 2.8})
+
+
+def cursor_svg(cid):
+    return (f'<g id="{cid}" opacity="0"><path d="M0,0 L0,46 L12,34 L22,56 L32,51 L22,30 L38,30 Z" fill="#fff" stroke="{INK}" stroke-width="3.5" stroke-linejoin="round"/></g>')
+
+
+def p3_alloc():
+    lines = ["Sau đó, nhân viên bấm Allocate để hệ thống phân bổ tồn kho.",
+             "Hệ thống chỉ lấy hàng ở vị trí primary."]
+
+    def build(T, D):
+        R = st.Rack("p3c", 860, cols=3, levels=3, cw=280, lh=200)
+        rack = R.svg(contents={(c, k): ("cartons" if k == 0 else "pallet") for c in range(3) for k in range(3)})
+        top = R.beam_y(2) - R.lh + 20
+        dim = (f'<g id="p3c-dim" opacity="0"><rect x="{R.x0-10}" y="{top}" width="{R.cols*R.cw+20}" height="{R.beam_y(0)-top-4}" fill="{C["ground"]}" opacity="0.75"/>'
+               f'<g transform="translate({R.x0 + R.cols*R.cw/2},{(top + R.beam_y(0))/2})"><rect x="-210" y="-40" width="420" height="80" rx="18" fill="#fff" stroke="{C["red"]}" stroke-width="5"/>'
+               f'<text x="0" y="14" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="38" fill="{C["red"]}">Reserved: không pick</text></g></g>')
+        arrows = ""
+        for c in range(3):
+            x, y = R.slot(c, 0)
+            arrows += (f'<path id="p3c-a{c}" d="M560,330 C700,{330 + c*20} {x-80},{y-240} {x},{y-130}" fill="none" stroke="{C["orange"]}" stroke-width="7" '
+                       f'stroke-linecap="round" stroke-dasharray="900" stroke-dashoffset="900"/>')
+        body = svg_layer(st.floor() + rack + st.zone_labels(R, "p3c", 1700) + dim + arrows)
+        body += (f'<div class="abs" style="left:120px;top:150px;width:460px;background:#fff;border:4px solid {INK};border-radius:22px;padding:24px 28px">'
+                 f'<div style="font-size:28px;font-weight:700;color:{C["muted"]}">Tuyến 1 · 3 đơn DO</div>'
+                 f'<div style="font-size:40px;font-weight:900;margin:6px 0 18px">Phân bổ tồn kho</div>'
+                 f'<div id="p3c-btn" style="background:{C["blue"]};color:#fff;font-size:44px;font-weight:900;text-align:center;border-radius:16px;padding:16px 0;border:4px solid {INK}">ALLOCATE</div></div>'
+                 + svg_layer(f'<g transform="translate(420,600)">{cursor_svg("p3c-cur")}</g>'))
+        js = (f'tl.fromTo("#p3c-cur",{{opacity:0,x:0,y:0}},{{opacity:1,duration:0.2}},{T[0]+0.2:.2f});\n'
+              f'tl.to("#p3c-cur",{{x:-40,y:-210,duration:0.8,ease:"power2.inOut"}},{T[0]+0.4:.2f});\n'
+              f'tl.to("#p3c-btn",{{scale:0.92,duration:0.1,ease:"power2.in"}},{T[0]+1.3:.2f});\n'
+              f'tl.to("#p3c-btn",{{scale:1,backgroundColor:"{C["green"]}",duration:0.2,ease:"power2.out"}},{T[0]+1.4:.2f});\n'
+              f'tl.to("#p3c-cur",{{opacity:0,duration:0.3}},{T[0]+2.0:.2f});\n')
+        js += f'tl.fromTo("#p3c-dim",{{opacity:0}},{{opacity:1,duration:0.4}},{T[1]:.2f});\n'
+        for c in range(3):
+            js += f'tl.to("#p3c-a{c}",{{strokeDashoffset:0,duration:0.7,ease:"power2.inOut"}},{T[0]+1.8 + c*0.2:.2f});\n'
+        return body, "", js
+    s = Scene("p3alloc", lines, build, lead=0.4, tail=1.4, min_hold={0: 3.4})
+    s.sfx = [(("T", 0, 1.3), "click-soft.mp3", 0.3)]
+    return s
+
+
+def gauge_html(gid, x, y, loc="A-01-01", sku="SKU 1001"):
+    return (f'<div class="abs" style="left:{x}px;top:{y}px;width:520px;background:#fff;border:4px solid {INK};border-radius:22px;padding:22px 28px">'
+            f'<div style="font-size:28px;font-weight:700;color:{C["muted"]}">{loc} · {sku}</div>'
+            f'<div style="font-size:38px;font-weight:900;margin:4px 0 14px">Cần 10 thùng</div>'
+            f'<div style="height:40px;border-radius:20px;background:#E3E8EF;overflow:hidden;position:relative">'
+            f'<div id="{gid}-red" style="position:absolute;left:0;top:0;bottom:0;width:40%;background:{C["red"]}"></div>'
+            f'<div id="{gid}-grn" style="position:absolute;left:0;top:0;bottom:0;width:100%;background:{C["green"]};transform-origin:0% 50%;opacity:0"></div></div>'
+            f'<div style="position:relative;height:54px;margin-top:10px;font-size:40px;font-weight:900">'
+            f'<div id="{gid}-t1" class="abs" style="left:0;top:0;color:{C["red"]}">Có 4 thùng – thiếu</div>'
+            f'<div id="{gid}-t2" class="abs" style="left:0;top:0;color:{C["green"]};opacity:0">Đủ hàng ✔</div></div></div>')
+
+
+def p3_short():
+    lines = ["Nếu tồn tại vị trí primary không đủ,",
+             "hệ thống sẽ tạo lệnh châm hàng, đưa hàng từ khu reserved xuống."]
+
+    def build(T, D):
+        R = st.Rack("p3d", 260, cols=1, levels=3, cw=380, lh=210)
+        rack = R.svg(contents={(0, 2): "pallet", (0, 1): "pallet"})
+        x, by = R.slot(0, 0)
+        low = "".join(st.carton(x - 150 + i*76, by - 56, 72, 56) for i in range(2))
+        res = R.slot(0, 2)
+        arrow = (f'<path id="p3d-arr" d="M{res[0]+220},{res[1]-80} C{res[0]+330},{res[1]+40} {x+330},{by-200} {x+200},{by-60}" fill="none" stroke="{C["orange"]}" '
+                 f'stroke-width="8" stroke-linecap="round" stroke-dasharray="800" stroke-dashoffset="800"/>')
+        warn = (f'<g id="p3d-warn" opacity="0" transform="translate({x+120},{by-150})"><path d="M0,-44 L44,34 L-44,34 Z" fill="#FFD23F" stroke="{INK}" stroke-width="5" stroke-linejoin="round"/>'
+                f'<rect x="-4" y="-16" width="8" height="28" rx="3" fill="{INK}"/><circle cx="0" cy="22" r="5" fill="{INK}"/></g>')
+        body = svg_layer(st.floor() + rack + f'<g id="p3d-low">{low}</g>' + arrow + warn)
+        body += gauge_html("p3d-g", 1080, 150)
+        body += (f'<div id="p3d-task" class="abs" style="left:1080px;top:470px;width:560px;opacity:0">'
+                 f'<div style="background:#fff;border:5px solid {C["orange"]};border-radius:22px;padding:22px 28px">'
+                 f'<div style="font-size:40px;font-weight:900;color:#C45A00">Lệnh châm hàng</div>'
+                 f'<div style="font-size:32px;font-weight:700;margin-top:10px">Từ: <b>{R.loc(0, 2)}</b> (Reserved)</div>'
+                 f'<div style="font-size:32px;font-weight:700">Đến: <b>{R.loc(0, 0)}</b> (Primary)</div></div></div>')
+        js = st.pop_js("#p3d-warn", T[0] + 0.6)
+        js += st.pop_js("#p3d-task", T[1] + 0.3, 0.4)
+        js += f'tl.to("#p3d-arr",{{strokeDashoffset:0,duration:0.9,ease:"power2.inOut"}},{T[1]+0.6:.2f});\n'
+        return body, "", js
+    s = Scene("p3short", lines, build, lead=0.4, tail=1.4)
+    s.sfx = [(("T", 0, 0.6), "notification.mp3", 0.25)]
+    return s
+
+
+def p3_repl():
+    lines = ["Tài xế xe nâng xem lệnh,",
+             "đến đúng vị trí reserved và scan LPN.",
+             "Sau đó mang hàng xuống primary,",
+             "và scan vị trí pick face để xác nhận đã châm."]
+
+    def build(T, D):
+        R = st.Rack("p3e", 760, cols=2, levels=3, cw=300, lh=200)
+        rack = R.svg(contents={(1, 0): "cartons", (1, 1): "pallet", (1, 2): "pallet"})
+        sx, sb = R.slot(0, 2)
+        px, pb = R.slot(0, 0)
+        FX0 = 230
+        fx = sx - 125                          # forks centred on column 0
+        res_pal = f'<g id="p3e-respal">{st.pallet("p3e-rp", sx, sb, lpn=True, sku="1001")}</g>'
+        low = f'<g id="p3e-low">' + "".join(st.carton(px - 112 + i*76, pb - 56, 72, 56) for i in range(2)) + "</g>"
+        full = (f'<g id="p3e-full" opacity="0">' + "".join(st.carton(px - 112 + i*76, pb - 56, 72, 56) for i in range(3))
+                + "".join(st.carton(px - 74 + i*76, pb - 112, 72, 56) for i in range(2)) + "</g>")
+        load = f'<g id="p3e-load" opacity="0">{st.pallet("p3e-lp", 125, -22, lpn=True, sku="1001")}</g>'
+        fl = f'<g transform="translate({FX0},{FY})"><g id="p3e-fl">{st.forklift("p3e-fk", label=True, load=load)}</g></g>'
+        lift_top = sb - (FY - 22)
+        las1 = st.laser("p3e-las1", fx - 10, FY - 175 + lift_top * 0, sx - 39, sb - 45)
+        lab = R.label_xy(0, 0)
+        las2 = st.laser("p3e-las2", fx - 10, FY - 175, lab[0] - 40, lab[1] + 4)
+        body = svg_layer(st.floor() + rack + st.zone_labels(R, "p3e", 1690) + res_pal + low + full + fl + las1 + las2)
+        body += pda_popup("p3e-pop", "Lệnh châm hàng", [
+            ("q1", kv("Lấy từ (Reserved)", R.loc(0, 2), f"Đưa xuống: {R.loc(0, 0)} (Primary)", "#C45A00")),
+            ("q2", kv("Đã scan LPN", "LPN000456 ✔", "SKU 1001")),
+            ("q3", kv("Scan vị trí pick face", f"{R.loc(0, 0)} ✔", "Đã châm hàng")),
+        ], 120, 200, w=520)
+        body += "".join(st.badge(f"p3e-b{i+1}", i + 1, t) for i, t in enumerate(
+            ["Xem lệnh trên PDA", "Đến Reserved, scan LPN", "Mang hàng xuống Primary", "Scan vị trí pick face"]))
+        body += gauge_html("p3e-g", 1340, 140)
+        js = st.badge_seq_js([f"p3e-b{i+1}" for i in range(4)], T, D - 0.3)
+        js += st.appear_js("#p3e-pop", T[0] + 0.1)
+        js += swap_js("p3e-pop", [(T[0] + 0.2, "q1"), (T[1] + 2.0, "q2"), (T[3] + 0.9, "q3")])
+        js += 'tl.fromTo("#p3e-fk-drv-label",{opacity:0,y:10},{opacity:1,y:0,duration:0.3,ease:"back.out(2)"},0.3);\n'
+        js += f'tl.to("#p3e-fl",{{x:{fx-FX0},duration:1.2,ease:"power2.inOut"}},{T[1]:.2f});\n'
+        js += f'tl.to("#p3e-fk-forks",{{y:{lift_top},duration:0.9,ease:"power2.inOut"}},{T[1]+1.0:.2f});\n'
+        js += f'tl.set("#p3e-las1",{{y:0}},0);\n' + st.laser_js("p3e-las1", T[1] + 1.95)
+        t2 = T[2]
+        js += f'tl.set("#p3e-respal",{{opacity:0}},{t2+0.1:.2f});\ntl.set("#p3e-load",{{opacity:1}},{t2+0.1:.2f});\n'
+        js += f'tl.to("#p3e-fk-forks",{{y:0,duration:1.1,ease:"power2.inOut"}},{t2+0.2:.2f});\n'
+        js += f'tl.to("#p3e-low",{{opacity:0,duration:0.2}},{t2+1.5:.2f});\n'
+        js += f'tl.fromTo("#p3e-full",{{opacity:0,y:-30}},{{opacity:1,y:0,duration:0.4,ease:"bounce.out"}},{t2+1.5:.2f});\n'
+        js += f'tl.to("#p3e-load",{{opacity:0,duration:0.3}},{t2+1.5:.2f});\n'
+        js += st.laser_js("p3e-las2", T[3] + 0.4)
+        js += (f'tl.to("#p3e-g-red",{{opacity:0,duration:0.2}},{T[3]+0.9:.2f});\n'
+               f'tl.fromTo("#p3e-g-grn",{{opacity:0,scaleX:0.4}},{{opacity:1,scaleX:1,duration:0.6,ease:"power2.out"}},{T[3]+0.9:.2f});\n'
+               f'tl.to("#p3e-g-t1",{{opacity:0,duration:0.15}},{T[3]+1.1:.2f});\ntl.to("#p3e-g-t2",{{opacity:1,duration:0.2}},{T[3]+1.2:.2f});\n')
+        return body, "", js
+    s = Scene("p3repl", lines, build, lead=0.4, tail=1.6, min_hold={0: 2.4, 1: 3.0, 2: 2.6, 3: 3.2})
+    s.sfx = [(("T", 1, 1.95), "ping.mp3", 0.25), (("T", 3, 1.0), "chime.mp3", 0.25)]
+    return s
+
+
+def ic_route():
+    return ic_svg(f'<rect x="6" y="8" width="52" height="12" rx="4" fill="{C["blue"]}"/><rect x="6" y="26" width="52" height="12" rx="4" fill="{C["blue"]}" opacity="0.7"/>'
+                  f'<rect x="6" y="44" width="52" height="12" rx="4" fill="{C["blue"]}" opacity="0.45"/><text x="14" y="18" font-family="{FONT}" font-weight="900" font-size="10" fill="#fff">1</text>')
+
+
+def ic_down():
+    return ic_svg(f'<rect x="10" y="6" width="44" height="16" rx="3" fill="{C["reserved"]}" stroke="{INK}" stroke-width="2"/><rect x="10" y="44" width="44" height="16" rx="3" fill="{C["orange"]}" stroke="{INK}" stroke-width="2"/>'
+                  f'<path d="M32 24v16M24 32l8 9 8-9" fill="none" stroke="{INK}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>')
+
+
+def part3():
+    from kit import mini_rack
+    return [p3_do(), p3_routes(), p3_alloc(), p3_short(), p3_repl(),
+            ghinho("g3", 3, [
+                (ic_route(), "Gom DO theo tuyến, <b>số tuyến = thứ tự xuất</b>", "Gom DO theo tuyến, số tuyến = thứ tự xuất"),
+                (mini_rack("prim"), "Allocate <b>chỉ lấy hàng ở Primary</b>", "Allocate chỉ lấy hàng ở Primary"),
+                (ic_down(), "Thiếu tồn → <b>châm hàng</b> từ Reserved", "Thiếu tồn, châm hàng từ Reserved"),
+            ])]
 def part4(): return []
 def part5(): return []
