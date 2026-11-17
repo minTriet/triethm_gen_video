@@ -257,18 +257,22 @@ def pose_js(fid, t, pose, dur=0.4, ease="power2.inOut"):
     return "\n".join(out) + "\n"
 
 
-WALK_A = {"legL": (24, 10), "legR": (-22, 4), "armL": (-20, -10), "armR": (22, 10)}
-WALK_B = {"legL": (-22, 4), "legR": (24, 10), "armL": (22, 10), "armR": (-20, -10)}
+SWAY = 7      # degrees the whole body tips each step
+BOB = 5       # px the body lifts mid-step
 
 
-def walk_js(fid, t0, t1, step=0.3):
-    """Walk cycle between t0 and t1, ending back at REST."""
-    out, t, k = [], t0, 0
+def walk_js(fid, t0, t1, step=0.32):
+    """Walk = the whole figure tips left/right around its feet and bobs slightly.
+    Limbs stay in their pose (no leg/arm swing). Move the figure's wrapper separately."""
+    out = [f'tl.set("#{fid}-body",{{rotation:0,y:0,transformOrigin:"50% 100%"}},{t0});']
+    t, k = t0, 0
     while t + step <= t1 + 1e-6:
-        out.append(pose_js(fid, round(t, 3), WALK_A if k % 2 == 0 else WALK_B, dur=step, ease="sine.inOut"))
+        ang = SWAY if k % 2 == 0 else -SWAY
+        out.append(f'tl.to("#{fid}-body",{{rotation:{ang},duration:{step/2:.3f},ease:"sine.out"}},{t:.3f});')
+        out.append(f'tl.to("#{fid}-body",{{y:-{BOB},duration:{step/2:.3f},ease:"sine.out"}},{t:.3f});')
+        out.append(f'tl.to("#{fid}-body",{{rotation:0,y:0,duration:{step/2:.3f},ease:"sine.in"}},{t+step/2:.3f});')
         t += step; k += 1
-    out.append(pose_js(fid, round(t, 3), REST, dur=0.2))
-    return "".join(out)
+    return "\n".join(out) + "\n"
 
 
 # ---------------------------------------------------------------- icons (64x64 viewBox)

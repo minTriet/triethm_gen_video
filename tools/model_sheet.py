@@ -1,7 +1,7 @@
 """Character model sheet for approval.  Run: python3 tools/model_sheet.py"""
 import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
-from kit import C, FONT, ROLE, font_css, stick, pda_svg, WALK_A, WALK_B
+from kit import C, FONT, ROLE, font_css, stick, pda_svg, SWAY, BOB
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 OUT = os.path.join(ROOT, "design")
@@ -109,8 +109,8 @@ CELLS.append(("Giảng viên", ROLE["instructor"][0], "Sơ mi xanh, cà vạt ca
     stick("m7", "instructor", 1.0, pose={"armR": (-150, -24)}), 0))
 
 ACTIONS = [
-    ("Đi bộ 1", stick("a1", "picker", 1.0, pose=WALK_A)),
-    ("Đi bộ 2", stick("a2", "picker", 1.0, pose=WALK_B)),
+    ("Nghiêng trái", f'<g transform="translate(0,-{BOB}) rotate(-{SWAY})">{stick("a1", "picker", 1.0)}</g><path d="M-30,-40 Q-44,-60 -30,-80" fill="none" stroke="#1F5FBF" stroke-width="3" stroke-linecap="round" opacity="0.6"/>'),
+    ("Nghiêng phải", f'<g transform="translate(0,-{BOB}) rotate({SWAY})">{stick("a2", "picker", 1.0)}</g><path d="M30,-40 Q44,-60 30,-80" fill="none" stroke="#1F5FBF" stroke-width="3" stroke-linecap="round" opacity="0.6"/>'),
     ("Chỉ tay", stick("a3", "instructor", 1.0, pose={"armL": (128, -10)})),
     ("Nhấc thùng", stick("a4", "receiver", 1.0, pose={"armL": (150, 20), "armR": (-150, -20)})
         + carton_flat(-32, -202, 64, 44)),
@@ -141,7 +141,7 @@ def build():
                 f'<div class="an">{t}</div></div>')
     cells += (f'<div class="cell" style="left:{60 + 3*(W+10)}px;top:{128 + H + 20}px;width:{W}px;height:{H}px">'
               f'<div style="position:absolute;left:5px;top:20px;width:440px;height:300px">{act}</div>'
-              f'<div class="cap"><span class="chip" style="background:#C9D3E0"></span><b>Động tác</b><div class="note">đi bộ · chỉ tay · nhấc thùng</div></div></div>')
+              f'<div class="cap"><span class="chip" style="background:#C9D3E0"></span><b>Động tác</b><div class="note">đi = nghiêng trái/phải + nhún nhẹ</div></div></div>')
     html = f'''<!doctype html><html lang="vi"><head><meta charset="utf-8"><style>
 {font_css('../tap-1-tong-quan/assets/fonts/')}
 *{{margin:0;padding:0;box-sizing:border-box}}
