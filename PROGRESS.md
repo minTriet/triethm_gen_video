@@ -12,5 +12,10 @@ Generator: `python3 tools/build_full.py` → thư mục `video/`. Render: `cd vi
 | Phần 2 – Nhập hàng & Cất hàng | xong (tools/parts.py) |
 | Phần 3 – Đơn hàng, Allocate & Châm hàng | xong |
 | Phần 4 – Pick chẵn & lẻ | xong |
-| Phần 5 – Kiểm hàng & Bàn giao + Tổng kết | chưa |
-| Check + review + render bản đầy đủ | chưa |
+| Phần 5 – Kiểm hàng & Bàn giao + Tổng kết | xong |
+| Check + review + render bản đầy đủ | check đạt; đang render `video/renders/van-hanh-kho-kho-full-v1.mp4` |
+
+## Đối chiếu với file gốc
+Mọi cảnh, bước, nhãn và câu thoại (dùng nguyên văn làm phụ đề) của Tập 1–5 đều có trong video.
+Khác biệt có chủ đích: gộp 1 video, thẻ chương thay màn mở/kết từng tập; không giọng đọc; nhịp đọc 1.3×;
+sound effect thưa (≥ 4 s); mã hàng/vị trí/cửa hàng/số lượng là minh họa.
