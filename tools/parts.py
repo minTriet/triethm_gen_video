@@ -36,7 +36,7 @@ def svg_layer(inner, lid=""):
     return f'<svg{i} class="abs" style="left:0;top:0" width="1920" height="1080" viewBox="0 0 1920 1080">{inner}</svg>'
 
 
-def pallet_build(pid, cx, by, sku=None, shown=False):
+def pallet_build(pid, cx, by, sku=None, shown=False, lpn=True):
     """Pallet with 4 cartons {pid}-c0..3 and LPN {pid}-lpn (hidden unless shown)."""
     o = 1 if shown else 0
     s = [f'<g id="{pid}"><rect x="{cx-80}" y="{by-18}" width="160" height="18" rx="2" fill="{C["pal_r"]}" stroke="{INK}" stroke-width="2.5"/>']
@@ -45,6 +45,9 @@ def pallet_build(pid, cx, by, sku=None, shown=False):
     pos = [(cx - 76, by - 74), (cx, by - 74), (cx - 76, by - 130), (cx, by - 130)]
     for i, (x, y) in enumerate(pos):
         s.append(f'<g id="{pid}-c{i}" opacity="{o}">' + st.carton(x, y, 76, 56, label=(sku if i == 1 else None), fs=14) + "</g>")
+    if not lpn:
+        s.append("</g>")
+        return "".join(s)
     s.append(f'<g id="{pid}-lpn" opacity="{o}"><rect x="{cx-72}" y="{by-64}" width="66" height="38" rx="3" fill="#fff" stroke="{INK}" stroke-width="2"/>'
              f'<text x="{cx-39}" y="{by-49}" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="12" fill="{INK}">LPN</text>'
              + st.barcode(cx - 66, by - 46, 54, 14) + '</g></g>')

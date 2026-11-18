@@ -41,7 +41,7 @@
   font-weight:700;font-size:54px;line-height:1.3;padding:12px 34px;border-radius:16px;box-shadow:0 4px 0 rgba(27,36,48,.10)}
 
   </style>
-  <div id="root" data-composition-id="captions" data-width="1920" data-height="1080" data-duration="35.84">
+  <div id="root" data-composition-id="captions" data-width="1920" data-height="1080" data-duration="132.31">
     <div id="cap1" class="clip cap" data-start="0.4" data-duration="1.77" data-track-index="0"><span id="cap1-t">Hàng TC là hàng trung chuyển.</span></div>
     <div id="cap2" class="clip cap" data-start="2.32" data-duration="5.0" data-track-index="0"><span id="cap2-t">Hàng nhập vào không lưu kho, mà được chia ngay cho các cửa hàng, giống như cross dock.</span></div>
     <div id="cap3" class="clip cap" data-start="10.62" data-duration="2.92" data-track-index="0"><span id="cap3-t">Khi xe hàng TC về kho, nhân viên dỡ hàng xuống.</span></div>
@@ -50,6 +50,21 @@
     <div id="cap6" class="clip cap" data-start="24.14" data-duration="2.4" data-track-index="0"><span id="cap6-t">scan mã hàng,</span></div>
     <div id="cap7" class="clip cap" data-start="26.69" data-duration="4.0" data-track-index="0"><span id="cap7-t">và nhập thẳng số lượng nhận, không cần LPN, không nhập batch, lot hay ngày.</span></div>
     <div id="cap8" class="clip cap" data-start="30.84" data-duration="3.6" data-track-index="0"><span id="cap8-t">Chỉ nhận đủ hoặc thiếu so với phiếu, không nhận dư.</span></div>
+    <div id="cap9" class="clip cap" data-start="36.24" data-duration="4.0" data-track-index="0"><span id="cap9-t">Hàng nhận xong được mang vào khu TC trong kho, không cất lên kệ.</span></div>
+    <div id="cap10" class="clip cap" data-start="54.76" data-duration="2.92" data-track-index="0"><span id="cap10-t">DO của các cửa hàng đã có sẵn số lượng cần.</span></div>
+    <div id="cap11" class="clip cap" data-start="57.83" data-duration="3.8" data-track-index="0"><span id="cap11-t">Hệ thống dùng chính hàng TC vừa nhập để chia cho từng cửa hàng.</span></div>
+    <div id="cap12" class="clip cap" data-start="63.43" data-duration="5.23" data-track-index="0"><span id="cap12-t">Trong khu TC, mỗi cửa hàng có một vị trí riêng, chỉ dán mã cửa hàng, không có mã vị trí.</span></div>
+    <div id="cap13" class="clip cap" data-start="70.56" data-duration="2.4" data-track-index="0"><span id="cap13-t">Nhân viên scan mã hàng,</span></div>
+    <div id="cap14" class="clip cap" data-start="73.11" data-duration="2.8" data-track-index="0"><span id="cap14-t">PDA hiện cửa hàng và số lượng cần chia.</span></div>
+    <div id="cap15" class="clip cap" data-start="76.06" data-duration="3.2" data-track-index="0"><span id="cap15-t">Đến vị trí của cửa hàng đó, scan mã cửa hàng,</span></div>
+    <div id="cap16" class="clip cap" data-start="79.41" data-duration="3.0" data-track-index="0"><span id="cap16-t">đặt đúng số lượng rồi xác nhận.</span></div>
+    <div id="cap17" class="clip cap" data-start="82.56" data-duration="4.0" data-track-index="0"><span id="cap17-t">Lặp lại cho đến khi chia hết hàng.</span></div>
+    <div id="cap18" class="clip cap" data-start="88.36" data-duration="3.85" data-track-index="0"><span id="cap18-t">Hàng TC nhập bao nhiêu thì chia hết bấy nhiêu, không để lại tồn kho.</span></div>
+    <div id="cap19" class="clip cap" data-start="93.81" data-duration="2.69" data-track-index="0"><span id="cap19-t">Nếu nhận thiếu, hàng được phân bổ từ trên xuống.</span></div>
+    <div id="cap20" class="clip cap" data-start="96.65" data-duration="4.4" data-track-index="0"><span id="cap20-t">Các cửa hàng phía trên nhận đủ, cửa hàng phía dưới có thể không có hàng.</span></div>
+    <div id="cap21" class="clip cap" data-start="103.05" data-duration="5.0" data-track-index="0"><span id="cap21-t">Khi bàn giao, nhân viên gom hàng chẵn, hàng lẻ và hàng ở vị trí TC của từng cửa hàng,</span></div>
+    <div id="cap22" class="clip cap" data-start="108.2" data-duration="3.0" data-track-index="0"><span id="cap22-t">rồi bàn giao cho vận tải như bình thường.</span></div>
+    <div id="cap23" class="clip cap" data-start="125.71" data-duration="4.0" data-track-index="0"><span id="cap23-t">Đó là toàn bộ quy trình hàng TC. Chúc các bạn làm việc thật tốt!</span></div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
@@ -69,6 +84,36 @@
     tl.to("#cap7-t",{opacity:0,duration:0.12,ease:"power2.in"},30.57);
     tl.fromTo("#cap8-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},30.84);
     tl.to("#cap8-t",{opacity:0,duration:0.12,ease:"power2.in"},34.32);
+    tl.fromTo("#cap9-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},36.24);
+    tl.to("#cap9-t",{opacity:0,duration:0.12,ease:"power2.in"},40.12);
+    tl.fromTo("#cap10-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},54.76);
+    tl.to("#cap10-t",{opacity:0,duration:0.12,ease:"power2.in"},57.56);
+    tl.fromTo("#cap11-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},57.83);
+    tl.to("#cap11-t",{opacity:0,duration:0.12,ease:"power2.in"},61.51);
+    tl.fromTo("#cap12-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},63.43);
+    tl.to("#cap12-t",{opacity:0,duration:0.12,ease:"power2.in"},68.54);
+    tl.fromTo("#cap13-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},70.56);
+    tl.to("#cap13-t",{opacity:0,duration:0.12,ease:"power2.in"},72.84);
+    tl.fromTo("#cap14-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},73.11);
+    tl.to("#cap14-t",{opacity:0,duration:0.12,ease:"power2.in"},75.79);
+    tl.fromTo("#cap15-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},76.06);
+    tl.to("#cap15-t",{opacity:0,duration:0.12,ease:"power2.in"},79.14);
+    tl.fromTo("#cap16-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},79.41);
+    tl.to("#cap16-t",{opacity:0,duration:0.12,ease:"power2.in"},82.29);
+    tl.fromTo("#cap17-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},82.56);
+    tl.to("#cap17-t",{opacity:0,duration:0.12,ease:"power2.in"},86.44);
+    tl.fromTo("#cap18-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},88.36);
+    tl.to("#cap18-t",{opacity:0,duration:0.12,ease:"power2.in"},92.09);
+    tl.fromTo("#cap19-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},93.81);
+    tl.to("#cap19-t",{opacity:0,duration:0.12,ease:"power2.in"},96.38);
+    tl.fromTo("#cap20-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},96.65);
+    tl.to("#cap20-t",{opacity:0,duration:0.12,ease:"power2.in"},100.93);
+    tl.fromTo("#cap21-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},103.05);
+    tl.to("#cap21-t",{opacity:0,duration:0.12,ease:"power2.in"},107.93);
+    tl.fromTo("#cap22-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},108.2);
+    tl.to("#cap22-t",{opacity:0,duration:0.12,ease:"power2.in"},111.08);
+    tl.fromTo("#cap23-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},125.71);
+    tl.to("#cap23-t",{opacity:0,duration:0.12,ease:"power2.in"},129.59);
     window.__timelines["captions"] = tl;
   </script>
 </template>

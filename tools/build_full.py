@@ -66,7 +66,7 @@ def scene_file(cid, body, css, js, duration):
 PARTS = ["Tổng quan kho", "Nhập hàng & Cất hàng", "Đơn hàng, Phân bổ & Châm hàng", "Pick hàng chẵn & lẻ", "Kiểm hàng & Bàn giao"]
 
 
-def chapter(num, title):
+def chapter(num, title, lead=2.2):
     cid = f"chap{num}"
 
     def build(T, D):
@@ -83,7 +83,7 @@ def chapter(num, title):
     tl.to("#{cid}-txt",{{opacity:0,x:40,duration:0.25,ease:"power2.in"}},{D-0.4:.2f});
 """
         return body, "#root{background:transparent}", js
-    s = Scene(cid, [], build, lead=2.2, tail=0)
+    s = Scene(cid, [], build, lead=lead, tail=0)
     s.sfx = [(0.0, "whoosh.mp3", 0.28)]
     s.is_chapter = True
     return s
