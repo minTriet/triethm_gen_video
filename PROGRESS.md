@@ -19,3 +19,13 @@ Generator: `python3 tools/build_full.py` → thư mục `video/`. Render: `cd vi
 Mọi cảnh, bước, nhãn và câu thoại (dùng nguyên văn làm phụ đề) của Tập 1–5 đều có trong video.
 Khác biệt có chủ đích: gộp 1 video, thẻ chương thay màn mở/kết từng tập; không giọng đọc; nhịp đọc 1.3×;
 sound effect thưa (≥ 4 s); mã hàng/vị trí/cửa hàng/số lượng là minh họa.
+
+# Video quy trình toàn kho CXAD (lấy hàng bằng giấy)
+
+Nguồn: source/Context_Video_CXAD_Paper_Picking.md (v2, đã xác nhận) · Nhân vật: design/cxad-cast.png
+Generator: `python3 tools/build_cxad.py` → thư mục `video-cxad/`.
+
+| Phần | Trạng thái |
+| --- | --- |
+| Mở đầu + sơ đồ kho 3 khu + Chương 1 Bước 1–2 | bản xem trước: video-cxad/renders/cxad-34s-v1.mp4 (chờ duyệt) |
+| Chương 1 Bước 3–11, Chương 2–4, Kết | chưa làm |

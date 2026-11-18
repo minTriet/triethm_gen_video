@@ -37,6 +37,10 @@ ROLE = {  # vest colour + label for each role (series bible)
     "checker": ("#8B5CF6", "Checker"),
     "transport": ("#8C96A3", "Đội vận tải"),
     "instructor": ("#1F5FBF", "Giảng viên"),
+    # CXAD video
+    "xlct": ("#1F5FBF", "Xử lý chứng từ (XLCT)"),
+    "manager": ("#FFFFFF", "Quản lý kho"),
+    "driver": ("#8C96A3", "Tài xế"),
 }
 
 FONT = "'Be Vietnam Pro'"
@@ -166,6 +170,7 @@ OUTFIT = {  # role -> (top, hat)
     "receiver": ("vest", True), "forklift": ("vest", True), "picker": ("vest", True),
     "checker": ("vest", True), "transport": ("vest", True),
     "planner": ("shirt", False), "instructor": ("shirt_tie", False),
+    "xlct": ("shirt", False), "manager": ("shirt_navytie", "white"), "driver": ("vest", True),
 }
 REST = {"armL": (16, -8), "armR": (-16, 8), "legL": (8, -2), "legR": (-8, 2)}
 
@@ -220,15 +225,17 @@ def stick(fid, role="picker", scale=1.0, label=False, pose=None, hand_r="", hand
                 f'<rect x="-15.8" y="-72" width="12.8" height="5" fill="#EEF2F6"/><rect x="3" y="-72" width="12.8" height="5" fill="#EEF2F6"/>')
     else:
         tie = ""
-        if top == "shirt_tie":
-            tie = f'<path d="M0,-102 L-4,-97 L-2,-76 L0,-72 L2,-76 L4,-97 Z" fill="{C["orange"]}" stroke="{ink}" stroke-width="1.5"/>'
+        if top in ("shirt_tie", "shirt_navytie"):
+            tcol = C["orange"] if top == "shirt_tie" else "#1B2F5E"
+            tie = f'<path d="M0,-102 L-4,-97 L-2,-76 L0,-72 L2,-76 L4,-97 Z" fill="{tcol}" stroke="{ink}" stroke-width="1.5"/>'
         body = (f'<path d="M-15,-100 Q0,-108 15,-100 L14,-61 Q0,-58 -14,-61 Z" fill="{col}" stroke="{ink}" stroke-width="3" stroke-linejoin="round"/>'
                 f'<path d="M-7,-104 L0,-96 L7,-104" fill="#fff" stroke="{ink}" stroke-width="2" stroke-linejoin="round"/>{tie}')
     head = (f'<circle cx="0" cy="-127" r="19" fill="#fff" stroke="{ink}" stroke-width="5.5"/>'
             f'<circle cx="-6.5" cy="-129" r="2.8" fill="{ink}"/><circle cx="6.5" cy="-129" r="2.8" fill="{ink}"/>'
             f'<path d="M-6,-119 Q0,-114 6,-119" fill="none" stroke="{ink}" stroke-width="2.6" stroke-linecap="round"/>')
     if hat:
-        head += (f'<path d="M-19,-133 Q-19,-152 0,-153 Q19,-152 19,-133 Z" fill="{col}" stroke="{ink}" stroke-width="3" stroke-linejoin="round"/>'
+        hcol = "#FFFFFF" if hat == "white" else col
+        head += (f'<path d="M-19,-133 Q-19,-152 0,-153 Q19,-152 19,-133 Z" fill="{hcol}" stroke="{ink}" stroke-width="3" stroke-linejoin="round"/>'
                  f'<path d="M-2,-152 L-2,-134 M2,-152 L2,-134" stroke="{ink}" stroke-width="1.5" opacity="0.35"/>'
                  f'<line x1="-24" y1="-133" x2="24" y2="-133" stroke="{ink}" stroke-width="5" stroke-linecap="round"/>')
     lab = ""
