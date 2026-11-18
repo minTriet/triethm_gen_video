@@ -94,7 +94,7 @@ CELLS.append(("Nhân viên điều phối", ROLE["planner"][0], "Sơ mi xanh dư
     f'<g transform="translate(0,16)">{stick("m3", "planner", 1.0, pose={"armL": (22, -70), "armR": (-22, 70)})}</g>'
     + desk(), -40))
 
-CELLS.append(("Quản lý kho", ROLE["manager"][0], "Sơ mi trắng · cà vạt xanh đậm",
+CELLS.append(("Quản lý kho", ROLE["manager"][0], "Mũ trắng · sơ mi trắng · cà vạt",
     stick("m8", "manager", 1.0, pose=MANAGER_HOLD, hand_l=folder_svg()), 0))
 
 CELLS.append(("Picker", ROLE["picker"][0], "Áo + mũ vàng · kéo trolley",
@@ -160,8 +160,8 @@ h1 span{{color:{C['blue']}}}
 .act{{position:absolute;top:0;width:170px;text-align:center}}
 .an{{font-size:19px;font-weight:700;margin-top:2px}}
 </style></head><body>
-<h1>Model nhân vật <span>– bộ mặc định v3</span></h1>
-<div class="sub">Đầu tròn · mắt chấm · miệng cười · thân nét đen · áo bảo hộ có sọc phản quang + mũ bảo hộ theo màu vai</div>
+<h1>Model nhân vật <span>– bộ mặc định v3 (bàn tay tròn)</span></h1>
+<div class="sub">Đầu tròn · mắt chấm · miệng cười · thân nét đen · bàn tay tròn, không ngón tay · áo bảo hộ có sọc phản quang + mũ bảo hộ theo màu vai</div>
 {cells}
 </body></html>'''
     p = os.path.join(OUT, "model-sheet.html")

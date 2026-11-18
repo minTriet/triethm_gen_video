@@ -978,8 +978,7 @@ def p5_recap():
                       f'<div style="font-size:27px;font-weight:900;line-height:1.15;margin:8px 10px 0">{name}</div></div>')
             if i < len(steps) - 1:
                 chips += f'<div id="p5e-a{i}" class="abs" style="left:{x+W+2}px;top:270px;width:{G-4}px;text-align:center;font-size:36px;font-weight:900;color:{C["blue"]};opacity:0">›</div>'
-        thumb = f'<circle cx="0" cy="25" r="8" fill="{INK}"/><line x1="0" y1="30" x2="0" y2="44" stroke="{INK}" stroke-width="7" stroke-linecap="round"/>'
-        man = svg_layer(f'<g transform="translate(960,{FY+40})"><g id="p5e-man">{stick("p5e-man", "instructor", 2.0, hand_r=thumb)}</g></g>')
+        man = svg_layer(f'<g transform="translate(960,{FY+40})"><g id="p5e-man">{stick("p5e-man", "instructor", 2.0)}</g></g>')
         body = f'<div class="abs" style="left:0;top:{FY}px;width:1920px;height:{1080-FY}px;background:{C["floor"]}"></div>' + chips + man
         js = ""
         for i in range(len(steps)):

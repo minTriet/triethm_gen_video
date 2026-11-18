@@ -28,7 +28,7 @@ def task_cards():
 
 
 CELLS = [
-    ("Đứng chuẩn", "Sơ mi trắng · cà vạt, thẻ đeo xanh đậm",
+    ("Đứng chuẩn", "Mũ bảo hộ trắng · sơ mi trắng · cà vạt xanh đậm",
      stick("q1", "manager", 1.0), 0),
     ("Cầm bìa hồ sơ", "Dấu hiệu nhận ra vai quản lý",
      stick("q2", "manager", 1.0, pose=MANAGER_HOLD, hand_l=folder_svg()), 0),
