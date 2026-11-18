@@ -37,6 +37,7 @@ ROLE = {  # vest colour + label for each role (series bible)
     "checker": ("#8B5CF6", "Checker"),
     "transport": ("#8C96A3", "Đội vận tải"),
     "instructor": ("#1F5FBF", "Giảng viên"),
+    "manager": ("#16478F", "Quản lý kho"),
 }
 
 FONT = "'Be Vietnam Pro'"
@@ -166,6 +167,7 @@ OUTFIT = {  # role -> (top, hat)
     "receiver": ("vest", True), "forklift": ("vest", True), "picker": ("vest", True),
     "checker": ("vest", True), "transport": ("vest", True),
     "planner": ("shirt", False), "instructor": ("shirt_tie", False),
+    "manager": ("manager", False),
 }
 REST = {"armL": (16, -8), "armR": (-16, 8), "legL": (8, -2), "legR": (-8, 2)}
 
@@ -222,7 +224,14 @@ def stick(fid, role="picker", scale=1.0, label=False, pose=None, hand_r="", hand
         tie = ""
         if top == "shirt_tie":
             tie = f'<path d="M0,-102 L-4,-97 L-2,-76 L0,-72 L2,-76 L4,-97 Z" fill="{C["orange"]}" stroke="{ink}" stroke-width="1.5"/>'
-        body = (f'<path d="M-15,-100 Q0,-108 15,-100 L14,-61 Q0,-58 -14,-61 Z" fill="{col}" stroke="{ink}" stroke-width="3" stroke-linejoin="round"/>'
+        shirt = col
+        if top == "manager":  # white shirt, navy tie, ID badge on a navy lanyard
+            shirt = "#FFFFFF"
+            tie = (f'<path d="M0,-102 L-4.5,-97 L-2.5,-74 L0,-69 L2.5,-74 L4.5,-97 Z" fill="{col}" stroke="{ink}" stroke-width="1.5"/>'
+                   f'<path d="M-8,-103 L-10,-86 M8,-103 L10,-86" stroke="{col}" stroke-width="2.2" fill="none"/>'
+                   f'<rect x="-14" y="-87" width="9" height="12" rx="1.5" fill="{col}" stroke="{ink}" stroke-width="1.5"/>'
+                   f'<rect x="-12.3" y="-84" width="5.6" height="2.4" fill="#fff"/>')
+        body = (f'<path d="M-15,-100 Q0,-108 15,-100 L14,-61 Q0,-58 -14,-61 Z" fill="{shirt}" stroke="{ink}" stroke-width="3" stroke-linejoin="round"/>'
                 f'<path d="M-7,-104 L0,-96 L7,-104" fill="#fff" stroke="{ink}" stroke-width="2" stroke-linejoin="round"/>{tie}')
     head = (f'<circle cx="0" cy="-127" r="19" fill="#fff" stroke="{ink}" stroke-width="5.5"/>'
             f'<circle cx="-6.5" cy="-129" r="2.8" fill="{ink}"/><circle cx="6.5" cy="-129" r="2.8" fill="{ink}"/>'
