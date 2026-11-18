@@ -34,4 +34,4 @@ Generator: `python3 tools/build_cxad.py` → thư mục `video-cxad/`.
 # Video CXAD bản giấy (nhập / cất / lấy hàng bằng giấy, PDA chỉ ở chia hàng và xác nhận lên xe)
 
 Nguồn: source/Context_Video_CXAD_Paper_Full.md · Storyboard: design/cxad-giay-storyboard.pdf
-Generator: `python3 tools/build_cxad_paper.py` → `video-cxad-paper/` · Render: video-cxad-paper/renders/quy-trinh-kho-cxad-giay-v1.mp4 (5:10, 1080p)
+Generator: `python3 tools/build_cxad_paper.py` → `video-cxad-paper/` · Render: v1 quy-trinh-kho-cxad-giay-v1.mp4 · v2 (bàn tay tròn) video-cxad-paper/renders/quy-trinh-kho-cxad-giay-v2.mp4 (5:10, 1080p)
