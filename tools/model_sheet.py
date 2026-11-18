@@ -156,8 +156,8 @@ h1 span{{color:{C['blue']}}}
 .act{{position:absolute;top:0;width:110px;text-align:center}}
 .an{{font-size:19px;font-weight:700;margin-top:2px}}
 </style></head><body>
-<h1>Model nhân vật <span>– bản duyệt v2</span></h1>
-<div class="sub">Đầu tròn · mắt chấm · miệng cười · thân nét đen · áo bảo hộ có sọc phản quang + mũ bảo hộ theo màu vai</div>
+<h1>Model nhân vật <span>– bản v3 (bàn tay tròn)</span></h1>
+<div class="sub">Đầu tròn · mắt chấm · miệng cười · thân nét đen · bàn tay tròn, không ngón tay · áo bảo hộ có sọc phản quang + mũ bảo hộ theo màu vai</div>
 {cells}
 </body></html>'''
     p = os.path.join(OUT, "model-sheet.html")
