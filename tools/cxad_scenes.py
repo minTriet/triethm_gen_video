@@ -1007,8 +1007,7 @@ def cx_end():
                       f'<div id="{P}-k{i}" class="abs" style="right:-18px;top:-18px;opacity:0">{st.check(54)}</div></div>')
             if i < len(steps) - 1:
                 chips += f'<div id="{P}-a{i}" class="abs" style="left:{x+W}px;top:242px;width:{G}px;text-align:center;font-size:50px;font-weight:900;color:{C["blue"]};opacity:0">›</div>'
-        thumb = f'<circle cx="0" cy="25" r="8" fill="{INK}"/><line x1="0" y1="30" x2="0" y2="44" stroke="{INK}" stroke-width="7" stroke-linecap="round"/>'
-        man = svg_layer(f'<g transform="translate(960,{FY+40})"><g id="{P}-man">{stick(P + "-man", "instructor", 2.0, hand_r=thumb)}</g></g>')
+        man = svg_layer(f'<g transform="translate(960,{FY+40})"><g id="{P}-man">{stick(P + "-man", "instructor", 2.0)}</g></g>')
         body = f'<div class="abs" style="left:0;top:{FY}px;width:1920px;height:{1080-FY}px;background:{C["floor"]}"></div>' + chips + man
         js = ""
         for i in range(len(steps)):

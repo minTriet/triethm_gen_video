@@ -99,8 +99,7 @@ def pa_end():
 
     def build(T, D):
         P = "pae"
-        thumb = f'<circle cx="0" cy="25" r="8" fill="{INK}"/><line x1="0" y1="30" x2="0" y2="44" stroke="{INK}" stroke-width="7" stroke-linecap="round"/>'
-        man = svg_layer(f'<g transform="translate(960,{FY+40})"><g id="{P}-man">{stick(P + "-man", "instructor", 1.8, hand_r=thumb)}</g></g>')
+        man = svg_layer(f'<g transform="translate(960,{FY+40})"><g id="{P}-man">{stick(P + "-man", "instructor", 1.8)}</g></g>')
         body = f'<div class="abs" style="left:0;top:{FY}px;width:1920px;height:{1080-FY}px;background:{C["floor"]}"></div>' + stage_chips(P, 170) + man
         js = chips_js(P, 0.3, 0.35)
         for i in range(4):

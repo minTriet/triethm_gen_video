@@ -175,12 +175,14 @@ OUTFIT = {  # role -> (top, hat)
 REST = {"armL": (16, -8), "armR": (-16, 8), "legL": (8, -2), "legR": (-8, 2)}
 
 
-def _limb(fid, side, kind, ang, ang2, extra=""):
+def _limb(fid, side, kind, ang, ang2, extra="", ball=False):
     """Two-segment limb. kind 'arm' or 'leg'. Rotations are SVG degrees (clockwise)."""
     ink = C["ink"]
     if kind == "arm":
         root = (-12 if side == "L" else 12, -98)
         a, b, end = 25, 23, f'<circle cx="0" cy="23" r="4.5" fill="{ink}"/>'
+        if ball:   # round "Doraemon" hand: no fingers, used for every gesture of the narrator
+            end = f'<circle cx="0" cy="26" r="9" fill="#fff" stroke="{ink}" stroke-width="3.5"/>'
         seg2 = "fore"
     else:
         root = (-3 if side == "L" else 3, -60)
@@ -246,8 +248,9 @@ def stick(fid, role="picker", scale=1.0, label=False, pose=None, hand_r="", hand
                f'<text x="0" y="-184" text-anchor="middle" font-family="{FONT}" font-weight="700" font-size="24" fill="#fff">{txt}</text>'
                f'<polygon points="-8,-171 8,-171 0,-161" fill="{ink}"/></g>')
     legs = _limb(fid, "L", "leg", *p["legL"]) + _limb(fid, "R", "leg", *p["legR"])
-    arms_back = _limb(fid, "L", "arm", *p["armL"], extra=hand_l)
-    arms_front = _limb(fid, "R", "arm", *p["armR"], extra=hand_r)
+    ball = role == "instructor"
+    arms_back = _limb(fid, "L", "arm", *p["armL"], extra=hand_l, ball=ball)
+    arms_front = _limb(fid, "R", "arm", *p["armR"], extra=hand_r, ball=ball)
     fl = ' transform="scale(-1,1)"' if flip else ""
     return (f'<g transform="scale({scale})"><g id="{fid}-body"{fl}>'
             f'<ellipse cx="0" cy="3" rx="30" ry="6" fill="#000" opacity="0.10"/>'
