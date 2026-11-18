@@ -39,7 +39,7 @@ h2{{font-size:18px;background:#1F5FBF;color:#fff;padding:6px 12px;border-radius:
 .sc img{{width:330px;height:186px;border-radius:4px;border:1px solid #D5DBE4}}.tx{{flex:1;font-size:13px}}
 .no{{color:#C45A00;font-weight:900}}.ti{{font-size:16px;font-weight:900;margin:2px 0 4px}}ul{{margin:0;padding-left:18px}}li{{margin-bottom:2px}}
 .ok{{margin-top:8px;color:#6B7685}}</style></head><body>
-<h1>Storyboard – Video quy trình toàn kho CXAD</h1><div class="sub">Bản v2 (đã sửa Bước 3 chia hàng: xử lý thủ công) · tổng {int(total)//60}:{int(total)%60:02d} · {n} cảnh + 4 thẻ phần · ảnh chụp ở khoảng 80% mỗi cảnh · lời = phụ đề nguyên văn</div>
+<h1>Storyboard – Video quy trình toàn kho CXAD</h1><div class="sub">Bản v3 (xử lý chênh lệch khi chia hàng và xử lý sai lệch khi kiểm hàng: thủ công) · tổng {int(total)//60}:{int(total)%60:02d} · {n} cảnh + 4 thẻ phần · ảnh chụp ở khoảng 80% mỗi cảnh · lời = phụ đề nguyên văn</div>
 {rows}</body></html>"""
 out = os.path.join(ROOT, "design", "cxad-storyboard.html")
 open(out, "w", encoding="utf-8").write(doc)

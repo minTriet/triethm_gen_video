@@ -832,7 +832,7 @@ def cx_sort():
 
 def cx_diff():
     lines = ["Chia xong, kiểm tra có thiếu hay thừa hàng không.",
-             "Nếu có chênh lệch, quản lý kho xử lý thủ công, không có báo cáo trên WMS.",
+             "Nếu có chênh lệch, quản lý kho xử lý thủ công.",
              "Thiếu thì lấy bổ sung hoặc điều chỉnh DO.",
              "Thừa thì trả hàng về vị trí."]
 
@@ -855,12 +855,6 @@ def cx_diff():
                  f'<div style="font-size:30px;font-weight:900">DO-1001 · SKU 3001 Bánh quy</div><div style="font-size:30px;font-weight:900;color:#C45A00">Thừa 1 hộp</div>'
                  f'<div id="{P}-o2" style="display:flex;gap:12px;margin-top:8px;opacity:0"><span style="background:#fff;border:3px solid {INK};border-radius:12px;padding:4px 14px;font-size:26px;font-weight:900">Trả về vị trí KHÔ-A02-01</span></div></div>')
         body += win(f"{P}-w", 780, 120, 760, "Xử lý thủ công tại khu chia", inner, color="#C45A00")
-        body += (f'<div id="{P}-nowms" class="abs" style="left:800px;top:600px;opacity:0"><div style="display:flex;align-items:center;gap:16px;background:#fff;'
-                 f'border:5px solid {C["red"]};border-radius:18px;padding:8px 22px">'
-                 f'<svg width="96" height="56" viewBox="0 0 96 56"><rect x="4" y="4" width="88" height="48" rx="8" fill="#EAF1FC" stroke="{INK}" stroke-width="3"/>'
-                 f'<text x="48" y="37" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="22" fill="{C["blue"]}">WMS</text>'
-                 f'<line x1="4" y1="54" x2="92" y2="2" stroke="{C["red"]}" stroke-width="7" stroke-linecap="round"/></svg>'
-                 f'<span style="font-size:34px;font-weight:900">Không có báo cáo trên WMS</span></div></div>')
         body += st.badge(f"{P}-b3", 3, "Xử lý chênh lệch")
         js = f'tl.fromTo("#{P}-dm",{{opacity:0,y:20}},{{opacity:1,y:0,duration:0.4,ease:"power2.out"}},{T[0]:.2f});\n'
         js += draw_js(f"#{P}-ano", T[0] + 1.0) + st.appear_js(f"#{P}-lno", T[0] + 1.1) + st.pop_js(f"#{P}-end", T[0] + 1.5)
@@ -869,10 +863,9 @@ def cx_diff():
         js += st.badge_seq_js([f"{P}-b3"], [T[1]], D - 0.4)
         js += show_js(f"#{P}-mg", T[1]) + lab_js(f"{P}-mg", T[1] + 0.2)
         js += st.appear_js(f"#{P}-w", T[1] + 0.5, 0.35)
-        js += f'tl.fromTo("#{P}-nowms",{{opacity:0,scale:1.5}},{{opacity:1,scale:1,duration:0.35,ease:"power3.out"}},{T[1]+2.2:.2f});\n'
         js += st.appear_js(f"#{P}-o1", T[2] + 0.3) + st.appear_js(f"#{P}-o2", T[3] + 0.3)
         return body, "", js
-    s = Scene("cxdiff", lines, build, lead=0.4, tail=1.6, min_hold={0: 4.0, 1: 5.0, 2: 3.4, 3: 3.0})
+    s = Scene("cxdiff", lines, build, lead=0.4, tail=1.6, min_hold={0: 4.0, 1: 4.0, 2: 3.4, 3: 3.0})
     return s
 
 
@@ -881,7 +874,7 @@ def cx_g3():
         (IC_CELLS, "Mỗi DO <b>một ô riêng</b>, ghi số DO lên ô", "Mỗi DO một ô riêng, ghi số DO lên ô"),
         (IC_PDA, "Quét mã hàng → PDA chỉ <b>DO và số lượng</b> → đặt vào ô, xác nhận",
          "Quét mã hàng, PDA chỉ DO và số lượng, đặt vào ô, xác nhận"),
-        (IC_WARN, "Thiếu / thừa: <b>quản lý kho</b> xử lý thủ công (không có báo cáo WMS)", "Thiếu thừa: quản lý kho xử lý thủ công, không có báo cáo WMS"),
+        (IC_WARN, "Thiếu / thừa: <b>quản lý kho</b> xử lý thủ công", "Thiếu thừa: quản lý kho xử lý thủ công"),
     ])
 
 
@@ -915,7 +908,8 @@ def cx_check():
         p4 = kv("DO-1002 · SKU 2001", "30/30 hũ ✔", "Đã khớp", C["green"])
         body += st.pda(f"{P}-pda", "Kiểm hàng", [("s1", p1), ("s2", p2), ("s3", p3), ("s4", p4)])
         body += pill(f"{P}-q", 560, 170, "Khớp với DO? → Không", "#fff", border=C["red"], size=32)
-        body += st.badge(f"{P}-b1", 1, "Kiểm hàng") + st.badge(f"{P}-b2", 2, "Xử lý sai lệch")
+        body += pill(f"{P}-man", 560, 170, "Thủ công: bổ sung 1 hũ vào ô DO-1002", "#FFF2E0", border=C["orange"], size=32)
+        body += st.badge(f"{P}-b1", 1, "Kiểm hàng") + st.badge(f"{P}-b2", 2, "Xử lý sai lệch (thủ công)")
         js = st.badge_seq_js([f"{P}-b1", f"{P}-b2"], [T[0], T[2]], D - 0.4) + lab_js(f"{P}-ck", 0.3)
         js += "".join(f'tl.set("#{P}-c{i}-load",{{opacity:1}},0);\n' for i in range(3))
         js += st.appear_js(f"#{P}-pda", T[0], 0.35, dy=30) + st.show_panel_js(f"{P}-pda", None, "s1", T[0] + 0.1)
@@ -925,7 +919,7 @@ def cx_check():
         js += walk_to(f"{P}-ck", f"{P}-mv", stops[1] - X0, T[1] + 0.2, 1.0)
         js += st.laser_js(f"{P}-l2", T[1] + 1.4) + st.show_panel_js(f"{P}-pda", "s2", "s3", T[1] + 1.5)
         js += st.appear_js(f"#{P}-q", T[1] + 1.8)
-        js += hide_js(f"#{P}-q", T[2] + 1.0) + st.pop_js(f"#{P}-add", T[2] + 0.8)
+        js += hide_js(f"#{P}-q", T[2] + 0.1) + st.appear_js(f"#{P}-man", T[2] + 0.3) + st.pop_js(f"#{P}-add", T[2] + 0.9)
         js += st.laser_js(f"{P}-l3", T[2] + 2.0) + st.show_panel_js(f"{P}-pda", "s3", "s4", T[2] + 2.1)
         return body, "", js
     s = Scene("cxcheck", lines, build, lead=0.4, tail=1.6, min_hold={0: 4.2, 1: 3.8, 2: 4.8})

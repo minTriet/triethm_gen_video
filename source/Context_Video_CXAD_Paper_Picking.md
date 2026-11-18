@@ -123,20 +123,20 @@ Nhìn từ trên xuống, từ trái sang phải: **Dock nhận hàng → 3 khu 
    **Lời:** "Chưa chia hết thì quét tiếp."
 4. **Có thiếu / thừa hàng?** · Nhánh "Không" → Kết thúc ✔. Nhánh "Có" → Quản lý.
    **Lời:** "Chia xong, kiểm tra có thiếu hay thừa hàng không."
-5. **Bước 3 – Xử lý chênh lệch** · Quản lý kho xử lý **thủ công hoàn toàn** tại khu chia, **không có báo cáo trên WMS**. Ví dụ hai trường hợp:
+5. **Bước 3 – Xử lý chênh lệch** · Quản lý kho xử lý **thủ công hoàn toàn** tại khu chia. Ví dụ hai trường hợp:
    - Thiếu (đỏ): lấy bổ sung, hoặc điều chỉnh DO
    - Thừa (cam): trả hàng về vị trí
-   **Lời:** "Nếu có chênh lệch, quản lý kho xử lý thủ công, không có báo cáo trên WMS." / "Thiếu thì lấy bổ sung hoặc điều chỉnh DO." / "Thừa thì trả hàng về vị trí."
+   **Lời:** "Nếu có chênh lệch, quản lý kho xử lý thủ công." / "Thiếu thì lấy bổ sung hoặc điều chỉnh DO." / "Thừa thì trả hàng về vị trí."
 6. **Ghi nhớ Chương 3:**
    - Mỗi DO một ô riêng, ghi số DO lên ô
    - Quét mã hàng → PDA chỉ DO và số lượng → đặt vào ô, xác nhận
-   - Thiếu / thừa: quản lý kho xử lý thủ công (không có báo cáo WMS)
+   - Thiếu / thừa: quản lý kho xử lý thủ công
 
 ### Chương 4 – Kiểm hàng và Bàn giao (04K.3) (~50s)
 1. **Bước 1 – Kiểm hàng** · Checker chọn XE-01 / MDO-0001, quét mã hàng từng DO, kiểm ngoại quan và số lượng (thùng + lẻ).
    **Lời:** "Checker chọn xe hoặc Master DO, quét mã hàng của từng DO," / "kiểm ngoại quan và số lượng theo thùng và số lẻ."
 2. **Khớp với DO?** · Ví dụ DO-1002 quét được 29 / cần 30 → nhánh "Không".
-   **Bước 2 – Xử lý sai lệch** · Bổ sung 1 hũ vào ô DO-1002 → vòng lại Bước 1 → lần này khớp ✔.
+   **Bước 2 – Xử lý sai lệch (thủ công)** · Nhãn "Thủ công: bổ sung 1 hũ vào ô DO-1002"; bổ sung 1 hũ vào ô DO-1002 → vòng lại Bước 1 → lần này khớp ✔.
    **Lời:** "Nếu không khớp với DO, chia lại hoặc bổ sung hàng, rồi kiểm lại."
 3. **Bước 3 – In giấy bàn giao** · Khớp hết → Checker in **Giấy bàn giao** ở máy in khu kiểm hàng, 3 tờ, mỗi DO một tờ (chứng từ bay ra).
    **Lời:** "Khớp rồi thì checker in giấy bàn giao của xe, mỗi DO một giấy."
@@ -164,4 +164,4 @@ Dải tổng kết 4 chặng (giống mở đầu), từng chặng đóng dấu 
 6. Giữ dữ liệu minh họa (không đổi sang mã thật).
 7. Giữ mã vị trí minh họa dạng "CHILL-A01-02".
 8. Bỏ nhãn WMS / Thủ công / Quét PDA ở mỗi bước.
-9. Xử lý chênh lệch khi chia hàng (04K.2 Bước 3) làm thủ công hoàn toàn, không có báo cáo trên WMS.
+9. Xử lý chênh lệch khi chia hàng (04K.2 Bước 3) và xử lý sai lệch khi kiểm hàng (04K.3 Bước 2) làm thủ công; video chỉ thể hiện là làm thủ công.
