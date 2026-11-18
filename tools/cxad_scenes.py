@@ -832,7 +832,7 @@ def cx_sort():
 
 def cx_diff():
     lines = ["Chia xong, kiểm tra có thiếu hay thừa hàng không.",
-             "Nếu có chênh lệch, quản lý kho xem báo cáo thiếu thừa trên WMS.",
+             "Nếu có chênh lệch, quản lý kho xử lý thủ công, không có báo cáo trên WMS.",
              "Thiếu thì lấy bổ sung hoặc điều chỉnh DO.",
              "Thừa thì trả hàng về vị trí."]
 
@@ -842,11 +842,11 @@ def cx_diff():
         svg = (arrow_defs(P) + diamond(f"{P}-dm", dx, dy, "Có thiếu /\nthừa hàng?", 440, 250)
                + arrow(f"{P}-ano", f"M{dx},{dy+125} L{dx},{dy+225}", P)
                + arrow(f"{P}-ayes", f"M{dx+220},{dy} L{dx+330},{dy}", P))
-        body = svg_layer(st.floor() + svg + figure(P + "-mg", "manager", 1740, scale=1.5, label=True))
+        body = svg_layer(st.floor() + svg + figure(P + "-mg", "manager", 1740, scale=1.5, label=True, hand_r=clipboard(P + "-mg")))
         body += pill(f"{P}-lno", 460, 520, "Không", "#fff", size=30) + pill(f"{P}-lyes", 640, 300, "Có", C["orange"], size=30)
         body += pill(f"{P}-end", 300, 620, "Kết thúc ✔", C["green"], txt="#fff", size=34)
         red, ora = "#FDECEC", "#FFF2E0"
-        inner = (f'<div style="font-size:26px;font-weight:700;color:{C["muted"]};margin-bottom:10px">MDO-0001 · XE-01</div>'
+        inner = (f'<div style="font-size:26px;font-weight:700;color:{C["muted"]};margin-bottom:10px">Kiểm đếm tại khu chia · MDO-0001 · XE-01</div>'
                  f'<div style="border:4px solid {C["red"]};background:{red};border-radius:14px;padding:10px 16px;margin-bottom:10px">'
                  f'<div style="font-size:30px;font-weight:900">DO-1003 · SKU 1001 Há cảo</div><div style="font-size:30px;font-weight:900;color:{C["red"]}">Thiếu 2 gói</div>'
                  f'<div id="{P}-o1" style="display:flex;gap:12px;margin-top:8px;opacity:0"><span style="background:#fff;border:3px solid {INK};border-radius:12px;padding:4px 14px;font-size:26px;font-weight:900">Lấy bổ sung</span>'
@@ -854,7 +854,13 @@ def cx_diff():
                  f'<div style="border:4px solid {C["orange"]};background:{ora};border-radius:14px;padding:10px 16px">'
                  f'<div style="font-size:30px;font-weight:900">DO-1001 · SKU 3001 Bánh quy</div><div style="font-size:30px;font-weight:900;color:#C45A00">Thừa 1 hộp</div>'
                  f'<div id="{P}-o2" style="display:flex;gap:12px;margin-top:8px;opacity:0"><span style="background:#fff;border:3px solid {INK};border-radius:12px;padding:4px 14px;font-size:26px;font-weight:900">Trả về vị trí KHÔ-A02-01</span></div></div>')
-        body += win(f"{P}-w", 780, 120, 760, "WMS · Báo cáo thiếu / thừa", inner)
+        body += win(f"{P}-w", 780, 120, 760, "Xử lý thủ công tại khu chia", inner, color="#C45A00")
+        body += (f'<div id="{P}-nowms" class="abs" style="left:800px;top:600px;opacity:0"><div style="display:flex;align-items:center;gap:16px;background:#fff;'
+                 f'border:5px solid {C["red"]};border-radius:18px;padding:8px 22px">'
+                 f'<svg width="96" height="56" viewBox="0 0 96 56"><rect x="4" y="4" width="88" height="48" rx="8" fill="#EAF1FC" stroke="{INK}" stroke-width="3"/>'
+                 f'<text x="48" y="37" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="22" fill="{C["blue"]}">WMS</text>'
+                 f'<line x1="4" y1="54" x2="92" y2="2" stroke="{C["red"]}" stroke-width="7" stroke-linecap="round"/></svg>'
+                 f'<span style="font-size:34px;font-weight:900">Không có báo cáo trên WMS</span></div></div>')
         body += st.badge(f"{P}-b3", 3, "Xử lý chênh lệch")
         js = f'tl.fromTo("#{P}-dm",{{opacity:0,y:20}},{{opacity:1,y:0,duration:0.4,ease:"power2.out"}},{T[0]:.2f});\n'
         js += draw_js(f"#{P}-ano", T[0] + 1.0) + st.appear_js(f"#{P}-lno", T[0] + 1.1) + st.pop_js(f"#{P}-end", T[0] + 1.5)
@@ -863,9 +869,10 @@ def cx_diff():
         js += st.badge_seq_js([f"{P}-b3"], [T[1]], D - 0.4)
         js += show_js(f"#{P}-mg", T[1]) + lab_js(f"{P}-mg", T[1] + 0.2)
         js += st.appear_js(f"#{P}-w", T[1] + 0.5, 0.35)
+        js += f'tl.fromTo("#{P}-nowms",{{opacity:0,scale:1.5}},{{opacity:1,scale:1,duration:0.35,ease:"power3.out"}},{T[1]+2.2:.2f});\n'
         js += st.appear_js(f"#{P}-o1", T[2] + 0.3) + st.appear_js(f"#{P}-o2", T[3] + 0.3)
         return body, "", js
-    s = Scene("cxdiff", lines, build, lead=0.4, tail=1.6, min_hold={0: 4.0, 1: 4.4, 2: 3.4, 3: 3.0})
+    s = Scene("cxdiff", lines, build, lead=0.4, tail=1.6, min_hold={0: 4.0, 1: 5.0, 2: 3.4, 3: 3.0})
     return s
 
 
@@ -874,7 +881,7 @@ def cx_g3():
         (IC_CELLS, "Mỗi DO <b>một ô riêng</b>, ghi số DO lên ô", "Mỗi DO một ô riêng, ghi số DO lên ô"),
         (IC_PDA, "Quét mã hàng → PDA chỉ <b>DO và số lượng</b> → đặt vào ô, xác nhận",
          "Quét mã hàng, PDA chỉ DO và số lượng, đặt vào ô, xác nhận"),
-        (IC_WARN, "Thiếu / thừa: <b>quản lý kho</b> xử lý theo báo cáo WMS", "Thiếu thừa: quản lý kho xử lý theo báo cáo WMS"),
+        (IC_WARN, "Thiếu / thừa: <b>quản lý kho</b> xử lý thủ công (không có báo cáo WMS)", "Thiếu thừa: quản lý kho xử lý thủ công, không có báo cáo WMS"),
     ])
 
 
