@@ -192,6 +192,20 @@ def _limb(fid, side, kind, ang, ang2, extra=""):
             f'</g></g></g></g>')
 
 
+def folder_svg(col="#16478F"):
+    """Document folder held in the left hand (forearm space, hand at y=23). Manager's prop."""
+    ink = C["ink"]
+    return (f'<g transform="translate(4,22) rotate(-62)">'
+            f'<rect x="-4" y="-22" width="34" height="44" rx="3" fill="{col}" stroke="{ink}" stroke-width="2.5"/>'
+            f'<rect x="2" y="-16" width="22" height="30" rx="1" fill="#fff"/>'
+            f'<rect x="5" y="-11" width="15" height="3" fill="{C["muted"]}"/>'
+            f'<rect x="5" y="-4" width="12" height="3" fill="{C["muted"]}"/>'
+            f'<rect x="5" y="3" width="15" height="3" fill="{C["muted"]}"/></g>')
+
+
+MANAGER_HOLD = {"armL": (-8, -118)}  # pose for holding folder_svg() in the left hand
+
+
 def pda_svg(fid, laser=False, reach=80):
     """PDA held in the right hand (drawn in forearm space, hand at y=23)."""
     las = ""

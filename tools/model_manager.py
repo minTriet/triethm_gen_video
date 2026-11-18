@@ -1,23 +1,13 @@
 """Model sheet for the new 'Quản lý kho' role (CXAD video).  Run: python3 tools/model_manager.py"""
 import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
-from kit import C, FONT, ROLE, font_css, stick
+from kit import C, FONT, ROLE, font_css, stick, folder_svg, MANAGER_HOLD
 from model_sheet import desk, cell_html
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 OUT = os.path.join(ROOT, "design")
 INK = C["ink"]
 NAVY = ROLE["manager"][0]
-
-
-def folder():
-    """Navy document folder held in the left hand (forearm space, hand at y=23)."""
-    return (f'<g transform="translate(4,22) rotate(-62)">'
-            f'<rect x="-4" y="-22" width="34" height="44" rx="3" fill="{NAVY}" stroke="{INK}" stroke-width="2.5"/>'
-            f'<rect x="2" y="-16" width="22" height="30" rx="1" fill="#fff"/>'
-            f'<rect x="5" y="-11" width="15" height="3" fill="{C["muted"]}"/>'
-            f'<rect x="5" y="-4" width="12" height="3" fill="{C["muted"]}"/>'
-            f'<rect x="5" y="3" width="15" height="3" fill="{C["muted"]}"/></g>')
 
 
 def report_desk():
@@ -41,7 +31,7 @@ CELLS = [
     ("Đứng chuẩn", "Sơ mi trắng · cà vạt, thẻ đeo xanh đậm",
      stick("q1", "manager", 1.0), 0),
     ("Cầm bìa hồ sơ", "Dấu hiệu nhận ra vai quản lý",
-     stick("q2", "manager", 1.0, pose={"armL": (-8, -118)}, hand_l=folder()), 0),
+     stick("q2", "manager", 1.0, pose=MANAGER_HOLD, hand_l=folder_svg()), 0),
     ("Xem báo cáo trên WMS", "Bước 3 – Xử lý chênh lệch (04K.2)",
      f'<g transform="translate(0,16)">{stick("q3", "manager", 1.0, pose={"armL": (22, -70), "armR": (-22, 70)})}</g>'
      + report_desk(), -40),

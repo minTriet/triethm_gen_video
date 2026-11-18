@@ -4,7 +4,7 @@
 > (**bỏ 01A – Thiết lập chủ hàng**, vì đó là việc của quản lý, nhân viên kho không làm).
 > Video riêng, độc lập với video "Vận hành kho khô" và video TC. **Một video liền**, có thẻ chương giữa các phần.
 > **Giữ phong cách đã chốt:** không giọng đọc, chỉ phụ đề (lời bên dưới = phụ đề nguyên văn), nhịp đọc 1.3×,
-> hiệu ứng âm thanh thưa (≥ 4 s), nhân vật người que model v2, kiểu đi nghiêng-nhún, cùng màu và font, 1920×1080, 30 fps.
+> hiệu ứng âm thanh thưa (≥ 4 s), nhân vật người que bộ mặc định v3 (skill `nhan-vat-kho`), kiểu đi nghiêng-nhún, cùng màu và font, 1920×1080, 30 fps.
 > Mã ASN, DO, mã hàng, biển số xe, vị trí, số lượng là **ví dụ minh họa** (giữ nguyên như bên dưới).
 > Thời lượng dự kiến: **khoảng 5 phút 30 giây – 6 phút**.
 
@@ -52,7 +52,7 @@ Mỗi bước có một chip nhỏ cạnh badge "Bước n", đúng màu của b
 | Nhân viên nhận hàng | Áo + mũ xanh lá | 02F: 3, 4, 5, 6, 10 |
 | Tài xế xe nâng | Áo + mũ cam, **xe nâng ngồi lái** | 02F: 7, 8, 9 (putaway) |
 | Picker | Áo + mũ vàng | 04K.1: 6, 8, 9 (lấy hàng, đưa về khu chia) · 04K.2: 1, 2 (chia hàng) |
-| Quản lý kho | **Model mới** `design/model-quan-ly.png`: sơ mi trắng, cà vạt + thẻ đeo xanh đậm, cầm bìa hồ sơ | 04K.2: 3 (xử lý chênh lệch) |
+| Quản lý kho | Vai mặc định trong `design/model-sheet-v3.png` (skill `nhan-vat-kho`): sơ mi trắng, cà vạt + thẻ đeo xanh đậm, cầm bìa hồ sơ | 04K.2: 3 (xử lý chênh lệch) |
 | Checker | Áo + mũ tím | 04K.3: 1, 2, 3 |
 | Tài xế xe tải | Áo + mũ xám, đứng cạnh xe tải (dùng lại nhân vật "vận tải") | 04K.3: 4 (nhận hàng, ký) |
 | Giảng viên | Như các video trước | Mở đầu và kết |
@@ -178,7 +178,7 @@ Giảng viên giơ ngón cái.
 1. Bỏ quy trình 01A (Thiết lập chủ hàng mới).
 2. Putaway bằng **xe nâng ngồi lái**.
 3. Tách nhiều vai (nhận hàng, xe nâng, picker, checker, tài xế xe tải, XLCT) thay vì một vai "Nhân viên kho".
-4. "Quản lý" và "Quản lý kho" là **một vai**; model mới ở `design/model-quan-ly.png` (chờ duyệt).
+4. "Quản lý" và "Quản lý kho" là **một vai**; model đã đưa vào bộ nhân vật mặc định `design/model-sheet-v3.png`.
 5. ASN và kế hoạch xuất được nhận qua **email**.
 6. Hàng đông sau khi lấy bằng giấy đưa về **chung khu chia** với hàng chill / khô.
 7. Giữ các ví dụ minh họa.
