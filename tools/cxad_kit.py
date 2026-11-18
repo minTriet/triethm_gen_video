@@ -179,27 +179,29 @@ def printer(pid, x, y):
 def decision(did, q, cx, cy, left, right, w=600, h=210, spread=560, drop=230, fs=32):
     """left/right: (branch label, card html, card width). Cards are centred under the branch ends.
     Ids: {did}-q, {did}-aL/{did}-aR (paths), {did}-lL/{did}-lR (labels), {did}-cL/{did}-cR (cards)."""
-    pts = f"{cx},{cy - h/2} {cx + w/2},{cy} {cx},{cy + h/2} {cx - w/2},{cy}"
+    # shapes are drawn around (0,0) inside a translated group and scaled about svgOrigin "0 0"
+    pts = f"0,{-h/2} {w/2},0 0,{h/2} {-w/2},0"
     svg = (f'<svg class="abs" style="left:0;top:0" width="1920" height="1080" viewBox="0 0 1920 1080">'
-           f'<g id="{did}-q" opacity="0"><polygon points="{pts}" fill="#fff" stroke="{C["blue"]}" stroke-width="6" stroke-linejoin="round"/>'
-           f'<text x="{cx}" y="{cy + fs*0.36}" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="{fs}" fill="{INK}">{q}</text></g>')
+           f'<g transform="translate({cx},{cy})"><g id="{did}-q" opacity="0"><polygon points="{pts}" fill="#fff" stroke="{C["blue"]}" stroke-width="6" stroke-linejoin="round"/>'
+           f'<text x="0" y="{fs*0.36}" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="{fs}" fill="{INK}">{q}</text></g></g>')
     html = ""
     for side, sx, (lab, card, cw) in (("L", -1, left), ("R", 1, right)):
         x0, x1 = cx + sx * w / 2, cx + sx * spread
         y1 = cy + drop
         svg += (f'<path id="{did}-a{side}" d="M{x0},{cy} H{x1} V{y1 - 8}" fill="none" stroke="{C["blue"]}" stroke-width="6" '
                 f'stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="900" stroke-dashoffset="900"/>'
-                f'<g id="{did}-l{side}" opacity="0"><rect x="{(x0 + x1)/2 - 70}" y="{cy - 62}" width="140" height="48" rx="24" fill="{C["blue"]}"/>'
-                f'<text x="{(x0 + x1)/2}" y="{cy - 28}" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="28" fill="#fff">{lab}</text></g>')
+                f'<g transform="translate({(x0 + x1)/2},{cy - 38})"><g id="{did}-l{side}" opacity="0"><rect x="-70" y="-24" width="140" height="48" rx="24" fill="{C["blue"]}"/>'
+                f'<text x="0" y="10" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="28" fill="#fff">{lab}</text></g></g>')
         html += f'<div id="{did}-c{side}" class="abs" style="left:{x1 - cw/2}px;top:{y1}px;width:{cw}px;opacity:0">{card}</div>'
     return svg + "</svg>" + html
 
 
 def decision_js(did, t, tL, tR):
-    s = f'tl.fromTo("#{did}-q",{{opacity:0,scale:0.6}},{{opacity:1,scale:1,duration:0.35,ease:"back.out(2)",transformOrigin:"50% 50%"}},{t:.2f});\n'
+    # opacity only: a scale pop on these SVG groups lands offset in the render (diamond drifts off its arrows)
+    s = f'tl.fromTo("#{did}-q",{{opacity:0}},{{opacity:1,duration:0.35,ease:"power2.out"}},{t:.2f});\n'
     for side, ts in (("L", tL), ("R", tR)):
         s += (f'tl.to("#{did}-a{side}",{{strokeDashoffset:0,duration:0.5,ease:"power2.inOut"}},{ts:.2f});\n'
-              f'tl.fromTo("#{did}-l{side}",{{opacity:0,scale:0.6}},{{opacity:1,scale:1,duration:0.25,ease:"back.out(2)",transformOrigin:"50% 50%"}},{ts+0.15:.2f});\n'
+              f'tl.fromTo("#{did}-l{side}",{{opacity:0}},{{opacity:1,duration:0.25,ease:"power2.out"}},{ts+0.15:.2f});\n'
               f'tl.fromTo("#{did}-c{side}",{{opacity:0,y:20}},{{opacity:1,y:0,duration:0.3,ease:"power2.out"}},{ts+0.45:.2f});\n')
     return s
 
