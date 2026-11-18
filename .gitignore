@@ -1,2 +1,4 @@
 **/.hyperframes/
 __pycache__/
+**/renders/work-*/
+**/renders/.*.hf-transaction-*/

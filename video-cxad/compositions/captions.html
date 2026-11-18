@@ -1,0 +1,232 @@
+<template>
+  <style>
+@font-face{font-family:'Be Vietnam Pro';font-style:normal;font-weight:500;font-display:block;src:url('assets/fonts/be-vietnam-pro-vietnamese-500-normal.woff2') format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;}
+@font-face{font-family:'Be Vietnam Pro';font-style:normal;font-weight:500;font-display:block;src:url('assets/fonts/be-vietnam-pro-latin-500-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Be Vietnam Pro';font-style:normal;font-weight:700;font-display:block;src:url('assets/fonts/be-vietnam-pro-vietnamese-700-normal.woff2') format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;}
+@font-face{font-family:'Be Vietnam Pro';font-style:normal;font-weight:700;font-display:block;src:url('assets/fonts/be-vietnam-pro-latin-700-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Be Vietnam Pro';font-style:normal;font-weight:900;font-display:block;src:url('assets/fonts/be-vietnam-pro-vietnamese-900-normal.woff2') format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;}
+@font-face{font-family:'Be Vietnam Pro';font-style:normal;font-weight:900;font-display:block;src:url('assets/fonts/be-vietnam-pro-latin-900-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+
+#root{position:absolute;inset:0;overflow:hidden;background:#F4F6F9;font-family:'Be Vietnam Pro';color:#1B2430}
+.abs{position:absolute}
+
+
+.pda{position:absolute;left:1390px;top:96px;width:430px;height:740px;background:#2B3646;border:5px solid #1B2430;border-radius:46px;box-shadow:0 18px 0 rgba(27,36,48,.12)}
+.pda .scr{position:absolute;left:22px;top:52px;right:22px;bottom:66px;background:#fff;border-radius:16px;overflow:hidden}
+.pda .cam{position:absolute;left:50%;top:20px;width:60px;height:10px;margin-left:-30px;border-radius:5px;background:#4A5568}
+.pda .btn{position:absolute;left:50%;bottom:16px;width:96px;height:32px;margin-left:-48px;border-radius:16px;background:#4A5568}
+.pda .hdr{background:#1F5FBF;color:#fff;font-weight:900;font-size:30px;padding:18px 22px}
+.pda .pn{position:absolute;left:0;right:0;top:74px;bottom:0;padding:22px 22px;opacity:0}
+.pda .lbl{font-size:26px;font-weight:700;color:#6B7685;margin-bottom:8px}
+.pda .fld{border:4px solid #F28C1E;border-radius:14px;padding:12px 16px;font-size:34px;font-weight:900;min-height:66px;margin-bottom:18px;background:#FFF7EE}
+.pda .fld.off{border-color:#D5DBE4;background:#F1F3F6;color:#A9B2BF}
+.pda .fld.ok{border-color:#22A55A;background:#EDF9F1}
+.pda .row{border:3px solid #E3E8EF;border-radius:12px;padding:12px 16px;font-size:28px;font-weight:700;margin-bottom:12px}
+.pda .row.sel{border-color:#1F5FBF;background:#EAF1FC}
+.pda .big{font-size:44px;font-weight:900}
+.pda .go{margin-top:12px;background:#22A55A;color:#fff;font-weight:900;font-size:32px;text-align:center;border-radius:14px;padding:16px 0}
+.pda .keys{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.pda .keys div{background:#EEF2F6;border-radius:10px;text-align:center;font-size:32px;font-weight:900;padding:12px 0}
+
+
+.badge{position:absolute;left:80px;top:56px;display:flex;align-items:center;gap:16px;opacity:0}
+.badge .n{width:76px;height:76px;border-radius:50%;background:#F28C1E;border:4px solid #1B2430;font-size:30px;font-weight:900;display:flex;align-items:center;justify-content:center;line-height:1;text-align:center}
+.badge .t{background:#fff;border:4px solid #1B2430;border-radius:18px;padding:10px 24px;font-size:40px;font-weight:900}
+.badge .ok{opacity:0}
+
+.kchip{display:inline-flex;align-items:center;gap:10px;border-radius:14px;padding:8px 16px;font-size:30px;font-weight:900;border:4px solid #1B2430;white-space:nowrap}
+.k-wms{background:#fff;color:#1F5FBF;border-color:#1F5FBF}
+.k-pda{background:#2B3646;color:#fff}
+.k-tc{background:#F28C1E;color:#fff;border-color:#C45A00}
+.wms{position:absolute;background:#2B3646;border:5px solid #1B2430;border-radius:22px;box-shadow:0 18px 0 rgba(27,36,48,.12)}
+.wms .scr{position:absolute;left:16px;top:16px;right:16px;bottom:16px;background:#fff;border-radius:10px;overflow:hidden}
+.wms .hdr{background:#1F5FBF;color:#fff;font-weight:900;font-size:28px;padding:12px 22px;display:flex;justify-content:space-between}
+.wms .hdr span{opacity:.75;font-weight:700}
+.wms .pn{position:absolute;left:0;right:0;top:58px;bottom:0;padding:20px 26px;opacity:0}
+.wms .lbl{font-size:24px;font-weight:700;color:#6B7685;margin-bottom:8px}
+.wms .row{border:3px solid #E3E8EF;border-radius:10px;padding:10px 16px;font-size:26px;font-weight:700;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.wms .row.sel{border-color:#1F5FBF;background:#EAF1FC}
+.wms .btnw{display:inline-block;background:#1F5FBF;color:#fff;font-weight:900;font-size:28px;border-radius:12px;padding:12px 26px}
+.wms .btng{display:inline-block;background:#22A55A;color:#fff;font-weight:900;font-size:28px;border-radius:12px;padding:12px 26px}
+.wms .big{font-size:44px;font-weight:900}
+.mail{position:absolute;background:#fff;border:4px solid #1B2430;border-radius:20px;box-shadow:0 12px 0 rgba(27,36,48,.10);overflow:hidden}
+.mail .mh{background:#EEF2F6;padding:12px 20px;font-size:26px;font-weight:900;display:flex;align-items:center;gap:12px}
+.mail .mr{padding:16px 20px;font-size:26px;font-weight:700}
+.att{display:inline-flex;align-items:center;gap:10px;margin-top:10px;border:3px solid #22A55A;background:#EDF9F1;border-radius:10px;padding:6px 14px;font-size:24px;font-weight:900}
+.doc{position:absolute}
+.doc .dt{position:absolute;left:0;right:0;top:16px;text-align:center;font-weight:900;color:#1B2430}
+.pill{display:inline-block;background:#fff;border:4px solid #1B2430;border-radius:18px;padding:10px 26px;font-size:40px;font-weight:900}
+
+
+#root{background:transparent}
+.cap{position:absolute;left:0;bottom:84px;width:1920px;text-align:center}
+.cap span{display:inline-block;max-width:1500px;background:rgba(255,255,255,.94);color:#1B2430;
+  font-weight:700;font-size:54px;line-height:1.3;padding:12px 34px;border-radius:16px;box-shadow:0 4px 0 rgba(27,36,48,.10)}
+
+  </style>
+  <div id="root" data-composition-id="captions" data-width="1920" data-height="1080" data-duration="320.47">
+    <div id="cap1" class="clip cap" data-start="0.4" data-duration="3.0" data-track-index="0"><span id="cap1-t">Xin chào các bạn.</span></div>
+    <div id="cap2" class="clip cap" data-start="3.55" data-duration="6.0" data-track-index="0"><span id="cap2-t">Video này đi qua toàn bộ quy trình kho của chủ hàng CXAD, từ lúc nhập hàng đến khi giao hàng lên xe.</span></div>
+    <div id="cap3" class="clip cap" data-start="11.15" data-duration="5.0" data-track-index="0"><span id="cap3-t">Kho có ba khu: hàng đông, hàng chill và hàng khô.</span></div>
+    <div id="cap4" class="clip cap" data-start="19.35" data-duration="5.2" data-track-index="0"><span id="cap4-t">Khi có kế hoạch nhập, nhân viên XLCT nhận file qua email và chỉnh đúng định dạng của WMS.</span></div>
+    <div id="cap5" class="clip cap" data-start="24.7" data-duration="2.8" data-track-index="0"><span id="cap5-t">XLCT import file để tạo ASN,</span></div>
+    <div id="cap6" class="clip cap" data-start="27.65" data-duration="3.4" data-track-index="0"><span id="cap6-t">in sẵn nhãn LPN ID và giao cho kho.</span></div>
+    <div id="cap7" class="clip cap" data-start="33.45" data-duration="5.0" data-track-index="0"><span id="cap7-t">Xe về, nhân viên nhận hàng tạo phiếu nhập theo ASN, nhập số xe và tên tài xế.</span></div>
+    <div id="cap8" class="clip cap" data-start="38.6" data-duration="4.6" data-track-index="0"><span id="cap8-t">Nhân viên mang pallet tới khu nhận hàng và dán nhãn LPN ID lên pallet.</span></div>
+    <div id="cap9" class="clip cap" data-start="43.35" data-duration="6.4" data-track-index="0"><span id="cap9-t">Kiểm tra ngoại quan hàng, rồi chất hàng lên pallet.</span></div>
+    <div id="cap10" class="clip cap" data-start="51.25" data-duration="4.0" data-track-index="0"><span id="cap10-t">Trên PDA: scan LPN ID, scan mã hàng, nhập số lượng,</span></div>
+    <div id="cap11" class="clip cap" data-start="55.4" data-duration="3.6" data-track-index="0"><span id="cap11-t">và nhập date hoặc batch theo quy tắc của mã hàng đó.</span></div>
+    <div id="cap12" class="clip cap" data-start="61.1" data-duration="3.15" data-track-index="0"><span id="cap12-t">Nhận xong, tài xế xe nâng scan lại LPN của pallet đó.</span></div>
+    <div id="cap13" class="clip cap" data-start="64.4" data-duration="3.0" data-track-index="0"><span id="cap13-t">Hệ thống gợi ý vị trí putaway theo khu của hàng.</span></div>
+    <div id="cap14" class="clip cap" data-start="67.55" data-duration="4.0" data-track-index="0"><span id="cap14-t">Xe nâng đưa pallet tới đúng vị trí được gợi ý.</span></div>
+    <div id="cap15" class="clip cap" data-start="71.7" data-duration="3.0" data-track-index="0"><span id="cap15-t">Scan mã vị trí để xác nhận hoàn tất putaway pallet.</span></div>
+    <div id="cap16" class="clip cap" data-start="76.7" data-duration="3.6" data-track-index="0"><span id="cap16-t">Còn pallet thì quay lại bước chuẩn bị pallet.</span></div>
+    <div id="cap17" class="clip cap" data-start="80.45" data-duration="3.4" data-track-index="0"><span id="cap17-t">Mỗi pallet: nhận xong là putaway ngay.</span></div>
+    <div id="cap18" class="clip cap" data-start="85.95" data-duration="3.6" data-track-index="0"><span id="cap18-t">Hết pallet, nhân viên nhận hàng xác nhận hoàn tất phiếu nhập.</span></div>
+    <div id="cap19" class="clip cap" data-start="89.7" data-duration="4.6" data-track-index="0"><span id="cap19-t">XLCT in phiếu nhập kho và chuyển các bên ký xác nhận.</span></div>
+    <div id="cap20" class="clip cap" data-start="108.82" data-duration="5.0" data-track-index="0"><span id="cap20-t">Với hàng xuất, XLCT nhận file đơn hàng DO qua email và chỉnh đúng định dạng của WMS.</span></div>
+    <div id="cap21" class="clip cap" data-start="113.97" data-duration="3.2" data-track-index="0"><span id="cap21-t">Import file để tạo các DO.</span></div>
+    <div id="cap22" class="clip cap" data-start="119.37" data-duration="3.6" data-track-index="0"><span id="cap22-t">XLCT gom các DO giao cùng một xe thành một Master DO.</span></div>
+    <div id="cap23" class="clip cap" data-start="123.12" data-duration="3.0" data-track-index="0"><span id="cap23-t">Một xe là một Master DO.</span></div>
+    <div id="cap24" class="clip cap" data-start="128.32" data-duration="5.0" data-track-index="0"><span id="cap24-t">Bấm phân bổ tồn, hệ thống tự chọn hàng theo FIFO hoặc FEFO.</span></div>
+    <div id="cap25" class="clip cap" data-start="135.62" data-duration="4.08" data-track-index="0"><span id="cap25-t">Khi tạo phiếu lấy hàng, có thể chọn một hoặc nhiều Master DO lấy cùng lúc.</span></div>
+    <div id="cap26" class="clip cap" data-start="139.85" data-duration="3.6" data-track-index="0"><span id="cap26-t">Hệ thống gộp tổng số lượng theo từng mã hàng,</span></div>
+    <div id="cap27" class="clip cap" data-start="143.6" data-duration="6.4" data-track-index="0"><span id="cap27-t">quy đổi ra thùng và pcs, ví dụ 55 pcs, quy cách 50, là 1 thùng 5 pcs,</span></div>
+    <div id="cap28" class="clip cap" data-start="150.15" data-duration="3.6" data-track-index="0"><span id="cap28-t">và tách phiếu theo khu: đông, chill, khô.</span></div>
+    <div id="cap29" class="clip cap" data-start="156.15" data-duration="3.0" data-track-index="0"><span id="cap29-t">Cách lấy hàng khác nhau theo khu.</span></div>
+    <div id="cap30" class="clip cap" data-start="161.85" data-duration="2.4" data-track-index="0"><span id="cap30-t">Hàng chill và khô lấy bằng PDA:</span></div>
+    <div id="cap31" class="clip cap" data-start="164.4" data-duration="3.6" data-track-index="0"><span id="cap31-t">picker chọn phiếu, đến vị trí và scan vị trí,</span></div>
+    <div id="cap32" class="clip cap" data-start="168.15" data-duration="4.0" data-track-index="0"><span id="cap32-t">scan mã hàng, rồi nhập tổng số lượng theo thùng và cái.</span></div>
+    <div id="cap33" class="clip cap" data-start="174.25" data-duration="3.2" data-track-index="0"><span id="cap33-t">Hàng đông lấy bằng phiếu giấy in sẵn.</span></div>
+    <div id="cap34" class="clip cap" data-start="177.6" data-duration="4.0" data-track-index="0"><span id="cap34-t">Đến vị trí theo phiếu, lấy đúng số thùng và pcs,</span></div>
+    <div id="cap35" class="clip cap" data-start="181.75" data-duration="3.2" data-track-index="0"><span id="cap35-t">rồi ghi số lượng thực lấy lên phiếu.</span></div>
+    <div id="cap36" class="clip cap" data-start="187.05" data-duration="5.0" data-track-index="0"><span id="cap36-t">Sau đó XLCT nhập số lượng thực lấy theo phiếu vào WMS.</span></div>
+    <div id="cap37" class="clip cap" data-start="194.35" data-duration="4.8" data-track-index="0"><span id="cap37-t">Hàng đã lấy ở cả ba khu được đưa về chung một khu chia hàng.</span></div>
+    <div id="cap38" class="clip cap" data-start="214.59" data-duration="5.0" data-track-index="0"><span id="cap38-t">Tại khu chia, mỗi DO của xe có một ô riêng, dán hoặc ghi số DO lên ô.</span></div>
+    <div id="cap39" class="clip cap" data-start="221.69" data-duration="3.6" data-track-index="0"><span id="cap39-t">Trên PDA, chọn xe hoặc Master DO, rồi scan mã hàng.</span></div>
+    <div id="cap40" class="clip cap" data-start="225.44" data-duration="3.0" data-track-index="0"><span id="cap40-t">Hệ thống chỉ DO nào và số lượng bao nhiêu.</span></div>
+    <div id="cap41" class="clip cap" data-start="228.59" data-duration="3.0" data-track-index="0"><span id="cap41-t">Đặt hàng vào đúng ô DO và xác nhận.</span></div>
+    <div id="cap42" class="clip cap" data-start="231.74" data-duration="3.4" data-track-index="0"><span id="cap42-t">Lặp lại cho đến khi chia hết hàng.</span></div>
+    <div id="cap43" class="clip cap" data-start="239.34" data-duration="5.0" data-track-index="0"><span id="cap43-t">Nếu có thiếu hoặc thừa, quản lý kho xem báo cáo chênh lệch trên WMS.</span></div>
+    <div id="cap44" class="clip cap" data-start="244.49" data-duration="3.4" data-track-index="0"><span id="cap44-t">Thiếu thì lấy bổ sung hoặc điều chỉnh DO.</span></div>
+    <div id="cap45" class="clip cap" data-start="248.04" data-duration="3.0" data-track-index="0"><span id="cap45-t">Thừa thì trả hàng về vị trí.</span></div>
+    <div id="cap46" class="clip cap" data-start="265.31" data-duration="2.6" data-track-index="0"><span id="cap46-t">Checker chọn xe hoặc Master DO,</span></div>
+    <div id="cap47" class="clip cap" data-start="268.06" data-duration="4.6" data-track-index="0"><span id="cap47-t">scan mã hàng của từng DO, kiểm ngoại quan và số lượng thùng, pcs.</span></div>
+    <div id="cap48" class="clip cap" data-start="272.81" data-duration="5.0" data-track-index="0"><span id="cap48-t">Nếu không khớp, chia lại hoặc bổ sung hàng cho DO, rồi kiểm lại.</span></div>
+    <div id="cap49" class="clip cap" data-start="280.11" data-duration="4.4" data-track-index="0"><span id="cap49-t">Khớp rồi, checker in giấy bàn giao của xe, mỗi DO một giấy.</span></div>
+    <div id="cap50" class="clip cap" data-start="287.11" data-duration="5.2" data-track-index="0"><span id="cap50-t">Tài xế xe tải nhận hàng lên xe và ký giấy bàn giao.</span></div>
+    <div id="cap51" class="clip cap" data-start="292.46" data-duration="4.6" data-track-index="0"><span id="cap51-t">XLCT xác nhận hoàn tất Master DO và lưu giấy bàn giao đã ký.</span></div>
+    <div id="cap52" class="clip cap" data-start="311.32" data-duration="3.6" data-track-index="0"><span id="cap52-t">Vậy là bạn đã nắm toàn bộ quy trình kho CXAD.</span></div>
+    <div id="cap53" class="clip cap" data-start="315.07" data-duration="2.8" data-track-index="0"><span id="cap53-t">Chúc các bạn làm việc thật tốt!</span></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#cap1-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},0.4);
+    tl.to("#cap1-t",{opacity:0,duration:0.12,ease:"power2.in"},3.28);
+    tl.fromTo("#cap2-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},3.55);
+    tl.to("#cap2-t",{opacity:0,duration:0.12,ease:"power2.in"},9.43);
+    tl.fromTo("#cap3-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},11.15);
+    tl.to("#cap3-t",{opacity:0,duration:0.12,ease:"power2.in"},16.03);
+    tl.fromTo("#cap4-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},19.35);
+    tl.to("#cap4-t",{opacity:0,duration:0.12,ease:"power2.in"},24.43);
+    tl.fromTo("#cap5-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},24.7);
+    tl.to("#cap5-t",{opacity:0,duration:0.12,ease:"power2.in"},27.38);
+    tl.fromTo("#cap6-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},27.65);
+    tl.to("#cap6-t",{opacity:0,duration:0.12,ease:"power2.in"},30.93);
+    tl.fromTo("#cap7-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},33.45);
+    tl.to("#cap7-t",{opacity:0,duration:0.12,ease:"power2.in"},38.33);
+    tl.fromTo("#cap8-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},38.6);
+    tl.to("#cap8-t",{opacity:0,duration:0.12,ease:"power2.in"},43.08);
+    tl.fromTo("#cap9-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},43.35);
+    tl.to("#cap9-t",{opacity:0,duration:0.12,ease:"power2.in"},49.63);
+    tl.fromTo("#cap10-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},51.25);
+    tl.to("#cap10-t",{opacity:0,duration:0.12,ease:"power2.in"},55.13);
+    tl.fromTo("#cap11-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},55.4);
+    tl.to("#cap11-t",{opacity:0,duration:0.12,ease:"power2.in"},58.88);
+    tl.fromTo("#cap12-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},61.1);
+    tl.to("#cap12-t",{opacity:0,duration:0.12,ease:"power2.in"},64.13);
+    tl.fromTo("#cap13-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},64.4);
+    tl.to("#cap13-t",{opacity:0,duration:0.12,ease:"power2.in"},67.28);
+    tl.fromTo("#cap14-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},67.55);
+    tl.to("#cap14-t",{opacity:0,duration:0.12,ease:"power2.in"},71.43);
+    tl.fromTo("#cap15-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},71.7);
+    tl.to("#cap15-t",{opacity:0,duration:0.12,ease:"power2.in"},74.58);
+    tl.fromTo("#cap16-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},76.7);
+    tl.to("#cap16-t",{opacity:0,duration:0.12,ease:"power2.in"},80.18);
+    tl.fromTo("#cap17-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},80.45);
+    tl.to("#cap17-t",{opacity:0,duration:0.12,ease:"power2.in"},83.73);
+    tl.fromTo("#cap18-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},85.95);
+    tl.to("#cap18-t",{opacity:0,duration:0.12,ease:"power2.in"},89.43);
+    tl.fromTo("#cap19-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},89.7);
+    tl.to("#cap19-t",{opacity:0,duration:0.12,ease:"power2.in"},94.18);
+    tl.fromTo("#cap20-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},108.82);
+    tl.to("#cap20-t",{opacity:0,duration:0.12,ease:"power2.in"},113.7);
+    tl.fromTo("#cap21-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},113.97);
+    tl.to("#cap21-t",{opacity:0,duration:0.12,ease:"power2.in"},117.05);
+    tl.fromTo("#cap22-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},119.37);
+    tl.to("#cap22-t",{opacity:0,duration:0.12,ease:"power2.in"},122.85);
+    tl.fromTo("#cap23-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},123.12);
+    tl.to("#cap23-t",{opacity:0,duration:0.12,ease:"power2.in"},126.0);
+    tl.fromTo("#cap24-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},128.32);
+    tl.to("#cap24-t",{opacity:0,duration:0.12,ease:"power2.in"},133.2);
+    tl.fromTo("#cap25-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},135.62);
+    tl.to("#cap25-t",{opacity:0,duration:0.12,ease:"power2.in"},139.58);
+    tl.fromTo("#cap26-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},139.85);
+    tl.to("#cap26-t",{opacity:0,duration:0.12,ease:"power2.in"},143.33);
+    tl.fromTo("#cap27-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},143.6);
+    tl.to("#cap27-t",{opacity:0,duration:0.12,ease:"power2.in"},149.88);
+    tl.fromTo("#cap28-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},150.15);
+    tl.to("#cap28-t",{opacity:0,duration:0.12,ease:"power2.in"},153.63);
+    tl.fromTo("#cap29-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},156.15);
+    tl.to("#cap29-t",{opacity:0,duration:0.12,ease:"power2.in"},159.03);
+    tl.fromTo("#cap30-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},161.85);
+    tl.to("#cap30-t",{opacity:0,duration:0.12,ease:"power2.in"},164.13);
+    tl.fromTo("#cap31-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},164.4);
+    tl.to("#cap31-t",{opacity:0,duration:0.12,ease:"power2.in"},167.88);
+    tl.fromTo("#cap32-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},168.15);
+    tl.to("#cap32-t",{opacity:0,duration:0.12,ease:"power2.in"},172.03);
+    tl.fromTo("#cap33-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},174.25);
+    tl.to("#cap33-t",{opacity:0,duration:0.12,ease:"power2.in"},177.33);
+    tl.fromTo("#cap34-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},177.6);
+    tl.to("#cap34-t",{opacity:0,duration:0.12,ease:"power2.in"},181.48);
+    tl.fromTo("#cap35-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},181.75);
+    tl.to("#cap35-t",{opacity:0,duration:0.12,ease:"power2.in"},184.83);
+    tl.fromTo("#cap36-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},187.05);
+    tl.to("#cap36-t",{opacity:0,duration:0.12,ease:"power2.in"},191.93);
+    tl.fromTo("#cap37-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},194.35);
+    tl.to("#cap37-t",{opacity:0,duration:0.12,ease:"power2.in"},199.03);
+    tl.fromTo("#cap38-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},214.59);
+    tl.to("#cap38-t",{opacity:0,duration:0.12,ease:"power2.in"},219.47);
+    tl.fromTo("#cap39-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},221.69);
+    tl.to("#cap39-t",{opacity:0,duration:0.12,ease:"power2.in"},225.17);
+    tl.fromTo("#cap40-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},225.44);
+    tl.to("#cap40-t",{opacity:0,duration:0.12,ease:"power2.in"},228.32);
+    tl.fromTo("#cap41-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},228.59);
+    tl.to("#cap41-t",{opacity:0,duration:0.12,ease:"power2.in"},231.47);
+    tl.fromTo("#cap42-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},231.74);
+    tl.to("#cap42-t",{opacity:0,duration:0.12,ease:"power2.in"},235.02);
+    tl.fromTo("#cap43-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},239.34);
+    tl.to("#cap43-t",{opacity:0,duration:0.12,ease:"power2.in"},244.22);
+    tl.fromTo("#cap44-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},244.49);
+    tl.to("#cap44-t",{opacity:0,duration:0.12,ease:"power2.in"},247.77);
+    tl.fromTo("#cap45-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},248.04);
+    tl.to("#cap45-t",{opacity:0,duration:0.12,ease:"power2.in"},250.92);
+    tl.fromTo("#cap46-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},265.31);
+    tl.to("#cap46-t",{opacity:0,duration:0.12,ease:"power2.in"},267.79);
+    tl.fromTo("#cap47-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},268.06);
+    tl.to("#cap47-t",{opacity:0,duration:0.12,ease:"power2.in"},272.54);
+    tl.fromTo("#cap48-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},272.81);
+    tl.to("#cap48-t",{opacity:0,duration:0.12,ease:"power2.in"},277.69);
+    tl.fromTo("#cap49-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},280.11);
+    tl.to("#cap49-t",{opacity:0,duration:0.12,ease:"power2.in"},284.39);
+    tl.fromTo("#cap50-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},287.11);
+    tl.to("#cap50-t",{opacity:0,duration:0.12,ease:"power2.in"},292.19);
+    tl.fromTo("#cap51-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},292.46);
+    tl.to("#cap51-t",{opacity:0,duration:0.12,ease:"power2.in"},296.94);
+    tl.fromTo("#cap52-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},311.32);
+    tl.to("#cap52-t",{opacity:0,duration:0.12,ease:"power2.in"},314.8);
+    tl.fromTo("#cap53-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},315.07);
+    tl.to("#cap53-t",{opacity:0,duration:0.12,ease:"power2.in"},317.75);
+    window.__timelines["captions"] = tl;
+  </script>
+</template>

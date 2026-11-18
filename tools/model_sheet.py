@@ -1,7 +1,7 @@
 """Character model sheet for approval.  Run: python3 tools/model_sheet.py"""
 import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
-from kit import C, FONT, ROLE, font_css, stick, pda_svg, SWAY, BOB
+from kit import C, FONT, ROLE, font_css, stick, pda_svg, folder_svg, MANAGER_HOLD, SWAY, BOB
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 OUT = os.path.join(ROOT, "design")
@@ -90,9 +90,12 @@ CELLS.append(("Tài xế xe nâng", ROLE["forklift"][0], "Áo + mũ cam · lái 
     + f'<g transform="translate(-22,-14)">{stick("m2", "forklift", 1.0, pose={"armR": (-70, -20), "armL": (10, -40)})}</g>'
     + forklift(), 0))
 
-CELLS.append(("Nhân viên điều phối", ROLE["planner"][0], "Áo sơ mi xanh dương · ngồi máy tính",
+CELLS.append(("Nhân viên điều phối", ROLE["planner"][0], "Sơ mi xanh dương · ngồi máy tính",
     f'<g transform="translate(0,16)">{stick("m3", "planner", 1.0, pose={"armL": (22, -70), "armR": (-22, 70)})}</g>'
     + desk(), -40))
+
+CELLS.append(("Quản lý kho", ROLE["manager"][0], "Sơ mi trắng · cà vạt xanh đậm",
+    stick("m8", "manager", 1.0, pose=MANAGER_HOLD, hand_l=folder_svg()), 0))
 
 CELLS.append(("Picker", ROLE["picker"][0], "Áo + mũ vàng · kéo trolley",
     stick("m4", "picker", 1.0, pose={"armR": (-55, -25)}) + trolley(), -70))
@@ -130,17 +133,18 @@ def cell_html(x, y, w, h, title, col, note, svg, fx, scale=1.25):
 
 def build():
     cells = ""
-    W, H = 450, 420
+    W, H, COLS, SC = 352, 430, 5, 1.0
     for i, (t, col, note, svg, fx) in enumerate(CELLS):
-        r, c = divmod(i, 4)
-        cells += cell_html(60 + c * (W + 10), 128 + r * (H + 20), W, H, t, col, note, svg, fx)
+        r, c = divmod(i, COLS)
+        cells += cell_html(60 + c * (W + 10), 128 + r * (H + 20), W, H, t, col, note, svg, fx, scale=SC)
     # actions strip in the last cell slot
     act = ""
     for j, (t, svg) in enumerate(ACTIONS):
-        act += (f'<div class="act" style="left:{j*110}px"><svg width="110" height="250" viewBox="-55 -240 110 260">{svg}</svg>'
+        act += (f'<div class="act" style="left:{j*170}px"><svg width="170" height="250" viewBox="-85 -240 170 260">{svg}</svg>'
                 f'<div class="an">{t}</div></div>')
-    cells += (f'<div class="cell" style="left:{60 + 3*(W+10)}px;top:{128 + H + 20}px;width:{W}px;height:{H}px">'
-              f'<div style="position:absolute;left:5px;top:20px;width:440px;height:300px">{act}</div>'
+    n = len(CELLS)
+    cells += (f'<div class="cell" style="left:{60 + (n % COLS)*(W+10)}px;top:{128 + H + 20}px;width:{2*W+10}px;height:{H}px">'
+              f'<div style="position:absolute;left:17px;top:30px;width:680px;height:300px">{act}</div>'
               f'<div class="cap"><span class="chip" style="background:#C9D3E0"></span><b>Động tác</b><div class="note">đi = nghiêng trái/phải + nhún nhẹ</div></div></div>')
     html = f'''<!doctype html><html lang="vi"><head><meta charset="utf-8"><style>
 {font_css('../tap-1-tong-quan/assets/fonts/')}
@@ -150,13 +154,13 @@ h1{{position:absolute;left:60px;top:20px;font-size:44px;font-weight:900}}
 h1 span{{color:{C['blue']}}}
 .sub{{position:absolute;left:62px;top:76px;font-size:23px;font-weight:500;color:{C['muted']}}}
 .cell{{position:absolute;background:#fff;border:3px solid #E3E8EF;border-radius:22px;overflow:hidden}}
-.cap{{position:absolute;left:24px;bottom:18px;right:20px;font-size:28px}}
-.cap .note{{font-size:21px;font-weight:500;color:{C['muted']};margin-top:4px}}
+.cap{{position:absolute;left:20px;bottom:16px;right:16px;font-size:25px}}
+.cap .note{{font-size:18px;font-weight:500;color:{C['muted']};margin-top:4px}}
 .chip{{display:inline-block;width:22px;height:22px;border-radius:6px;border:2.5px solid {INK};margin-right:10px;vertical-align:-3px}}
-.act{{position:absolute;top:0;width:110px;text-align:center}}
+.act{{position:absolute;top:0;width:170px;text-align:center}}
 .an{{font-size:19px;font-weight:700;margin-top:2px}}
 </style></head><body>
-<h1>Model nhân vật <span>– bản duyệt v2</span></h1>
+<h1>Model nhân vật <span>– bộ mặc định v3</span></h1>
 <div class="sub">Đầu tròn · mắt chấm · miệng cười · thân nét đen · áo bảo hộ có sọc phản quang + mũ bảo hộ theo màu vai</div>
 {cells}
 </body></html>'''
