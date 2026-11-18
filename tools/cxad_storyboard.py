@@ -5,7 +5,11 @@ import build_cxad as b
 from build_full import assemble
 from kit import font_css
 
+import importlib
 FR = sys.argv[1]
+MOD = importlib.import_module(sys.argv[2] if len(sys.argv) > 2 else "build_cxad")
+NAME = sys.argv[3] if len(sys.argv) > 3 else "cxad-storyboard"
+SUB = sys.argv[4] if len(sys.argv) > 4 else None
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 TITLES = ["Mở đầu", "Sơ đồ kho CXAD",
           "Bước 1–2 · Nhận ASN, nhập WMS, in LPN", "Bước 3 · Tạo phiếu nhập", "Bước 4–5 · Chuẩn bị pallet, chất hàng",
@@ -16,13 +20,15 @@ TITLES = ["Mở đầu", "Sơ đồ kho CXAD",
           "Bước 1 · Chuẩn bị khu chia", "Bước 2 · Chia hàng + điều kiện Đã chia hết hàng?",
           "Điều kiện Có thiếu / thừa? · Bước 3 Xử lý chênh lệch (thủ công)", "Ghi nhớ Phần 3",
           "Bước 1–2 · Kiểm hàng, xử lý sai lệch", "Bước 3–5 · In giấy bàn giao, tài xế ký, hoàn tất", "Ghi nhớ Phần 4", "Kết"]
-placed, total = assemble(b.timeline())
+TITLES = getattr(MOD, "TITLES", TITLES)
+placed, total = assemble(MOD.timeline())
 frames = sorted(glob.glob(os.path.join(FR, "frame-*.png")))
 rows, k, n = "", 0, 0
 for s, start in placed:
     if getattr(s, "is_chapter", False):
-        title = {"chap1": "Phần 1 – Nhập hàng và Putaway bằng LPN", "chap2": "Phần 2 – Lấy hàng gộp theo xe bằng giấy",
-                 "chap3": "Phần 3 – Chia hàng theo đơn DO", "chap4": "Phần 4 – Kiểm hàng và Bàn giao"}[s.cid]
+        title = getattr(MOD, "CHAPTERS", None) or {"chap1": "Phần 1 – Nhập hàng và Putaway bằng LPN", "chap2": "Phần 2 – Lấy hàng gộp theo xe bằng giấy",
+                 "chap3": "Phần 3 – Chia hàng theo đơn DO", "chap4": "Phần 4 – Kiểm hàng và Bàn giao"}
+        title = title[s.cid]
         rows += f'<h2>{title}</h2>'
         continue
     n += 1
@@ -39,8 +45,8 @@ h2{{font-size:18px;background:#1F5FBF;color:#fff;padding:6px 12px;border-radius:
 .sc img{{width:330px;height:186px;border-radius:4px;border:1px solid #D5DBE4}}.tx{{flex:1;font-size:13px}}
 .no{{color:#C45A00;font-weight:900}}.ti{{font-size:16px;font-weight:900;margin:2px 0 4px}}ul{{margin:0;padding-left:18px}}li{{margin-bottom:2px}}
 .ok{{margin-top:8px;color:#6B7685}}</style></head><body>
-<h1>Storyboard – Video quy trình toàn kho CXAD</h1><div class="sub">Bản v3 (xử lý chênh lệch khi chia hàng và xử lý sai lệch khi kiểm hàng: thủ công) · tổng {int(total)//60}:{int(total)%60:02d} · {n} cảnh + 4 thẻ phần · ảnh chụp ở khoảng 80% mỗi cảnh · lời = phụ đề nguyên văn</div>
+<h1>{getattr(MOD, "SB_TITLE", "Storyboard – Video quy trình toàn kho CXAD")}</h1><div class="sub">{SUB or "Bản v3 (xử lý chênh lệch khi chia hàng và xử lý sai lệch khi kiểm hàng: thủ công)"} · tổng {int(total)//60}:{int(total)%60:02d} · {n} cảnh + 4 thẻ phần · ảnh chụp ở khoảng 80% mỗi cảnh · lời = phụ đề nguyên văn</div>
 {rows}</body></html>"""
-out = os.path.join(ROOT, "design", "cxad-storyboard.html")
+out = os.path.join(ROOT, "design", NAME + ".html")
 open(out, "w", encoding="utf-8").write(doc)
 print(out, n)
