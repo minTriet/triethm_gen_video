@@ -27,5 +27,6 @@ Generator: `python3 tools/build_cxad.py` → thư mục `video-cxad/`.
 
 | Phần | Trạng thái |
 | --- | --- |
-| Mở đầu + sơ đồ kho 3 khu + Chương 1 Bước 1–2 | bản xem trước: video-cxad/renders/cxad-34s-v1.mp4 (chờ duyệt) |
-| Chương 1 Bước 3–11, Chương 2–4, Kết | chưa làm |
+| Mở đầu + sơ đồ kho 3 khu + Chương 1 Bước 1–2 | xong (bản 34s đã duyệt) |
+| Chương 1 Bước 3–11, Chương 2–4, Kết (tools/cxad_scenes.py) | xong |
+| Check + render bản đầy đủ | video-cxad/renders/quy-trinh-kho-cxad-full-v1.mp4 (5:07, 1080p) |

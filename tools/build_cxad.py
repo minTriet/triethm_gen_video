@@ -269,7 +269,15 @@ def cx_asn():
 
 
 def timeline():
-    return [cx_intro(), cx_map(), chapter(1, "Nhập hàng và Putaway bằng LPN", lead=2.7), cx_asn()]
+    import cxad_scenes as c
+    return [cx_intro(), cx_map(),
+            chapter(1, "Nhập hàng và Putaway bằng LPN", lead=2.7), cx_asn(), c.cx_dock(), c.cx_pallet(), c.cx_rpda(), c.cx_put(),
+            c.cx_loop(), c.cx_done(), c.cx_g1(),
+            chapter(2, "Lấy hàng gộp theo xe bằng giấy", lead=2.7), c.cx_do(), c.cx_master(), c.cx_alloc(), c.cx_picklist(),
+            c.cx_pick(), c.cx_confirm(), c.cx_g2(),
+            chapter(3, "Chia hàng theo đơn DO", lead=2.7), c.cx_cells(), c.cx_sort(), c.cx_diff(), c.cx_g3(),
+            chapter(4, "Kiểm hàng và Bàn giao", lead=2.7), c.cx_check(), c.cx_hand(), c.cx_g4(),
+            c.cx_end()]
 
 
 if __name__ == "__main__":
