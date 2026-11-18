@@ -49,7 +49,7 @@ def pallet_build(pid, cx, by, sku=None, shown=False, lpn=True):
         s.append("</g>")
         return "".join(s)
     s.append(f'<g id="{pid}-lpn" opacity="{o}"><rect x="{cx-72}" y="{by-64}" width="66" height="38" rx="3" fill="#fff" stroke="{INK}" stroke-width="2"/>'
-             f'<text x="{cx-39}" y="{by-49}" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="12" fill="{INK}">LPN</text>'
+             f'<text x="{cx-39}" y="{by-49}" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="{st.LPN_FS}" fill="{INK}">LPN</text>'
              + st.barcode(cx - 66, by - 46, 54, 14) + '</g></g>')
     return "".join(s)
 

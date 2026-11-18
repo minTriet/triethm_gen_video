@@ -42,6 +42,7 @@ EXTRA_CSS = f"""
 .pill{{display:inline-block;background:#fff;border:4px solid {INK};border-radius:18px;padding:10px 26px;font-size:40px;font-weight:900}}
 """
 st.BADGE_CSS += EXTRA_CSS     # scene_file() inlines st.BADGE_CSS into every scene
+st.LPN_FS = 17                # bigger "LPN" on pallet labels in this video
 
 
 # ------------------------------------------------------------ step kind chips (drawio legend)
@@ -251,8 +252,8 @@ class ZRack:
             for c in range(self.cols):
                 for k in range(self.levels):
                     x, y = self.label_xy(c, k)
-                    s.append(f'<g id="{p}-loc-c{c}-l{k}"><rect x="{x-58}" y="{y-11}" width="116" height="30" rx="4" fill="#fff" stroke="{INK}" stroke-width="2"/>'
-                             f'<text x="{x}" y="{y+11}" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="20" fill="{INK}">{self.loc(c, k)}</text></g>')
+                    s.append(f'<g id="{p}-loc-c{c}-l{k}"><rect x="{x-68}" y="{y-13}" width="136" height="36" rx="5" fill="#fff" stroke="{INK}" stroke-width="2"/>'
+                             f'<text x="{x}" y="{y+14}" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="25" fill="{INK}">{self.loc(c, k)}</text></g>')
         s.append("</g>")
         return "".join(s)
 

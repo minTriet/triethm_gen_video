@@ -7,6 +7,7 @@ from kit import C, FONT, ROLE, stick, pda_svg
 
 INK = C["ink"]
 FY = 800                       # floor line
+LPN_FS = 12                    # font size of "LPN" on pallet labels (CXAD video raises it)
 PDA_X, PDA_Y, PDA_W, PDA_H = 1390, 96, 430, 740
 
 
@@ -44,7 +45,7 @@ def pallet(pid, cx, by, lpn=None, sku=None, rows=2, extra_cls=""):
             s.append(carton(cx - 76 + c*76, by - 18 - 56*(r+1), 76, 56, label=sku if (r == 0 and c == 1 and sku) else None, fs=13))
     if lpn:
         s.append(f'<g id="{pid}-lpn"><rect x="{cx-72}" y="{by-62}" width="66" height="36" rx="3" fill="#fff" stroke="{INK}" stroke-width="2"/>'
-                 f'<text x="{cx-39}" y="{by-47}" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="12" fill="{INK}">LPN</text>'
+                 f'<text x="{cx-39}" y="{by-47}" text-anchor="middle" font-family="{FONT}" font-weight="900" font-size="{LPN_FS}" fill="{INK}">LPN</text>'
                  + barcode(cx - 66, by - 44, 54, 14) + '</g>')
     s.append("</g>")
     return "".join(s)

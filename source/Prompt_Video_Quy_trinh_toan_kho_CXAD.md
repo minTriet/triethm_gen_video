@@ -115,7 +115,7 @@ Thẻ chương: "Phần 2 · Lấy hàng gộp theo xe". Chứng từ: **Phiếu
    - Gộp tổng số lượng theo mã hàng: ba dòng "SKU 2001: 20 + 15 + 20 pcs" gộp lại thành "55 pcs".
    - Quy đổi: "55 pcs, quy cách 50 → **1 thùng 5 pcs**" (1 thùng to + 5 gói nhỏ bật ra).
    - Tách phiếu theo khu: một phiếu tách thành 3 thẻ màu **ĐÔNG / CHILL / KHÔ**.
-   **Lời:** "Khi tạo phiếu lấy hàng, có thể chọn một hoặc nhiều Master DO lấy cùng lúc." / "Hệ thống gộp tổng số lượng theo từng mã hàng," / "quy đổi ra thùng và pcs, ví dụ năm mươi lăm pcs, quy cách năm mươi, là một thùng năm pcs," / "và tách phiếu theo khu: đông, chill, khô."
+   **Lời:** "Khi tạo phiếu lấy hàng, có thể chọn một hoặc nhiều Master DO lấy cùng lúc." / "Hệ thống gộp tổng số lượng theo từng mã hàng," / "quy đổi ra thùng và pcs, ví dụ 55 pcs, quy cách 50, là 1 thùng 5 pcs," / "và tách phiếu theo khu: đông, chill, khô."
 6. **Ngã rẽ "Khu hàng đông?"** Thẻ thoi, màn hình chia đôi: trái "KHÔNG → chill / khô · PDA", phải "CÓ → đông · phiếu giấy".
    **Lời:** "Cách lấy hàng khác nhau theo khu."
 7. **Nhánh chill / khô – Bước 8: Lấy hàng bằng PDA** `PDA`. Picker (áo vàng) chọn phiếu lấy hàng trên PDA → đi tới vị trí, scan vị trí → scan mã hàng → nhập tổng số lượng "1 thùng + 5 cái".

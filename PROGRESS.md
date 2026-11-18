@@ -34,4 +34,4 @@ Render: `cd video-cxad && node ../.claude/skills/hyperframes/scripts/plugin-cli.
 | Phần 3 – Chia hàng theo DO (04K.2, bước 1–3) | xong |
 | Phần 4 – Kiểm & Bàn giao (04K.3, bước 1–5) + kết | xong |
 | Check | qua (0 lỗi) |
-| Render bản đầy đủ | video-cxad/renders/quy-trinh-kho-cxad-full-v1.mp4 (5:20, 1080p) |
+| Render bản đầy đủ | v1: video-cxad/renders/quy-trinh-kho-cxad-full-v1.mp4 · v2 (phụ đề quy đổi bằng số, nhãn LPN + mã vị trí to hơn): quy-trinh-kho-cxad-full-v2.mp4 |

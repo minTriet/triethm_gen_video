@@ -128,7 +128,7 @@ def p2_alloc():
 def p2_list():
     lines = ["Khi tạo phiếu lấy hàng, có thể chọn một hoặc nhiều Master DO lấy cùng lúc.",
              "Hệ thống gộp tổng số lượng theo từng mã hàng,",
-             "quy đổi ra thùng và pcs, ví dụ năm mươi lăm pcs, quy cách năm mươi, là một thùng năm pcs,",
+             "quy đổi ra thùng và pcs, ví dụ 55 pcs, quy cách 50, là 1 thùng 5 pcs,",
              "và tách phiếu theo khu: đông, chill, khô."]
 
     def build(T, D):
