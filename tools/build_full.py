@@ -390,8 +390,9 @@ def assemble(seq, limit=None):
     return placed, total
 
 
-def build_all(limit=None):
-    seq = timeline()
+def build_all(limit=None, seq=None, out=None):
+    seq = seq if seq is not None else timeline()
+    OUT = out or globals()["OUT"]
     placed, total = assemble(seq, limit)
     os.makedirs(os.path.join(OUT, "compositions"), exist_ok=True)
     hosts, caps, sfx = [], [], []
