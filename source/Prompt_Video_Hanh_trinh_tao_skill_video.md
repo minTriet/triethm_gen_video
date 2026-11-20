@@ -1,4 +1,4 @@
-# PROMPT VIDEO / SLIDE – HÀNH TRÌNH TẠO "KỸ NĂNG LÀM VIDEO THEO Ý TÔI" · v1 (nháp)
+# PROMPT VIDEO / SLIDE – HÀNH TRÌNH TẠO "KỸ NĂNG LÀM VIDEO THEO Ý TÔI" · v2 (theo storyboard đã duyệt)
 
 > Mục đích: kể lại **quá trình và cách thức** tôi đã biến Claude Code + HyperFrames thành một "kỹ năng" làm video training kho
 > đúng ý mình, để người khác (đồng nghiệp, quản lý) hiểu và làm lại được.
@@ -82,7 +82,7 @@ PHONG CÁCH (giữ đúng bộ đã chốt của repo):
 
 ---
 
-## [B1] VIDEO HYPERFRAMES – "Tôi đã dạy Claude làm video theo ý mình như thế nào" (~3 phút)
+## [B1] VIDEO HYPERFRAMES – "Tôi đã dạy Claude làm video theo ý mình như thế nào" (~3 phút 05 giây)
 
 ```
 Một video liền, có thẻ chương giữa các phần. Lời = phụ đề nguyên văn.
@@ -93,43 +93,53 @@ MỞ ĐẦU (~12s)
 - Lời: "Đây là ba video training và một bộ slide, làm trong hai ngày." /
        "Video này kể lại tôi đã làm thế nào, để bạn cũng làm được."
 
-PHẦN 1 – Bắt đầu từ một prompt (~30s)
+PHẦN 1 – Bắt đầu từ một prompt (~35s)
 - Bước 1: thẻ "Cài 9 skill HyperFrames" – 9 ô nhỏ xếp vào một hộp đồ nghề.
+  Lời: "Đầu tiên, tôi cài cho Claude bộ 9 skill dựng video HyperFrames."
+- HYPERFRAMES LÀ GÌ? (~15s, không có badge "Bước n"): tiêu đề "Video = một trang web chạy theo thời gian".
+  Trái: cửa sổ code gõ ra đoạn thật trong project (khung phụ đề có data-start / data-duration,
+  một nhân vật SVG, một dòng GSAP tl.to("#picker", {x: 600})). Giữa: 3 vạch HTML (cảnh, chữ, nhân vật) /
+  CSS (màu, font, bố cục) / GSAP (chuyển động) sáng lần lượt. Phải: trình duyệt chụp từng khung –
+  3 khung phim picker dịch dần sang phải, "30 khung / giây" → ô MP4. Chữ "frontend" đổi màu cam ở câu cuối.
+  Lời: "HyperFrames dựng video bằng chính HTML, giống như làm một trang web." /
+       "Cảnh là HTML và CSS, chuyển động viết bằng JavaScript." /
+       "Trình duyệt chạy trang đó và chụp từng khung, 30 khung mỗi giây, rồi ghép thành MP4." /
+       "Vì vậy cốt lõi là frontend: dựng được trang web thì dựng được video."
 - Bước 2: tờ giấy "Prompt gốc" chia 2 khối: [A] Phong cách chung + [B] Kịch bản từng tập.
 - Bước 3: khung Claude gõ ra "OUTLINE" – bảng màu, font, bảng vai. Giảng viên đóng dấu ✔.
-- Bước 4: 3 quyết định hiện lần lượt, mỗi cái một icon: micro bị gạch ("Bỏ giọng đọc"),
-  thẻ "SKU 1001 · minh họa", logo bị gạch ("Không logo").
 - Lời: "Tôi bắt đầu bằng một prompt: phong cách chung và kịch bản từng tập." /
-       "Claude không dựng ngay, mà lập outline để tôi duyệt trước." /
-       "Ba quyết định được chốt từ đầu: không giọng đọc, mã hàng là minh họa, không logo."
+       "Claude không dựng ngay, mà lập outline để tôi duyệt trước."
 
 PHẦN 2 – Xem bản nháp, biến góp ý thành luật (~40s)
-- Bước 5: khung "Tập 1 – bản nháp" chạy vài giây (dùng tap-1-tong-quan/renders/tap-1-draft.mp4).
-- Bước 6: 4 thẻ góp ý lật thành 4 "luật" có số:
+- Bước 4: khung "Tập 1 – bản nháp" chạy vài giây (dùng tap-1-tong-quan/renders/tap-1-draft.mp4).
+- Bước 5: 4 thẻ góp ý lật thành 4 "luật" có số:
   "5 tập → 1 video" · "Nhịp đọc 1.3×" · "Âm thanh cách nhau ≥ 4 giây" · "Nhân vật v2".
-- Bước 7: model sheet v1 (người que đơn giản) trượt ra, model-sheet-v2.png trượt vào; cạnh đó
+- Bước 6: model sheet v1 (người que đơn giản) trượt ra, model-sheet-v2.png trượt vào; cạnh đó
   demo dáng đi nghiêng – nhún (walk-demo.mp4). Dấu ✔ "Đã duyệt".
-- Bước 8: thanh thời lượng: đoạn 0:31 sáng xanh "Duyệt 31 giây đầu", rồi kéo dài ra 5:09.
+- Bước 7: thanh thời lượng: đoạn 0:31 sáng xanh "Duyệt 31 giây đầu", rồi kéo dài ra 5:09.
 - Lời: "Xem Tập 1 xong, tôi góp ý bốn điểm." /
        "Mỗi góp ý được ghi thành luật, áp dụng cho mọi phần sau." /
        "Nhân vật được vẽ lại, duyệt trên một bảng mẫu, rồi mới đưa vào video." /
        "Duyệt 31 giây đầu trước, rồi mới làm đủ 5 phút."
 
 PHẦN 3 – Video thứ hai nhanh hơn nhờ kế thừa (~30s)
-- Bước 9: tờ "Context TC" với bảng 2 cột "Hàng kho khô | Hàng TC"; các luật cũ (1.3×, ≥ 4 s,
+- Bước 8: tờ "Context TC" với bảng 2 cột "Hàng kho khô | Hàng TC"; các luật cũ (1.3×, ≥ 4 s,
   nhân vật v2) bay từ góc trên xuống gắn vào tờ giấy. 36 giây đầu → bản đầy đủ 2:12.
-- Bước 10: deck 17 slide xòe ra như quạt.
+- Bước 9: deck 17 slide xòe ra như quạt.
 - Lời: "Video thứ hai không phải bắt đầu lại." /
        "Tôi chỉ viết phần khác so với video trước, mọi luật cũ tự áp dụng." /
        "Cùng nội dung đó, tôi tạo thêm một bộ slide 17 trang."
 
 PHẦN 4 – Đóng gói thành kỹ năng (~40s)
-- Bước 11: file PDF bản vẽ quy trình CXAD → prompt v1 (nháp, chữ xám) → v2 (✔ đã xác nhận).
+- Bước 10: file PDF bản vẽ quy trình CXAD → prompt v1 (nháp, chữ xám) → v2 (✔ đã xác nhận).
   Hiện 5 chip lấy từ chú giải bản vẽ: WMS · PDA · Thủ công · Chứng từ · Điều kiện.
   Quy trình "01A" bị gạch: "Việc của quản lý – bỏ".
-- Bước 12: vai mới "Quản lý kho" (model-quan-ly.png) bước vào hàng 7 vai cũ → cả hàng được
-  bọc vào một hộp có nhãn "Skill: nhan-vat-kho (model v3)".
-- Bước 13: ba khung v1 → v2 → v3 xếp chồng; mỗi lần sửa có 1 dòng:
+- Bước 11: 8 vai đứng thành hàng, mỗi vai một hành động tại chỗ, không trùng nhau: nhận hàng bê thùng ·
+  xe nâng nâng càng có thùng · điều phối gõ máy tính · quản lý kho cầm hồ sơ và chỉ tay giao việc ·
+  picker kéo trolley · checker scan PDA · vận tải ký giấy giao · giảng viên vẫy tay.
+  "Quản lý kho" (model-quan-ly.png) bước vào sau cùng, nhãn "MỚI" → cả hàng được bọc vào một hộp
+  có nhãn "Skill: nhan-vat-kho (model v3)".
+- Bước 12: ba khung v1 → v2 → v3 xếp chồng; mỗi lần sửa có 1 dòng:
   "Phụ đề quy đổi bằng số, nhãn to hơn" · "Ô điều kiện khớp mũi tên".
 - Lời: "Video thứ ba bắt đầu từ bản vẽ quy trình." /
        "Cần thêm vai quản lý kho, tôi đóng gói cả bộ nhân vật thành một skill riêng." /
@@ -159,9 +169,11 @@ luôn có hình (ảnh thật từ repo hoặc sơ đồ vẽ phẳng). Ghi chú
 
  1. Tiêu đề: "Từ một prompt đến một kỹ năng làm video" – 4 thumbnail sản phẩm, chip "2 ngày · 27 phiên bản".
  2. Kết quả: bảng 4 sản phẩm (tên · thời lượng / số slide · số phiên bản).
- 3. Công cụ: Claude Code + 9 skill HyperFrames – "video là trang web được render thành MP4".
+ 3. Công cụ: Claude Code + 9 skill HyperFrames – "video là trang web được render thành MP4":
+    HTML = cảnh, CSS = màu/font/bố cục, GSAP = chuyển động, trình duyệt chụp 30 khung/giây → MP4.
+    Cốt lõi là frontend.
  4. Prompt gốc: sơ đồ 2 khối [A] Phong cách chung + [B] Kịch bản từng tập.
- 5. Outline trước, dựng sau: ảnh chụp bảng thông số + 3 quyết định đã chốt.
+ 5. Outline trước, dựng sau: ảnh chụp bảng thông số của OUTLINE.md.
  6. Góp ý thành luật: 4 luật sau Tập 1 (kèm công thức nhịp đọc 1.3×).
  7. Nhân vật được duyệt trên bảng mẫu: model-sheet-v2.png cạnh model-sheet-v3.png.
  8. Duyệt 30 giây trước, làm đủ sau: dòng thời gian 0:31 → 5:09 và 0:36 → 2:12.
@@ -175,4 +187,5 @@ luôn có hình (ảnh thật từ repo hoặc sơ đồ vẽ phẳng). Ghi chú
 
 ## Ghi chú khi dựng
 - Không thêm số liệu ngoài phần "Dữ kiện thật"; nếu cần chi tiết, đọc lại `git log`, `PROGRESS.md`, `OUTLINE.md`.
+- Storyboard đã duyệt: `design/storyboard-hanh-trinh.html` (dựng bằng `tools/build_storyboard_skill.py`).
 - Gửi outline + 30 giây đầu (hoặc 3 slide đầu) để tôi duyệt trước khi làm đủ – đúng công thức của chính video này.
