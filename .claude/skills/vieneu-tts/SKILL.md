@@ -17,8 +17,11 @@ pip install "vieneu[cuda]"    # GPU NVIDIA trên Linux
 ```
 
 Lần chạy đầu tải model từ `huggingface.co` (`pnnbao-ump/VieNeu-TTS-v3-Turbo`,
-`OpenMOSS-Team/MOSS-Audio-Tokenizer-Nano`). Nếu mạng chặn huggingface.co (proxy 403), báo người dùng
-cần mở host đó cho môi trường – đừng thay bằng giọng khác mà không hỏi.
+`OpenMOSS-Team/MOSS-Audio-Tokenizer-Nano`). Trên máy cá nhân chạy được ngay.
+
+Cloud session (proxy chặn host): môi trường cần cho phép `huggingface.co` và `us.aws.cdn.hf.co`
+(file lớn được chuyển hướng sang đó), và chạy với `HF_HUB_DISABLE_XET=1` để tránh các host Xet
+(`cas-server.xethub.hf.co`...). Bị 403 thì báo người dùng host nào bị chặn – đừng thay bằng giọng khác mà không hỏi.
 
 ## Cách dùng – script `scripts/vieneu_tts.py`
 
