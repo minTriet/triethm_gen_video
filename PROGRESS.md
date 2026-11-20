@@ -67,3 +67,13 @@ Render: `cd video-hanhtrinh && node ../.claude/skills/hyperframes/scripts/plugin
 | Check + render bản đầy đủ | v1: `video-hanhtrinh/renders/hanh-trinh-full-v1.mp4` (2:13, 1080p, có giọng đọc) |
 
 Ghi chú giọng đọc: câu c10-1 đọc "ba mươi mốt giây" và tạo với seed 11 (các câu khác seed 7).
+
+# Video "Quy trình kho cơ bản với WMS"
+
+Nguồn: `source/Prompt_Video_Quy_trinh_co_ban_WMS.md` (v1 nháp) — bám To-Be chuẩn 02C + 04C (Barcode mã hàng) của vault.
+Storyboard: `design/storyboard-wms-co-ban.html` (`python3 tools/build_storyboard_wms.py design/storyboard-wms-co-ban.html`), 18 màn, khoảng 2:11.
+
+| Phần | Trạng thái |
+| --- | --- |
+| Storyboard v1 | chờ duyệt |
+| Dựng video | chưa làm (chờ duyệt storyboard + chốt biến thể, giọng đọc) |
