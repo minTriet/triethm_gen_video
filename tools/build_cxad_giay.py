@@ -1,5 +1,5 @@
-"""Training video: Quy trình toàn kho CXAD (lấy hàng bằng giấy) -> ./video-cxad
-Run: python3 tools/build_cxad.py [limit_seconds]
+"""Training video: Quy trình toàn kho CXAD (lấy hàng bằng giấy) -> ./video-cxad-giay
+Run: python3 tools/build_cxad_giay.py [limit_seconds]
 Script source: source/Context_Video_CXAD_Paper_Picking.md (v2, đã xác nhận)
 """
 import os, sys
@@ -10,7 +10,7 @@ from stage import FY, INK
 from build_full import Scene, chapter, build_all
 from parts import figure, svg_layer, desk_svg, CARRY
 
-OUT = os.path.join(os.path.dirname(__file__), "..", "video-cxad")
+OUT = os.path.join(os.path.dirname(__file__), "..", "video-cxad-giay")
 
 ZONE = {  # name -> (fill, edge, label)
     "dong": ("#D6ECFF", "#3E8FD8", "ĐÔNG"),

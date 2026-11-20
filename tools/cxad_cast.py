@@ -19,7 +19,7 @@ for role, name, job, new in CAST:
               f'<svg width="200" height="300" viewBox="-110 -320 220 330">{stick(role, role, 2.0)}</svg>'
               f'<div style="font-size:24px;font-weight:900;line-height:1.2;min-height:58px">{name}</div>'
               f'<div style="font-size:19px;font-weight:700;color:{C["muted"]};margin-top:6px">{job}</div></div>')
-html = f"""<!doctype html><html lang="vi"><head><meta charset="utf-8"><style>{font_css('../video-cxad/assets/fonts/')}
+html = f"""<!doctype html><html lang="vi"><head><meta charset="utf-8"><style>{font_css('../video-cxad-giay/assets/fonts/')}
 body{{margin:0;width:1920px;height:1080px;background:{C['ground']};font-family:{FONT};color:#1B2430}}</style></head><body>
 <div style="padding:60px 70px 0"><div style="font-size:60px;font-weight:900">Nhân vật – Video quy trình kho CXAD</div>
 <div style="font-size:30px;font-weight:700;color:{C['blue']};margin-top:6px">Giữ kiểu người que model v2 · nhãn "MỚI" = nhân vật mới cho video này</div></div>

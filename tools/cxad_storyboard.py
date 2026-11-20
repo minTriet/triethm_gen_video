@@ -1,13 +1,13 @@
 """Storyboard PDF for review. Run after snapshots exist: python3 tools/cxad_storyboard.py <frames_dir>"""
 import os, sys, glob, html
 sys.path.insert(0, os.path.dirname(__file__))
-import build_cxad as b
+import build_cxad_giay as b
 from build_full import assemble
 from kit import font_css
 
 import importlib
 FR = sys.argv[1]
-MOD = importlib.import_module(sys.argv[2] if len(sys.argv) > 2 else "build_cxad")
+MOD = importlib.import_module(sys.argv[2] if len(sys.argv) > 2 else "build_cxad_giay")
 NAME = sys.argv[3] if len(sys.argv) > 3 else "cxad-storyboard"
 SUB = sys.argv[4] if len(sys.argv) > 4 else None
 ROOT = os.path.join(os.path.dirname(__file__), "..")
@@ -37,7 +37,7 @@ for s, start in placed:
     rows += (f'<div class="sc"><img src="file://{os.path.abspath(frames[k])}"><div class="tx"><div class="no">Cảnh {n} · {m}:{sec:02d} · {s.D:.0f}s</div>'
              f'<div class="ti">{TITLES[k]}</div><ul>{caps}</ul><div class="ok">☐ Chốt &nbsp;&nbsp; ☐ Sửa: ..............................</div></div></div>')
     k += 1
-doc = f"""<!doctype html><html lang="vi"><head><meta charset="utf-8"><style>{font_css('file://' + os.path.abspath(os.path.join(ROOT, 'video-cxad/assets/fonts')) + '/')}
+doc = f"""<!doctype html><html lang="vi"><head><meta charset="utf-8"><style>{font_css('file://' + os.path.abspath(os.path.join(ROOT, 'video-cxad-giay/assets/fonts')) + '/')}
 @page{{size:A4 landscape;margin:12mm}}body{{font-family:'Be Vietnam Pro';color:#1B2430;margin:0}}
 h1{{font-size:26px;margin:0 0 4px}}.sub{{font-size:13px;color:#6B7685;margin-bottom:10px}}
 h2{{font-size:18px;background:#1F5FBF;color:#fff;padding:6px 12px;border-radius:6px;margin:14px 0 8px;break-after:avoid}}

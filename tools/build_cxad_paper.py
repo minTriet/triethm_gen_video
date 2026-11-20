@@ -10,7 +10,7 @@ import stage as st
 from stage import FY, INK
 from build_full import Scene, chapter, ghinho, build_all
 from parts import figure, svg_layer, desk_svg, pallet_build, carry_box, CARRY, SCAN, ic_forklift
-import build_cxad as bx
+import build_cxad_giay as bx
 import cxad_scenes as c
 from cxad_scenes import (lab_js, lab_off, press_js, show_js, hide_js, write_js, draw_js, walk_to, win, btn, pill, sheet,
                          paper, arrow_defs, arrow, dock_svg, zone_banner, ZRack, clipboard, office, HANDW, IC_DOC, IC_PEN)

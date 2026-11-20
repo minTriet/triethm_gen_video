@@ -1,6 +1,6 @@
 # STORYBOARD VIDEO TRAINING – KHO CXAD: NHẬP & LẤY HÀNG BẰNG GIẤY, PDA CHỈ Ở CHIA HÀNG VÀ XUẤT XE · v1 (bản nháp để duyệt)
 
-> Video mới, cùng phong cách với video CXAD vừa chốt (`video-cxad/renders/quy-trinh-kho-cxad-full-v2.mp4`):
+> Video mới, cùng phong cách với video CXAD vừa chốt (`video-cxad-giay/renders/quy-trinh-kho-cxad-full-v2.mp4`):
 > không giọng đọc, chỉ phụ đề (lời thoại = phụ đề nguyên văn), nhịp đọc 1.3×, hiệu ứng âm thanh thưa,
 > cùng nhân vật, sơ đồ kho 3 khu Đông / Chill / Khô, màu, font. Mã hàng, xe, DO, vị trí, số lượng là **ví dụ minh họa**.
 > Dự kiến **khoảng 4 phút 45 giây – 5 phút**, 1 video liền, 4 phần.

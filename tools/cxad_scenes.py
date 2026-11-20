@@ -1,4 +1,4 @@
-"""Scenes for the CXAD video after Chương 1 Bước 2 (see build_cxad.py for intro, map, Bước 1–2)."""
+"""Scenes for the CXAD video after Chương 1 Bước 2 (see build_cxad_giay.py for intro, map, Bước 1–2)."""
 import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
 from kit import C, FONT, stick, walk_js, pose_js, REST, pda_svg, icon
@@ -7,8 +7,8 @@ from stage import FY, INK
 from build_full import Scene, ghinho, ic_svg
 from parts import figure, svg_layer, desk_svg, pallet_build, pda_popup, kv, swap_js, hand, carry_box, SCAN, CARRY
 from parts import ic_pallet, ic_forklift, ic_truck, ic_check, doc_html
-import build_cxad as bx
-from build_cxad import ZONE, zone_icon, printer_svg
+import build_cxad_giay as bx
+from build_cxad_giay import ZONE, zone_icon, printer_svg
 
 HANDW = "#2747C9"   # pen ink for handwriting on paper
 
