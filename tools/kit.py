@@ -38,6 +38,9 @@ ROLE = {  # vest colour + label for each role (series bible)
     "transport": ("#8C96A3", "Đội vận tải"),
     "instructor": ("#1F5FBF", "Giảng viên"),
     "manager": ("#16478F", "Quản lý kho"),
+    # CXAD paper-picking video (video-cxad-giay)
+    "xlct": ("#1F5FBF", "Xử lý chứng từ (XLCT)"),
+    "driver": ("#8C96A3", "Tài xế"),
 }
 
 FONT = "'Be Vietnam Pro'"
@@ -168,6 +171,7 @@ OUTFIT = {  # role -> (top, hat)
     "checker": ("vest", True), "transport": ("vest", True),
     "planner": ("shirt", False), "instructor": ("shirt_tie", False),
     "manager": ("manager", "white"),   # white safety helmet
+    "xlct": ("shirt", False), "driver": ("vest", True),
 }
 REST = {"armL": (16, -8), "armR": (-16, 8), "legL": (8, -2), "legR": (-8, 2)}
 
@@ -238,8 +242,9 @@ def stick(fid, role="picker", scale=1.0, label=False, pose=None, hand_r="", hand
                 f'<rect x="-15.8" y="-72" width="12.8" height="5" fill="#EEF2F6"/><rect x="3" y="-72" width="12.8" height="5" fill="#EEF2F6"/>')
     else:
         tie = ""
-        if top == "shirt_tie":
-            tie = f'<path d="M0,-102 L-4,-97 L-2,-76 L0,-72 L2,-76 L4,-97 Z" fill="{C["orange"]}" stroke="{ink}" stroke-width="1.5"/>'
+        if top in ("shirt_tie", "shirt_navytie"):
+            tcol = C["orange"] if top == "shirt_tie" else "#1B2F5E"
+            tie = f'<path d="M0,-102 L-4,-97 L-2,-76 L0,-72 L2,-76 L4,-97 Z" fill="{tcol}" stroke="{ink}" stroke-width="1.5"/>'
         shirt = col
         if top == "manager":  # white shirt, navy tie, ID badge on a navy lanyard
             shirt = "#FFFFFF"

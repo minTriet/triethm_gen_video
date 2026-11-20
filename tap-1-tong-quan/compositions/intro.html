@@ -144,20 +144,7 @@
       <div id="i-bar" style="width:220px;height:10px;border-radius:5px;background:#1F5FBF;margin-top:30px"></div>
     </div>
     <svg id="i-man-svg" class="abs" style="left:0;top:0" width="1920" height="1080" viewBox="0 0 1920 1080">
-      <g transform="translate(1450,840)"><g id="i-man"><g transform="scale(2.4)"><g>
-  <ellipse cx="0" cy="2" rx="34" ry="7" fill="#000" opacity="0.10"/>
-  <line id="i-man-legL" x1="0" y1="-55" x2="-2" y2="0" stroke="#1B2430" stroke-width="6" stroke-linecap="round"/>
-  <line id="i-man-legR" x1="0" y1="-55" x2="2" y2="0" stroke="#1B2430" stroke-width="6" stroke-linecap="round"/>
-  <line x1="0" y1="-55" x2="0" y2="-102" stroke="#1B2430" stroke-width="6" stroke-linecap="round"/>
-  <path d="M-15,-100 Q0,-106 15,-100 L13,-60 Q0,-56 -13,-60 Z" fill="#1F5FBF" stroke="#1B2430" stroke-width="3"/>
-  <line id="i-man-armL" x1="0" y1="-96" x2="-3" y2="-52" stroke="#1B2430" stroke-width="6" stroke-linecap="round"/>
-  <g id="i-man-box" opacity="0"><rect x="-4" y="-92" width="44" height="34" rx="3" fill="#D9A86C" stroke="#A97A44" stroke-width="2"/><rect x="14" y="-92" width="8" height="34" fill="#F3DDB5"/></g>
-  <line id="i-man-armR" x1="0" y1="-96" x2="3" y2="-52" stroke="#1B2430" stroke-width="6" stroke-linecap="round"/>
-  <circle cx="0" cy="-122" r="18" fill="#fff" stroke="#1B2430" stroke-width="6"/>
-  <circle cx="7" cy="-125" r="2.6" fill="#1B2430"/><circle cx="-5" cy="-125" r="2.6" fill="#1B2430"/>
-  <path d="M-4,-115 Q2,-110 8,-115" fill="none" stroke="#1B2430" stroke-width="2.4" stroke-linecap="round"/>
-  
-</g></g></g></g>
+      <g transform="translate(1450,840)"><g id="i-man"><g transform="scale(2.4)"><g id="i-man-body"><ellipse cx="0" cy="3" rx="30" ry="6" fill="#000" opacity="0.10"/><g transform="translate(-3,-60)"><g id="i-man-legL" transform="rotate(8)"><line x1="0" y1="0" x2="0" y2="30" stroke="#1B2430" stroke-width="6" stroke-linecap="round"/><g transform="translate(0,30)"><g id="i-man-shinL" transform="rotate(-2)"><line x1="0" y1="0" x2="0" y2="29" stroke="#1B2430" stroke-width="6" stroke-linecap="round"/><line x1="0" y1="29" x2="-8" y2="30" stroke="#1B2430" stroke-width="6" stroke-linecap="round"/></g></g></g></g><g transform="translate(3,-60)"><g id="i-man-legR" transform="rotate(-8)"><line x1="0" y1="0" x2="0" y2="30" stroke="#1B2430" stroke-width="6" stroke-linecap="round"/><g transform="translate(0,30)"><g id="i-man-shinR" transform="rotate(2)"><line x1="0" y1="0" x2="0" y2="29" stroke="#1B2430" stroke-width="6" stroke-linecap="round"/><line x1="0" y1="29" x2="8" y2="30" stroke="#1B2430" stroke-width="6" stroke-linecap="round"/></g></g></g></g><path d="M-15,-100 Q0,-108 15,-100 L14,-61 Q0,-58 -14,-61 Z" fill="#1F5FBF" stroke="#1B2430" stroke-width="3" stroke-linejoin="round"/><path d="M-7,-104 L0,-96 L7,-104" fill="#fff" stroke="#1B2430" stroke-width="2" stroke-linejoin="round"/><path d="M0,-102 L-4,-97 L-2,-76 L0,-72 L2,-76 L4,-97 Z" fill="#F28C1E" stroke="#1B2430" stroke-width="1.5"/><g transform="translate(-12,-98)"><g id="i-man-armL" transform="rotate(16)"><line x1="0" y1="0" x2="0" y2="25" stroke="#1B2430" stroke-width="6" stroke-linecap="round"/><g transform="translate(0,25)"><g id="i-man-foreL" transform="rotate(-8)"><line x1="0" y1="0" x2="0" y2="23" stroke="#1B2430" stroke-width="6" stroke-linecap="round"/><circle cx="0" cy="26" r="9" fill="#fff" stroke="#1B2430" stroke-width="3.5"/></g></g></g></g><g transform="translate(12,-98)"><g id="i-man-armR" transform="rotate(-16)"><line x1="0" y1="0" x2="0" y2="25" stroke="#1B2430" stroke-width="6" stroke-linecap="round"/><g transform="translate(0,25)"><g id="i-man-foreR" transform="rotate(8)"><line x1="0" y1="0" x2="0" y2="23" stroke="#1B2430" stroke-width="6" stroke-linecap="round"/><circle cx="0" cy="26" r="9" fill="#fff" stroke="#1B2430" stroke-width="3.5"/></g></g></g></g><circle cx="0" cy="-127" r="19" fill="#fff" stroke="#1B2430" stroke-width="5.5"/><circle cx="-6.5" cy="-129" r="2.8" fill="#1B2430"/><circle cx="6.5" cy="-129" r="2.8" fill="#1B2430"/><path d="M-6,-119 Q0,-114 6,-119" fill="none" stroke="#1B2430" stroke-width="2.6" stroke-linecap="round"/></g></g></g></g>
     </svg>
   </div>
   <script>
@@ -169,10 +156,19 @@
     tl.fromTo("#i-bar",{scaleX:0},{scaleX:1,duration:0.6,ease:"power2.out",transformOrigin:"0% 50%"},1.0);
     tl.fromTo("#i-rack",{x:60},{x:0,duration:9.8,ease:"none"},0);
     tl.fromTo("#i-man",{x:420},{x:0,duration:1.6,ease:"power2.out"},0.1);
-tl.fromTo("#i-man-legL",{rotation:24},{rotation:-24,duration:0.32,ease:"sine.inOut",repeat:4,yoyo:true,transformOrigin:"50% 0%"},0.1);
-tl.fromTo("#i-man-legR",{rotation:-24},{rotation:24,duration:0.32,ease:"sine.inOut",repeat:4,yoyo:true,transformOrigin:"50% 0%"},0.1);
-tl.fromTo("#i-man-armL",{rotation:-19.200000000000003},{rotation:19.200000000000003,duration:0.32,ease:"sine.inOut",repeat:4,yoyo:true,transformOrigin:"50% 0%"},0.1);
-tl.to(["#i-man-legL","#i-man-legR","#i-man-armL"],{rotation:0,duration:0.15,transformOrigin:"50% 0%"},1.70);
+tl.set("#i-man-body",{rotation:0,y:0,transformOrigin:"50% 100%"},0.1);
+tl.to("#i-man-body",{rotation:7,duration:0.160,ease:"sine.out"},0.100);
+tl.to("#i-man-body",{y:-5,duration:0.160,ease:"sine.out"},0.100);
+tl.to("#i-man-body",{rotation:0,y:0,duration:0.160,ease:"sine.in"},0.260);
+tl.to("#i-man-body",{rotation:-7,duration:0.160,ease:"sine.out"},0.420);
+tl.to("#i-man-body",{y:-5,duration:0.160,ease:"sine.out"},0.420);
+tl.to("#i-man-body",{rotation:0,y:0,duration:0.160,ease:"sine.in"},0.580);
+tl.to("#i-man-body",{rotation:7,duration:0.160,ease:"sine.out"},0.740);
+tl.to("#i-man-body",{y:-5,duration:0.160,ease:"sine.out"},0.740);
+tl.to("#i-man-body",{rotation:0,y:0,duration:0.160,ease:"sine.in"},0.900);
+tl.to("#i-man-body",{rotation:-7,duration:0.160,ease:"sine.out"},1.060);
+tl.to("#i-man-body",{y:-5,duration:0.160,ease:"sine.out"},1.060);
+tl.to("#i-man-body",{rotation:0,y:0,duration:0.160,ease:"sine.in"},1.220);
 
     tl.fromTo("#i-man-armR",{rotation:0},{rotation:-150,duration:0.35,ease:"power2.out",transformOrigin:"50% 0%"},1.75);
     tl.to("#i-man-armR",{rotation:-118,duration:0.26,ease:"sine.inOut",repeat:7,yoyo:true,transformOrigin:"50% 0%"},2.1);
