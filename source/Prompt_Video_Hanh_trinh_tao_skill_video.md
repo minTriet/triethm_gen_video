@@ -153,7 +153,7 @@ TỔNG KẾT (~25s)
   • Duyệt sớm bằng thứ nhỏ
   • Góp ý nào cũng thành luật ghi lại
   • Cái gì dùng lại thì đóng gói thành skill
-- Giảng viên giơ ngón cái.
+- Giảng viên giơ tay chào kết (bàn tay tròn, không cử chỉ ngón tay).
 - Lời: "Đó là công thức của tôi." /
        "Duyệt sớm, ghi lại luật, và đóng gói những gì dùng lại." /
        "Bạn hãy thử với quy trình của mình."

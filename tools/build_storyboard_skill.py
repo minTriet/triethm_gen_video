@@ -30,7 +30,7 @@ INK, MUTED, BLUE, ORANGE, GREEN, RED = C["ink"], C["muted"], C["blue"], C["orang
 WAVE = {"armR": (-140, -25)}
 POINT_R = {"armR": (-95, -5)}
 POINT_L = {"armL": (95, 5)}
-THUMB = {"armR": (-70, -100)}
+RAISE = {"armR": (-70, -100)}
 TYPE = {"armL": (22, -70), "armR": (-22, 70)}
 
 
@@ -311,13 +311,13 @@ b += terminal(160, 180, 1060, 600, [
     ("> Viết OUTLINE.md", "#7FD3FF"), ("## 1. Kế hoạch xử lý", "#FFFFFF"), ("## 2. Thông số chung", "#FFFFFF"),
     ("   Màu  #1F5FBF  #F28C1E  #22A55A", "#F2B233"), ("   Font Be Vietnam Pro · 30 fps", "#F2B233"),
     ("## 3. Outline Tập 1 (5 cảnh)", "#FFFFFF"), ("## 4. Câu hỏi cần chốt", "#FFFFFF")])
-b += person("s05i", "instructor", 1450, 830, 1.9, pose=THUMB)
+b += person("s05i", "instructor", 1450, 830, 1.9, pose=RAISE)
 b += stamp(1600, 330, "ĐÃ DUYỆT")
 screen_def("S05", "Phần 1 – Bắt đầu từ một prompt", "0:43–0:50", "Bước 3: Outline trước, dựng sau",
            frame(b, "Claude không dựng ngay, mà lập outline để tôi duyệt trước."),
            ["“Claude” là cửa sổ terminal (không vẽ thành người). Chữ được gõ ra từng dòng, con trỏ xanh nhấp nháy.",
             "Nội dung gõ ra là các mục thật của OUTLINE.md.",
-            "Giảng viên giơ ngón cái, dấu “ĐÃ DUYỆT” xanh đóng xuống (tiếng chime)."],
+            "Giảng viên giơ tay, dấu “ĐÃ DUYỆT” xanh đóng xuống (tiếng chime)."],
            ["Claude không dựng ngay, mà lập outline để tôi duyệt trước."])
 
 # S07 — Bước 5: Tập 1 nháp
@@ -572,11 +572,11 @@ for i, s in enumerate(["Duyệt sớm bằng thứ nhỏ", "Góp ý nào cũng t
                        "Cái gì dùng lại thì đóng gói thành skill"]):
     yy = 440 + i * 105
     b += T(290, yy, s, 40, 700) + check(1150, yy - 14, 28)
-b += person("s17i", "instructor", 1530, 830, 2.1, pose=THUMB)
+b += person("s17i", "instructor", 1530, 830, 2.1, pose=RAISE)
 screen_def("S17", "Tổng kết", "2:50–3:05", "Thẻ Ghi nhớ + kết",
            frame(b, "Duyệt sớm, ghi lại luật, và đóng gói những gì dùng lại."),
            ["Thẻ “Ghi nhớ” giống cuối mỗi phần của video kho; 3 ý hiện lần lượt, mỗi ý có ✔.",
-            "Giảng viên giơ ngón cái. Giữ khung cuối 2 giây."],
+            "Giảng viên giơ tay chào kết. Giữ khung cuối 2 giây."],
            ["Đó là công thức của tôi.", "Duyệt sớm, ghi lại luật, và đóng gói những gì dùng lại.",
             "Bạn hãy thử với quy trình của mình."])
 
