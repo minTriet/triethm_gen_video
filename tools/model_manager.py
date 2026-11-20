@@ -1,7 +1,7 @@
 """Model sheet for the new 'Quản lý kho' role (CXAD video).  Run: python3 tools/model_manager.py"""
 import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
-from kit import C, FONT, ROLE, font_css, stick, folder_svg, MANAGER_HOLD
+from kit import C, FONT, ROLE, font_css, stick, folder_svg, MANAGER_HOLD, TYPE
 from model_sheet import desk, cell_html
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
@@ -33,7 +33,7 @@ CELLS = [
     ("Cầm bìa hồ sơ", "Dấu hiệu nhận ra vai quản lý",
      stick("q2", "manager", 1.0, pose=MANAGER_HOLD, hand_l=folder_svg()), 0),
     ("Xem báo cáo trên WMS", "Bước 3 – Xử lý chênh lệch (04K.2)",
-     f'<g transform="translate(0,16)">{stick("q3", "manager", 1.0, pose={"armL": (22, -70), "armR": (-22, 70)})}</g>'
+     stick("q3", "manager", 1.0, pose=TYPE)
      + report_desk(), -40),
     ("Chỉ tay giao việc", "Hướng dẫn xử lý thiếu / thừa",
      stick("q4", "manager", 1.0, pose={"armR": (-128, 10)}) + task_cards(), -100),

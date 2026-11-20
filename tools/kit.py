@@ -210,6 +210,8 @@ def folder_svg(col="#16478F"):
 
 
 MANAGER_HOLD = {"armL": (-8, -118)}  # pose for holding folder_svg() in the left hand
+# seated at the computer (XLCT / dieu phoi): hands raised onto the keyboard, above the desk top
+TYPE = {"armL": (30, -100), "armR": (-30, 100)}
 
 
 def pda_svg(fid, laser=False, reach=80):

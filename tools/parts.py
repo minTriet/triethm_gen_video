@@ -1,6 +1,6 @@
 """Parts 2–5 of the training video. Each partN() returns a list of Scene objects."""
 import math
-from kit import C, FONT, stick, walk_js, pose_js, REST, icon, pda_svg
+from kit import C, FONT, stick, walk_js, pose_js, REST, icon, pda_svg, TYPE
 import stage as st
 from stage import FY, INK
 from build_full import Scene, ghinho, ic_svg
@@ -409,7 +409,7 @@ def p3_routes():
     LX = 1120
 
     def build(T, D):
-        planner = f'<g transform="translate(250,{FY - 40})">{stick("p3b-pl", "planner", 1.5, label=True, pose={"armL": (22, -70), "armR": (-22, 70)})}</g>'
+        planner = f'<g transform="translate(250,{FY - 40})">{stick("p3b-pl", "planner", 1.5, label=True, pose=TYPE)}</g>'
         lane_svg = ""
         for n, y in lanes:
             lab = "Tuyến n" if n == 3 else f"Tuyến {n}"

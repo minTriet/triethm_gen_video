@@ -1,7 +1,7 @@
 """Character model sheet for approval.  Run: python3 tools/model_sheet.py"""
 import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
-from kit import C, FONT, ROLE, font_css, stick, pda_svg, folder_svg, MANAGER_HOLD, SWAY, BOB
+from kit import C, FONT, ROLE, font_css, stick, pda_svg, folder_svg, MANAGER_HOLD, TYPE, SWAY, BOB
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 OUT = os.path.join(ROOT, "design")
@@ -91,7 +91,7 @@ CELLS.append(("Tài xế xe nâng", ROLE["forklift"][0], "Áo + mũ cam · lái 
     + forklift(), 0))
 
 CELLS.append(("Nhân viên điều phối", ROLE["planner"][0], "Sơ mi xanh dương · ngồi máy tính",
-    f'<g transform="translate(0,16)">{stick("m3", "planner", 1.0, pose={"armL": (22, -70), "armR": (-22, 70)})}</g>'
+    stick("m3", "planner", 1.0, pose=TYPE)
     + desk(), -40))
 
 CELLS.append(("Quản lý kho", ROLE["manager"][0], "Mũ trắng · sơ mi trắng · cà vạt",

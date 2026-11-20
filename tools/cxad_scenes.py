@@ -1,7 +1,7 @@
 """Scenes for the CXAD video after Chương 1 Bước 2 (see build_cxad_giay.py for intro, map, Bước 1–2)."""
 import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
-from kit import C, FONT, stick, walk_js, pose_js, REST, pda_svg, icon
+from kit import C, FONT, stick, walk_js, pose_js, REST, pda_svg, icon, TYPE
 import stage as st
 from stage import FY, INK
 from build_full import Scene, ghinho, ic_svg
@@ -419,7 +419,7 @@ def cx_done():
         P = "c1d"
         st1 = f'<g id="{P}-st1">{figure(P + "-rc", "receiver", 330, scale=1.5, pose=SCAN, hand_r=pda_svg(P + "-rc"))}</g>'
         st2 = (f'<g id="{P}-st2" opacity="0">{desk_svg(300)}{printer_svg(P + "-pr", 620)}'
-               f'{figure(P + "-xl", "xlct", 300, FY - 40, scale=1.5, label=True, pose={"armL": (22, -70), "armR": (-22, 70)})}</g>')
+               f'{figure(P + "-xl", "xlct", 300, FY - 40, scale=1.5, label=True, pose=TYPE)}</g>')
         body = svg_layer(st.floor() + st1 + st2)
         p1 = (kv("Phiếu ASN", "ASN-0001", "Xe 51C-123.45")
               + f'<div style="margin-top:20px;font-size:26px;font-weight:700;color:{C["muted"]}">Đã nhận</div>'
@@ -467,7 +467,7 @@ def cx_g1():
 # ============================================================ CHƯƠNG 2 – Lấy hàng gộp theo xe
 def office(P, label=True):
     return (desk_svg(300) + printer_svg(P + "-pr", 620)
-            + figure(P + "-xl", "xlct", 300, FY - 40, scale=1.5, label=label, pose={"armL": (22, -70), "armR": (-22, 70)}))
+            + figure(P + "-xl", "xlct", 300, FY - 40, scale=1.5, label=label, pose=TYPE))
 
 
 def do_card(cid, num, store, x=None, y=None, hidden=True):
@@ -939,7 +939,7 @@ def cx_hand():
         body = svg_layer(st.floor() + f'<g id="{P}-st1">' + printer_svg(P + "-pr", 300)
                          + figure(P + "-ck", "checker", 480, scale=1.5, label=True) + '</g>'
                          + f'<g id="{P}-st2" opacity="0">{desk_svg(300)}'
-                         + figure(P + "-xl", "xlct", 300, FY - 40, scale=1.5, label=True, pose={"armL": (22, -70), "armR": (-22, 70)}) + '</g>'
+                         + figure(P + "-xl", "xlct", 300, FY - 40, scale=1.5, label=True, pose=TYPE) + '</g>'
                          + f'<g transform="translate({TRX},{FY})"><g id="{P}-tk">{st.truck(P + "-tkk", label="XE-01")}</g></g>'
                          + goods
                          + f'<g transform="translate(1180,{FY})"><g id="{P}-dr">{stick(P + "-dv", "driver", 1.5, label=True)}</g></g>')

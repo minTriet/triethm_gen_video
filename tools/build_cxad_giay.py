@@ -4,7 +4,7 @@ Script source: source/Context_Video_CXAD_Paper_Picking.md (v2, đã xác nhận)
 """
 import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
-from kit import C, FONT, stick, walk_js, pose_js, REST
+from kit import C, FONT, stick, walk_js, pose_js, REST, TYPE
 import stage as st
 from stage import FY, INK
 from build_full import Scene, chapter, build_all
@@ -223,7 +223,7 @@ def cx_asn():
     def build(T, D):
         P = "cx1"
         PL, PRX = 300, 620
-        xl = figure(f"{P}-xl", "xlct", PL, FY - 40, scale=1.5, label=True, pose={"armL": (22, -70), "armR": (-22, 70)})
+        xl = figure(f"{P}-xl", "xlct", PL, FY - 40, scale=1.5, label=True, pose=TYPE)
         rc = figure(f"{P}-rc", "receiver", 2100, FY, scale=1.5, label=True)
         body = svg_layer(st.floor() + desk_svg(PL) + printer_svg(f"{P}-printer", PRX) + xl + rc)
         body += sheet_html(f"{P}-sheet", 1020, 170) + wms_window(f"{P}-wms", 1020, 170)
@@ -258,7 +258,7 @@ def cx_asn():
         js += pose_js(f"{P}-rc", th + 0.2, {"armL": (80, 10)}, dur=0.3, ease="power2.out")
         js += f'tl.fromTo("#{P}-hand",{{opacity:0,x:0,y:0}},{{opacity:1,duration:0.15}},{th+0.3:.2f});\n'
         js += f'tl.to("#{P}-hand",{{x:150,y:60,duration:0.6,ease:"power2.inOut"}},{th+0.4:.2f});\n'
-        js += pose_js(f"{P}-xl", th + 1.2, {"armR": (-22, 70)}, dur=0.3)
+        js += pose_js(f"{P}-xl", th + 1.2, {"armR": TYPE["armR"]}, dur=0.3)
         hand = (f'<g transform="translate({PRX - 32},{FY - 236})"><g id="{P}-hand" opacity="0"><rect x="0" y="0" width="64" height="44" rx="4" fill="#fff" stroke="{C["blue"]}" stroke-width="3"/>'
                 + "".join(f'<rect x="{8 + i*7}" y="14" width="{2 if i % 3 else 4}" height="18" fill="{INK}"/>' for i in range(7)) + '</g></g>')
         body += svg_layer(hand)
