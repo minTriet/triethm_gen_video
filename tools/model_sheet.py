@@ -108,7 +108,7 @@ CELLS.append(("Đội vận tải", ROLE["transport"][0], "Áo + mũ xám · bà
     stick("m6", "transport", 1.0, pose={"armR": (-30, -80)}, hand_r=pda_svg("m6"))
     + f'<g transform="translate(30,0) scale(0.68)">{truck()}</g>', -95))
 
-CELLS.append(("Giảng viên", ROLE["instructor"][0], "Sơ mi xanh, cà vạt cam · dẫn dắt",
+CELLS.append(("Giảng viên", ROLE["instructor"][0], "Polo TK đen, tay raglan xanh lá · dẫn dắt",
     stick("m7", "instructor", 1.0, pose={"armR": (-150, -24)}), 0))
 
 ACTIONS = [
