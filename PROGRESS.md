@@ -75,5 +75,9 @@ Storyboard: `design/storyboard-wms-co-ban.html` (`python3 tools/build_storyboard
 
 | Phần | Trạng thái |
 | --- | --- |
-| Storyboard v1 | chờ duyệt |
-| Dựng video | chưa làm (chờ duyệt storyboard + chốt biến thể, giọng đọc) |
+| Storyboard v1 | chờ duyệt (màn 03: dải nhãn chuyển lên trên, tránh phụ đề) |
+| Bản duyệt 47 s đầu (màn 01–06: mở đầu, toàn cảnh, 3 vai, thẻ chương 1, Bước 1–2) | `video-wms/renders/wms-co-ban-duyet-v1.mp4` (1080p, chỉ phụ đề), chờ duyệt |
+| Màn 07–18 + render bản đầy đủ | chưa làm |
+
+Generator: `python3 tools/build_wms.py` → `video-wms/` (hình dùng chung với storyboard: `tools/wms_kit.py`).
+Render: `cd video-wms && node ../.claude/skills/hyperframes/scripts/plugin-cli.mjs render -o renders/<tên>.mp4`
