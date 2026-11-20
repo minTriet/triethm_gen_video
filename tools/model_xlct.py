@@ -27,10 +27,10 @@ CELLS = [
     ("Cũ – trên bảng model", "Tay khuất sau mặt bàn", sheet_desk("o1", OLD, 16), -40),
     ("Mới – trên bảng model", "Tay đặt lên bàn phím", sheet_desk("n1", TYPE, 0), -40),
     ("Cũ – trong video", "Tay sát bụng, thấp", video_desk("o2", OLD), -30),
-    ("Mới – trong video", "Tay nâng lên ngang ngực dưới", video_desk("n2", TYPE), -30),
+    ("Mới – trong video", "Tay nâng lên ngang ngực", video_desk("n2", TYPE), -30),
 ]
-TYPING = [("Gõ phím 1", {"armL": TYPE["armL"], "armR": (R[0], 90)}),
-          ("Gõ phím 2", {"armL": TYPE["armL"], "armR": (R[0], 112)})]
+TYPING = [("Gõ phím 1", {"armL": TYPE["armL"], "armR": (R[0], 110)}),
+          ("Gõ phím 2", {"armL": TYPE["armL"], "armR": (R[0], 132)})]
 
 
 def build():
@@ -64,7 +64,7 @@ h1 span{{color:{BLUE}}}
 <div class="sub">Tư thế gõ máy (TYPE) dùng chung cho XLCT / điều phối trong mọi video · bàn tay tròn giữ nguyên</div>
 {cells}
 <div class="strip"><h2>Động tác gõ phím <small>– tay phải nhấp lên xuống quanh tư thế mới</small></h2><div class="row">{typ}</div>
-<div class="note2">Vai: <b>armL (30, −100)</b> · <b>armR (−30, 100)</b><br>(cũ: 22, −70 / −22, 70)<br>Bàn tay nâng khoảng 10 px theo model (~15 px trên video 1080p), nằm trên mặt bàn, không còn sát bụng.</div></div>
+<div class="note2">Vai: <b>armL (40, −120)</b> · <b>armR (−40, 120)</b><br>(cũ: 22, −70 / −22, 70)<br>Bàn tay nâng khoảng 17 px theo model (~25 px trên video 1080p), ngang ngực, nằm trên mặt bàn, không còn sát bụng.</div></div>
 </body></html>'''
     p = os.path.join(OUT, "model-xlct.html")
     open(p, "w", encoding="utf-8").write(html)

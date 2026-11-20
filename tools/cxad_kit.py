@@ -116,7 +116,7 @@ def label_js(fid, t):
 def type_js(fid, t0, t1):
     s, t, k = "", t0, 0
     while t < t1:
-        s += f'tl.to("#{fid}-foreR",{{rotation:{90 if k % 2 else 112},svgOrigin:"0 0",duration:0.18,ease:"sine.inOut"}},{t:.2f});\n'
+        s += f'tl.to("#{fid}-foreR",{{rotation:{110 if k % 2 else 132},svgOrigin:"0 0",duration:0.18,ease:"sine.inOut"}},{t:.2f});\n'
         t += 0.2; k += 1
     return s
 
