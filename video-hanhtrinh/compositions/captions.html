@@ -41,7 +41,7 @@
   font-weight:700;font-size:54px;line-height:1.3;padding:12px 34px;border-radius:16px;box-shadow:0 4px 0 rgba(27,36,48,.10)}
 
   </style>
-  <div id="root" data-composition-id="captions" data-width="1920" data-height="1080" data-duration="35.74">
+  <div id="root" data-composition-id="captions" data-width="1920" data-height="1080" data-duration="133.43">
     <div id="cap1" class="clip cap" data-start="0.6" data-duration="3.66" data-track-index="0"><span id="cap1-t">Đây là ba video training và một bộ slide, làm trong hai ngày.</span></div>
     <div id="cap2" class="clip cap" data-start="4.41" data-duration="3.42" data-track-index="0"><span id="cap2-t">Video này kể lại tôi đã làm thế nào, để bạn cũng làm được.</span></div>
     <div id="cap3" class="clip cap" data-start="11.43" data-duration="4.14" data-track-index="0"><span id="cap3-t">Đầu tiên, tôi cài cho Claude bộ 9 skill dựng video HyperFrames.</span></div>
@@ -49,6 +49,22 @@
     <div id="cap5" class="clip cap" data-start="21.7" data-duration="3.82" data-track-index="0"><span id="cap5-t">Cảnh là HTML và CSS, chuyển động viết bằng JavaScript.</span></div>
     <div id="cap6" class="clip cap" data-start="25.67" data-duration="4.86" data-track-index="0"><span id="cap6-t">Trình duyệt chạy trang đó và chụp từng khung, 30 khung mỗi giây, rồi ghép thành MP4.</span></div>
     <div id="cap7" class="clip cap" data-start="30.68" data-duration="3.66" data-track-index="0"><span id="cap7-t">Vì vậy cốt lõi là <b style="color:#C45A00;font-weight:900">frontend</b>: dựng được trang web thì dựng được video.</span></div>
+    <div id="cap8" class="clip cap" data-start="36.14" data-duration="3.42" data-track-index="0"><span id="cap8-t">Tôi bắt đầu bằng một prompt: phong cách chung và kịch bản từng tập.</span></div>
+    <div id="cap9" class="clip cap" data-start="42.56" data-duration="3.26" data-track-index="0"><span id="cap9-t">Claude không dựng ngay, mà lập outline để tôi duyệt trước.</span></div>
+    <div id="cap10" class="clip cap" data-start="50.62" data-duration="2.46" data-track-index="0"><span id="cap10-t">Xem Tập 1 xong, tôi góp ý bốn điểm.</span></div>
+    <div id="cap11" class="clip cap" data-start="57.52" data-duration="3.26" data-track-index="0"><span id="cap11-t">Mỗi góp ý được ghi thành luật, áp dụng cho mọi phần sau.</span></div>
+    <div id="cap12" class="clip cap" data-start="64.18" data-duration="3.9" data-track-index="0"><span id="cap12-t">Nhân vật được vẽ lại, duyệt trên một bảng mẫu, rồi mới đưa vào video.</span></div>
+    <div id="cap13" class="clip cap" data-start="71.08" data-duration="3.34" data-track-index="0"><span id="cap13-t">Duyệt 31 giây đầu trước, rồi mới làm đủ 5 phút.</span></div>
+    <div id="cap14" class="clip cap" data-start="79.68" data-duration="2.14" data-track-index="0"><span id="cap14-t">Video thứ hai không phải bắt đầu lại.</span></div>
+    <div id="cap15" class="clip cap" data-start="81.97" data-duration="3.82" data-track-index="0"><span id="cap15-t">Tôi chỉ viết phần khác so với video trước, mọi luật cũ tự áp dụng.</span></div>
+    <div id="cap16" class="clip cap" data-start="88.19" data-duration="3.26" data-track-index="0"><span id="cap16-t">Cùng nội dung đó, tôi tạo thêm một bộ slide 17 trang.</span></div>
+    <div id="cap17" class="clip cap" data-start="96.15" data-duration="2.54" data-track-index="0"><span id="cap17-t">Video thứ ba bắt đầu từ bản vẽ quy trình.</span></div>
+    <div id="cap18" class="clip cap" data-start="103.29" data-duration="4.14" data-track-index="0"><span id="cap18-t">Cần thêm vai quản lý kho, tôi đóng gói cả bộ nhân vật thành một skill riêng.</span></div>
+    <div id="cap19" class="clip cap" data-start="107.58" data-duration="3.58" data-track-index="0"><span id="cap19-t">Từ nay, mọi video kho mới đều dùng lại bộ này, không vẽ lại.</span></div>
+    <div id="cap20" class="clip cap" data-start="113.56" data-duration="2.94" data-track-index="0"><span id="cap20-t">Mỗi lần sửa là một phiên bản mới, luôn quay lại được.</span></div>
+    <div id="cap21" class="clip cap" data-start="119.9" data-duration="1.58" data-track-index="0"><span id="cap21-t">Đó là công thức của tôi.</span></div>
+    <div id="cap22" class="clip cap" data-start="125.68" data-duration="3.1" data-track-index="0"><span id="cap22-t">Duyệt sớm, ghi lại luật, và đóng gói những gì dùng lại.</span></div>
+    <div id="cap23" class="clip cap" data-start="128.93" data-duration="1.9" data-track-index="0"><span id="cap23-t">Bạn hãy thử với quy trình của mình.</span></div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
@@ -66,6 +82,38 @@
     tl.to("#cap6-t",{opacity:0,duration:0.12,ease:"power2.in"},30.41);
     tl.fromTo("#cap7-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},30.68);
     tl.to("#cap7-t",{opacity:0,duration:0.12,ease:"power2.in"},34.22);
+    tl.fromTo("#cap8-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},36.14);
+    tl.to("#cap8-t",{opacity:0,duration:0.12,ease:"power2.in"},39.44);
+    tl.fromTo("#cap9-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},42.56);
+    tl.to("#cap9-t",{opacity:0,duration:0.12,ease:"power2.in"},45.7);
+    tl.fromTo("#cap10-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},50.62);
+    tl.to("#cap10-t",{opacity:0,duration:0.12,ease:"power2.in"},52.96);
+    tl.fromTo("#cap11-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},57.52);
+    tl.to("#cap11-t",{opacity:0,duration:0.12,ease:"power2.in"},60.66);
+    tl.fromTo("#cap12-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},64.18);
+    tl.to("#cap12-t",{opacity:0,duration:0.12,ease:"power2.in"},67.96);
+    tl.fromTo("#cap13-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},71.08);
+    tl.to("#cap13-t",{opacity:0,duration:0.12,ease:"power2.in"},74.3);
+    tl.fromTo("#cap14-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},79.68);
+    tl.to("#cap14-t",{opacity:0,duration:0.12,ease:"power2.in"},81.7);
+    tl.fromTo("#cap15-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},81.97);
+    tl.to("#cap15-t",{opacity:0,duration:0.12,ease:"power2.in"},85.67);
+    tl.fromTo("#cap16-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},88.19);
+    tl.to("#cap16-t",{opacity:0,duration:0.12,ease:"power2.in"},91.33);
+    tl.fromTo("#cap17-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},96.15);
+    tl.to("#cap17-t",{opacity:0,duration:0.12,ease:"power2.in"},98.57);
+    tl.fromTo("#cap18-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},103.29);
+    tl.to("#cap18-t",{opacity:0,duration:0.12,ease:"power2.in"},107.31);
+    tl.fromTo("#cap19-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},107.58);
+    tl.to("#cap19-t",{opacity:0,duration:0.12,ease:"power2.in"},111.04);
+    tl.fromTo("#cap20-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},113.56);
+    tl.to("#cap20-t",{opacity:0,duration:0.12,ease:"power2.in"},116.38);
+    tl.fromTo("#cap21-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},119.9);
+    tl.to("#cap21-t",{opacity:0,duration:0.12,ease:"power2.in"},121.36);
+    tl.fromTo("#cap22-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},125.68);
+    tl.to("#cap22-t",{opacity:0,duration:0.12,ease:"power2.in"},128.66);
+    tl.fromTo("#cap23-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},128.93);
+    tl.to("#cap23-t",{opacity:0,duration:0.12,ease:"power2.in"},130.71);
     window.__timelines["captions"] = tl;
   </script>
 </template>

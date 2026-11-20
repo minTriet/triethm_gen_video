@@ -2,7 +2,7 @@
 Run: python3 tools/build_hanhtrinh.py
 Kịch bản: source/Prompt_Video_Hanh_trinh_tao_skill_video.md (v2) · storyboard design/storyboard-hanh-trinh.html (đã duyệt).
 Có giọng đọc VieNeu-TTS (skill vieneu-tts, giọng Hải Đăng): câu thoại + văn bản đọc trong
-source/vo_hanh_trinh_30s.json, clip trong video-hanhtrinh/assets/vo/ (manifest.json).
+source/vo_hanh_trinh.json, clip trong video-hanhtrinh/assets/vo/ (manifest.json).
 Thời lượng mỗi câu = độ dài clip thật + đệm, không đoán theo số chữ.
 """
 import html as _h
@@ -23,14 +23,14 @@ ORANGE_D, GREEN_D = "#C45A00", "#1A8048"   # bản đậm cho chữ trên nền 
 GAP, PAD = 0.15, 0.3            # khoảng lặng giữa hai câu · đệm sau mỗi clip
 VO_VOL = 1.0
 
-LINES = {d["id"]: d for d in json.load(open(os.path.join(ROOT, "source", "vo_hanh_trinh_30s.json"), encoding="utf-8"))}
+LINES = {d["id"]: d for d in json.load(open(os.path.join(ROOT, "source", "vo_hanh_trinh.json"), encoding="utf-8"))}
 MAN = {m["id"]: m for m in json.load(open(os.path.join(OUT, "assets", "vo", "manifest.json"), encoding="utf-8"))}
 
 
 class VScene:
     """Một cảnh có giọng đọc: mỗi câu giữ đúng độ dài clip + PAD."""
 
-    def __init__(self, cid, vo_ids, build, lead=0.4, tail=1.0, pre=None, caps=None):
+    def __init__(self, cid, vo_ids, build, lead=0.4, tail=1.0, pre=None, caps=None, min_d=0):
         self.cid, self.build, self.lead, self.tail = cid, build, lead, tail
         self.vo = list(vo_ids)
         caps = caps or {}
@@ -42,7 +42,7 @@ class VScene:
             d = MAN[v]["duration"] + PAD
             self.T.append(round(t, 2)); self.E.append(round(t + d, 2))
             t += d + GAP
-        self.D = round((t - GAP if self.vo else t) + tail, 2)
+        self.D = round(max((t - GAP if self.vo else t) + tail, min_d), 2)
 
 
 def esc(s):
@@ -259,7 +259,12 @@ def hfexplain():
 
 # ============================================================ assembly + giọng đọc
 def timeline():
-    return [intro(), Chapter(1), skills(), hfexplain()]
+    import hanhtrinh_scenes as hs
+    return [intro(), Chapter(1), skills(), hfexplain(), hs.prompt(), hs.outline(),
+            Chapter(2), hs.draft(), hs.rules(), hs.models(), hs.bar31(),
+            Chapter(3), hs.context(), hs.deck(),
+            Chapter(4), hs.pdf(), hs.cast(), hs.versions(),
+            hs.formula(), hs.ghinho()]
 
 
 def add_voice(placed, total):
