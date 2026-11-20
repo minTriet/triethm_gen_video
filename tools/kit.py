@@ -199,8 +199,9 @@ def _limb(fid, side, kind, ang, ang2, extra="", ball=False, sleeve=""):
             end = f'<circle cx="0" cy="26" r="9" fill="#fff" stroke="{ink}" stroke-width="3.5"/>'
         seg2 = "fore"
         if sleeve:   # short raglan sleeve over the upper arm
-            extra_up = (f'<rect x="-6" y="-4" width="12" height="16" rx="5" fill="{sleeve}" stroke="{ink}" stroke-width="2.5"/>'
-                        f'<line x1="-4.5" y1="9" x2="4.5" y2="9" stroke="{ink}" stroke-width="1" stroke-dasharray="1.5 1.5" opacity="0.6"/>')
+            # short sleeve hugging the upper arm, slightly wider at the hem, with a ribbed cuff band
+            extra_up = (f'<path d="M-4.6,-3 Q0,-6.5 4.6,-3 L5.8,13 Q0,14.4 -5.8,13 Z" fill="{sleeve}" stroke="{ink}" stroke-width="2.2" stroke-linejoin="round"/>'
+                        f'<path d="M-5.6,10 Q0,11.4 5.6,10 L5.8,13 Q0,14.4 -5.8,13 Z" fill="#176E2F" stroke="{ink}" stroke-width="1.6" stroke-linejoin="round"/>')
     else:
         root = (-3 if side == "L" else 3, -60)
         a, b = 30, 29
