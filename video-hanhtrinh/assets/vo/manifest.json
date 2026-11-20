@@ -1,0 +1,51 @@
+[
+  {
+    "id": "c01-1",
+    "file": "c01-1.mp3",
+    "duration": 3.36,
+    "text": "Đây là ba video training và một bộ slide, làm trong hai ngày.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c01-2",
+    "file": "c01-2.mp3",
+    "duration": 3.12,
+    "text": "Video này kể lại tôi đã làm thế nào, để bạn cũng làm được.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c03-1",
+    "file": "c03-1.mp3",
+    "duration": 3.84,
+    "text": "Đầu tiên, tôi cài cho Cờ lốt bộ 9 skill dựng video HyperFrames.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c18-1",
+    "file": "c18-1.mp3",
+    "duration": 3.68,
+    "text": "HyperFrames dựng video bằng chính HTML, giống như làm một trang web.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c18-2",
+    "file": "c18-2.mp3",
+    "duration": 3.52,
+    "text": "Cảnh là HTML và CSS, chuyển động viết bằng JavaScript.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c18-3",
+    "file": "c18-3.mp3",
+    "duration": 4.56,
+    "text": "Trình duyệt chạy trang đó và chụp từng khung, 30 khung mỗi giây, rồi ghép thành em pê bốn.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c18-4",
+    "file": "c18-4.mp3",
+    "duration": 3.36,
+    "text": "Vì vậy cốt lõi là frontend: dựng được trang web thì dựng được video.",
+    "voice": "Hải Đăng"
+  }
+]

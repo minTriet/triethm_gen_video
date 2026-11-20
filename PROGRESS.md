@@ -35,3 +35,16 @@ Render: `cd video-cxad && node ../.claude/skills/hyperframes/scripts/plugin-cli.
 | Phần 4 – Kiểm & Bàn giao (04K.3, bước 1–5) + kết | xong |
 | Check | qua (0 lỗi) |
 | Render bản đầy đủ | v1: video-cxad/renders/quy-trinh-kho-cxad-full-v1.mp4 · v2 (phụ đề quy đổi bằng số, nhãn LPN + mã vị trí to hơn): quy-trinh-kho-cxad-full-v2.mp4 · v3 (ô điều kiện khớp mũi tên): quy-trinh-kho-cxad-full-v3.mp4 |
+
+# Video "Hành trình tạo kỹ năng làm video"
+
+Nguồn: `source/Prompt_Video_Hanh_trinh_tao_skill_video.md` (v2) · Storyboard đã duyệt: `design/storyboard-hanh-trinh.html`
+Giọng đọc: skill `vieneu-tts`, giọng Hải Đăng, seed 7. Câu thoại + văn bản đọc: `source/vo_hanh_trinh_30s.json`
+("Claude" đọc là "Cờ lốt", "MP4" đọc là "em pê bốn"; các từ tiếng Anh khác để nguyên vì đọc đúng hơn phiên âm).
+Generator: `python3 tools/build_hanhtrinh.py` → `video-hanhtrinh/` (thời lượng câu = độ dài clip giọng đọc + 0.3 s).
+Render: `cd video-hanhtrinh && node ../.claude/skills/hyperframes/scripts/plugin-cli.mjs render -o renders/<tên>.mp4`
+
+| Phần | Trạng thái |
+| --- | --- |
+| Mở đầu + thẻ chương Phần 1 + Bước 1 + HyperFrames là gì (màn 01–04) | render để duyệt: `video-hanhtrinh/renders/hanh-trinh-30s-v1.mp4` (0:36) |
+| Màn 05–17 | chờ duyệt bản 30 giây đầu |
