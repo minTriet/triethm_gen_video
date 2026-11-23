@@ -13,8 +13,11 @@ import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
 from wms_kit import *  # noqa: E402,F401,F403
-from wms_kit import esc, CHIP  # noqa: E402
-from kit import folder_svg, MANAGER_HOLD  # noqa: E402
+from wms_kit import esc, CHIP, frame as _frame  # noqa: E402
+from kit import folder_svg, MANAGER_HOLD, TYPE  # noqa: E402,F811  (TYPE: model XLCT mới, tay gõ phím cao hơn)
+import base64  # noqa: E402
+import io  # noqa: E402
+from PIL import Image  # noqa: E402
 from model_sheet import forklift, forklift_back  # noqa: E402
 
 OUT = sys.argv[1] if len(sys.argv) > 1 else "design/storyboard-nhieu-loc.html"
@@ -22,6 +25,24 @@ CHIP["pda"] = ("QUÉT MÃ", PURPLE)
 CHIP["can"] = ("CÂN", "#0E8C9A")
 ICE, ICE_D = "#DCEFFB", "#2A86C9"
 WOOD, WOOD_D = "#C9965A", "#A97A44"
+
+
+# ------------------------------------------------------------------ logo TKSolution (design/logo-tksolution.png)
+_buf = io.BytesIO()
+Image.open(os.path.join(os.path.dirname(__file__), "..", "design", "logo-tksolution.png")).convert("RGB").save(_buf, "JPEG", quality=90)
+LOGO_URI = "data:image/jpeg;base64," + base64.b64encode(_buf.getvalue()).decode()
+LOGO_AR = 620 / 144
+
+
+def logo(x, y, w, card=True):
+    h = w / LOGO_AR
+    bg = rect(x - 14, y - 10, w + 28, h + 20, "#fff", 12, extra='opacity="0.96"') if card else ""
+    return bg + f'<image href="{LOGO_URI}" x="{x}" y="{y}" width="{w}" height="{h:.1f}"/>'
+
+
+def frame(body, sub=None, mark=True):
+    """Khung chuẩn + logo TKSolution nhỏ ở góc dưới phải."""
+    return _frame(body + (logo(1676, 1016, 210) if mark else ""), sub)
 
 
 # ------------------------------------------------------------------ props riêng cho kho lạnh
@@ -170,8 +191,8 @@ def screen_def(sid, part, title, svg, visual, subs, note=None, minimum=3.0):
     S.append(dict(id=sid, part=part, title=title, svg=svg, visual=visual, subs=subs, note=note, dur=dur))
 
 
-def scr(sid, part, title, body, visual, subs, note=None, **kw):
-    screen_def(sid, part, title, frame(body, subs[0] if subs else None), visual, subs, note, **kw)
+def scr(sid, part, title, body, visual, subs, note=None, mark=True, **kw):
+    screen_def(sid, part, title, frame(body, subs[0] if subs else None, mark), visual, subs, note, **kw)
 
 
 P0, PE = "Mở đầu", "Kết"
@@ -183,6 +204,7 @@ MAIN_RACK = [["A-01-01", "A-01-02"], ["A-02-01", "A-02-02"], ["A-03-01", "A-03-0
 
 # S01 — Tiêu đề
 b = floor()
+b += logo(110, 40, 400, card=False)
 b += pill(330, 190, "ĐỀ XUẤT GIẢI PHÁP · BẢN DEMO", ORANGE, "#fff", 26)
 b += T(110, 320, "Vận hành kho lạnh", 92, 900) + T(110, 430, "cho Nhiêu Lộc", 92, 900, BLUE)
 b += T(110, 515, "Thịt đông lạnh · Kệ pallet + Chất chồng · WMS", 38, 700, MUTED)
@@ -190,11 +212,11 @@ b += cold_sign(110, 580)
 b += rack_pallets(1180, 300, 3, 2, MAIN_RACK, {(0, 0), (1, 0), (2, 0), (0, 1), (2, 1)}, cw=230, lh=260, qrs=True)
 b += person("s01i", "instructor", 990, s=2.0, pose=WAVE)
 scr("S01", P0, "Tiêu đề", b,
-    ["Badge cam “ĐỀ XUẤT GIẢI PHÁP · BẢN DEMO” bật nhẹ; hai dòng tiêu đề hiện lần lượt, “Nhiêu Lộc” màu xanh.",
+    ["Logo TKSolution hiện trước ở góc trên trái; badge cam “ĐỀ XUẤT GIẢI PHÁP · BẢN DEMO” bật nhẹ; hai dòng tiêu đề hiện lần lượt, “Nhiêu Lộc” màu xanh.",
      "Bảng nhiệt độ −18°C có bông tuyết xoay chậm; kệ pallet thịt đông lạnh bên phải.",
      "Giảng viên (áo đồng phục TK) bước vào và vẫy tay."],
     ["Kính chào Ban lãnh đạo Công ty Nhiêu Lộc.",
-     "Video này trình bày cách kho sẽ vận hành hàng thịt đông lạnh của Nhiêu Lộc trên hệ thống WMS."])
+     "Video này trình bày cách kho sẽ vận hành hàng thịt đông lạnh của Nhiêu Lộc trên hệ thống WMS."], mark=False)
 
 # S02 — Hai khu kho
 b = floor()
@@ -279,8 +301,8 @@ screen_def("S05", P1, "Thẻ chương Phần 1", frame(chapter5(1, ["Thiết l�
 
 # S06 — 01A
 b = floor() + code_badge("01A", "Tạo chủ hàng Nhiêu Lộc", ["wms"])
-b += person("s06m", "manager", 120, s=1.6, pose=POINT_R, tag="Quản lý", tag_col="#16478F")
-b += prop(ms_desk(), 400, 830, 1.6) + person("s06x", "xlct", 350, s=1.6, pose=TYPE)
+b += person("s06m", "manager", 100, s=1.6, pose=POINT_R, tag="Quản lý", tag_col="#16478F")
+b += prop(ms_desk(), 350, 830, 1.6) + person("s06x", "xlct", 300, s=1.6, pose=TYPE)
 b += wms_win(640, 160, 1220, "Mã hàng · Chủ hàng NHIÊU LỘC", ["Mã hàng", "Tên hàng", "Loại", "Kg/thùng", "Thùng/pallet"],
              [["NL-BC01", "Ba chỉ heo", "Đồng ký", "20", "40"], ["NL-DG02", "Đùi gà", "Đa ký", "12 (chuẩn)", "50"],
               ["NL-BO03", "Thăn bò", "Đồng ký", "10", "60"]], [190, 300, 210, 250, 230], hl=1)
@@ -624,7 +646,7 @@ scr("S29", P5, "05B Bước 3–5: Chênh lệch → đếm lại hoặc điều
 
 # S30 — Kết
 b = floor()
-b += T(110, 150, "Nhiêu Lộc nhận được gì?", 60, 900)
+b += T(90, 150, "Nhiêu Lộc nhận được gì?", 60, 900) + logo(1450, 60, 400, card=False)
 ben = [("Tồn kho theo lô, hạn dùng", "Xuất đúng FEFO, khoá lô khi cần", GREEN),
        ("Biết từng pallet ở đâu", "Cả khu kệ lẫn khu chất chồng", BLUE),
        ("Xuất theo kg chính xác", "Chẵn pallet hay lẻ thùng, có thành tiền", ORANGE),
@@ -636,10 +658,10 @@ for i, (t, s, col) in enumerate(ben):
 b += person("s30i", "instructor", 1680, s=2.0, pose=RAISE)
 scr("S30", PE, "Kết: 4 điểm chính cho Nhiêu Lộc", b,
     ["4 thẻ lợi ích bật lần lượt, mỗi thẻ ✔ xanh.",
-     "Giảng viên giơ tay chào kết; khung cuối giữ 2 giây, có thể thêm logo TK + thông tin liên hệ."],
+     "Logo TKSolution ở góc trên phải. Giảng viên giơ tay chào kết; khung cuối giữ 2 giây."],
     ["Mọi pallet và mọi thùng của Nhiêu Lộc đều được quét và ghi nhận trên WMS.",
      "Biết hàng nào, lô nào, nằm ở đâu, và đã giao bao nhiêu kg.",
-     "Xin cảm ơn Ban lãnh đạo đã theo dõi."], minimum=4.0)
+     "Xin cảm ơn Ban lãnh đạo đã theo dõi."], mark=False, minimum=4.0)
 
 
 # ------------------------------------------------------------------ timing + page
@@ -656,7 +678,9 @@ TOTAL = t
 with open(os.path.join(os.path.dirname(__file__), "storyboard_page.html"), encoding="utf-8") as f:
     page = f.read()
 page = page.replace("<title>Storyboard Hành trình kỹ năng</title>", "<title>Storyboard Nhiêu Lộc</title>")
-page = page.replace("Storyboard · bản 2", "Storyboard · bản 1 · Khách hàng Công ty Nhiêu Lộc")
+page = page.replace('<p class="kicker">Storyboard · bản 2</p>',
+                    f'<img src="{LOGO_URI}" alt="TKSolution" style="height:44px;display:block;margin-bottom:12px">'
+                    '<p class="kicker">Storyboard · bản 2 · Khách hàng Công ty Nhiêu Lộc</p>')
 page = page.replace("<h1>Hành trình tạo kỹ năng làm video theo ý tôi</h1>",
                     "<h1>Vận hành kho lạnh cho Nhiêu Lộc – video demo đề xuất</h1>")
 page = page.replace(
