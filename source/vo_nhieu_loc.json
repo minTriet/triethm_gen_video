@@ -7,7 +7,7 @@
  {
   "id": "s01-2",
   "sub": "Video này trình bày cách kho sẽ vận hành hàng thịt đông lạnh của Nhiêu Lộc trên hệ thống WMS.",
-  "text": "Video này trình bày cách kho sẽ vận hành hàng thịt đông lạnh của Nhiêu Lộc, trên hệ thống đáp-bờ-liu em ét."
+  "text": "Video này trình bày cách kho sẽ vận hành hàng thịt đông lạnh của Nhiêu Lộc, trên hệ thống đúp bơ diu em ét."
  },
  {
   "id": "s02-1",
@@ -52,12 +52,12 @@
  {
   "id": "s04-3",
   "sub": "Nhãn cạnh mỗi bước cho biết bước đó làm trên WMS, làm tay hay quét mã.",
-  "text": "Nhãn cạnh mỗi bước cho biết bước đó làm trên đáp-bờ-liu em ét, làm tay hay quét mã."
+  "text": "Nhãn cạnh mỗi bước cho biết bước đó làm trên đúp bơ diu em ét, làm tay hay quét mã."
  },
  {
   "id": "s06-1",
   "sub": "Đầu tiên, tạo chủ hàng Nhiêu Lộc và dữ liệu gốc trên WMS.",
-  "text": "Đầu tiên, tạo chủ hàng Nhiêu Lộc và dữ liệu gốc trên đáp-bờ-liu em ét."
+  "text": "Đầu tiên, tạo chủ hàng Nhiêu Lộc và dữ liệu gốc trên đúp bơ diu em ét."
  },
  {
   "id": "s06-2",
@@ -77,17 +77,17 @@
  {
   "id": "s07-2",
   "sub": "Quản lý duyệt bảng giá theo kg, XLCT khai báo vào WMS kèm ngày áp dụng.",
-  "text": "Quản lý duyệt bảng giá theo ký, xử lý chứng từ khai báo vào đáp-bờ-liu em ét kèm ngày áp dụng."
+  "text": "Quản lý duyệt bảng giá theo ký, xử lý chứng từ khai báo vào đúp bơ diu em ét kèm ngày áp dụng."
  },
  {
   "id": "s09-1",
   "sub": "Bước 1 và 2: Nhiêu Lộc gửi kế hoạch nhập, XLCT xử lý file và nhập vào WMS để tạo ASN.",
-  "text": "Bước 1 và 2, Nhiêu Lộc gửi kế hoạch nhập, xử lý chứng từ xử lý file và nhập vào đáp-bờ-liu em ét để tạo a ét en."
+  "text": "Bước 1 và 2, Nhiêu Lộc gửi kế hoạch nhập, xử lý chứng từ xử lý file và nhập vào đúp bơ diu em ét để tạo a ét en."
  },
  {
   "id": "s09-2",
   "sub": "WMS in sẵn mã LPN cho pallet và tem lô QR cho từng lô hàng.",
-  "text": "đáp-bờ-liu em ét in sẵn mã eo pê en cho pa-lét và tem lô kiu-a cho từng lô hàng."
+  "text": "đúp bơ diu em ét in sẵn mã eo pê en cho pa-lét và tem lô kiu-a cho từng lô hàng."
  },
  {
   "id": "s10-1",
@@ -117,12 +117,12 @@
  {
   "id": "s12-2",
   "sub": "Hàng của Nhiêu Lộc đã có trong tồn kho WMS, theo từng lô và từng pallet.",
-  "text": "Hàng của Nhiêu Lộc đã có trong tồn kho đáp-bờ-liu em ét, theo từng lô và từng pa-lét."
+  "text": "Hàng của Nhiêu Lộc đã có trong tồn kho đúp bơ diu em ét, theo từng lô và từng pa-lét."
  },
  {
   "id": "s13-1",
   "sub": "Bước 7: quét LPN, WMS gợi ý vị trí cất.",
-  "text": "Bước 7, quét eo pê en, đáp-bờ-liu em ét gợi ý vị trí cất."
+  "text": "Bước 7, quét eo pê en, đúp bơ diu em ét gợi ý vị trí cất."
  },
  {
   "id": "s13-2",
@@ -132,7 +132,7 @@
  {
   "id": "s14-1",
   "sub": "Ở khu chất chồng, WMS gợi ý ô sàn để chồng các pallet cùng mã hàng, cùng lô.",
-  "text": "Ở khu chất chồng, đáp-bờ-liu em ét gợi ý ô sàn để chồng các pa-lét cùng mã hàng, cùng lô."
+  "text": "Ở khu chất chồng, đúp bơ diu em ét gợi ý ô sàn để chồng các pa-lét cùng mã hàng, cùng lô."
  },
  {
   "id": "s14-2",
@@ -142,7 +142,7 @@
  {
   "id": "s16-1",
   "sub": "Khi cần giữ một lô lại, XLCT khoá lô hoặc LPN trên WMS.",
-  "text": "Khi cần giữ một lô lại, xử lý chứng từ khoá lô hoặc eo pê en trên đáp-bờ-liu em ét."
+  "text": "Khi cần giữ một lô lại, xử lý chứng từ khoá lô hoặc eo pê en trên đúp bơ diu em ét."
  },
  {
   "id": "s16-2",
@@ -157,7 +157,7 @@
  {
   "id": "s17-2",
   "sub": "Quét mã vị trí mới và xác nhận, WMS cập nhật vị trí ngay.",
-  "text": "Quét mã vị trí mới và xác nhận, đáp-bờ-liu em ét cập nhật vị trí ngay."
+  "text": "Quét mã vị trí mới và xác nhận, đúp bơ diu em ét cập nhật vị trí ngay."
  },
  {
   "id": "s18-1",
@@ -172,12 +172,12 @@
  {
   "id": "s20-1",
   "sub": "Bước 1 và 2: đơn đặt hàng tính theo kg, XLCT nhập vào WMS để tạo đơn xuất.",
-  "text": "Bước 1 và 2, đơn đặt hàng tính theo ký, xử lý chứng từ nhập vào đáp-bờ-liu em ét để tạo đơn xuất."
+  "text": "Bước 1 và 2, đơn đặt hàng tính theo ký, xử lý chứng từ nhập vào đúp bơ diu em ét để tạo đơn xuất."
  },
  {
   "id": "s21-1",
   "sub": "Trước khi phân bổ, WMS kiểm tra đã có giá bán cho ngày phân bổ chưa.",
-  "text": "Trước khi phân bổ, đáp-bờ-liu em ét kiểm tra đã có giá bán cho ngày phân bổ chưa."
+  "text": "Trước khi phân bổ, đúp bơ diu em ét kiểm tra đã có giá bán cho ngày phân bổ chưa."
  },
  {
   "id": "s21-2",
@@ -187,12 +187,12 @@
  {
   "id": "s22-1",
   "sub": "Bước 3: WMS quy đổi kg ra số thùng, làm tròn gần nhất, tối thiểu một thùng.",
-  "text": "Bước 3, đáp-bờ-liu em ét quy đổi ký ra số thùng, làm tròn gần nhất, tối thiểu một thùng."
+  "text": "Bước 3, đúp bơ diu em ét quy đổi ký ra số thùng, làm tròn gần nhất, tối thiểu một thùng."
  },
  {
   "id": "s22-2",
   "sub": "WMS tự tách: đủ một pallet thì xuất chẵn pallet, không đủ một pallet thì xuất theo thùng, cho cả đồng ký và đa ký.",
-  "text": "đáp-bờ-liu em ét tự tách, đủ một pa-lét thì xuất chẵn pa-lét, không đủ một pa-lét thì xuất theo thùng, cho cả đồng ký và đa ký."
+  "text": "đúp bơ diu em ét tự tách, đủ một pa-lét thì xuất chẵn pa-lét, không đủ một pa-lét thì xuất theo thùng, cho cả đồng ký và đa ký."
  },
  {
   "id": "s22-3",
@@ -212,7 +212,7 @@
  {
   "id": "s23-3",
   "sub": "Quét LPN thực lấy, WMS kiểm tra đúng mã, đúng lô rồi ghi nhận nguyên pallet.",
-  "text": "Quét eo pê en thực lấy, đáp-bờ-liu em ét kiểm tra đúng mã, đúng lô rồi ghi nhận nguyên pa-lét."
+  "text": "Quét eo pê en thực lấy, đúp bơ diu em ét kiểm tra đúng mã, đúng lô rồi ghi nhận nguyên pa-lét."
  },
  {
   "id": "s24-1",
@@ -222,7 +222,7 @@
  {
   "id": "s24-2",
   "sub": "Quét LPN để WMS biết thùng được lấy từ pallet nào.",
-  "text": "Quét eo pê en để đáp-bờ-liu em ét biết thùng được lấy từ pa-lét nào."
+  "text": "Quét eo pê en để đúp bơ diu em ét biết thùng được lấy từ pa-lét nào."
  },
  {
   "id": "s24-3",
@@ -237,7 +237,7 @@
  {
   "id": "s25-2",
   "sub": "Hàng đồng ký: quét tem lô, xác nhận số thùng, WMS tự tính số kg.",
-  "text": "Hàng đồng ký, quét tem lô, xác nhận số thùng, đáp-bờ-liu em ét tự tính số ký."
+  "text": "Hàng đồng ký, quét tem lô, xác nhận số thùng, đúp bơ diu em ét tự tính số ký."
  },
  {
   "id": "s25-3",
@@ -247,7 +247,7 @@
  {
   "id": "s26-1",
   "sub": "Bước 8: WMS tổng hợp kg thực xuất và tính thành tiền bằng kg nhân đơn giá.",
-  "text": "Bước 8, đáp-bờ-liu em ét tổng hợp ký thực xuất và tính thành tiền bằng ký nhân đơn giá."
+  "text": "Bước 8, đúp bơ diu em ét tổng hợp ký thực xuất và tính thành tiền bằng ký nhân đơn giá."
  },
  {
   "id": "s26-2",
@@ -267,7 +267,7 @@
  {
   "id": "s29-1",
   "sub": "Bước 3: WMS tự tạo báo cáo chênh lệch.",
-  "text": "Bước 3, đáp-bờ-liu em ét tự tạo báo cáo chênh lệch."
+  "text": "Bước 3, đúp bơ diu em ét tự tạo báo cáo chênh lệch."
  },
  {
   "id": "s29-2",
@@ -277,7 +277,7 @@
  {
   "id": "s30-1",
   "sub": "Mọi pallet và mọi thùng của Nhiêu Lộc đều được quét và ghi nhận trên WMS.",
-  "text": "Mọi pa-lét và mọi thùng của Nhiêu Lộc đều được quét và ghi nhận trên đáp-bờ-liu em ét."
+  "text": "Mọi pa-lét và mọi thùng của Nhiêu Lộc đều được quét và ghi nhận trên đúp bơ diu em ét."
  },
  {
   "id": "s30-2",
