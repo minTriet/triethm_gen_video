@@ -86,9 +86,9 @@ Render: `cd video-wms && node ../.claude/skills/hyperframes/scripts/plugin-cli.m
 
 Nguồn: `source/Nhieu_Loc_-_Bo_quy_trinh_kho.drawio` (01A, 01B, 02B, 03B, 03C, 03D, 04C, 05B) · Người xem: cấp quản lý Nhiêu Lộc (đi kèm proposal).
 Bối cảnh: kho đông lạnh 2 khu (Khu A kệ, 1 vị trí = 1 pallet; Khu B chất chồng), thịt đông lạnh đồng ký / đa ký, xuất chẵn pallet và theo thùng.
-Storyboard: `design/storyboard-nhieu-loc.html` (`python3 tools/build_storyboard_nhieuloc.py design/storyboard-nhieu-loc.html`), 30 màn, khoảng 4:07.
+Storyboard: `design/storyboard-nhieu-loc.html` (`python3 tools/build_storyboard_nhieuloc.py design/storyboard-nhieu-loc.html`), 30 màn, khoảng 4:18.
 
 | Phần | Trạng thái |
 | --- | --- |
-| Storyboard v2 (logo TKSolution nền trong suốt `design/logo-tksolution-trong-suot.png` ở mọi khung, model XLCT mới tay gõ phím cao hơn) | chờ duyệt — các điểm ĐỀ XUẤT cần chốt: quy tắc chồng cùng mã/cùng lô (S14), đủ pallet → xuất chẵn (S22), quét LPN lấy nguyên pallet (S23), cân hàng đa ký (S25) |
+| Storyboard v3 (logo TKSolution nền trong suốt, model XLCT mới; sửa theo góp ý: S14 chỉ gợi ý ô B-02 không tầng; S22 đồng ký/đa ký đều xuất chẵn pallet hoặc theo thùng, chọn lô FEFO mặc định hoặc theo HSD còn lại > %; S23 xe nâng được lấy pallet khác cùng lô; S24 lấy theo thùng có quét LPN; mã lô đổi sang năm 2026) | chờ duyệt — còn cần chốt: chẵn pallet/theo thùng do đơn chỉ định hay WMS tự tách; WMS có cho đổi LPN cùng lô khi lấy |
 | Dựng video + render | chưa làm |

@@ -351,7 +351,7 @@ b += lpn_tag(860, 580, "LPN-000123") + lpn_tag(860, 660, "LPN-000124") + T(945, 
 for k in range(3):
     b += qr(1150 + k * 90, 590, 70)
 b += T(1265, 700, "Tem lô QR cho thùng", 24, 700, MUTED, "middle")
-b += T(1265, 740, "NL-BC01 · Lô 241120", 24, 800, INK, "middle")
+b += T(1265, 740, "NL-BC01 · Lô 261120", 24, 800, INK, "middle")
 scr("S09", P2, "02B Bước 1–2: ASN, in LPN + tem lô QR", b,
     ["Email từ Nhiêu Lộc bay vào; file Excel trượt vào cửa sổ WMS, tạo ASN-NL-0001 (chip “Đã tạo ASN”).",
      "Máy in nhả ra tem LPN (mã vạch, cho pallet) và tem lô QR (cho thùng); XLCT gom lại giao cho nhân viên kho."],
@@ -382,7 +382,7 @@ b = floor() + code_badge("02B · Bước 5", "Nhận hàng", ["pda"])
 b += pallet(420, 830, lpn="LPN-000123", qrs=True, rows=4)
 b += person("s11k", "receiver", 200, s=1.9, pose=SCAN, hand_r=pda_svg("s11k", laser=True, reach=90))
 b += pda_big(860, 130, "Nhận hàng · ASN-NL-0001", [("Quét LPN", "LPN-000123", "ok"),
-                                                   ("Quét tem lô QR", "NL-BC01 · Lô 241120", "ok"),
+                                                   ("Quét tem lô QR", "NL-BC01 · Lô 261120", "ok"),
                                                    ("Số lượng (thùng)", "40", "hl"), ("Pallet đã nhận", "6 / 6", "ok")],
              "Xác nhận hoàn tất", w=520)
 b += box(1440, 220, 420, 260, "Tem lô QR cho biết", ["Mã hàng · Số lô", "Hạn sử dụng", "→ WMS xuất theo FEFO"], PURPLE, 28)
@@ -427,11 +427,11 @@ b = floor() + code_badge("02B · Bước 7", "Cất hàng – Khu B (chất ch�
 b += stack_zone(560, 800, [("B-01", 3), ("B-02", 2), ("B-03", 1)], lw=250, ph=110, hl={1: GREEN})
 b += pill(935, 330, "Cùng mã · cùng lô", GREEN, "#fff", 24)
 b += lift("s14f", 210, 830, 1.9)
-b += pda_big(1400, 150, "Cất hàng", [("Quét LPN", "LPN-000130", "ok"), ("Vị trí gợi ý", "B-02 · tầng 3", "hl"),
+b += pda_big(1400, 150, "Cất hàng", [("Quét LPN", "LPN-000130", "ok"), ("Vị trí gợi ý", "B-02", "hl"),
                                       ("Quét mã vị trí", "B-02", "ok")], "Xác nhận cất hàng")
 scr("S14", P2, "02B Bước 7: Cất hàng khu chất chồng", b,
-    ["Ba ô sàn B-01…B-03 với 3 / 2 / 1 pallet chồng; ô B-02 có khung xanh nét đứt ở tầng 3 + chip “Cùng mã · cùng lô”.",
-     "Xe nâng đặt pallet lên tầng 3 của B-02; quét mã ô sàn ✔.",
+    ["Ba ô sàn B-01…B-03 với 3 / 2 / 1 pallet chồng; ô B-02 có khung xanh nét đứt trên đỉnh chồng + chip “Cùng mã · cùng lô”. WMS chỉ gợi ý ô sàn B-02, không quản lý tầng.",
+     "Xe nâng đặt pallet lên đỉnh chồng ở B-02; quét mã ô sàn ✔.",
      "Zoom nhẹ vào LPN trên từng pallet trong chồng: pallet nào cũng có mã riêng."],
     ["Ở khu chất chồng, WMS gợi ý ô sàn để chồng các pallet cùng mã hàng, cùng lô.",
      "Mỗi pallet vẫn có LPN riêng, nên luôn biết pallet nào đang nằm ở ô nào."],
@@ -446,11 +446,11 @@ screen_def("S15", P3, "Thẻ chương Phần 3", frame(chapter5(3, ["Quản lý"
 b = floor() + code_badge("03B", "Khoá / mở khoá lô", ["wms"])
 b += prop(ms_desk(), 260, 830, 1.6) + person("s16x", "xlct", 210, s=1.6, pose=TYPE, tag="Xử lý chứng từ", tag_col=BLUE)
 b += wms_win(560, 170, 860, "Tồn kho theo lô · NL-BC01", ["Lô", "LPN", "Trạng thái"],
-             [["Lô 241101", "LPN-000088", "Đã khoá ✖"], ["Lô 241120", "LPN-000123", "Sẵn sàng ✔"]], [250, 290, 280], hl=0)
+             [["Lô 261101", "LPN-000088", "Đã khoá ✖"], ["Lô 261120", "LPN-000123", "Sẵn sàng ✔"]], [250, 290, 280], hl=0)
 b += pallet(1500, 830, lpn="LPN-000088", dim=True) + lock(1595, 560, 1.6)
 b += box(560, 600, 860, 170, "Lô bị khoá", ["không được phân bổ xuất cho tới khi mở khoá"], RED, 30)
 scr("S16", P3, "03B Khoá / mở khoá lô", b,
-    ["XLCT tìm lô trên WMS; dòng “Lô 241101” đổi sang “Đã khoá” đỏ, ổ khoá đỏ sập xuống trên pallet (pallet mờ đi).",
+    ["XLCT tìm lô trên WMS; dòng “Lô 261101” đổi sang “Đã khoá” đỏ, ổ khoá đỏ sập xuống trên pallet (pallet mờ đi).",
      "Thẻ đỏ “Lô bị khoá …” hiện ra; cuối màn ổ khoá bật mở, pallet sáng lại để thể hiện mở khoá."],
     ["Khi cần giữ một lô lại, XLCT khoá lô hoặc LPN trên WMS.",
      "Lô bị khoá không được phân bổ xuất cho tới khi mở khoá."],
@@ -479,7 +479,7 @@ b += pallet(140, 830, lpn="LPN-000123", rows=3, qrs=True)
 b += pallet(760, 830, lpn="LPN-000245", rows=1, qrs=True)
 b += person("s18k", "receiver", 560, s=1.8, pose=CARRY, hand_l=CARTON, tag="Nhân viên kho", tag_col=GREEN)
 b += arrow(300, 400, 860, 400, ORANGE, 6, True)
-b += pda_big(1240, 120, "Pallet → pallet", [("Quét LPN nguồn", "LPN-000123", "ok"), ("Quét tem lô QR", "NL-BC01 · Lô 241120", "ok"),
+b += pda_big(1240, 120, "Pallet → pallet", [("Quét LPN nguồn", "LPN-000123", "ok"), ("Quét tem lô QR", "NL-BC01 · Lô 261120", "ok"),
                                              ("Số thùng cần chuyển", "12", "hl"), ("Quét pallet mới", "LPN-000245", "ok")],
              "Xác nhận hoàn tất", w=560)
 scr("S18", P3, "03D Chuyển hàng từ pallet sang pallet", b,
@@ -521,59 +521,75 @@ scr("S21", P4, "04C Điều kiện: đã có giá bán ngày phân bổ?", b,
 
 # S22 — 04C B3 phân bổ
 b = floor() + code_badge("04C · Bước 3", "Phân bổ tồn kho", ["wms"])
-b += box(60, 170, 880, 330, "Ba chỉ heo · đồng ký", ["800 kg ÷ 20 kg/thùng = 40 thùng", "= 1 pallet đầy (40 thùng/pallet)"], GREEN)
-b += pill(500, 440, "→ XUẤT CHẴN PALLET", BLUE, "#fff", 28)
-b += box(980, 170, 880, 330, "Đùi gà · đa ký", ["250 kg ÷ 12 kg chuẩn = 20,8 thùng", "làm tròn gần nhất → 21 thùng"], PURPLE)
-b += pill(1420, 440, "→ XUẤT THEO THÙNG", ORANGE, "#fff", 28)
-b += rect(60, 530, 1300, 270, "#fff", 18, ORANGE, 4) + T(90, 585, "FEFO: hết hạn trước – xuất trước", 32, 900, ORANGE)
-b += rect(90, 610, 600, 160, "#FFF1DF", 14, ORANGE, 3) + T(115, 660, "Lô 241105 · HSD 05/05/2026", 26, 800)
-b += T(115, 705, "→ được chọn", 26, 800, ORANGE) + check(640, 650, 22)
-b += rect(720, 610, 610, 160, "#F4F6F9", 14, C["floor_line"], 3) + T(745, 660, "Lô 241120 · HSD 20/05/2026", 26, 800, MUTED)
-b += T(745, 705, "→ để sau", 26, 700, MUTED)
+b += box(60, 170, 880, 330, "Quy đổi kg → thùng", ["Ba chỉ heo (đồng ký): 800 kg ÷ 20 = 40 thùng",
+                                                   "Đùi gà (đa ký): 250 kg ÷ 12 = 20,8 → 21 thùng",
+                                                   "Làm tròn gần nhất, tối thiểu 1 thùng"], GREEN)
+b += box(980, 170, 880, 330, "Chẵn pallet hay theo thùng?", ["Đồng ký hay đa ký đều xuất được cả hai cách",
+                                                            "Ba chỉ heo 40 thùng = 1 pallet", "Đùi gà 21 thùng (pallet 50)"], BLUE)
+b += pill(1640, 304, "→ CHẴN PALLET", BLUE, "#fff", 20) + pill(1640, 349, "→ THEO THÙNG", ORANGE, "#fff", 20)
+b += rect(60, 530, 1300, 270, "#fff", 18, ORANGE, 4) + T(90, 580, "Chọn lô (hôm nay 24/11/2026)", 30, 900, ORANGE)
+b += rect(90, 600, 560, 180, "#FFF1DF", 14, ORANGE, 3) + T(112, 645, "Mặc định · FEFO", 27, 900, ORANGE)
+b += T(112, 690, "Lô 260601 · HSD 01/06/2027", 25, 800) + T(112, 735, "hết hạn trước → chọn", 25, 700, ORANGE) + check(605, 640, 20)
+b += rect(680, 600, 650, 180, "#F1ECFE", 14, PURPLE, 3) + T(702, 645, "Đơn chỉ định · HSD còn lại > 70%", 27, 900, PURPLE)
+b += T(702, 690, "Lô 260601 · còn 52%", 25, 800, MUTED) + cross(1040, 682, 17)
+b += T(702, 735, "Lô 261105 · còn 95%", 25, 800) + check(1040, 727, 17)
 b += box(1400, 530, 460, 270, "Đơn giá", ["theo ngày phân bổ 24/11", "Ba chỉ heo 98.000 đ/kg", "Đùi gà 62.000 đ/kg"], BLUE, 30)
-scr("S22", P4, "04C Bước 3: Quy đổi kg → thùng, phân bổ FEFO, lấy đơn giá", b,
-    ["Hai thẻ quy đổi hiện phép tính từng vế (số chạy): 800 ÷ 20 = 40; 250 ÷ 12 = 20,8 → 21.",
-     "Chip “→ XUẤT CHẴN PALLET” / “→ XUẤT THEO THÙNG” bật dưới mỗi thẻ.",
-     "Hàng dưới: hai lô, lô hết hạn sớm hơn viền cam + ✔; thẻ đơn giá theo ngày phân bổ bên phải."],
-    ["Bước 3: WMS quy đổi số thùng bằng kg đặt chia kg mỗi thùng, làm tròn gần nhất, tối thiểu một thùng.",
-     "Rồi phân bổ theo FEFO, lô hết hạn trước được xuất trước, và lấy đơn giá của ngày phân bổ."],
-    "Nhánh “đủ 1 pallet → xuất chẵn pallet” là ĐỀ XUẤT minh họa cho nhu cầu xuất chẵn pallet; 04C chỉ ghi quy đổi + FEFO. "
-    "Số liệu, HSD minh họa.")
+scr("S22", P4, "04C Bước 3: Quy đổi kg → thùng, chẵn pallet / theo thùng, chọn lô, lấy đơn giá", b,
+    ["Thẻ quy đổi hiện phép tính từng dòng (số chạy): 800 ÷ 20 = 40; 250 ÷ 12 = 20,8 → 21.",
+     "Thẻ xanh: dòng “Đồng ký hay đa ký đều xuất được cả hai cách” hiện trước; chip CHẴN PALLET bật cạnh Ba chỉ heo, "
+     "chip THEO THÙNG bật cạnh Đùi gà.",
+     "Thẻ chọn lô: ô trái “Mặc định · FEFO” chọn lô hết hạn trước ✔; ô phải “Đơn chỉ định HSD còn lại > 70%”: "
+     "lô 52% bị gạch ✖, lô 95% được chọn ✔. Thẻ đơn giá theo ngày phân bổ bên phải."],
+    ["Bước 3: WMS quy đổi kg ra số thùng, làm tròn gần nhất, tối thiểu một thùng.",
+     "Hàng đồng ký hay đa ký đều có thể xuất chẵn pallet hoặc xuất theo thùng.",
+     "Lô được chọn theo FEFO mặc định, hoặc theo hạn dùng còn lại tối thiểu mà đơn chỉ định, rồi lấy đơn giá của ngày phân bổ."],
+    "Hạn dùng còn lại % = số ngày còn tới HSD ÷ tổng hạn dùng (ví dụ hạn dùng 12 tháng). "
+    "Cần chốt: chẵn pallet / theo thùng do đơn chỉ định hay WMS tự tách khi đủ thùng/pallet. "
+    "Các màn sau dùng lô theo FEFO mặc định. Số liệu, HSD minh họa.")
 
 # S23 — 04C B4–5 chẵn pallet
 b = floor() + code_badge("04C · Bước 4–5", "In phiếu lấy hàng · Lấy chẵn pallet", ["doc", "pda"])
 b += doc(60, 160, 380, "PHIẾU LẤY HÀNG", ["SO-NL-0001", "B-02 · 1 pallet", "A-01-01 · 21 thùng"], sign=False)
 b += stack_zone(520, 800, [("B-02", 3)], lw=250, ph=110)
-b += rect(532, 464, 226, 116, "none", 10, ORANGE, 5, 'stroke-dasharray="14 9"')
-b += lift("s23f", 1010, 830, 1.9, load=False, flip=True)
-b += pda_big(1400, 130, "Lấy hàng · SO-NL-0001", [("Đi tới vị trí", "B-02", "hl"), ("Quét vị trí", "B-02", "ok"),
-                                                   ("Quét LPN · nguyên pallet 40 thùng", "LPN-000130", "ok")],
+b += rect(532, 464, 226, 116, "none", 10, GREEN, 5, 'stroke-dasharray="14 9"')
+b += rect(532, 684, 226, 116, "none", 10, ORANGE, 5, 'stroke-dasharray="14 9"')
+b += pill(645, 432, "Lấy LPN-000130 · cùng lô", GREEN, "#fff", 22)
+b += lift("s23f", 1090, 830, 1.9, load=False, flip=True)
+b += pda_big(1400, 120, "Lấy hàng · SO-NL-0001", [("Đi tới vị trí", "B-02", "hl"),
+                                                   ("WMS gợi ý (dưới cùng, khó lấy)", "LPN-000128", None),
+                                                   ("Quét LPN thực lấy", "LPN-000130", "ok"),
+                                                   ("Cùng mã · cùng lô 261120?", "Hợp lệ · 40 thùng", "ok")],
              "→ Khu chờ xuất", w=470)
-scr("S23", P4, "04C Bước 4–5: Lấy hàng chẵn pallet", b,
+scr("S23", P4, "04C Bước 4–5: Lấy chẵn pallet, được đổi pallet cùng lô", b,
     ["Phiếu lấy hàng in ra (góc trái) và được giao cho nhân viên kho.",
-     "Xe nâng tới ô B-02, pallet trên cùng viền cam; PDA: quét vị trí ✔ → quét LPN ✔ “nguyên pallet 40 thùng”.",
-     "Xe nâng nhấc nguyên pallet, quay đầu chạy ra khu chờ xuất."],
+     "Xe nâng tới ô B-02; WMS gợi ý LPN-000128 nằm dưới cùng (viền cam nét đứt, khó lấy).",
+     "Tài xế xe nâng lấy pallet trên cùng LPN-000130 (viền xanh), quét LPN; WMS kiểm tra cùng mã, cùng lô → “Hợp lệ” ✔, "
+     "ghi nhận nguyên pallet 40 thùng. Xe nâng nhấc pallet, quay đầu ra khu chờ xuất."],
     ["Bước 4: in phiếu lấy hàng, giao cho nhân viên kho.",
-     "Bước 5, đơn chẵn pallet: xe nâng tới đúng ô, quét vị trí, quét LPN và lấy nguyên pallet ra khu chờ xuất."],
-    "04C Bước 5 ghi: quét vị trí → quét tem lô QR → nhập số thùng. Với chẵn pallet, đề xuất quét LPN để nhận cả pallet một lần "
-    "– cần xác nhận WMS hỗ trợ; nếu không, vẫn làm đúng 04C.")
+     "Bước 5, chẵn pallet: nếu pallet được gợi ý khó lấy, xe nâng lấy pallet khác cùng lô cho thuận tiện.",
+     "Quét LPN thực lấy, WMS kiểm tra đúng mã, đúng lô rồi ghi nhận nguyên pallet."],
+    "Quét LPN để nhận nguyên pallet và đổi pallet cùng lô là cách làm theo góp ý; 04C gốc ghi quét vị trí → tem lô → số thùng. "
+    "Cần xác nhận WMS cho phép thay LPN cùng lô khi lấy.")
 
 # S24 — 04C B5 theo thùng
 b = floor() + code_badge("04C · Bước 5", "Lấy hàng theo thùng", ["pda"])
 b += rack_pallets(120, 300, 2, 2, [["A-01-01", "A-01-02"], ["A-02-01", "A-02-02"]],
-                  {(0, 0): {"rows": 2}, (1, 0): None, (0, 1): None, (1, 1): None}, hl={(0, 0): ORANGE}, cw=240, lh=260)
+                  {(0, 0): {"rows": 2, "lpn": "LPN-000140"}, (1, 0): None, (0, 1): None, (1, 1): None}, hl={(0, 0): ORANGE}, cw=240, lh=260)
 b += prop(ms_trolley(), 700, 830, 1.6) + person("s24p", "picker", 660, s=1.8, pose=SCAN,
                                                 hand_r=pda_svg("s24p", laser=True, reach=80), tag="Nhân viên kho", tag_col="#B88C00")
 b += pda_big(1220, 120, "Lấy hàng · SO-NL-0001", [("Đi tới vị trí", "A-01-01", "hl"), ("Quét vị trí", "A-01-01", "ok"),
-                                                   ("Quét tem lô QR", "NL-DG02 · Lô 241105", "ok"), ("Số lượng (thùng)", "21 / 21", "ok")],
+                                                   ("Quét LPN (lấy từ pallet nào)", "LPN-000140", "ok"),
+                                                   ("Quét tem lô QR", "NL-DG02 · Lô 260601", "ok"), ("Số lượng (thùng)", "21 / 21", "ok")],
              w=520)
-b += pill(1700, 800, "→ Khu chờ xuất", ORANGE, "#fff", 26)
+b += pill(880, 230, "→ Khu chờ xuất", ORANGE, "#fff", 26)
 scr("S24", P4, "04C Bước 5: Lấy hàng theo thùng", b,
     ["PDA hiện “Đi tới vị trí A-01-01”; nhân viên kéo xe hàng tới ô kệ viền cam.",
-     "Quét vị trí ✔ → quét tem lô QR trên thùng ✔ → số thùng chạy tới 21 / 21 ✔; pallet trên kệ thấp xuống.",
+     "Quét vị trí ✔ → quét LPN trên pallet ✔ (WMS biết lấy từ pallet nào) → quét tem lô QR trên thùng ✔ → số thùng chạy tới 21 / 21 ✔; pallet trên kệ thấp xuống.",
      "Chip “→ Khu chờ xuất”, nhân viên kéo xe ra khỏi khung."],
-    ["Bước 5, đơn lẻ thùng: tới vị trí theo phiếu, quét vị trí, quét tem lô và nhập số thùng.",
-     "Lấy xong, đưa hàng ra khu chờ xuất."])
+    ["Bước 5, lẻ thùng: tới vị trí theo phiếu, quét vị trí, quét LPN, quét tem lô và nhập số thùng.",
+     "Quét LPN để WMS biết thùng được lấy từ pallet nào.",
+     "Lấy xong, đưa hàng ra khu chờ xuất."],
+    "Bước quét LPN khi lấy theo thùng được bổ sung theo góp ý; 04C gốc chỉ ghi quét vị trí → tem lô → số thùng.")
 
 # S25 — 04C B6–7 xác nhận ra kho
 b = floor() + code_badge("04C · Bước 6–7", "Xác nhận ra kho", ["pda", "can"])
@@ -581,7 +597,7 @@ b += box(60, 170, 620, 330, "Đồng ký · Ba chỉ heo", ["Quét tem lô QR �
 b += check(620, 230, 26)
 b += scale_svg(720, 830, "11,8 kg") + prop(carton_flat(0, 0, 60, 44, "DG02"), 770, 696, 2.4)
 b += person("s25c", "checker", 1110, s=1.8, pose=SCAN, hand_r=pda_svg("s25c", laser=True, reach=70), tag="Nhân viên kho", tag_col=PURPLE)
-b += pda_big(1300, 110, "Ra kho · Đùi gà (đa ký)", [("Quét tem lô QR", "NL-DG02 · Lô 241105", "ok"),
+b += pda_big(1300, 110, "Ra kho · Đùi gà (đa ký)", [("Quét tem lô QR", "NL-DG02 · Lô 260601", "ok"),
                                                      ("Kg thùng 7 / 21", "11,8", "hl"), ("Tổng kg đã nhập", "82,9 kg", None)],
              "Xác nhận", w=560)
 b += diamond(370, 690, 560, 220, ["Số thùng nhập kg", "= số thùng đã lấy?"])
@@ -620,7 +636,7 @@ b += prop(ms_desk(), 200, 830, 1.4) + person("s28x", "xlct", 160, s=1.4, pose=TY
 b += stack_zone(520, 800, [("B-02", 3)], lw=250, ph=110)
 b += person("s28k", "receiver", 860, s=1.8, pose=SCAN, hand_r=pda_svg("s28k", laser=True, reach=80), tag="Nhân viên kho", tag_col=GREEN)
 b += pda_big(1220, 110, "Kiểm kê · KK-2411-01", [("Quét vị trí", "B-02", "ok"), ("Quét LPN", "LPN-000131", "ok"),
-                                                 ("Quét tem lô QR", "NL-BC01 · Lô 241120", "ok"), ("Số lượng (thùng)", "38", "hl")],
+                                                 ("Quét tem lô QR", "NL-BC01 · Lô 261120", "ok"), ("Số lượng (thùng)", "38", "hl")],
              w=560)
 scr("S28", P5, "05B Bước 1–2: Tạo phiên kiểm kê, đếm hàng", b,
     ["XLCT chọn điều kiện (khu, mã hàng…) và tạo phiên kiểm kê trên WMS.",
