@@ -524,9 +524,10 @@ b = floor() + code_badge("04C · Bước 3", "Phân bổ tồn kho", ["wms"])
 b += box(60, 170, 880, 330, "Quy đổi kg → thùng", ["Ba chỉ heo (đồng ký): 800 kg ÷ 20 = 40 thùng",
                                                    "Đùi gà (đa ký): 250 kg ÷ 12 = 20,8 → 21 thùng",
                                                    "Làm tròn gần nhất, tối thiểu 1 thùng"], GREEN)
-b += box(980, 170, 880, 330, "Chẵn pallet hay theo thùng?", ["Đồng ký hay đa ký đều xuất được cả hai cách",
-                                                            "Ba chỉ heo 40 thùng = 1 pallet", "Đùi gà 21 thùng (pallet 50)"], BLUE)
-b += pill(1640, 304, "→ CHẴN PALLET", BLUE, "#fff", 20) + pill(1640, 349, "→ THEO THÙNG", ORANGE, "#fff", 20)
+b += box(980, 170, 880, 330, "WMS tự tách (đồng ký và đa ký)", ["Đủ 1 pallet → xuất chẵn pallet",
+                                                               "Không đủ 1 pallet → xuất theo thùng",
+                                                               "Ba chỉ heo 40 thùng = 1 pallet", "Đùi gà 21 thùng (pallet 50)"], BLUE)
+b += pill(1640, 346, "→ CHẴN PALLET", BLUE, "#fff", 20) + pill(1640, 391, "→ THEO THÙNG", ORANGE, "#fff", 20)
 b += rect(60, 530, 1300, 270, "#fff", 18, ORANGE, 4) + T(90, 580, "Chọn lô (hôm nay 24/11/2026)", 30, 900, ORANGE)
 b += rect(90, 600, 560, 180, "#FFF1DF", 14, ORANGE, 3) + T(112, 645, "Mặc định · FEFO", 27, 900, ORANGE)
 b += T(112, 690, "Lô 260601 · HSD 01/06/2027", 25, 800) + T(112, 735, "hết hạn trước → chọn", 25, 700, ORANGE) + check(605, 640, 20)
@@ -536,15 +537,15 @@ b += T(702, 735, "Lô 261105 · còn 95%", 25, 800) + check(1040, 727, 17)
 b += box(1400, 530, 460, 270, "Đơn giá", ["theo ngày phân bổ 24/11", "Ba chỉ heo 98.000 đ/kg", "Đùi gà 62.000 đ/kg"], BLUE, 30)
 scr("S22", P4, "04C Bước 3: Quy đổi kg → thùng, chẵn pallet / theo thùng, chọn lô, lấy đơn giá", b,
     ["Thẻ quy đổi hiện phép tính từng dòng (số chạy): 800 ÷ 20 = 40; 250 ÷ 12 = 20,8 → 21.",
-     "Thẻ xanh: dòng “Đồng ký hay đa ký đều xuất được cả hai cách” hiện trước; chip CHẴN PALLET bật cạnh Ba chỉ heo, "
-     "chip THEO THÙNG bật cạnh Đùi gà.",
+     "Thẻ xanh “WMS tự tách”: hai quy tắc hiện trước (đủ 1 pallet → chẵn pallet; không đủ → theo thùng), "
+     "rồi chip CHẴN PALLET bật cạnh Ba chỉ heo, chip THEO THÙNG bật cạnh Đùi gà.",
      "Thẻ chọn lô: ô trái “Mặc định · FEFO” chọn lô hết hạn trước ✔; ô phải “Đơn chỉ định HSD còn lại > 70%”: "
      "lô 52% bị gạch ✖, lô 95% được chọn ✔. Thẻ đơn giá theo ngày phân bổ bên phải."],
     ["Bước 3: WMS quy đổi kg ra số thùng, làm tròn gần nhất, tối thiểu một thùng.",
-     "Hàng đồng ký hay đa ký đều có thể xuất chẵn pallet hoặc xuất theo thùng.",
+     "WMS tự tách: đủ một pallet thì xuất chẵn pallet, không đủ một pallet thì xuất theo thùng, cho cả đồng ký và đa ký.",
      "Lô được chọn theo FEFO mặc định, hoặc theo hạn dùng còn lại tối thiểu mà đơn chỉ định, rồi lấy đơn giá của ngày phân bổ."],
     "Hạn dùng còn lại % = số ngày còn tới HSD ÷ tổng hạn dùng (ví dụ hạn dùng 12 tháng). "
-    "Cần chốt: chẵn pallet / theo thùng do đơn chỉ định hay WMS tự tách khi đủ thùng/pallet. "
+    "Đã chốt với khách: WMS tự tách chẵn pallet / theo thùng theo số thùng/pallet. "
     "Các màn sau dùng lô theo FEFO mặc định. Số liệu, HSD minh họa.")
 
 # S23 — 04C B4–5 chẵn pallet
@@ -568,8 +569,8 @@ scr("S23", P4, "04C Bước 4–5: Lấy chẵn pallet, được đổi pallet c
     ["Bước 4: in phiếu lấy hàng, giao cho nhân viên kho.",
      "Bước 5, chẵn pallet: nếu pallet được gợi ý khó lấy, xe nâng lấy pallet khác cùng lô cho thuận tiện.",
      "Quét LPN thực lấy, WMS kiểm tra đúng mã, đúng lô rồi ghi nhận nguyên pallet."],
-    "Quét LPN để nhận nguyên pallet và đổi pallet cùng lô là cách làm theo góp ý; 04C gốc ghi quét vị trí → tem lô → số thùng. "
-    "Cần xác nhận WMS cho phép thay LPN cùng lô khi lấy.")
+    "Đã chốt: WMS cho phép thay LPN khác cùng mã, cùng lô khi lấy chẵn pallet. "
+    "04C gốc ghi quét vị trí → tem lô → số thùng; bước quét LPN nguyên pallet bổ sung theo góp ý.")
 
 # S24 — 04C B5 theo thùng
 b = floor() + code_badge("04C · Bước 5", "Lấy hàng theo thùng", ["pda"])
