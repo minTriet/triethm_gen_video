@@ -90,5 +90,5 @@ Storyboard: `design/storyboard-nhieu-loc.html` (`python3 tools/build_storyboard_
 
 | Phần | Trạng thái |
 | --- | --- |
-| Storyboard v2 (logo TKSolution `design/logo-tksolution.png` ở mọi khung, model XLCT mới tay gõ phím cao hơn) | chờ duyệt — các điểm ĐỀ XUẤT cần chốt: quy tắc chồng cùng mã/cùng lô (S14), đủ pallet → xuất chẵn (S22), quét LPN lấy nguyên pallet (S23), cân hàng đa ký (S25) |
+| Storyboard v2 (logo TKSolution nền trong suốt `design/logo-tksolution-trong-suot.png` ở mọi khung, model XLCT mới tay gõ phím cao hơn) | chờ duyệt — các điểm ĐỀ XUẤT cần chốt: quy tắc chồng cùng mã/cùng lô (S14), đủ pallet → xuất chẵn (S22), quét LPN lấy nguyên pallet (S23), cân hàng đa ký (S25) |
 | Dựng video + render | chưa làm |

@@ -28,13 +28,14 @@ WOOD, WOOD_D = "#C9965A", "#A97A44"
 
 
 # ------------------------------------------------------------------ logo TKSolution (design/logo-tksolution.png)
-_buf = io.BytesIO()
-Image.open(os.path.join(os.path.dirname(__file__), "..", "design", "logo-tksolution.png")).convert("RGB").save(_buf, "JPEG", quality=90)
-LOGO_URI = "data:image/jpeg;base64," + base64.b64encode(_buf.getvalue()).decode()
+_buf = io.BytesIO()  # nền trong suốt: logo hoà vào màu nền khung
+Image.open(os.path.join(os.path.dirname(__file__), "..", "design", "logo-tksolution-trong-suot.png")).quantize(
+    64, method=Image.Quantize.FASTOCTREE).save(_buf, "PNG", optimize=True)
+LOGO_URI = "data:image/png;base64," + base64.b64encode(_buf.getvalue()).decode()
 LOGO_AR = 620 / 144
 
 
-def logo(x, y, w, card=True):
+def logo(x, y, w, card=False):
     h = w / LOGO_AR
     bg = rect(x - 14, y - 10, w + 28, h + 20, "#fff", 12, extra='opacity="0.96"') if card else ""
     return bg + f'<image href="{LOGO_URI}" x="{x}" y="{y}" width="{w}" height="{h:.1f}"/>'
