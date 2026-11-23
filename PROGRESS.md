@@ -81,3 +81,14 @@ Storyboard: `design/storyboard-wms-co-ban.html` (`python3 tools/build_storyboard
 
 Generator: `python3 tools/build_wms.py` → `video-wms/` (hình dùng chung với storyboard: `tools/wms_kit.py`).
 Render: `cd video-wms && node ../.claude/skills/hyperframes/scripts/plugin-cli.mjs render -o renders/<tên>.mp4`
+
+# Video demo đề xuất cho khách hàng Công ty Nhiêu Lộc (kho lạnh, WMS)
+
+Nguồn: `source/Nhieu_Loc_-_Bo_quy_trinh_kho.drawio` (01A, 01B, 02B, 03B, 03C, 03D, 04C, 05B) · Người xem: cấp quản lý Nhiêu Lộc (đi kèm proposal).
+Bối cảnh: kho đông lạnh 2 khu (Khu A kệ, 1 vị trí = 1 pallet; Khu B chất chồng), thịt đông lạnh đồng ký / đa ký, xuất chẵn pallet và theo thùng.
+Storyboard: `design/storyboard-nhieu-loc.html` (`python3 tools/build_storyboard_nhieuloc.py design/storyboard-nhieu-loc.html`), 30 màn, khoảng 4:07.
+
+| Phần | Trạng thái |
+| --- | --- |
+| Storyboard v1 | chờ duyệt — các điểm ĐỀ XUẤT cần chốt: quy tắc chồng cùng mã/cùng lô (S14), đủ pallet → xuất chẵn (S22), quét LPN lấy nguyên pallet (S23), cân hàng đa ký (S25) |
+| Dựng video + render | chưa làm |
