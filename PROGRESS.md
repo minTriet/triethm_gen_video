@@ -91,4 +91,10 @@ Storyboard: `design/storyboard-nhieu-loc.html` (`python3 tools/build_storyboard_
 | Phần | Trạng thái |
 | --- | --- |
 | Storyboard v3 (logo TKSolution nền trong suốt, model XLCT mới; sửa theo góp ý: S14 chỉ gợi ý ô B-02 không tầng; S22 đồng ký/đa ký đều xuất chẵn pallet hoặc theo thùng, chọn lô FEFO mặc định hoặc theo HSD còn lại > %; S23 xe nâng được lấy pallet khác cùng lô; S24 lấy theo thùng có quét LPN; mã lô đổi sang năm 2026) | chờ duyệt — đã chốt: WMS tự tách (đủ 1 pallet → chẵn pallet, không đủ → theo thùng); WMS cho đổi LPN cùng lô khi lấy |
-| Dựng video + render | chưa làm |
+| Bản duyệt 30 s đầu (S01–S03: tiêu đề, 2 khu kho, hàng hoá) có giọng đọc | `video-nhieuloc/renders/nhieu-loc-30s-v1.mp4` (35 s, 1080p), chờ duyệt |
+| S04–S30 + render bản đầy đủ | chưa làm |
+
+Generator: `python3 tools/build_nhieuloc.py` → `video-nhieuloc/` (hình dùng chung với storyboard: `tools/nhieuloc_kit.py`).
+Giọng đọc: skill `vieneu-tts`, giọng Hải Đăng, seed 7; câu thoại + văn bản đọc trong `source/vo_nhieu_loc.json`
+("WMS" đọc "đáp-bờ-liu em ét", "pallet" viết "pa-lét", "kg" đọc "ký", "Khu A/B" viết "Khu a/bê").
+Render: `cd video-nhieuloc && node ../.claude/skills/hyperframes/scripts/plugin-cli.mjs render -o renders/<tên>.mp4`

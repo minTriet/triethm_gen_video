@@ -1,0 +1,10 @@
+[
+ {"id": "s01-1", "sub": "Kính chào Ban lãnh đạo Công ty Nhiêu Lộc.", "text": "Kính chào Ban lãnh đạo Công ty Nhiêu Lộc."},
+ {"id": "s01-2", "sub": "Video này trình bày cách kho sẽ vận hành hàng thịt đông lạnh của Nhiêu Lộc trên hệ thống WMS.", "text": "Video này trình bày cách kho sẽ vận hành hàng thịt đông lạnh của Nhiêu Lộc, trên hệ thống đáp-bờ-liu em ét."},
+ {"id": "s02-1", "sub": "Kho đông lạnh có hai khu.", "text": "Kho đông lạnh có hai khu."},
+ {"id": "s02-2", "sub": "Khu A có dãy kệ: mỗi vị trí chứa đúng một pallet.", "text": "Khu a có dãy kệ, mỗi vị trí chứa đúng một pa-lét."},
+ {"id": "s02-3", "sub": "Khu B không có kệ: pallet được chất chồng lên nhau trên từng ô sàn.", "text": "Khu bê không có kệ, pa-lét được chất chồng lên nhau trên từng ô sàn."},
+ {"id": "s03-1", "sub": "Hàng là thịt đông lạnh, gồm hàng đồng ký và hàng đa ký.", "text": "Hàng là thịt đông lạnh, gồm hàng đồng ký và hàng đa ký."},
+ {"id": "s03-2", "sub": "Đồng ký: thùng nào cũng cùng số kg. Đa ký: mỗi thùng một số kg khác nhau.", "text": "Đồng ký, là thùng nào cũng cùng số ký. Đa ký, là mỗi thùng một số ký khác nhau."},
+ {"id": "s03-3", "sub": "Khi xuất, Nhiêu Lộc có thể xuất chẵn pallet hoặc xuất lẻ theo thùng.", "text": "Khi xuất, Nhiêu Lộc có thể xuất chẵn pa-lét, hoặc xuất lẻ theo thùng."}
+]

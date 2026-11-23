@@ -1,0 +1,58 @@
+[
+  {
+    "id": "s01-1",
+    "file": "s01-1.mp3",
+    "duration": 1.76,
+    "text": "Kính chào Ban lãnh đạo Công ty Nhiêu Lộc.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s01-2",
+    "file": "s01-2.mp3",
+    "duration": 5.36,
+    "text": "Video này trình bày cách kho sẽ vận hành hàng thịt đông lạnh của Nhiêu Lộc, trên hệ thống đáp-bờ-liu em ét.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s02-1",
+    "file": "s02-1.mp3",
+    "duration": 1.36,
+    "text": "Kho đông lạnh có hai khu.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s02-2",
+    "file": "s02-2.mp3",
+    "duration": 2.8,
+    "text": "Khu a có dãy kệ, mỗi vị trí chứa đúng một pa-lét.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s02-3",
+    "file": "s02-3.mp3",
+    "duration": 3.68,
+    "text": "Khu bê không có kệ, pa-lét được chất chồng lên nhau trên từng ô sàn.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s03-1",
+    "file": "s03-1.mp3",
+    "duration": 3.04,
+    "text": "Hàng là thịt đông lạnh, gồm hàng đồng ký và hàng đa ký.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s03-2",
+    "file": "s03-2.mp3",
+    "duration": 4.32,
+    "text": "Đồng ký, là thùng nào cũng cùng số ký. Đa ký, là mỗi thùng một số ký khác nhau.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s03-3",
+    "file": "s03-3.mp3",
+    "duration": 3.76,
+    "text": "Khi xuất, Nhiêu Lộc có thể xuất chẵn pa-lét, hoặc xuất lẻ theo thùng.",
+    "voice": "Hải Đăng"
+  }
+]
