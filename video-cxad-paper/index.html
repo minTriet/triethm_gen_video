@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+@font-face{font-family:'Be Vietnam Pro';font-style:normal;font-weight:500;font-display:block;src:url('assets/fonts/be-vietnam-pro-vietnamese-500-normal.woff2') format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;}
+@font-face{font-family:'Be Vietnam Pro';font-style:normal;font-weight:500;font-display:block;src:url('assets/fonts/be-vietnam-pro-latin-500-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Be Vietnam Pro';font-style:normal;font-weight:700;font-display:block;src:url('assets/fonts/be-vietnam-pro-vietnamese-700-normal.woff2') format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;}
+@font-face{font-family:'Be Vietnam Pro';font-style:normal;font-weight:700;font-display:block;src:url('assets/fonts/be-vietnam-pro-latin-700-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Be Vietnam Pro';font-style:normal;font-weight:900;font-display:block;src:url('assets/fonts/be-vietnam-pro-vietnamese-900-normal.woff2') format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;}
+@font-face{font-family:'Be Vietnam Pro';font-style:normal;font-weight:900;font-display:block;src:url('assets/fonts/be-vietnam-pro-latin-900-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+      * { margin:0; padding:0; box-sizing:border-box; }
+      html, body { margin:0; width:1920px; height:1080px; overflow:hidden; background:#F4F6F9; }
+      #root { position:relative; width:1920px; height:1080px; font-family:'Be Vietnam Pro'; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="310.51" data-width="1920" data-height="1080">
+      <div id="paintro" data-composition-id="paintro" data-composition-src="compositions/paintro.html" data-start="0.0" data-duration="11.32" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="cxmap" data-composition-id="cxmap" data-composition-src="compositions/cxmap.html" data-start="10.97" data-duration="10.15" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="chap1" data-composition-id="chap1" data-composition-src="compositions/chap1.html" data-start="20.42" data-duration="2.7" data-track-index="2" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:5"></div>
+      <div id="paasn" data-composition-id="paasn" data-composition-src="compositions/paasn.html" data-start="22.77" data-duration="10.6" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="paprint" data-composition-id="paprint" data-composition-src="compositions/paprint.html" data-start="33.02" data-duration="9.4" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="parecv" data-composition-id="parecv" data-composition-src="compositions/parecv.html" data-start="42.07" data-duration="17.05" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="padone" data-composition-id="padone" data-composition-src="compositions/padone.html" data-start="58.77" data-duration="14.85" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="paput" data-composition-id="paput" data-composition-src="compositions/paput.html" data-start="73.27" data-duration="11.3" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="paloc" data-composition-id="paloc" data-composition-src="compositions/paloc.html" data-start="84.22" data-duration="7.55" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="g1" data-composition-id="g1" data-composition-src="compositions/g1.html" data-start="91.42" data-duration="11.96" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="chap2" data-composition-id="chap2" data-composition-src="compositions/chap2.html" data-start="102.68" data-duration="2.7" data-track-index="2" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:5"></div>
+      <div id="cxdo" data-composition-id="cxdo" data-composition-src="compositions/cxdo.html" data-start="105.03" data-duration="11.0" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="cxmaster" data-composition-id="cxmaster" data-composition-src="compositions/cxmaster.html" data-start="115.68" data-duration="9.22" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="cxalloc" data-composition-id="cxalloc" data-composition-src="compositions/cxalloc.html" data-start="124.55" data-duration="7.65" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="cxpick5" data-composition-id="cxpick5" data-composition-src="compositions/cxpick5.html" data-start="131.85" data-duration="22.1" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="cxpick" data-composition-id="cxpick" data-composition-src="compositions/cxpick.html" data-start="153.6" data-duration="16.15" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="cxconfirm" data-composition-id="cxconfirm" data-composition-src="compositions/cxconfirm.html" data-start="169.4" data-duration="7.05" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="pagate" data-composition-id="pagate" data-composition-src="compositions/pagate.html" data-start="176.1" data-duration="6.35" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="g2" data-composition-id="g2" data-composition-src="compositions/g2.html" data-start="182.1" data-duration="12.89" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="chap3" data-composition-id="chap3" data-composition-src="compositions/chap3.html" data-start="194.29" data-duration="2.7" data-track-index="2" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:5"></div>
+      <div id="papda" data-composition-id="papda" data-composition-src="compositions/papda.html" data-start="196.64" data-duration="5.15" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="cxcells" data-composition-id="cxcells" data-composition-src="compositions/cxcells.html" data-start="201.44" data-duration="6.95" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="cxsort" data-composition-id="cxsort" data-composition-src="compositions/cxsort.html" data-start="208.04" data-duration="18.22" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="cxdiff" data-composition-id="cxdiff" data-composition-src="compositions/cxdiff.html" data-start="225.91" data-duration="17.2" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="g3" data-composition-id="g3" data-composition-src="compositions/g3.html" data-start="242.76" data-duration="11.97" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="chap4" data-composition-id="chap4" data-composition-src="compositions/chap4.html" data-start="254.03" data-duration="2.7" data-track-index="2" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:5"></div>
+      <div id="cxcheck" data-composition-id="cxcheck" data-composition-src="compositions/cxcheck.html" data-start="256.38" data-duration="15.45" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="cxhand" data-composition-id="cxhand" data-composition-src="compositions/cxhand.html" data-start="271.48" data-duration="16.25" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="g4" data-composition-id="g4" data-composition-src="compositions/g4.html" data-start="287.38" data-duration="11.73" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="paend" data-composition-id="paend" data-composition-src="compositions/paend.html" data-start="298.76" data-duration="11.75" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="captions" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="310.51" data-track-index="1" data-track-kind="captions" data-width="1920" data-height="1080" style="z-index:10"></div>
+      <audio id="sfx1" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="2.0" data-duration="0.57" data-track-index="3" data-volume="0.25"></audio>
+      <audio id="sfx2" class="clip" src="assets/sfx/ping.mp3" data-start="13.17" data-duration="0.6" data-track-index="3" data-volume="0.2"></audio>
+      <audio id="sfx3" class="clip" src="assets/sfx/whoosh.mp3" data-start="20.42" data-duration="0.57" data-track-index="3" data-volume="0.28"></audio>
+      <audio id="sfx4" class="clip" src="assets/sfx/chime.mp3" data-start="26.17" data-duration="2.54" data-track-index="3" data-volume="0.22"></audio>
+      <audio id="sfx5" class="clip" src="assets/sfx/click-soft.mp3" data-start="34.02" data-duration="0.36" data-track-index="3" data-volume="0.3"></audio>
+      <audio id="sfx6" class="clip" src="assets/sfx/click-soft.mp3" data-start="45.07" data-duration="0.36" data-track-index="3" data-volume="0.25"></audio>
+      <audio id="sfx7" class="clip" src="assets/sfx/chime.mp3" data-start="65.52" data-duration="2.54" data-track-index="3" data-volume="0.22"></audio>
+      <audio id="sfx8" class="clip" src="assets/sfx/chime.mp3" data-start="89.02" data-duration="2.54" data-track-index="3" data-volume="0.22"></audio>
+      <audio id="sfx9" class="clip" src="assets/sfx/chime.mp3" data-start="98.61" data-duration="2.54" data-track-index="3" data-volume="0.22"></audio>
+      <audio id="sfx10" class="clip" src="assets/sfx/whoosh.mp3" data-start="102.68" data-duration="0.57" data-track-index="3" data-volume="0.28"></audio>
+      <audio id="sfx11" class="clip" src="assets/sfx/chime.mp3" data-start="108.43" data-duration="2.54" data-track-index="3" data-volume="0.22"></audio>
+      <audio id="sfx12" class="clip" src="assets/sfx/chime.mp3" data-start="120.15" data-duration="2.54" data-track-index="3" data-volume="0.22"></audio>
+      <audio id="sfx13" class="clip" src="assets/sfx/click-soft.mp3" data-start="125.85" data-duration="0.36" data-track-index="3" data-volume="0.3"></audio>
+      <audio id="sfx14" class="clip" src="assets/sfx/click-soft.mp3" data-start="147.4" data-duration="0.36" data-track-index="3" data-volume="0.3"></audio>
+      <audio id="sfx15" class="clip" src="assets/sfx/click-soft.mp3" data-start="158.65" data-duration="0.36" data-track-index="3" data-volume="0.3"></audio>
+      <audio id="sfx16" class="clip" src="assets/sfx/chime.mp3" data-start="165.6" data-duration="2.54" data-track-index="3" data-volume="0.2"></audio>
+      <audio id="sfx17" class="clip" src="assets/sfx/chime.mp3" data-start="173.1" data-duration="2.54" data-track-index="3" data-volume="0.22"></audio>
+      <audio id="sfx18" class="clip" src="assets/sfx/ping.mp3" data-start="179.2" data-duration="0.6" data-track-index="3" data-volume="0.25"></audio>
+      <audio id="sfx19" class="clip" src="assets/sfx/chime.mp3" data-start="190.22" data-duration="2.54" data-track-index="3" data-volume="0.22"></audio>
+      <audio id="sfx20" class="clip" src="assets/sfx/whoosh.mp3" data-start="194.29" data-duration="0.57" data-track-index="3" data-volume="0.28"></audio>
+      <audio id="sfx21" class="clip" src="assets/sfx/ping.mp3" data-start="211.04" data-duration="0.6" data-track-index="3" data-volume="0.25"></audio>
+      <audio id="sfx22" class="clip" src="assets/sfx/chime.mp3" data-start="222.81" data-duration="2.54" data-track-index="3" data-volume="0.22"></audio>
+      <audio id="sfx23" class="clip" src="assets/sfx/chime.mp3" data-start="250.42" data-duration="2.54" data-track-index="3" data-volume="0.22"></audio>
+      <audio id="sfx24" class="clip" src="assets/sfx/error.mp3" data-start="262.63" data-duration="1.61" data-track-index="3" data-volume="0.2"></audio>
+      <audio id="sfx25" class="clip" src="assets/sfx/ping.mp3" data-start="267.18" data-duration="0.6" data-track-index="3" data-volume="0.25"></audio>
+      <audio id="sfx26" class="clip" src="assets/sfx/click-soft.mp3" data-start="272.48" data-duration="0.36" data-track-index="3" data-volume="0.3"></audio>
+      <audio id="sfx27" class="clip" src="assets/sfx/chime.mp3" data-start="281.78" data-duration="2.54" data-track-index="3" data-volume="0.22"></audio>
+      <audio id="sfx28" class="clip" src="assets/sfx/chime.mp3" data-start="294.34" data-duration="2.54" data-track-index="3" data-volume="0.22"></audio>
+      <audio id="sfx29" class="clip" src="assets/sfx/chime.mp3" data-start="304.91" data-duration="2.54" data-track-index="3" data-volume="0.22"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

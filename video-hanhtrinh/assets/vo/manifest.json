@@ -1,0 +1,163 @@
+[
+  {
+    "id": "c01-1",
+    "file": "c01-1.mp3",
+    "duration": 3.36,
+    "text": "Đây là ba video training và một bộ slide, làm trong hai ngày.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c01-2",
+    "file": "c01-2.mp3",
+    "duration": 3.12,
+    "text": "Video này kể lại tôi đã làm thế nào, để bạn cũng làm được.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c03-1",
+    "file": "c03-1.mp3",
+    "duration": 3.84,
+    "text": "Đầu tiên, tôi cài cho Cờ lốt bộ 9 skill dựng video HyperFrames.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c18-1",
+    "file": "c18-1.mp3",
+    "duration": 3.68,
+    "text": "HyperFrames dựng video bằng chính HTML, giống như làm một trang web.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c18-2",
+    "file": "c18-2.mp3",
+    "duration": 3.52,
+    "text": "Cảnh là HTML và CSS, chuyển động viết bằng JavaScript.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c18-3",
+    "file": "c18-3.mp3",
+    "duration": 4.56,
+    "text": "Trình duyệt chạy trang đó và chụp từng khung, 30 khung mỗi giây, rồi ghép thành em pê bốn.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c18-4",
+    "file": "c18-4.mp3",
+    "duration": 3.36,
+    "text": "Vì vậy cốt lõi là frontend: dựng được trang web thì dựng được video.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c04-1",
+    "file": "c04-1.mp3",
+    "duration": 3.12,
+    "text": "Tôi bắt đầu bằng một prompt: phong cách chung và kịch bản từng tập.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c05-1",
+    "file": "c05-1.mp3",
+    "duration": 2.96,
+    "text": "Cờ lốt không dựng ngay, mà lập outline để tôi duyệt trước.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c07-1",
+    "file": "c07-1.mp3",
+    "duration": 2.16,
+    "text": "Xem Tập 1 xong, tôi góp ý bốn điểm.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c08-1",
+    "file": "c08-1.mp3",
+    "duration": 2.96,
+    "text": "Mỗi góp ý được ghi thành luật, áp dụng cho mọi phần sau.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c09-1",
+    "file": "c09-1.mp3",
+    "duration": 3.6,
+    "text": "Nhân vật được vẽ lại, duyệt trên một bảng mẫu, rồi mới đưa vào video.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c10-1",
+    "file": "c10-1.mp3",
+    "duration": 3.04,
+    "text": "Duyệt ba mươi mốt giây đầu trước, rồi mới làm đủ năm phút.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c11-1",
+    "file": "c11-1.mp3",
+    "duration": 1.84,
+    "text": "Video thứ hai không phải bắt đầu lại.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c11-2",
+    "file": "c11-2.mp3",
+    "duration": 3.52,
+    "text": "Tôi chỉ viết phần khác so với video trước, mọi luật cũ tự áp dụng.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c12-1",
+    "file": "c12-1.mp3",
+    "duration": 2.96,
+    "text": "Cùng nội dung đó, tôi tạo thêm một bộ slide 17 trang.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c13-1",
+    "file": "c13-1.mp3",
+    "duration": 2.24,
+    "text": "Video thứ ba bắt đầu từ bản vẽ quy trình.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c14-1",
+    "file": "c14-1.mp3",
+    "duration": 3.84,
+    "text": "Cần thêm vai quản lý kho, tôi đóng gói cả bộ nhân vật thành một skill riêng.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c14-2",
+    "file": "c14-2.mp3",
+    "duration": 3.28,
+    "text": "Từ nay, mọi video kho mới đều dùng lại bộ này, không vẽ lại.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c15-1",
+    "file": "c15-1.mp3",
+    "duration": 2.64,
+    "text": "Mỗi lần sửa là một phiên bản mới, luôn quay lại được.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c16-1",
+    "file": "c16-1.mp3",
+    "duration": 1.28,
+    "text": "Đó là công thức của tôi.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c17-1",
+    "file": "c17-1.mp3",
+    "duration": 2.8,
+    "text": "Duyệt sớm, ghi lại luật, và đóng gói những gì dùng lại.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "c17-2",
+    "file": "c17-2.mp3",
+    "duration": 1.6,
+    "text": "Bạn hãy thử với quy trình của mình.",
+    "voice": "Hải Đăng"
+  }
+]

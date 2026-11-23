@@ -3,7 +3,7 @@ Step-kind chips from the drawio legend, a WMS monitor, email, paper documents,
 printer, decision diamond, zone racks and the zone panorama."""
 import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
-from kit import C, FONT, stick
+from kit import C, FONT, stick, TYPE
 import stage as st
 from stage import FY, INK
 
@@ -14,7 +14,6 @@ ZONES = {  # name -> (fill tint, edge colour, label)
 }
 CHIA = ("#FFE9D2", C["orange"], "KHU CHIA HÀNG")
 NAVY = "#16478F"
-TYPE = {"armL": (22, -70), "armR": (-22, 70)}          # seated, typing
 PAPER = "#FFFFFF"
 
 EXTRA_CSS = f"""
@@ -117,7 +116,7 @@ def label_js(fid, t):
 def type_js(fid, t0, t1):
     s, t, k = "", t0, 0
     while t < t1:
-        s += f'tl.to("#{fid}-foreR",{{rotation:{60 if k % 2 else 82},svgOrigin:"0 0",duration:0.18,ease:"sine.inOut"}},{t:.2f});\n'
+        s += f'tl.to("#{fid}-foreR",{{rotation:{110 if k % 2 else 132},svgOrigin:"0 0",duration:0.18,ease:"sine.inOut"}},{t:.2f});\n'
         t += 0.2; k += 1
     return s
 

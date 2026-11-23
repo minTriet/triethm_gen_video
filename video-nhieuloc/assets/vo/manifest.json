@@ -1,0 +1,408 @@
+[
+  {
+    "id": "s01-1",
+    "file": "s01-1.mp3",
+    "duration": 1.76,
+    "text": "Kính chào Ban lãnh đạo Công ty Nhiêu Lộc.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s01-2",
+    "file": "s01-2.mp3",
+    "duration": 5.44,
+    "text": "Video này trình bày cách kho sẽ vận hành hàng thịt đông lạnh của Nhiêu Lộc, trên hệ thống đúp bơ diu em ét.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s02-1",
+    "file": "s02-1.mp3",
+    "duration": 1.36,
+    "text": "Kho đông lạnh có hai khu.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s02-2",
+    "file": "s02-2.mp3",
+    "duration": 2.8,
+    "text": "Khu a có dãy kệ, mỗi vị trí chứa đúng một pa-lét.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s02-3",
+    "file": "s02-3.mp3",
+    "duration": 3.68,
+    "text": "Khu bê không có kệ, pa-lét được chất chồng lên nhau trên từng ô sàn.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s03-1",
+    "file": "s03-1.mp3",
+    "duration": 3.04,
+    "text": "Hàng là thịt đông lạnh, gồm hàng đồng ký và hàng đa ký.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s03-2",
+    "file": "s03-2.mp3",
+    "duration": 4.32,
+    "text": "Đồng ký, là thùng nào cũng cùng số ký. Đa ký, là mỗi thùng một số ký khác nhau.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s03-3",
+    "file": "s03-3.mp3",
+    "duration": 3.76,
+    "text": "Khi xuất, Nhiêu Lộc có thể xuất chẵn pa-lét, hoặc xuất lẻ theo thùng.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s04-1",
+    "file": "s04-1.mp3",
+    "duration": 2.56,
+    "text": "Bộ quy trình gồm chín quy trình, chia thành năm nhóm.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s04-2",
+    "file": "s04-2.mp3",
+    "duration": 3.36,
+    "text": "Ba vai tham gia, quản lý, nhân viên xử lý chứng từ và nhân viên kho.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s04-3",
+    "file": "s04-3.mp3",
+    "duration": 4.48,
+    "text": "Nhãn cạnh mỗi bước cho biết bước đó làm trên đúp bơ diu em ét, làm tay hay quét mã.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s06-1",
+    "file": "s06-1.mp3",
+    "duration": 3.68,
+    "text": "Đầu tiên, tạo chủ hàng Nhiêu Lộc và dữ liệu gốc trên đúp bơ diu em ét.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s06-2",
+    "file": "s06-2.mp3",
+    "duration": 3.68,
+    "text": "Mỗi mã hàng có quy cách thùng, pa-lét, và là hàng đồng ký hay đa ký.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s06-3",
+    "file": "s06-3.mp3",
+    "duration": 3.6,
+    "text": "Sau đó khai báo quy tắc nhận hàng, cất hàng và tìm tồn theo phe-phô.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s07-1",
+    "file": "s07-1.mp3",
+    "duration": 1.84,
+    "text": "Giá bán của Nhiêu Lộc thay đổi theo ngày.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s07-2",
+    "file": "s07-2.mp3",
+    "duration": 4.72,
+    "text": "Quản lý duyệt bảng giá theo ký, xử lý chứng từ khai báo vào đúp bơ diu em ét kèm ngày áp dụng.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s09-1",
+    "file": "s09-1.mp3",
+    "duration": 6.24,
+    "text": "Bước 1 và 2, Nhiêu Lộc gửi kế hoạch nhập, xử lý chứng từ xử lý file và nhập vào đúp bơ diu em ét để tạo a ét en.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s09-2",
+    "file": "s09-2.mp3",
+    "duration": 4.88,
+    "text": "đúp bơ diu em ét in sẵn mã eo pê en cho pa-lét và tem lô kiu-a cho từng lô hàng.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s10-1",
+    "file": "s10-1.mp3",
+    "duration": 3.2,
+    "text": "Bước 3, xe đến, tạo phiếu nhập kho với số xe, tài xế.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s10-2",
+    "file": "s10-2.mp3",
+    "duration": 5.52,
+    "text": "Bước 4, kiểm tra ngoại quan, xếp hàng lên pa-lét, dán tem lô lên thùng và dán eo pê en lên pa-lét.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s11-1",
+    "file": "s11-1.mp3",
+    "duration": 4.48,
+    "text": "Bước 5, quét eo pê en, quét tem lô kiu-a và nhập số thùng trên pa-lét.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s11-2",
+    "file": "s11-2.mp3",
+    "duration": 2.16,
+    "text": "Nhận đủ các pa-lét thì xác nhận hoàn tất.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s12-1",
+    "file": "s12-1.mp3",
+    "duration": 2.4,
+    "text": "Bước 6, in phiếu nhập kho và chuyển các bên ký.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s12-2",
+    "file": "s12-2.mp3",
+    "duration": 4.8,
+    "text": "Hàng của Nhiêu Lộc đã có trong tồn kho đúp bơ diu em ét, theo từng lô và từng pa-lét.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s13-1",
+    "file": "s13-1.mp3",
+    "duration": 3.6,
+    "text": "Bước 7, quét eo pê en, đúp bơ diu em ét gợi ý vị trí cất.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s13-2",
+    "file": "s13-2.mp3",
+    "duration": 4.24,
+    "text": "Ở khu kệ, mỗi vị trí nhận đúng một pa-lét, quét mã vị trí để xác nhận cất hàng.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s14-1",
+    "file": "s14-1.mp3",
+    "duration": 5.36,
+    "text": "Ở khu chất chồng, đúp bơ diu em ét gợi ý ô sàn để chồng các pa-lét cùng mã hàng, cùng lô.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s14-2",
+    "file": "s14-2.mp3",
+    "duration": 4.08,
+    "text": "Mỗi pa-lét vẫn có eo pê en riêng, nên luôn biết pa-lét nào đang nằm ở ô nào.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s16-1",
+    "file": "s16-1.mp3",
+    "duration": 4.4,
+    "text": "Khi cần giữ một lô lại, xử lý chứng từ khoá lô hoặc eo pê en trên đúp bơ diu em ét.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s16-2",
+    "file": "s16-2.mp3",
+    "duration": 2.72,
+    "text": "Lô bị khoá không được phân bổ xuất cho tới khi mở khoá.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s17-1",
+    "file": "s17-1.mp3",
+    "duration": 4.64,
+    "text": "Chuyển vị trí pa-lét, tới vị trí cũ, quét eo pê en, đưa pa-lét tới vị trí mới.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s17-2",
+    "file": "s17-2.mp3",
+    "duration": 4.0,
+    "text": "Quét mã vị trí mới và xác nhận, đúp bơ diu em ét cập nhật vị trí ngay.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s18-1",
+    "file": "s18-1.mp3",
+    "duration": 4.24,
+    "text": "Chuyển hàng giữa hai pa-lét, quét eo pê en nguồn, quét tem lô và nhập số thùng cần chuyển.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s18-2",
+    "file": "s18-2.mp3",
+    "duration": 3.84,
+    "text": "Quét mã pa-lét mới và xác nhận, tồn theo lô trên từng pa-lét vẫn đúng.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s20-1",
+    "file": "s20-1.mp3",
+    "duration": 5.68,
+    "text": "Bước 1 và 2, đơn đặt hàng tính theo ký, xử lý chứng từ nhập vào đúp bơ diu em ét để tạo đơn xuất.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s21-1",
+    "file": "s21-1.mp3",
+    "duration": 4.08,
+    "text": "Trước khi phân bổ, đúp bơ diu em ét kiểm tra đã có giá bán cho ngày phân bổ chưa.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s21-2",
+    "file": "s21-2.mp3",
+    "duration": 3.04,
+    "text": "Chưa có thì khai báo giá theo quy trình không một bê rồi mới tiếp tục.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s22-1",
+    "file": "s22-1.mp3",
+    "duration": 4.96,
+    "text": "Bước 3, đúp bơ diu em ét quy đổi ký ra số thùng, làm tròn gần nhất, tối thiểu một thùng.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s22-2",
+    "file": "s22-2.mp3",
+    "duration": 6.64,
+    "text": "đúp bơ diu em ét tự tách, đủ một pa-lét thì xuất chẵn pa-lét, không đủ một pa-lét thì xuất theo thùng, cho cả đồng ký và đa ký.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s22-3",
+    "file": "s22-3.mp3",
+    "duration": 6.16,
+    "text": "Lô được chọn theo phe-phô mặc định, hoặc theo hạn dùng còn lại tối thiểu mà đơn chỉ định, rồi lấy đơn giá của ngày phân bổ.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s23-1",
+    "file": "s23-1.mp3",
+    "duration": 2.72,
+    "text": "Bước 4, in phiếu lấy hàng, giao cho nhân viên kho.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s23-2",
+    "file": "s23-2.mp3",
+    "duration": 4.96,
+    "text": "Bước 5, chẵn pa-lét, nếu pa-lét được gợi ý khó lấy, xe nâng lấy pa-lét khác cùng lô cho thuận tiện.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s23-3",
+    "file": "s23-3.mp3",
+    "duration": 5.2,
+    "text": "Quét eo pê en thực lấy, đúp bơ diu em ét kiểm tra đúng mã, đúng lô rồi ghi nhận nguyên pa-lét.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s24-1",
+    "file": "s24-1.mp3",
+    "duration": 5.36,
+    "text": "Bước 5, lẻ thùng, tới vị trí theo phiếu, quét vị trí, quét eo pê en, quét tem lô và nhập số thùng.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s24-2",
+    "file": "s24-2.mp3",
+    "duration": 3.44,
+    "text": "Quét eo pê en để đúp bơ diu em ét biết thùng được lấy từ pa-lét nào.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s24-3",
+    "file": "s24-3.mp3",
+    "duration": 2.0,
+    "text": "Lấy xong, đưa hàng ra khu chờ xuất.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s25-1",
+    "file": "s25-1.mp3",
+    "duration": 2.0,
+    "text": "Bước 6 và 7, xác nhận ra kho.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s25-2",
+    "file": "s25-2.mp3",
+    "duration": 4.16,
+    "text": "Hàng đồng ký, quét tem lô, xác nhận số thùng, đúp bơ diu em ét tự tính số ký.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s25-3",
+    "file": "s25-3.mp3",
+    "duration": 3.36,
+    "text": "Hàng đa ký, nhập số ký từng thùng cho tới khi đủ số thùng đã lấy.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s26-1",
+    "file": "s26-1.mp3",
+    "duration": 4.24,
+    "text": "Bước 8, đúp bơ diu em ét tổng hợp ký thực xuất và tính thành tiền bằng ký nhân đơn giá.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s26-2",
+    "file": "s26-2.mp3",
+    "duration": 2.56,
+    "text": "In phiếu xuất kho, phiếu giao hàng để các bên ký.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s28-1",
+    "file": "s28-1.mp3",
+    "duration": 3.28,
+    "text": "Bước 1, xử lý chứng từ chọn điều kiện và tạo phiên kiểm kê.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s28-2",
+    "file": "s28-2.mp3",
+    "duration": 4.56,
+    "text": "Bước 2, nhân viên kho tới vị trí, quét vị trí, eo pê en, tem lô và nhập số thùng đếm được.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s29-1",
+    "file": "s29-1.mp3",
+    "duration": 2.8,
+    "text": "Bước 3, đúp bơ diu em ét tự tạo báo cáo chênh lệch.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s29-2",
+    "file": "s29-2.mp3",
+    "duration": 4.08,
+    "text": "Quản lý kho quyết định đếm lại lần 2, lần 3, hay tiến hành điều chỉnh tồn kho.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s30-1",
+    "file": "s30-1.mp3",
+    "duration": 4.4,
+    "text": "Mọi pa-lét và mọi thùng của Nhiêu Lộc đều được quét và ghi nhận trên đúp bơ diu em ét.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s30-2",
+    "file": "s30-2.mp3",
+    "duration": 3.04,
+    "text": "Biết hàng nào, lô nào, nằm ở đâu, và đã giao bao nhiêu ký.",
+    "voice": "Hải Đăng"
+  },
+  {
+    "id": "s30-3",
+    "file": "s30-3.mp3",
+    "duration": 2.0,
+    "text": "Xin cảm ơn Ban lãnh đạo đã theo dõi.",
+    "voice": "Hải Đăng"
+  }
+]

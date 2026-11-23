@@ -1,7 +1,7 @@
 """Character model sheet for approval.  Run: python3 tools/model_sheet.py"""
 import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
-from kit import C, FONT, ROLE, font_css, stick, pda_svg, folder_svg, MANAGER_HOLD, SWAY, BOB
+from kit import C, FONT, ROLE, font_css, stick, pda_svg, folder_svg, MANAGER_HOLD, TYPE, SWAY, BOB
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 OUT = os.path.join(ROOT, "design")
@@ -91,10 +91,10 @@ CELLS.append(("Tài xế xe nâng", ROLE["forklift"][0], "Áo + mũ cam · lái 
     + forklift(), 0))
 
 CELLS.append(("Nhân viên điều phối", ROLE["planner"][0], "Sơ mi xanh dương · ngồi máy tính",
-    f'<g transform="translate(0,16)">{stick("m3", "planner", 1.0, pose={"armL": (22, -70), "armR": (-22, 70)})}</g>'
+    stick("m3", "planner", 1.0, pose=TYPE)
     + desk(), -40))
 
-CELLS.append(("Quản lý kho", ROLE["manager"][0], "Sơ mi trắng · cà vạt xanh đậm",
+CELLS.append(("Quản lý kho", ROLE["manager"][0], "Mũ trắng · sơ mi trắng · cà vạt",
     stick("m8", "manager", 1.0, pose=MANAGER_HOLD, hand_l=folder_svg()), 0))
 
 CELLS.append(("Picker", ROLE["picker"][0], "Áo + mũ vàng · kéo trolley",
@@ -108,7 +108,7 @@ CELLS.append(("Đội vận tải", ROLE["transport"][0], "Áo + mũ xám · bà
     stick("m6", "transport", 1.0, pose={"armR": (-30, -80)}, hand_r=pda_svg("m6"))
     + f'<g transform="translate(30,0) scale(0.68)">{truck()}</g>', -95))
 
-CELLS.append(("Giảng viên", ROLE["instructor"][0], "Sơ mi xanh, cà vạt cam · dẫn dắt",
+CELLS.append(("Giảng viên", ROLE["instructor"][0], "Polo TK đen, tay raglan xanh lá · dẫn dắt",
     stick("m7", "instructor", 1.0, pose={"armR": (-150, -24)}), 0))
 
 ACTIONS = [
@@ -160,8 +160,8 @@ h1 span{{color:{C['blue']}}}
 .act{{position:absolute;top:0;width:170px;text-align:center}}
 .an{{font-size:19px;font-weight:700;margin-top:2px}}
 </style></head><body>
-<h1>Model nhân vật <span>– bộ mặc định v3</span></h1>
-<div class="sub">Đầu tròn · mắt chấm · miệng cười · thân nét đen · áo bảo hộ có sọc phản quang + mũ bảo hộ theo màu vai</div>
+<h1>Model nhân vật <span>– bộ mặc định v3 (bàn tay tròn)</span></h1>
+<div class="sub">Đầu tròn · mắt chấm · miệng cười · thân nét đen · bàn tay tròn, không ngón tay · áo bảo hộ có sọc phản quang + mũ bảo hộ theo màu vai</div>
 {cells}
 </body></html>'''
     p = os.path.join(OUT, "model-sheet.html")

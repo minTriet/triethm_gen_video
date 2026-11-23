@@ -1,0 +1,118 @@
+[
+ {
+  "id": "c01-1",
+  "sub": "Đây là ba video training và một bộ slide, làm trong hai ngày.",
+  "text": "Đây là ba video training và một bộ slide, làm trong hai ngày."
+ },
+ {
+  "id": "c01-2",
+  "sub": "Video này kể lại tôi đã làm thế nào, để bạn cũng làm được.",
+  "text": "Video này kể lại tôi đã làm thế nào, để bạn cũng làm được."
+ },
+ {
+  "id": "c03-1",
+  "sub": "Đầu tiên, tôi cài cho Claude bộ 9 skill dựng video HyperFrames.",
+  "text": "Đầu tiên, tôi cài cho Cờ lốt bộ 9 skill dựng video HyperFrames."
+ },
+ {
+  "id": "c18-1",
+  "sub": "HyperFrames dựng video bằng chính HTML, giống như làm một trang web.",
+  "text": "HyperFrames dựng video bằng chính HTML, giống như làm một trang web."
+ },
+ {
+  "id": "c18-2",
+  "sub": "Cảnh là HTML và CSS, chuyển động viết bằng JavaScript.",
+  "text": "Cảnh là HTML và CSS, chuyển động viết bằng JavaScript."
+ },
+ {
+  "id": "c18-3",
+  "sub": "Trình duyệt chạy trang đó và chụp từng khung, 30 khung mỗi giây, rồi ghép thành MP4.",
+  "text": "Trình duyệt chạy trang đó và chụp từng khung, 30 khung mỗi giây, rồi ghép thành em pê bốn."
+ },
+ {
+  "id": "c18-4",
+  "sub": "Vì vậy cốt lõi là frontend: dựng được trang web thì dựng được video.",
+  "text": "Vì vậy cốt lõi là frontend: dựng được trang web thì dựng được video."
+ },
+ {
+  "id": "c04-1",
+  "sub": "Tôi bắt đầu bằng một prompt: phong cách chung và kịch bản từng tập.",
+  "text": "Tôi bắt đầu bằng một prompt: phong cách chung và kịch bản từng tập."
+ },
+ {
+  "id": "c05-1",
+  "sub": "Claude không dựng ngay, mà lập outline để tôi duyệt trước.",
+  "text": "Cờ lốt không dựng ngay, mà lập outline để tôi duyệt trước."
+ },
+ {
+  "id": "c07-1",
+  "sub": "Xem Tập 1 xong, tôi góp ý bốn điểm.",
+  "text": "Xem Tập 1 xong, tôi góp ý bốn điểm."
+ },
+ {
+  "id": "c08-1",
+  "sub": "Mỗi góp ý được ghi thành luật, áp dụng cho mọi phần sau.",
+  "text": "Mỗi góp ý được ghi thành luật, áp dụng cho mọi phần sau."
+ },
+ {
+  "id": "c09-1",
+  "sub": "Nhân vật được vẽ lại, duyệt trên một bảng mẫu, rồi mới đưa vào video.",
+  "text": "Nhân vật được vẽ lại, duyệt trên một bảng mẫu, rồi mới đưa vào video."
+ },
+ {
+  "id": "c10-1",
+  "sub": "Duyệt 31 giây đầu trước, rồi mới làm đủ 5 phút.",
+  "text": "Duyệt ba mươi mốt giây đầu trước, rồi mới làm đủ năm phút.",
+  "seed": 11
+ },
+ {
+  "id": "c11-1",
+  "sub": "Video thứ hai không phải bắt đầu lại.",
+  "text": "Video thứ hai không phải bắt đầu lại."
+ },
+ {
+  "id": "c11-2",
+  "sub": "Tôi chỉ viết phần khác so với video trước, mọi luật cũ tự áp dụng.",
+  "text": "Tôi chỉ viết phần khác so với video trước, mọi luật cũ tự áp dụng."
+ },
+ {
+  "id": "c12-1",
+  "sub": "Cùng nội dung đó, tôi tạo thêm một bộ slide 17 trang.",
+  "text": "Cùng nội dung đó, tôi tạo thêm một bộ slide 17 trang."
+ },
+ {
+  "id": "c13-1",
+  "sub": "Video thứ ba bắt đầu từ bản vẽ quy trình.",
+  "text": "Video thứ ba bắt đầu từ bản vẽ quy trình."
+ },
+ {
+  "id": "c14-1",
+  "sub": "Cần thêm vai quản lý kho, tôi đóng gói cả bộ nhân vật thành một skill riêng.",
+  "text": "Cần thêm vai quản lý kho, tôi đóng gói cả bộ nhân vật thành một skill riêng."
+ },
+ {
+  "id": "c14-2",
+  "sub": "Từ nay, mọi video kho mới đều dùng lại bộ này, không vẽ lại.",
+  "text": "Từ nay, mọi video kho mới đều dùng lại bộ này, không vẽ lại."
+ },
+ {
+  "id": "c15-1",
+  "sub": "Mỗi lần sửa là một phiên bản mới, luôn quay lại được.",
+  "text": "Mỗi lần sửa là một phiên bản mới, luôn quay lại được."
+ },
+ {
+  "id": "c16-1",
+  "sub": "Đó là công thức của tôi.",
+  "text": "Đó là công thức của tôi."
+ },
+ {
+  "id": "c17-1",
+  "sub": "Duyệt sớm, ghi lại luật, và đóng gói những gì dùng lại.",
+  "text": "Duyệt sớm, ghi lại luật, và đóng gói những gì dùng lại."
+ },
+ {
+  "id": "c17-2",
+  "sub": "Bạn hãy thử với quy trình của mình.",
+  "text": "Bạn hãy thử với quy trình của mình."
+ }
+]

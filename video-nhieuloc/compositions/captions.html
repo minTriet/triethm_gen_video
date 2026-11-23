@@ -1,0 +1,224 @@
+<template>
+  <style>
+@font-face{font-family:'Be Vietnam Pro';font-style:normal;font-weight:500;font-display:block;src:url('assets/fonts/be-vietnam-pro-vietnamese-500-normal.woff2') format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;}
+@font-face{font-family:'Be Vietnam Pro';font-style:normal;font-weight:500;font-display:block;src:url('assets/fonts/be-vietnam-pro-latin-500-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Be Vietnam Pro';font-style:normal;font-weight:700;font-display:block;src:url('assets/fonts/be-vietnam-pro-vietnamese-700-normal.woff2') format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;}
+@font-face{font-family:'Be Vietnam Pro';font-style:normal;font-weight:700;font-display:block;src:url('assets/fonts/be-vietnam-pro-latin-700-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Be Vietnam Pro';font-style:normal;font-weight:900;font-display:block;src:url('assets/fonts/be-vietnam-pro-vietnamese-900-normal.woff2') format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;}
+@font-face{font-family:'Be Vietnam Pro';font-style:normal;font-weight:900;font-display:block;src:url('assets/fonts/be-vietnam-pro-latin-900-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+
+#root{position:absolute;inset:0;overflow:hidden;background:#F4F6F9;font-family:'Be Vietnam Pro';color:#1B2430}
+.abs{position:absolute}
+
+
+.pda{position:absolute;left:1390px;top:96px;width:430px;height:740px;background:#2B3646;border:5px solid #1B2430;border-radius:46px;box-shadow:0 18px 0 rgba(27,36,48,.12)}
+.pda .scr{position:absolute;left:22px;top:52px;right:22px;bottom:66px;background:#fff;border-radius:16px;overflow:hidden}
+.pda .cam{position:absolute;left:50%;top:20px;width:60px;height:10px;margin-left:-30px;border-radius:5px;background:#4A5568}
+.pda .btn{position:absolute;left:50%;bottom:16px;width:96px;height:32px;margin-left:-48px;border-radius:16px;background:#4A5568}
+.pda .hdr{background:#1F5FBF;color:#fff;font-weight:900;font-size:30px;padding:18px 22px}
+.pda .pn{position:absolute;left:0;right:0;top:74px;bottom:0;padding:22px 22px;opacity:0}
+.pda .lbl{font-size:26px;font-weight:700;color:#6B7685;margin-bottom:8px}
+.pda .fld{border:4px solid #F28C1E;border-radius:14px;padding:12px 16px;font-size:34px;font-weight:900;min-height:66px;margin-bottom:18px;background:#FFF7EE}
+.pda .fld.off{border-color:#D5DBE4;background:#F1F3F6;color:#A9B2BF}
+.pda .fld.ok{border-color:#22A55A;background:#EDF9F1}
+.pda .row{border:3px solid #E3E8EF;border-radius:12px;padding:12px 16px;font-size:28px;font-weight:700;margin-bottom:12px}
+.pda .row.sel{border-color:#1F5FBF;background:#EAF1FC}
+.pda .big{font-size:44px;font-weight:900}
+.pda .go{margin-top:12px;background:#22A55A;color:#fff;font-weight:900;font-size:32px;text-align:center;border-radius:14px;padding:16px 0}
+.pda .keys{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.pda .keys div{background:#EEF2F6;border-radius:10px;text-align:center;font-size:32px;font-weight:900;padding:12px 0}
+
+
+.badge{position:absolute;left:80px;top:56px;display:flex;align-items:center;gap:16px;opacity:0}
+.badge .n{width:76px;height:76px;border-radius:50%;background:#F28C1E;border:4px solid #1B2430;font-size:30px;font-weight:900;display:flex;align-items:center;justify-content:center;line-height:1;text-align:center}
+.badge .t{background:#fff;border:4px solid #1B2430;border-radius:18px;padding:10px 24px;font-size:40px;font-weight:900}
+.badge .ok{opacity:0}
+
+
+#root{background:transparent}
+.cap{position:absolute;left:0;bottom:40px;width:1920px;text-align:center}
+.cap span{display:inline-block;max-width:1380px;background:rgba(255,255,255,.94);color:#1B2430;
+  font-weight:700;font-size:44px;line-height:1.3;padding:12px 34px;border-radius:16px;box-shadow:0 4px 0 rgba(27,36,48,.10)}
+
+  </style>
+  <div id="root" data-composition-id="captions" data-width="1920" data-height="1080" data-duration="303.15">
+    <div id="cap1" class="clip cap" data-start="1.4" data-duration="2.06" data-track-index="0"><span id="cap1-t">Kính chào Ban lãnh đạo Công ty Nhiêu Lộc.</span></div>
+    <div id="cap2" class="clip cap" data-start="3.61" data-duration="5.74" data-track-index="0"><span id="cap2-t">Video này trình bày cách kho sẽ vận hành hàng thịt đông lạnh của Nhiêu Lộc trên hệ thống WMS.</span></div>
+    <div id="cap3" class="clip cap" data-start="10.95" data-duration="1.66" data-track-index="0"><span id="cap3-t">Kho đông lạnh có hai khu.</span></div>
+    <div id="cap4" class="clip cap" data-start="12.76" data-duration="3.1" data-track-index="0"><span id="cap4-t">Khu A có dãy kệ: mỗi vị trí chứa đúng một pallet.</span></div>
+    <div id="cap5" class="clip cap" data-start="16.01" data-duration="3.98" data-track-index="0"><span id="cap5-t">Khu B không có kệ: pallet được chất chồng lên nhau trên từng ô sàn.</span></div>
+    <div id="cap6" class="clip cap" data-start="21.69" data-duration="3.34" data-track-index="0"><span id="cap6-t">Hàng là thịt đông lạnh, gồm hàng đồng ký và hàng đa ký.</span></div>
+    <div id="cap7" class="clip cap" data-start="25.18" data-duration="4.62" data-track-index="0"><span id="cap7-t">Đồng ký: thùng nào cũng cùng số kg. Đa ký: mỗi thùng một số kg khác nhau.</span></div>
+    <div id="cap8" class="clip cap" data-start="29.95" data-duration="4.06" data-track-index="0"><span id="cap8-t">Khi xuất, Nhiêu Lộc có thể xuất chẵn pallet hoặc xuất lẻ theo thùng.</span></div>
+    <div id="cap9" class="clip cap" data-start="35.91" data-duration="2.86" data-track-index="0"><span id="cap9-t">Bộ quy trình gồm chín quy trình, chia thành năm nhóm.</span></div>
+    <div id="cap10" class="clip cap" data-start="38.92" data-duration="3.66" data-track-index="0"><span id="cap10-t">Ba vai tham gia: quản lý, nhân viên xử lý chứng từ và nhân viên kho.</span></div>
+    <div id="cap11" class="clip cap" data-start="42.73" data-duration="4.78" data-track-index="0"><span id="cap11-t">Nhãn cạnh mỗi bước cho biết bước đó làm trên WMS, làm tay hay quét mã.</span></div>
+    <div id="cap12" class="clip cap" data-start="51.31" data-duration="3.98" data-track-index="0"><span id="cap12-t">Đầu tiên, tạo chủ hàng Nhiêu Lộc và dữ liệu gốc trên WMS.</span></div>
+    <div id="cap13" class="clip cap" data-start="55.44" data-duration="3.98" data-track-index="0"><span id="cap13-t">Mỗi mã hàng có quy cách thùng, pallet, và là hàng đồng ký hay đa ký.</span></div>
+    <div id="cap14" class="clip cap" data-start="59.57" data-duration="3.9" data-track-index="0"><span id="cap14-t">Sau đó khai báo quy tắc nhận hàng, cất hàng và tìm tồn theo FEFO.</span></div>
+    <div id="cap15" class="clip cap" data-start="65.17" data-duration="2.14" data-track-index="0"><span id="cap15-t">Giá bán của Nhiêu Lộc thay đổi theo ngày.</span></div>
+    <div id="cap16" class="clip cap" data-start="67.46" data-duration="5.02" data-track-index="0"><span id="cap16-t">Quản lý duyệt bảng giá theo kg, XLCT khai báo vào WMS kèm ngày áp dụng.</span></div>
+    <div id="cap17" class="clip cap" data-start="76.28" data-duration="6.54" data-track-index="0"><span id="cap17-t">Bước 1 và 2: Nhiêu Lộc gửi kế hoạch nhập, XLCT xử lý file và nhập vào WMS để tạo ASN.</span></div>
+    <div id="cap18" class="clip cap" data-start="82.97" data-duration="5.18" data-track-index="0"><span id="cap18-t">WMS in sẵn mã LPN cho pallet và tem lô QR cho từng lô hàng.</span></div>
+    <div id="cap19" class="clip cap" data-start="90.55" data-duration="3.5" data-track-index="0"><span id="cap19-t">Bước 3: xe đến, tạo phiếu nhập kho với số xe, tài xế.</span></div>
+    <div id="cap20" class="clip cap" data-start="94.2" data-duration="5.82" data-track-index="0"><span id="cap20-t">Bước 4: kiểm tra ngoại quan, xếp hàng lên pallet, dán tem lô lên thùng và dán LPN lên pallet.</span></div>
+    <div id="cap21" class="clip cap" data-start="101.72" data-duration="4.78" data-track-index="0"><span id="cap21-t">Bước 5: quét LPN, quét tem lô QR và nhập số thùng trên pallet.</span></div>
+    <div id="cap22" class="clip cap" data-start="106.65" data-duration="2.46" data-track-index="0"><span id="cap22-t">Nhận đủ các pallet thì xác nhận hoàn tất.</span></div>
+    <div id="cap23" class="clip cap" data-start="110.81" data-duration="2.7" data-track-index="0"><span id="cap23-t">Bước 6: in phiếu nhập kho và chuyển các bên ký.</span></div>
+    <div id="cap24" class="clip cap" data-start="113.66" data-duration="5.1" data-track-index="0"><span id="cap24-t">Hàng của Nhiêu Lộc đã có trong tồn kho WMS, theo từng lô và từng pallet.</span></div>
+    <div id="cap25" class="clip cap" data-start="120.46" data-duration="3.9" data-track-index="0"><span id="cap25-t">Bước 7: quét LPN, WMS gợi ý vị trí cất.</span></div>
+    <div id="cap26" class="clip cap" data-start="124.51" data-duration="4.54" data-track-index="0"><span id="cap26-t">Ở khu kệ, mỗi vị trí nhận đúng một pallet; quét mã vị trí để xác nhận cất hàng.</span></div>
+    <div id="cap27" class="clip cap" data-start="130.75" data-duration="5.66" data-track-index="0"><span id="cap27-t">Ở khu chất chồng, WMS gợi ý ô sàn để chồng các pallet cùng mã hàng, cùng lô.</span></div>
+    <div id="cap28" class="clip cap" data-start="136.56" data-duration="4.38" data-track-index="0"><span id="cap28-t">Mỗi pallet vẫn có LPN riêng, nên luôn biết pallet nào đang nằm ở ô nào.</span></div>
+    <div id="cap29" class="clip cap" data-start="144.74" data-duration="4.7" data-track-index="0"><span id="cap29-t">Khi cần giữ một lô lại, XLCT khoá lô hoặc LPN trên WMS.</span></div>
+    <div id="cap30" class="clip cap" data-start="149.59" data-duration="3.02" data-track-index="0"><span id="cap30-t">Lô bị khoá không được phân bổ xuất cho tới khi mở khoá.</span></div>
+    <div id="cap31" class="clip cap" data-start="154.31" data-duration="4.94" data-track-index="0"><span id="cap31-t">Chuyển vị trí pallet: tới vị trí cũ, quét LPN, đưa pallet tới vị trí mới.</span></div>
+    <div id="cap32" class="clip cap" data-start="159.4" data-duration="4.3" data-track-index="0"><span id="cap32-t">Quét mã vị trí mới và xác nhận, WMS cập nhật vị trí ngay.</span></div>
+    <div id="cap33" class="clip cap" data-start="165.4" data-duration="4.54" data-track-index="0"><span id="cap33-t">Chuyển hàng giữa hai pallet: quét LPN nguồn, quét tem lô và nhập số thùng cần chuyển.</span></div>
+    <div id="cap34" class="clip cap" data-start="170.09" data-duration="4.14" data-track-index="0"><span id="cap34-t">Quét mã pallet mới và xác nhận; tồn theo lô trên từng pallet vẫn đúng.</span></div>
+    <div id="cap35" class="clip cap" data-start="178.03" data-duration="5.98" data-track-index="0"><span id="cap35-t">Bước 1 và 2: đơn đặt hàng tính theo kg, XLCT nhập vào WMS để tạo đơn xuất.</span></div>
+    <div id="cap36" class="clip cap" data-start="186.11" data-duration="4.38" data-track-index="0"><span id="cap36-t">Trước khi phân bổ, WMS kiểm tra đã có giá bán cho ngày phân bổ chưa.</span></div>
+    <div id="cap37" class="clip cap" data-start="190.64" data-duration="3.34" data-track-index="0"><span id="cap37-t">Chưa có thì khai báo giá theo quy trình 01B rồi mới tiếp tục.</span></div>
+    <div id="cap38" class="clip cap" data-start="195.68" data-duration="5.26" data-track-index="0"><span id="cap38-t">Bước 3: WMS quy đổi kg ra số thùng, làm tròn gần nhất, tối thiểu một thùng.</span></div>
+    <div id="cap39" class="clip cap" data-start="201.09" data-duration="6.94" data-track-index="0"><span id="cap39-t">WMS tự tách: đủ một pallet thì xuất chẵn pallet, không đủ một pallet thì xuất theo thùng, cho cả đồng ký và đa ký.</span></div>
+    <div id="cap40" class="clip cap" data-start="208.18" data-duration="6.46" data-track-index="0"><span id="cap40-t">Lô được chọn theo FEFO mặc định, hoặc theo hạn dùng còn lại tối thiểu mà đơn chỉ định, rồi lấy đơn giá của ngày phân bổ.</span></div>
+    <div id="cap41" class="clip cap" data-start="216.74" data-duration="3.02" data-track-index="0"><span id="cap41-t">Bước 4: in phiếu lấy hàng, giao cho nhân viên kho.</span></div>
+    <div id="cap42" class="clip cap" data-start="219.91" data-duration="5.26" data-track-index="0"><span id="cap42-t">Bước 5, chẵn pallet: nếu pallet được gợi ý khó lấy, xe nâng lấy pallet khác cùng lô cho thuận tiện.</span></div>
+    <div id="cap43" class="clip cap" data-start="225.32" data-duration="5.5" data-track-index="0"><span id="cap43-t">Quét LPN thực lấy, WMS kiểm tra đúng mã, đúng lô rồi ghi nhận nguyên pallet.</span></div>
+    <div id="cap44" class="clip cap" data-start="232.52" data-duration="5.66" data-track-index="0"><span id="cap44-t">Bước 5, lẻ thùng: tới vị trí theo phiếu, quét vị trí, quét LPN, quét tem lô và nhập số thùng.</span></div>
+    <div id="cap45" class="clip cap" data-start="238.33" data-duration="3.74" data-track-index="0"><span id="cap45-t">Quét LPN để WMS biết thùng được lấy từ pallet nào.</span></div>
+    <div id="cap46" class="clip cap" data-start="242.22" data-duration="2.3" data-track-index="0"><span id="cap46-t">Lấy xong, đưa hàng ra khu chờ xuất.</span></div>
+    <div id="cap47" class="clip cap" data-start="246.42" data-duration="2.3" data-track-index="0"><span id="cap47-t">Bước 6 và 7: xác nhận ra kho.</span></div>
+    <div id="cap48" class="clip cap" data-start="248.87" data-duration="4.46" data-track-index="0"><span id="cap48-t">Hàng đồng ký: quét tem lô, xác nhận số thùng, WMS tự tính số kg.</span></div>
+    <div id="cap49" class="clip cap" data-start="253.48" data-duration="3.66" data-track-index="0"><span id="cap49-t">Hàng đa ký: nhập số kg từng thùng cho tới khi đủ số thùng đã lấy.</span></div>
+    <div id="cap50" class="clip cap" data-start="259.04" data-duration="4.54" data-track-index="0"><span id="cap50-t">Bước 8: WMS tổng hợp kg thực xuất và tính thành tiền bằng kg nhân đơn giá.</span></div>
+    <div id="cap51" class="clip cap" data-start="263.73" data-duration="2.86" data-track-index="0"><span id="cap51-t">In phiếu xuất kho, phiếu giao hàng để các bên ký.</span></div>
+    <div id="cap52" class="clip cap" data-start="270.39" data-duration="3.58" data-track-index="0"><span id="cap52-t">Bước 1: XLCT chọn điều kiện và tạo phiên kiểm kê.</span></div>
+    <div id="cap53" class="clip cap" data-start="274.12" data-duration="4.86" data-track-index="0"><span id="cap53-t">Bước 2: nhân viên kho tới vị trí, quét vị trí, LPN, tem lô và nhập số thùng đếm được.</span></div>
+    <div id="cap54" class="clip cap" data-start="280.68" data-duration="3.1" data-track-index="0"><span id="cap54-t">Bước 3: WMS tự tạo báo cáo chênh lệch.</span></div>
+    <div id="cap55" class="clip cap" data-start="283.93" data-duration="4.38" data-track-index="0"><span id="cap55-t">Quản lý kho quyết định đếm lại lần 2, lần 3, hay tiến hành điều chỉnh tồn kho.</span></div>
+    <div id="cap56" class="clip cap" data-start="290.01" data-duration="4.7" data-track-index="0"><span id="cap56-t">Mọi pallet và mọi thùng của Nhiêu Lộc đều được quét và ghi nhận trên WMS.</span></div>
+    <div id="cap57" class="clip cap" data-start="294.86" data-duration="3.34" data-track-index="0"><span id="cap57-t">Biết hàng nào, lô nào, nằm ở đâu, và đã giao bao nhiêu kg.</span></div>
+    <div id="cap58" class="clip cap" data-start="298.35" data-duration="2.3" data-track-index="0"><span id="cap58-t">Xin cảm ơn Ban lãnh đạo đã theo dõi.</span></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#cap1-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},1.4);
+    tl.to("#cap1-t",{opacity:0,duration:0.12,ease:"power2.in"},3.34);
+    tl.fromTo("#cap2-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},3.61);
+    tl.to("#cap2-t",{opacity:0,duration:0.12,ease:"power2.in"},9.23);
+    tl.fromTo("#cap3-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},10.95);
+    tl.to("#cap3-t",{opacity:0,duration:0.12,ease:"power2.in"},12.49);
+    tl.fromTo("#cap4-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},12.76);
+    tl.to("#cap4-t",{opacity:0,duration:0.12,ease:"power2.in"},15.74);
+    tl.fromTo("#cap5-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},16.01);
+    tl.to("#cap5-t",{opacity:0,duration:0.12,ease:"power2.in"},19.87);
+    tl.fromTo("#cap6-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},21.69);
+    tl.to("#cap6-t",{opacity:0,duration:0.12,ease:"power2.in"},24.91);
+    tl.fromTo("#cap7-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},25.18);
+    tl.to("#cap7-t",{opacity:0,duration:0.12,ease:"power2.in"},29.68);
+    tl.fromTo("#cap8-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},29.95);
+    tl.to("#cap8-t",{opacity:0,duration:0.12,ease:"power2.in"},33.89);
+    tl.fromTo("#cap9-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},35.91);
+    tl.to("#cap9-t",{opacity:0,duration:0.12,ease:"power2.in"},38.65);
+    tl.fromTo("#cap10-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},38.92);
+    tl.to("#cap10-t",{opacity:0,duration:0.12,ease:"power2.in"},42.46);
+    tl.fromTo("#cap11-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},42.73);
+    tl.to("#cap11-t",{opacity:0,duration:0.12,ease:"power2.in"},47.39);
+    tl.fromTo("#cap12-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},51.31);
+    tl.to("#cap12-t",{opacity:0,duration:0.12,ease:"power2.in"},55.17);
+    tl.fromTo("#cap13-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},55.44);
+    tl.to("#cap13-t",{opacity:0,duration:0.12,ease:"power2.in"},59.3);
+    tl.fromTo("#cap14-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},59.57);
+    tl.to("#cap14-t",{opacity:0,duration:0.12,ease:"power2.in"},63.35);
+    tl.fromTo("#cap15-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},65.17);
+    tl.to("#cap15-t",{opacity:0,duration:0.12,ease:"power2.in"},67.19);
+    tl.fromTo("#cap16-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},67.46);
+    tl.to("#cap16-t",{opacity:0,duration:0.12,ease:"power2.in"},72.36);
+    tl.fromTo("#cap17-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},76.28);
+    tl.to("#cap17-t",{opacity:0,duration:0.12,ease:"power2.in"},82.7);
+    tl.fromTo("#cap18-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},82.97);
+    tl.to("#cap18-t",{opacity:0,duration:0.12,ease:"power2.in"},88.03);
+    tl.fromTo("#cap19-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},90.55);
+    tl.to("#cap19-t",{opacity:0,duration:0.12,ease:"power2.in"},93.93);
+    tl.fromTo("#cap20-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},94.2);
+    tl.to("#cap20-t",{opacity:0,duration:0.12,ease:"power2.in"},99.9);
+    tl.fromTo("#cap21-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},101.72);
+    tl.to("#cap21-t",{opacity:0,duration:0.12,ease:"power2.in"},106.38);
+    tl.fromTo("#cap22-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},106.65);
+    tl.to("#cap22-t",{opacity:0,duration:0.12,ease:"power2.in"},108.99);
+    tl.fromTo("#cap23-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},110.81);
+    tl.to("#cap23-t",{opacity:0,duration:0.12,ease:"power2.in"},113.39);
+    tl.fromTo("#cap24-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},113.66);
+    tl.to("#cap24-t",{opacity:0,duration:0.12,ease:"power2.in"},118.64);
+    tl.fromTo("#cap25-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},120.46);
+    tl.to("#cap25-t",{opacity:0,duration:0.12,ease:"power2.in"},124.24);
+    tl.fromTo("#cap26-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},124.51);
+    tl.to("#cap26-t",{opacity:0,duration:0.12,ease:"power2.in"},128.93);
+    tl.fromTo("#cap27-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},130.75);
+    tl.to("#cap27-t",{opacity:0,duration:0.12,ease:"power2.in"},136.29);
+    tl.fromTo("#cap28-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},136.56);
+    tl.to("#cap28-t",{opacity:0,duration:0.12,ease:"power2.in"},140.82);
+    tl.fromTo("#cap29-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},144.74);
+    tl.to("#cap29-t",{opacity:0,duration:0.12,ease:"power2.in"},149.32);
+    tl.fromTo("#cap30-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},149.59);
+    tl.to("#cap30-t",{opacity:0,duration:0.12,ease:"power2.in"},152.49);
+    tl.fromTo("#cap31-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},154.31);
+    tl.to("#cap31-t",{opacity:0,duration:0.12,ease:"power2.in"},159.13);
+    tl.fromTo("#cap32-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},159.4);
+    tl.to("#cap32-t",{opacity:0,duration:0.12,ease:"power2.in"},163.58);
+    tl.fromTo("#cap33-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},165.4);
+    tl.to("#cap33-t",{opacity:0,duration:0.12,ease:"power2.in"},169.82);
+    tl.fromTo("#cap34-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},170.09);
+    tl.to("#cap34-t",{opacity:0,duration:0.12,ease:"power2.in"},174.11);
+    tl.fromTo("#cap35-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},178.03);
+    tl.to("#cap35-t",{opacity:0,duration:0.12,ease:"power2.in"},183.89);
+    tl.fromTo("#cap36-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},186.11);
+    tl.to("#cap36-t",{opacity:0,duration:0.12,ease:"power2.in"},190.37);
+    tl.fromTo("#cap37-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},190.64);
+    tl.to("#cap37-t",{opacity:0,duration:0.12,ease:"power2.in"},193.86);
+    tl.fromTo("#cap38-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},195.68);
+    tl.to("#cap38-t",{opacity:0,duration:0.12,ease:"power2.in"},200.82);
+    tl.fromTo("#cap39-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},201.09);
+    tl.to("#cap39-t",{opacity:0,duration:0.12,ease:"power2.in"},207.91);
+    tl.fromTo("#cap40-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},208.18);
+    tl.to("#cap40-t",{opacity:0,duration:0.12,ease:"power2.in"},214.52);
+    tl.fromTo("#cap41-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},216.74);
+    tl.to("#cap41-t",{opacity:0,duration:0.12,ease:"power2.in"},219.64);
+    tl.fromTo("#cap42-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},219.91);
+    tl.to("#cap42-t",{opacity:0,duration:0.12,ease:"power2.in"},225.05);
+    tl.fromTo("#cap43-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},225.32);
+    tl.to("#cap43-t",{opacity:0,duration:0.12,ease:"power2.in"},230.7);
+    tl.fromTo("#cap44-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},232.52);
+    tl.to("#cap44-t",{opacity:0,duration:0.12,ease:"power2.in"},238.06);
+    tl.fromTo("#cap45-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},238.33);
+    tl.to("#cap45-t",{opacity:0,duration:0.12,ease:"power2.in"},241.95);
+    tl.fromTo("#cap46-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},242.22);
+    tl.to("#cap46-t",{opacity:0,duration:0.12,ease:"power2.in"},244.4);
+    tl.fromTo("#cap47-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},246.42);
+    tl.to("#cap47-t",{opacity:0,duration:0.12,ease:"power2.in"},248.6);
+    tl.fromTo("#cap48-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},248.87);
+    tl.to("#cap48-t",{opacity:0,duration:0.12,ease:"power2.in"},253.21);
+    tl.fromTo("#cap49-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},253.48);
+    tl.to("#cap49-t",{opacity:0,duration:0.12,ease:"power2.in"},257.02);
+    tl.fromTo("#cap50-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},259.04);
+    tl.to("#cap50-t",{opacity:0,duration:0.12,ease:"power2.in"},263.46);
+    tl.fromTo("#cap51-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},263.73);
+    tl.to("#cap51-t",{opacity:0,duration:0.12,ease:"power2.in"},266.47);
+    tl.fromTo("#cap52-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},270.39);
+    tl.to("#cap52-t",{opacity:0,duration:0.12,ease:"power2.in"},273.85);
+    tl.fromTo("#cap53-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},274.12);
+    tl.to("#cap53-t",{opacity:0,duration:0.12,ease:"power2.in"},278.86);
+    tl.fromTo("#cap54-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},280.68);
+    tl.to("#cap54-t",{opacity:0,duration:0.12,ease:"power2.in"},283.66);
+    tl.fromTo("#cap55-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},283.93);
+    tl.to("#cap55-t",{opacity:0,duration:0.12,ease:"power2.in"},288.19);
+    tl.fromTo("#cap56-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},290.01);
+    tl.to("#cap56-t",{opacity:0,duration:0.12,ease:"power2.in"},294.59);
+    tl.fromTo("#cap57-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},294.86);
+    tl.to("#cap57-t",{opacity:0,duration:0.12,ease:"power2.in"},298.08);
+    tl.fromTo("#cap58-t",{opacity:0,y:8},{opacity:1,y:0,duration:0.18,ease:"power2.out"},298.35);
+    tl.to("#cap58-t",{opacity:0,duration:0.12,ease:"power2.in"},300.53);
+    window.__timelines["captions"] = tl;
+  </script>
+</template>

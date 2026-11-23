@@ -665,8 +665,7 @@ def ending():
         strip = B.step_strip("en", 200, tick=True)
         strip += "".join(f'<div id="en-t{i}" class="abs" style="left:{110 + i*436}px;top:372px;width:380px;text-align:center;font-size:28px;font-weight:700;color:{C["muted"]};opacity:0">{t}</div>'
                          for i, t in enumerate(subs))
-        thumb = f'<circle cx="0" cy="25" r="8" fill="{INK}"/><line x1="0" y1="30" x2="0" y2="44" stroke="{INK}" stroke-width="7" stroke-linecap="round"/>'
-        man = svg_layer(f'<g transform="translate(960,{FY+40})"><g id="en-man">{stick("en-man", "instructor", 2.0, hand_r=thumb)}</g></g>')
+        man = svg_layer(f'<g transform="translate(960,{FY+40})"><g id="en-man">{stick("en-man", "instructor", 2.0)}</g></g>')
         body = B.bg_floor() + strip + man
         js = B.strip_js("en", 0.3, 0.35)
         for i in range(4):

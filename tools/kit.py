@@ -36,8 +36,11 @@ ROLE = {  # vest colour + label for each role (series bible)
     "picker": ("#F4C430", "Picker"),
     "checker": ("#8B5CF6", "Checker"),
     "transport": ("#8C96A3", "Đội vận tải"),
-    "instructor": ("#1F5FBF", "Giảng viên"),
+    "instructor": ("#1F8A3B", "Giảng viên"),   # TK uniform polo (design/ao-dong-phuc-tk.png)
     "manager": ("#16478F", "Quản lý kho"),
+    # CXAD paper-picking video (video-cxad-giay)
+    "xlct": ("#1F5FBF", "Xử lý chứng từ (XLCT)"),
+    "driver": ("#8C96A3", "Tài xế"),
 }
 
 FONT = "'Be Vietnam Pro'"
@@ -166,19 +169,39 @@ def rack_row(rid, y0, bays=6, x0=0.0, stock=None):
 OUTFIT = {  # role -> (top, hat)
     "receiver": ("vest", True), "forklift": ("vest", True), "picker": ("vest", True),
     "checker": ("vest", True), "transport": ("vest", True),
-    "planner": ("shirt", False), "instructor": ("shirt_tie", False),
-    "manager": ("manager", False),
+    "planner": ("shirt", False), "instructor": ("polo_tk", False),
+    "manager": ("manager", "white"),   # white safety helmet
+    "xlct": ("shirt", False), "driver": ("vest", True),
 }
 REST = {"armL": (16, -8), "armR": (-16, 8), "legL": (8, -2), "legR": (-8, 2)}
 
 
-def _limb(fid, side, kind, ang, ang2, extra=""):
+POLO = {"body": "#262626", "green": "#1F8A3B", "neon": "#3DDC4A", "brown": "#8B3A1E"}  # TK uniform palette
+
+
+def tk_logo(x, y, s=1.0):
+    """TK logo (brown T K + two green slashes), top-left at (x, y), ~11 x 7 units at s=1."""
+    b, g, n = POLO["brown"], POLO["green"], POLO["neon"]
+    return (f'<g transform="translate({x},{y}) scale({s})">'
+            f'<rect x="0" y="0" width="5" height="1.6" fill="{b}"/><rect x="1.7" y="0" width="1.6" height="7" fill="{b}"/>'
+            f'<rect x="4" y="0" width="1.5" height="7" fill="{b}"/><path d="M5.3,3.5 L7.6,0 L9,0 L6.5,3.5 L9,7 L7.6,7 Z" fill="{b}"/>'
+            f'<path d="M8.6,0.4 L11,0.4 L9,3 L6.8,3 Z" fill="{n}"/><path d="M9.6,3.6 L12,3.6 L10,6.4 L7.8,6.4 Z" fill="{g}"/></g>')
+
+
+def _limb(fid, side, kind, ang, ang2, extra="", ball=False, sleeve=""):
     """Two-segment limb. kind 'arm' or 'leg'. Rotations are SVG degrees (clockwise)."""
     ink = C["ink"]
+    extra_up = ""
     if kind == "arm":
         root = (-12 if side == "L" else 12, -98)
         a, b, end = 25, 23, f'<circle cx="0" cy="23" r="4.5" fill="{ink}"/>'
+        if ball:   # round "Doraemon" hand: no fingers, for every model and every gesture
+            end = f'<circle cx="0" cy="26" r="9" fill="#fff" stroke="{ink}" stroke-width="3.5"/>'
         seg2 = "fore"
+        if sleeve:   # short raglan sleeve over the upper arm
+            # short sleeve hugging the upper arm, slightly wider at the hem, with a ribbed cuff band
+            extra_up = (f'<path d="M-4.6,-3 Q0,-6.5 4.6,-3 L5.8,13 Q0,14.4 -5.8,13 Z" fill="{sleeve}" stroke="{ink}" stroke-width="2.2" stroke-linejoin="round"/>'
+                        f'<path d="M-5.6,10 Q0,11.4 5.6,10 L5.8,13 Q0,14.4 -5.8,13 Z" fill="#176E2F" stroke="{ink}" stroke-width="1.6" stroke-linejoin="round"/>')
     else:
         root = (-3 if side == "L" else 3, -60)
         a, b = 30, 29
@@ -186,7 +209,7 @@ def _limb(fid, side, kind, ang, ang2, extra=""):
         end = f'<line x1="0" y1="29" x2="{fx}" y2="30" stroke="{ink}" stroke-width="6" stroke-linecap="round"/>'
         seg2 = "shin"
     return (f'<g transform="translate({root[0]},{root[1]})"><g id="{fid}-{kind}{side}" transform="rotate({ang})">'
-            f'<line x1="0" y1="0" x2="0" y2="{a}" stroke="{ink}" stroke-width="6" stroke-linecap="round"/>'
+            f'<line x1="0" y1="0" x2="0" y2="{a}" stroke="{ink}" stroke-width="6" stroke-linecap="round"/>{extra_up}'
             f'<g transform="translate(0,{a})"><g id="{fid}-{seg2}{side}" transform="rotate({ang2})">'
             f'<line x1="0" y1="0" x2="0" y2="{b}" stroke="{ink}" stroke-width="6" stroke-linecap="round"/>{end}{extra}'
             f'</g></g></g></g>')
@@ -204,6 +227,8 @@ def folder_svg(col="#16478F"):
 
 
 MANAGER_HOLD = {"armL": (-8, -118)}  # pose for holding folder_svg() in the left hand
+# seated at the computer (XLCT / dieu phoi): hands raised onto the keyboard, above the desk top
+TYPE = {"armL": (40, -120), "armR": (-40, 120)}
 
 
 def pda_svg(fid, laser=False, reach=80):
@@ -236,8 +261,9 @@ def stick(fid, role="picker", scale=1.0, label=False, pose=None, hand_r="", hand
                 f'<rect x="-15.8" y="-72" width="12.8" height="5" fill="#EEF2F6"/><rect x="3" y="-72" width="12.8" height="5" fill="#EEF2F6"/>')
     else:
         tie = ""
-        if top == "shirt_tie":
-            tie = f'<path d="M0,-102 L-4,-97 L-2,-76 L0,-72 L2,-76 L4,-97 Z" fill="{C["orange"]}" stroke="{ink}" stroke-width="1.5"/>'
+        if top in ("shirt_tie", "shirt_navytie"):
+            tcol = C["orange"] if top == "shirt_tie" else "#1B2F5E"
+            tie = f'<path d="M0,-102 L-4,-97 L-2,-76 L0,-72 L2,-76 L4,-97 Z" fill="{tcol}" stroke="{ink}" stroke-width="1.5"/>'
         shirt = col
         if top == "manager":  # white shirt, navy tie, ID badge on a navy lanyard
             shirt = "#FFFFFF"
@@ -245,13 +271,23 @@ def stick(fid, role="picker", scale=1.0, label=False, pose=None, hand_r="", hand
                    f'<path d="M-8,-103 L-10,-86 M8,-103 L10,-86" stroke="{col}" stroke-width="2.2" fill="none"/>'
                    f'<rect x="-14" y="-87" width="9" height="12" rx="1.5" fill="{col}" stroke="{ink}" stroke-width="1.5"/>'
                    f'<rect x="-12.3" y="-84" width="5.6" height="2.4" fill="#fff"/>')
+        if top == "polo_tk":  # TK uniform: charcoal body, green raglan + collar, open V placket, TK logo + welt pocket
+            g = POLO["green"]
+            shirt = POLO["body"]
+            tie = (f'<path d="M-15,-100 L-7,-104 L-13.5,-88 Z" fill="{g}" stroke="{ink}" stroke-width="1.5" stroke-linejoin="round"/>'
+                   f'<path d="M15,-100 L7,-104 L13.5,-88 Z" fill="{g}" stroke="{ink}" stroke-width="1.5" stroke-linejoin="round"/>'
+                   f'<path d="M0,-97 L-1.6,-89 L0,-87 L1.6,-89 Z" fill="#111"/>'
+                   + tk_logo(3.2, -88, 0.8)
+                   + f'<rect x="3.8" y="-81.5" width="9" height="1.8" rx="0.6" fill="{g}"/>')
         body = (f'<path d="M-15,-100 Q0,-108 15,-100 L14,-61 Q0,-58 -14,-61 Z" fill="{shirt}" stroke="{ink}" stroke-width="3" stroke-linejoin="round"/>'
-                f'<path d="M-7,-104 L0,-96 L7,-104" fill="#fff" stroke="{ink}" stroke-width="2" stroke-linejoin="round"/>{tie}')
+                + (f'<path d="M-9,-104 L-1,-97 L-4,-91.5 L-12.5,-99 Z M9,-104 L1,-97 L4,-91.5 L12.5,-99 Z" fill="{POLO["green"]}" stroke="{ink}" stroke-width="2" stroke-linejoin="round"/>' if top == "polo_tk"
+                 else f'<path d="M-7,-104 L0,-96 L7,-104" fill="#fff" stroke="{ink}" stroke-width="2" stroke-linejoin="round"/>') + tie)
     head = (f'<circle cx="0" cy="-127" r="19" fill="#fff" stroke="{ink}" stroke-width="5.5"/>'
             f'<circle cx="-6.5" cy="-129" r="2.8" fill="{ink}"/><circle cx="6.5" cy="-129" r="2.8" fill="{ink}"/>'
             f'<path d="M-6,-119 Q0,-114 6,-119" fill="none" stroke="{ink}" stroke-width="2.6" stroke-linecap="round"/>')
     if hat:
-        head += (f'<path d="M-19,-133 Q-19,-152 0,-153 Q19,-152 19,-133 Z" fill="{col}" stroke="{ink}" stroke-width="3" stroke-linejoin="round"/>'
+        hcol = "#FFFFFF" if hat == "white" else col
+        head += (f'<path d="M-19,-133 Q-19,-152 0,-153 Q19,-152 19,-133 Z" fill="{hcol}" stroke="{ink}" stroke-width="3" stroke-linejoin="round"/>'
                  f'<path d="M-2,-152 L-2,-134 M2,-152 L2,-134" stroke="{ink}" stroke-width="1.5" opacity="0.35"/>'
                  f'<line x1="-24" y1="-133" x2="24" y2="-133" stroke="{ink}" stroke-width="5" stroke-linecap="round"/>')
     lab = ""
@@ -262,8 +298,10 @@ def stick(fid, role="picker", scale=1.0, label=False, pose=None, hand_r="", hand
                f'<text x="0" y="-184" text-anchor="middle" font-family="{FONT}" font-weight="700" font-size="24" fill="#fff">{txt}</text>'
                f'<polygon points="-8,-171 8,-171 0,-161" fill="{ink}"/></g>')
     legs = _limb(fid, "L", "leg", *p["legL"]) + _limb(fid, "R", "leg", *p["legR"])
-    arms_back = _limb(fid, "L", "arm", *p["armL"], extra=hand_l)
-    arms_front = _limb(fid, "R", "arm", *p["armR"], extra=hand_r)
+    ball = True   # every model uses round hands: no fingers anywhere
+    slv = POLO["green"] if top == "polo_tk" else ""
+    arms_back = _limb(fid, "L", "arm", *p["armL"], extra=hand_l, ball=ball, sleeve=slv)
+    arms_front = _limb(fid, "R", "arm", *p["armR"], extra=hand_r, ball=ball, sleeve=slv)
     fl = ' transform="scale(-1,1)"' if flip else ""
     return (f'<g transform="scale({scale})"><g id="{fid}-body"{fl}>'
             f'<ellipse cx="0" cy="3" rx="30" ry="6" fill="#000" opacity="0.10"/>'

@@ -1,0 +1,166 @@
+<title>Storyboard Hành trình kỹ năng</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600;700;800;900&display=swap">
+<style>
+/* Layout: bàn duyệt storyboard — thanh tiến độ dính trên cùng, mỗi màn là một hàng: khung 16:9 bên trái, ghi chú + duyệt bên phải */
+:root {
+  --bg: #EEF1F5; --surface: #FFFFFF; --ink: #1B2430; --muted: #5E6A7A; --line: #D5DBE4;
+  --blue: #1F5FBF; --orange: #C96A0A; --green: #1E8F4E; --red: #C42F2F;
+  --green-soft: #E3F4EA; --red-soft: #FBE7E7; --chip: #E6EAF0;
+  --font: 'Be Vietnam Pro', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #12171F; --surface: #1B222C; --ink: #E8EDF3; --muted: #9AA6B6; --line: #2E3846;
+  --blue: #6EA2F0; --orange: #F2A04A; --green: #4CC983; --red: #F07272;
+  --green-soft: #1A3326; --red-soft: #3A1E22; --chip: #263040; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #12171F; --surface: #1B222C; --ink: #E8EDF3; --muted: #9AA6B6; --line: #2E3846;
+  --blue: #6EA2F0; --orange: #F2A04A; --green: #4CC983; --red: #F07272;
+  --green-soft: #1A3326; --red-soft: #3A1E22; --chip: #263040; color-scheme: dark }
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 15px; line-height: 1.55; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface); }
+.wrap { max-width: 1320px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.intro { padding-block: 32px 20px; }
+.intro p.kicker { margin: 0; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--orange); }
+.intro h1 { margin: 6px 0 8px; font-size: clamp(26px, 4vw, 38px); font-weight: 900; line-height: 1.15; text-wrap: balance; }
+.intro p.lede { margin: 0; max-width: 68ch; color: var(--muted); }
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--surface); border-bottom: 1px solid var(--line); }
+.bar .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; padding-block: 12px; }
+.counts { display: flex; gap: 14px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.counts .ok { color: var(--green) } .counts .fix { color: var(--red) } .counts .todo { color: var(--muted) }
+.meter { flex: 1 1 160px; height: 8px; background: var(--chip); border-radius: 4px; overflow: hidden; display: flex; min-width: 120px; }
+.meter i { display: block; height: 100% } .meter .m-ok { background: var(--green) } .meter .m-fix { background: var(--red) }
+.filters { display: flex; gap: 6px; flex-wrap: wrap; }
+.filters button { font: inherit; font-size: 13px; font-weight: 700; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+.filters button[aria-pressed="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.status-line { font-size: 13px; color: var(--muted); width: 100%; margin: 0; }
+main { display: flex; flex-direction: column; gap: 28px; padding-block: 24px 64px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.card.is-ok { border-color: var(--green) } .card.is-fix { border-color: var(--red) }
+.card-head { display: flex; align-items: center; gap: 14px; padding: 14px 18px; border-bottom: 1px solid var(--line); }
+.sid { flex: none; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--blue); color: #fff; font-weight: 900; font-variant-numeric: tabular-nums; }
+.card-head > div { flex: 1; min-width: 0 }
+.eyebrow { margin: 0; font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: .03em; font-variant-numeric: tabular-nums; }
+.card-head h2 { margin: 0; font-size: 19px; font-weight: 800; line-height: 1.3; }
+.state { flex: none; font-size: 12px; font-weight: 800; padding: 4px 10px; border-radius: 999px; background: var(--chip); color: var(--muted); }
+.is-ok .state { background: var(--green-soft); color: var(--green) } .is-fix .state { background: var(--red-soft); color: var(--red) }
+.card-body { display: grid; grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr); }
+.frame { padding: 16px; background: #E6EAF0; display: flex; align-items: flex-start; }
+.frame svg { width: 100%; height: auto; display: block; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,.15); }
+.side { padding: 16px 20px 20px; min-width: 0; }
+.side h3 { margin: 4px 0 6px; font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.side ul, .side ol { margin: 0 0 14px; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; }
+.subs li { font-weight: 700 } .subs li.none { list-style: none; margin-left: -20px; font-weight: 500; color: var(--muted) }
+.note { margin: 0 0 14px; padding: 8px 12px; border-radius: 8px; background: var(--chip); font-size: 13px; }
+.review { border-top: 1px dashed var(--line); padding-top: 14px; display: flex; flex-direction: column; gap: 8px; }
+.btns { display: flex; gap: 8px }
+.btns button { flex: 1; font: inherit; font-weight: 800; padding: 9px 12px; border-radius: 8px; cursor: pointer; border: 2px solid; background: var(--surface); }
+.btns .ok { color: var(--green); border-color: var(--green) } .btns .fix { color: var(--red); border-color: var(--red) }
+.is-ok .btns .ok { background: var(--green); color: var(--surface) } .is-fix .btns .fix { background: var(--red); color: var(--surface) }
+.btns button:disabled { opacity: .45; cursor: not-allowed }
+button:focus-visible, textarea:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px }
+.review label { font-size: 12px; font-weight: 700; color: var(--muted) }
+.review textarea { font: inherit; width: 100%; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); resize: vertical; }
+.saved { margin: 0; font-size: 12px; color: var(--muted); min-height: 1.2em }
+@media (max-width: 900px) { .card-body { grid-template-columns: minmax(0, 1fr) } .frame { padding: 10px } }
+@media (prefers-reduced-motion: no-preference) { .card { transition: border-color .2s } }
+</style>
+
+<section class="intro wrap">
+  <p class="kicker">Storyboard · bản 2</p>
+  <h1>Hành trình tạo kỹ năng làm video theo ý tôi</h1>
+  <p class="lede">{{COUNT}} màn cho video khoảng 3 phút, dựng theo mục [B1] của prompt. Mỗi khung là ảnh tĩnh của khoảnh khắc chính, đúng màu, font và nhân vật của các video kho; ảnh trong khung màn hình là ảnh thật trích từ các bản render. Bấm <b>Duyệt</b> hoặc <b>Cần sửa</b> và ghi chú ở từng màn; Claude sẽ đọc lại kết quả này.</p>
+</section>
+
+<div class="bar"><div class="wrap">
+  <div class="counts"><span class="ok" id="c-ok">0 duyệt</span><span class="fix" id="c-fix">0 cần sửa</span><span class="todo" id="c-todo">{{COUNT}} chưa xem</span></div>
+  <div class="meter" aria-hidden="true"><i class="m-ok" id="m-ok"></i><i class="m-fix" id="m-fix"></i></div>
+  <div class="filters" role="group" aria-label="Lọc màn">
+    <button type="button" data-f="all" aria-pressed="true">Tất cả</button>
+    <button type="button" data-f="todo" aria-pressed="false">Chưa xem</button>
+    <button type="button" data-f="fix" aria-pressed="false">Cần sửa</button>
+  </div>
+  <p class="status-line" id="status">Đang kết nối nơi lưu kết quả duyệt…</p>
+</div></div>
+
+<main class="wrap">
+{{CARDS}}
+</main>
+
+<script>
+(function () {
+  const IDS = {{IDS}};
+  const state = {};            // id -> {status, note}
+  let db = null, canWrite = false, filter = "all";
+  const $ = (s, r = document) => r.querySelector(s);
+  const statusEl = $("#status");
+
+  function paint() {
+    let ok = 0, fix = 0;
+    IDS.forEach(id => {
+      const card = document.getElementById(id), st = state[id] || {};
+      card.classList.toggle("is-ok", st.status === "ok");
+      card.classList.toggle("is-fix", st.status === "fix");
+      $("[data-state]", card).textContent = st.status === "ok" ? "Đã duyệt" : st.status === "fix" ? "Cần sửa" : "Chưa duyệt";
+      const ta = $("textarea", card);
+      if (document.activeElement !== ta && typeof st.note === "string") ta.value = st.note;
+      if (st.status === "ok") ok++; else if (st.status === "fix") fix++;
+      const show = filter === "all" || (filter === "todo" && !st.status) || (filter === "fix" && st.status === "fix");
+      card.hidden = !show;
+    });
+    const n = IDS.length;
+    $("#c-ok").textContent = ok + " duyệt";
+    $("#c-fix").textContent = fix + " cần sửa";
+    $("#c-todo").textContent = (n - ok - fix) + " chưa xem";
+    $("#m-ok").style.width = (ok / n * 100) + "%";
+    $("#m-fix").style.width = (fix / n * 100) + "%";
+  }
+
+  async function save(id, patch, card) {
+    state[id] = Object.assign({}, state[id], patch);
+    paint();
+    const msg = $(".saved", card);
+    if (!db || !canWrite) { msg.textContent = "Chưa lưu được: trang này chỉ xem. Gửi góp ý trong khung chat."; return; }
+    msg.textContent = "Đang lưu…";
+    try {
+      await db.doc("review/" + id).set({ status: state[id].status || "", note: state[id].note || "", at: new Date().toISOString() });
+      msg.textContent = "Đã lưu.";
+    } catch (e) { msg.textContent = "Không lưu được (" + (e && e.code || "lỗi") + "). Thử lại sau."; }
+  }
+
+  document.querySelectorAll(".card").forEach(card => {
+    const id = card.dataset.id;
+    card.querySelectorAll("[data-act]").forEach(b => b.addEventListener("click", () => {
+      const cur = (state[id] || {}).status, nxt = b.dataset.act === cur ? "" : b.dataset.act;
+      save(id, { status: nxt, note: $("textarea", card).value }, card);
+    }));
+    const ta = $("textarea", card);
+    ta.addEventListener("change", () => save(id, { note: ta.value }, card));
+  });
+  document.querySelectorAll("[data-f]").forEach(b => b.addEventListener("click", () => {
+    filter = b.dataset.f;
+    document.querySelectorAll("[data-f]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    paint();
+  }));
+  paint();
+
+  async function connect() {
+    if (!window.claude || !window.claude.use) { statusEl.textContent = "Bản xem ngoài claude.ai: không lưu được kết quả duyệt."; return; }
+    db = await window.claude.use("db");
+    if (!db) { statusEl.textContent = "Không lưu được kết quả duyệt ở chế độ xem này. Hãy góp ý trong khung chat."; return; }
+    const user = await window.claude.use("user");
+    canWrite = user ? (user.can("data.write") !== false) : true;
+    const timer = setTimeout(() => { statusEl.textContent = "Đang chờ dữ liệu duyệt lâu hơn bình thường…"; }, 10000);
+    db.collection("review").onSnapshot(snap => {
+      clearTimeout(timer);
+      snap.docs.forEach(d => { const v = d.data() || {}; state[d.id] = { status: v.status || "", note: v.note || "" }; });
+      statusEl.textContent = canWrite ? "Kết quả duyệt được lưu tự động và Claude đọc được." : "Bạn đang ở chế độ chỉ xem.";
+      if (!canWrite) document.querySelectorAll(".btns button, textarea").forEach(el => el.disabled = true);
+      paint();
+    }, err => { clearTimeout(timer); statusEl.textContent = "Không đọc được kết quả duyệt (" + (err && err.code || "lỗi") + ")."; });
+  }
+  connect();
+})();
+</script>

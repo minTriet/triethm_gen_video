@@ -16,18 +16,19 @@ Code vẽ: `tools/kit.py` → `stick(fid, role, ...)`; màu và nhãn trong `ROL
 | `receiver` | Nhân viên nhận hàng | Áo + mũ bảo hộ xanh lá `#2FAE5F` | Bê thùng, dán LPN, PDA |
 | `forklift` | Tài xế xe nâng | Áo + mũ cam `#F28C1E` | Xe nâng ngồi lái (`forklift()` trong `tools/model_sheet.py`) |
 | `planner` | Nhân viên điều phối (dùng cả cho **Nhân viên XLCT**) | Sơ mi xanh dương `#1F5FBF`, không mũ | Ngồi bàn máy tính (`desk()`) |
-| `manager` | **Quản lý kho** (gộp cả "Quản lý") | Sơ mi trắng, cà vạt + thẻ đeo xanh đậm `#16478F`, không mũ | Bìa hồ sơ: `pose=MANAGER_HOLD, hand_l=folder_svg()`; xem báo cáo WMS; chỉ tay giao việc. Mẫu: `design/model-quan-ly.png` |
+| `manager` | **Quản lý kho** (gộp cả "Quản lý") | Mũ bảo hộ trắng, sơ mi trắng, cà vạt + thẻ đeo xanh đậm `#16478F` | Bìa hồ sơ: `pose=MANAGER_HOLD, hand_l=folder_svg()`; xem báo cáo WMS; chỉ tay giao việc. Mẫu: `design/model-quan-ly.png` |
 | `picker` | Picker | Áo + mũ vàng `#F4C430` | Kéo trolley, PDA, lấy hàng, chia hàng |
 | `checker` | Checker | Áo + mũ tím `#8B5CF6` | Scan bằng PDA (`pda_svg(fid, laser=True)`) |
 | `transport` | Đội vận tải (dùng cả cho **Tài xế xe tải**) | Áo + mũ xám `#8C96A3` | Đứng cạnh xe tải, ký giấy |
-| `instructor` | Giảng viên | Sơ mi xanh, cà vạt cam | Vẫy tay mở đầu, giơ ngón cái kết |
+| `instructor` | Giảng viên | Áo đồng phục TK: polo thân đen `#262626`, tay raglan + cổ bẻ xanh lá `#1F8A3B`, logo TK ngực trái, không mũ | Vẫy tay mở đầu, giơ tay chào kết. Áo: `design/ao-dong-phuc-tk.png`, mẫu: `design/model-giang-vien.png` |
 
 Đổi nhãn theo video (ví dụ "Nhân viên XLCT", "Tài xế xe tải") nhưng giữ nguyên `role` và màu.
 
 ## Quy tắc chung
 
 - Nét v2: đầu tròn, mắt chấm, miệng cười, thân nét đen có vai, khuỷu tay, đầu gối.
-- Vai làm việc ngoài kho đội mũ bảo hộ + áo có sọc phản quang; vai văn phòng (điều phối/XLCT, quản lý kho, giảng viên) mặc sơ mi, không mũ.
+- **Bàn tay tròn** (hình tròn trắng viền đen), không ngón tay, cho mọi vai và mọi động tác; không dùng cử chỉ bằng ngón tay (không giơ ngón cái).
+- Vai làm việc ngoài kho đội mũ bảo hộ + áo có sọc phản quang; vai văn phòng (điều phối/XLCT) mặc sơ mi, không mũ; giảng viên mặc polo đồng phục TK, không mũ; quản lý kho mặc sơ mi nhưng đội mũ bảo hộ trắng.
 - Đi bộ = cả người nghiêng trái/phải + nhún nhẹ (`walk_js`), tay chân giữ tư thế.
 - Nhãn tên trên đầu (`label=True`) chỉ hiện ở lần xuất hiện đầu tiên của vai.
 - Thêm vai mới: thêm vào `ROLE` + `OUTFIT` trong `tools/kit.py`, thêm ô vào `tools/model_sheet.py`, dựng lại bảng, gửi người dùng duyệt rồi mới dùng trong video, và cập nhật bảng trên.
