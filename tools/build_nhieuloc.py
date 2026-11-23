@@ -4,7 +4,8 @@ Storyboard đã duyệt: design/storyboard-nhieu-loc.html (cùng bộ hình tool
 Giọng đọc VieNeu-TTS (skill vieneu-tts, giọng Hải Đăng, seed 7): câu thoại + văn bản đọc trong
 source/vo_nhieu_loc.json, clip trong video-nhieuloc/assets/vo/ (manifest.json).
 Thời lượng mỗi câu = độ dài clip thật + đệm, không đoán theo số chữ.
-Bản hiện tại: khoảng 30 giây đầu (màn S01–S03) để duyệt.
+Màn S01–S03 ở file này, S04–S30 trong tools/nhieuloc_scenes.py.
+Phụ đề thu nhỏ (44 px, cách đáy 40 px) cho khớp vị trí phụ đề trong storyboard đã duyệt.
 """
 import json
 import os
@@ -161,7 +162,17 @@ MAIN_RACK = [["A-01-01", "A-01-02"], ["A-02-01", "A-02-02"], ["A-03-01", "A-03-0
 
 # ============================================================ assembly + giọng đọc
 def timeline():
-    return [s01(), s02(), s03()]
+    import nhieuloc_scenes
+    return [s01(), s02(), s03()] + nhieuloc_scenes.scenes()
+
+
+def restyle_captions():
+    p = os.path.join(OUT, "compositions", "captions.html")
+    src = open(p, encoding="utf-8").read()
+    for a, b in (("bottom:84px", "bottom:40px"), ("font-size:54px", "font-size:44px"), ("max-width:1500px", "max-width:1380px")):
+        assert a in src, a
+        src = src.replace(a, b)
+    open(p, "w", encoding="utf-8").write(src)
 
 
 def add_voice(placed, total):
@@ -185,6 +196,7 @@ def add_voice(placed, total):
 if __name__ == "__main__":
     placed, total, kept = build_all(seq=timeline(), out=OUT)
     n = add_voice(placed, total)
+    restyle_captions()
     for s, start in placed:
         print(f"{start:7.2f}  {s.D:6.2f}  {s.cid}")
     print("TOTAL", total, "sfx", len(kept), "vo", n)

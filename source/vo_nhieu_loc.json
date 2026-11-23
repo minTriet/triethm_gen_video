@@ -1,10 +1,292 @@
 [
- {"id": "s01-1", "sub": "Kính chào Ban lãnh đạo Công ty Nhiêu Lộc.", "text": "Kính chào Ban lãnh đạo Công ty Nhiêu Lộc."},
- {"id": "s01-2", "sub": "Video này trình bày cách kho sẽ vận hành hàng thịt đông lạnh của Nhiêu Lộc trên hệ thống WMS.", "text": "Video này trình bày cách kho sẽ vận hành hàng thịt đông lạnh của Nhiêu Lộc, trên hệ thống đáp-bờ-liu em ét."},
- {"id": "s02-1", "sub": "Kho đông lạnh có hai khu.", "text": "Kho đông lạnh có hai khu."},
- {"id": "s02-2", "sub": "Khu A có dãy kệ: mỗi vị trí chứa đúng một pallet.", "text": "Khu a có dãy kệ, mỗi vị trí chứa đúng một pa-lét."},
- {"id": "s02-3", "sub": "Khu B không có kệ: pallet được chất chồng lên nhau trên từng ô sàn.", "text": "Khu bê không có kệ, pa-lét được chất chồng lên nhau trên từng ô sàn."},
- {"id": "s03-1", "sub": "Hàng là thịt đông lạnh, gồm hàng đồng ký và hàng đa ký.", "text": "Hàng là thịt đông lạnh, gồm hàng đồng ký và hàng đa ký."},
- {"id": "s03-2", "sub": "Đồng ký: thùng nào cũng cùng số kg. Đa ký: mỗi thùng một số kg khác nhau.", "text": "Đồng ký, là thùng nào cũng cùng số ký. Đa ký, là mỗi thùng một số ký khác nhau."},
- {"id": "s03-3", "sub": "Khi xuất, Nhiêu Lộc có thể xuất chẵn pallet hoặc xuất lẻ theo thùng.", "text": "Khi xuất, Nhiêu Lộc có thể xuất chẵn pa-lét, hoặc xuất lẻ theo thùng."}
+ {
+  "id": "s01-1",
+  "sub": "Kính chào Ban lãnh đạo Công ty Nhiêu Lộc.",
+  "text": "Kính chào Ban lãnh đạo Công ty Nhiêu Lộc."
+ },
+ {
+  "id": "s01-2",
+  "sub": "Video này trình bày cách kho sẽ vận hành hàng thịt đông lạnh của Nhiêu Lộc trên hệ thống WMS.",
+  "text": "Video này trình bày cách kho sẽ vận hành hàng thịt đông lạnh của Nhiêu Lộc, trên hệ thống đáp-bờ-liu em ét."
+ },
+ {
+  "id": "s02-1",
+  "sub": "Kho đông lạnh có hai khu.",
+  "text": "Kho đông lạnh có hai khu."
+ },
+ {
+  "id": "s02-2",
+  "sub": "Khu A có dãy kệ: mỗi vị trí chứa đúng một pallet.",
+  "text": "Khu a có dãy kệ, mỗi vị trí chứa đúng một pa-lét."
+ },
+ {
+  "id": "s02-3",
+  "sub": "Khu B không có kệ: pallet được chất chồng lên nhau trên từng ô sàn.",
+  "text": "Khu bê không có kệ, pa-lét được chất chồng lên nhau trên từng ô sàn."
+ },
+ {
+  "id": "s03-1",
+  "sub": "Hàng là thịt đông lạnh, gồm hàng đồng ký và hàng đa ký.",
+  "text": "Hàng là thịt đông lạnh, gồm hàng đồng ký và hàng đa ký."
+ },
+ {
+  "id": "s03-2",
+  "sub": "Đồng ký: thùng nào cũng cùng số kg. Đa ký: mỗi thùng một số kg khác nhau.",
+  "text": "Đồng ký, là thùng nào cũng cùng số ký. Đa ký, là mỗi thùng một số ký khác nhau."
+ },
+ {
+  "id": "s03-3",
+  "sub": "Khi xuất, Nhiêu Lộc có thể xuất chẵn pallet hoặc xuất lẻ theo thùng.",
+  "text": "Khi xuất, Nhiêu Lộc có thể xuất chẵn pa-lét, hoặc xuất lẻ theo thùng."
+ },
+ {
+  "id": "s04-1",
+  "sub": "Bộ quy trình gồm chín quy trình, chia thành năm nhóm.",
+  "text": "Bộ quy trình gồm chín quy trình, chia thành năm nhóm."
+ },
+ {
+  "id": "s04-2",
+  "sub": "Ba vai tham gia: quản lý, nhân viên xử lý chứng từ và nhân viên kho.",
+  "text": "Ba vai tham gia, quản lý, nhân viên xử lý chứng từ và nhân viên kho."
+ },
+ {
+  "id": "s04-3",
+  "sub": "Nhãn cạnh mỗi bước cho biết bước đó làm trên WMS, làm tay hay quét mã.",
+  "text": "Nhãn cạnh mỗi bước cho biết bước đó làm trên đáp-bờ-liu em ét, làm tay hay quét mã."
+ },
+ {
+  "id": "s06-1",
+  "sub": "Đầu tiên, tạo chủ hàng Nhiêu Lộc và dữ liệu gốc trên WMS.",
+  "text": "Đầu tiên, tạo chủ hàng Nhiêu Lộc và dữ liệu gốc trên đáp-bờ-liu em ét."
+ },
+ {
+  "id": "s06-2",
+  "sub": "Mỗi mã hàng có quy cách thùng, pallet, và là hàng đồng ký hay đa ký.",
+  "text": "Mỗi mã hàng có quy cách thùng, pa-lét, và là hàng đồng ký hay đa ký."
+ },
+ {
+  "id": "s06-3",
+  "sub": "Sau đó khai báo quy tắc nhận hàng, cất hàng và tìm tồn theo FEFO.",
+  "text": "Sau đó khai báo quy tắc nhận hàng, cất hàng và tìm tồn theo phe-phô."
+ },
+ {
+  "id": "s07-1",
+  "sub": "Giá bán của Nhiêu Lộc thay đổi theo ngày.",
+  "text": "Giá bán của Nhiêu Lộc thay đổi theo ngày."
+ },
+ {
+  "id": "s07-2",
+  "sub": "Quản lý duyệt bảng giá theo kg, XLCT khai báo vào WMS kèm ngày áp dụng.",
+  "text": "Quản lý duyệt bảng giá theo ký, xử lý chứng từ khai báo vào đáp-bờ-liu em ét kèm ngày áp dụng."
+ },
+ {
+  "id": "s09-1",
+  "sub": "Bước 1 và 2: Nhiêu Lộc gửi kế hoạch nhập, XLCT xử lý file và nhập vào WMS để tạo ASN.",
+  "text": "Bước 1 và 2, Nhiêu Lộc gửi kế hoạch nhập, xử lý chứng từ xử lý file và nhập vào đáp-bờ-liu em ét để tạo a ét en."
+ },
+ {
+  "id": "s09-2",
+  "sub": "WMS in sẵn mã LPN cho pallet và tem lô QR cho từng lô hàng.",
+  "text": "đáp-bờ-liu em ét in sẵn mã eo pê en cho pa-lét và tem lô kiu-a cho từng lô hàng."
+ },
+ {
+  "id": "s10-1",
+  "sub": "Bước 3: xe đến, tạo phiếu nhập kho với số xe, tài xế.",
+  "text": "Bước 3, xe đến, tạo phiếu nhập kho với số xe, tài xế."
+ },
+ {
+  "id": "s10-2",
+  "sub": "Bước 4: kiểm tra ngoại quan, xếp hàng lên pallet, dán tem lô lên thùng và dán LPN lên pallet.",
+  "text": "Bước 4, kiểm tra ngoại quan, xếp hàng lên pa-lét, dán tem lô lên thùng và dán eo pê en lên pa-lét."
+ },
+ {
+  "id": "s11-1",
+  "sub": "Bước 5: quét LPN, quét tem lô QR và nhập số thùng trên pallet.",
+  "text": "Bước 5, quét eo pê en, quét tem lô kiu-a và nhập số thùng trên pa-lét."
+ },
+ {
+  "id": "s11-2",
+  "sub": "Nhận đủ các pallet thì xác nhận hoàn tất.",
+  "text": "Nhận đủ các pa-lét thì xác nhận hoàn tất."
+ },
+ {
+  "id": "s12-1",
+  "sub": "Bước 6: in phiếu nhập kho và chuyển các bên ký.",
+  "text": "Bước 6, in phiếu nhập kho và chuyển các bên ký."
+ },
+ {
+  "id": "s12-2",
+  "sub": "Hàng của Nhiêu Lộc đã có trong tồn kho WMS, theo từng lô và từng pallet.",
+  "text": "Hàng của Nhiêu Lộc đã có trong tồn kho đáp-bờ-liu em ét, theo từng lô và từng pa-lét."
+ },
+ {
+  "id": "s13-1",
+  "sub": "Bước 7: quét LPN, WMS gợi ý vị trí cất.",
+  "text": "Bước 7, quét eo pê en, đáp-bờ-liu em ét gợi ý vị trí cất."
+ },
+ {
+  "id": "s13-2",
+  "sub": "Ở khu kệ, mỗi vị trí nhận đúng một pallet; quét mã vị trí để xác nhận cất hàng.",
+  "text": "Ở khu kệ, mỗi vị trí nhận đúng một pa-lét, quét mã vị trí để xác nhận cất hàng."
+ },
+ {
+  "id": "s14-1",
+  "sub": "Ở khu chất chồng, WMS gợi ý ô sàn để chồng các pallet cùng mã hàng, cùng lô.",
+  "text": "Ở khu chất chồng, đáp-bờ-liu em ét gợi ý ô sàn để chồng các pa-lét cùng mã hàng, cùng lô."
+ },
+ {
+  "id": "s14-2",
+  "sub": "Mỗi pallet vẫn có LPN riêng, nên luôn biết pallet nào đang nằm ở ô nào.",
+  "text": "Mỗi pa-lét vẫn có eo pê en riêng, nên luôn biết pa-lét nào đang nằm ở ô nào."
+ },
+ {
+  "id": "s16-1",
+  "sub": "Khi cần giữ một lô lại, XLCT khoá lô hoặc LPN trên WMS.",
+  "text": "Khi cần giữ một lô lại, xử lý chứng từ khoá lô hoặc eo pê en trên đáp-bờ-liu em ét."
+ },
+ {
+  "id": "s16-2",
+  "sub": "Lô bị khoá không được phân bổ xuất cho tới khi mở khoá.",
+  "text": "Lô bị khoá không được phân bổ xuất cho tới khi mở khoá."
+ },
+ {
+  "id": "s17-1",
+  "sub": "Chuyển vị trí pallet: tới vị trí cũ, quét LPN, đưa pallet tới vị trí mới.",
+  "text": "Chuyển vị trí pa-lét, tới vị trí cũ, quét eo pê en, đưa pa-lét tới vị trí mới."
+ },
+ {
+  "id": "s17-2",
+  "sub": "Quét mã vị trí mới và xác nhận, WMS cập nhật vị trí ngay.",
+  "text": "Quét mã vị trí mới và xác nhận, đáp-bờ-liu em ét cập nhật vị trí ngay."
+ },
+ {
+  "id": "s18-1",
+  "sub": "Chuyển hàng giữa hai pallet: quét LPN nguồn, quét tem lô và nhập số thùng cần chuyển.",
+  "text": "Chuyển hàng giữa hai pa-lét, quét eo pê en nguồn, quét tem lô và nhập số thùng cần chuyển."
+ },
+ {
+  "id": "s18-2",
+  "sub": "Quét mã pallet mới và xác nhận; tồn theo lô trên từng pallet vẫn đúng.",
+  "text": "Quét mã pa-lét mới và xác nhận, tồn theo lô trên từng pa-lét vẫn đúng."
+ },
+ {
+  "id": "s20-1",
+  "sub": "Bước 1 và 2: đơn đặt hàng tính theo kg, XLCT nhập vào WMS để tạo đơn xuất.",
+  "text": "Bước 1 và 2, đơn đặt hàng tính theo ký, xử lý chứng từ nhập vào đáp-bờ-liu em ét để tạo đơn xuất."
+ },
+ {
+  "id": "s21-1",
+  "sub": "Trước khi phân bổ, WMS kiểm tra đã có giá bán cho ngày phân bổ chưa.",
+  "text": "Trước khi phân bổ, đáp-bờ-liu em ét kiểm tra đã có giá bán cho ngày phân bổ chưa."
+ },
+ {
+  "id": "s21-2",
+  "sub": "Chưa có thì khai báo giá theo quy trình 01B rồi mới tiếp tục.",
+  "text": "Chưa có thì khai báo giá theo quy trình không một bê rồi mới tiếp tục."
+ },
+ {
+  "id": "s22-1",
+  "sub": "Bước 3: WMS quy đổi kg ra số thùng, làm tròn gần nhất, tối thiểu một thùng.",
+  "text": "Bước 3, đáp-bờ-liu em ét quy đổi ký ra số thùng, làm tròn gần nhất, tối thiểu một thùng."
+ },
+ {
+  "id": "s22-2",
+  "sub": "WMS tự tách: đủ một pallet thì xuất chẵn pallet, không đủ một pallet thì xuất theo thùng, cho cả đồng ký và đa ký.",
+  "text": "đáp-bờ-liu em ét tự tách, đủ một pa-lét thì xuất chẵn pa-lét, không đủ một pa-lét thì xuất theo thùng, cho cả đồng ký và đa ký."
+ },
+ {
+  "id": "s22-3",
+  "sub": "Lô được chọn theo FEFO mặc định, hoặc theo hạn dùng còn lại tối thiểu mà đơn chỉ định, rồi lấy đơn giá của ngày phân bổ.",
+  "text": "Lô được chọn theo phe-phô mặc định, hoặc theo hạn dùng còn lại tối thiểu mà đơn chỉ định, rồi lấy đơn giá của ngày phân bổ."
+ },
+ {
+  "id": "s23-1",
+  "sub": "Bước 4: in phiếu lấy hàng, giao cho nhân viên kho.",
+  "text": "Bước 4, in phiếu lấy hàng, giao cho nhân viên kho."
+ },
+ {
+  "id": "s23-2",
+  "sub": "Bước 5, chẵn pallet: nếu pallet được gợi ý khó lấy, xe nâng lấy pallet khác cùng lô cho thuận tiện.",
+  "text": "Bước 5, chẵn pa-lét, nếu pa-lét được gợi ý khó lấy, xe nâng lấy pa-lét khác cùng lô cho thuận tiện."
+ },
+ {
+  "id": "s23-3",
+  "sub": "Quét LPN thực lấy, WMS kiểm tra đúng mã, đúng lô rồi ghi nhận nguyên pallet.",
+  "text": "Quét eo pê en thực lấy, đáp-bờ-liu em ét kiểm tra đúng mã, đúng lô rồi ghi nhận nguyên pa-lét."
+ },
+ {
+  "id": "s24-1",
+  "sub": "Bước 5, lẻ thùng: tới vị trí theo phiếu, quét vị trí, quét LPN, quét tem lô và nhập số thùng.",
+  "text": "Bước 5, lẻ thùng, tới vị trí theo phiếu, quét vị trí, quét eo pê en, quét tem lô và nhập số thùng."
+ },
+ {
+  "id": "s24-2",
+  "sub": "Quét LPN để WMS biết thùng được lấy từ pallet nào.",
+  "text": "Quét eo pê en để đáp-bờ-liu em ét biết thùng được lấy từ pa-lét nào."
+ },
+ {
+  "id": "s24-3",
+  "sub": "Lấy xong, đưa hàng ra khu chờ xuất.",
+  "text": "Lấy xong, đưa hàng ra khu chờ xuất."
+ },
+ {
+  "id": "s25-1",
+  "sub": "Bước 6 và 7: xác nhận ra kho.",
+  "text": "Bước 6 và 7, xác nhận ra kho."
+ },
+ {
+  "id": "s25-2",
+  "sub": "Hàng đồng ký: quét tem lô, xác nhận số thùng, WMS tự tính số kg.",
+  "text": "Hàng đồng ký, quét tem lô, xác nhận số thùng, đáp-bờ-liu em ét tự tính số ký."
+ },
+ {
+  "id": "s25-3",
+  "sub": "Hàng đa ký: nhập số kg từng thùng cho tới khi đủ số thùng đã lấy.",
+  "text": "Hàng đa ký, nhập số ký từng thùng cho tới khi đủ số thùng đã lấy."
+ },
+ {
+  "id": "s26-1",
+  "sub": "Bước 8: WMS tổng hợp kg thực xuất và tính thành tiền bằng kg nhân đơn giá.",
+  "text": "Bước 8, đáp-bờ-liu em ét tổng hợp ký thực xuất và tính thành tiền bằng ký nhân đơn giá."
+ },
+ {
+  "id": "s26-2",
+  "sub": "In phiếu xuất kho, phiếu giao hàng để các bên ký.",
+  "text": "In phiếu xuất kho, phiếu giao hàng để các bên ký."
+ },
+ {
+  "id": "s28-1",
+  "sub": "Bước 1: XLCT chọn điều kiện và tạo phiên kiểm kê.",
+  "text": "Bước 1, xử lý chứng từ chọn điều kiện và tạo phiên kiểm kê."
+ },
+ {
+  "id": "s28-2",
+  "sub": "Bước 2: nhân viên kho tới vị trí, quét vị trí, LPN, tem lô và nhập số thùng đếm được.",
+  "text": "Bước 2, nhân viên kho tới vị trí, quét vị trí, eo pê en, tem lô và nhập số thùng đếm được."
+ },
+ {
+  "id": "s29-1",
+  "sub": "Bước 3: WMS tự tạo báo cáo chênh lệch.",
+  "text": "Bước 3, đáp-bờ-liu em ét tự tạo báo cáo chênh lệch."
+ },
+ {
+  "id": "s29-2",
+  "sub": "Quản lý kho quyết định đếm lại lần 2, lần 3, hay tiến hành điều chỉnh tồn kho.",
+  "text": "Quản lý kho quyết định đếm lại lần 2, lần 3, hay tiến hành điều chỉnh tồn kho."
+ },
+ {
+  "id": "s30-1",
+  "sub": "Mọi pallet và mọi thùng của Nhiêu Lộc đều được quét và ghi nhận trên WMS.",
+  "text": "Mọi pa-lét và mọi thùng của Nhiêu Lộc đều được quét và ghi nhận trên đáp-bờ-liu em ét."
+ },
+ {
+  "id": "s30-2",
+  "sub": "Biết hàng nào, lô nào, nằm ở đâu, và đã giao bao nhiêu kg.",
+  "text": "Biết hàng nào, lô nào, nằm ở đâu, và đã giao bao nhiêu ký."
+ },
+ {
+  "id": "s30-3",
+  "sub": "Xin cảm ơn Ban lãnh đạo đã theo dõi.",
+  "text": "Xin cảm ơn Ban lãnh đạo đã theo dõi."
+ }
 ]
