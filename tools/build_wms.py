@@ -38,8 +38,13 @@ def svg(inner):
 
 
 def pop(sel, t, dur=0.4, s0=0.6):
-    return (f'tl.fromTo("{sel}",{{opacity:0,scale:{s0}}},{{opacity:1,scale:1,duration:{dur},ease:"back.out(1.8)",'
-            f'transformOrigin:"50% 50%"}},{t:.2f});\n')
+    """Bật ra quanh tâm của nhóm.
+    transformOrigin phải có ở CẢ vế from: nếu chỉ đặt ở vế to, GSAP vẽ trạng thái from (scale s0) quanh gốc mặc định
+    của SVG (góc trên-trái bbox), rồi smoothOrigin bù một đoạn tịnh tiến khi đổi gốc -> nhóm lệch trái/lên
+    (cx - bbox.x) * (1 - 1/s0) px và giữ nguyên độ lệch đó sau khi tween về scale 1."""
+    o = 'transformOrigin:"50% 50%"'
+    return (f'tl.fromTo("{sel}",{{opacity:0,scale:{s0},{o}}},{{opacity:1,scale:1,{o},duration:{dur},ease:"back.out(1.8)"}},'
+            f'{t:.2f});\n')
 
 
 def rise(sel, t, dy=24, dur=0.45):
